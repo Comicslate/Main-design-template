@@ -1,0 +1,159 @@
+body {
+	background-color: White;
+	color: Black;
+	font: 10pt "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
+	.page { /* the document */
+		text-align: justify;
+		table {
+			font-size: 100%;
+			margin: 0;
+			padding: 0;
+			&.inline {
+				background-color: #ffffff;
+				border-spacing: 0px;
+				border-collapse: collapse;
+				font-size: 80%;
+				td, th {
+					border: 1px solid #000000;
+					padding: 3px;
+				}
+				th {
+					border-bottom: 2px solid #000000;
+				}
+				td {
+					width: auto;
+				}
+			}
+			tr, td, th {
+				margin: 0;
+				padding: 0;
+			}
+		}
+		img {
+			border: 0;
+			&.media {
+				margin: 3px;
+			}
+			&.medialeft {
+				border: 0;
+				float: left;
+				margin: 0 1.5em 0 0;
+			}
+			&.mediaright {
+				border: 0;
+				float: right;
+				margin: 0 0 0 1.5em;
+			}
+		}
+		a {
+			background: none !important;
+			color: #000000;
+			text-decoration: none;
+			&.urlextern:after,
+			&.interwiki:after,
+			&.mail:after {
+				content: " [" attr(href) "]";
+				font-size: 90%;
+			}
+			&.wikilink1 {
+				text-decoration: underline;
+			}
+			&.fn_top {
+				font-size: 80%;
+				vertical-align: super;
+			}
+			&.fn_bot {
+				font-size: 80%;
+				font-weight: bold;
+				vertical-align: super;
+			}
+		}
+		.meta {
+			clear: both;
+			font-size: 70%;
+			margin-top: 1em;
+			text-align: right;
+		}
+		.menu, .translation, .cnav, .secedit, #pagetools, .breadcrumbs, .pageinfo, .toc, .footerinc, .header, .bar, .user {
+			display: none;
+		}
+		h1, h2, h3, h4, h5 {
+			background-color: transparent;
+			clear: left;
+			color: Black;
+			font-family: "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
+			margin: 0 0 1em 0;
+			padding: 0.5em 0 0 0;
+		}
+		h1, h2 {
+			border-bottom: 1px solid #000000;
+		}
+		h3, h4, h5 {
+			border-bottom: none;
+		}
+		h1 {
+			font-size: 160%;
+			font-weight: bold;
+		}
+		h2 {
+			font-size: 150%;
+		}
+		h3 {
+			font-size: 140%;
+		}
+		h4 {
+			font-size: 120%;
+		}
+		h5 {
+			font-size: 100%;
+		}
+		ul {
+			line-height: 1.5em;
+			list-style-type: square;
+			margin: 0 0 1.0em 1.5em;
+			padding: 0;
+		}
+		ol {
+			font-weight: normal;
+			line-height: 1.0em;
+			margin: 0 0 1.0em 1.0em;
+			padding: 0;
+		}
+		span.li {
+			font-weight: normal;
+		}
+		pre.code,
+		pre.file,
+		pre.pre {
+			border: 1px dashed #000000;
+			color: Black;
+			font-size: 8pt;
+			overflow: visible;
+			padding: 0.5em;
+		}
+		code {
+			font-size: 120%;
+		}
+		div.footnotes {
+			border-top: 1px solid #000000;
+			clear: both;
+			margin-top: 1em;
+			padding-left: 1em;
+		}
+		div.fn {
+			font-size: 90%;
+		}
+		acronym {
+			border: 0;
+		}
+		.leftalign {
+			text-align: left;
+		}
+		.centeralign {
+			text-align: center;
+		}
+		.rightalign {
+			text-align: right;
+		}
+	}
+}

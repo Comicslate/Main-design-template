@@ -1,0 +1,43 @@
+#dokuwiki__detail {
+	padding-left: 1em;
+	h1 {
+		padding: 0;
+	}
+	.img_big {
+		float: left;
+		margin: 1em;
+	}
+	div.img_detail {
+		float: left;
+		#back {
+			margin: 1em;
+			bdi {
+				padding-left: .5em;
+				position: relative;
+				top: 2px;
+			}
+		}
+		.img_tags {
+			margin: 0;
+			dt {
+				background-color: __medium__;
+				font-weight: bold;
+				line-height: 2;
+				padding: 0 1em;
+			}
+			dd {
+				background-color: __lightgray__;
+				font-style: italic;
+				line-height: 2;
+				margin: 0;
+				padding: 0 1em 0 3.1em;
+			}
+		}
+	}
+	[dir=rtl] & {
+		.img_big,
+		div.img_detail	{
+			float: right;
+		}
+	}
+}

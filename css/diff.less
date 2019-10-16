@@ -1,0 +1,126 @@
+table.diff {
+	width: 100%;
+	border-width: 0;
+	th, td {
+		vertical-align: top;
+		padding: 0;
+		border-width: 0;
+		background-color: #fff; // no style.ini colors because deleted and added lines have a fixed background color
+		color: #333;
+	}
+	th {
+		border-bottom: 1px solid @ini_border;
+		font-size: 110%;
+		font-weight: normal;
+		a {
+			font-weight: bold;
+		}
+		span.user {
+			font-size: .9em;
+		}
+		span.sum {
+			font-size: .9em;
+			font-weight: bold;
+		}
+	}
+	th.minor {
+		color: #999;
+	}
+	/* table body */
+	.diff-lineheader {
+		width: .7em;
+		text-align: right;
+		[dir=rtl] & {
+			text-align: left;
+		}
+	}
+	.diff-lineheader,
+	td {
+		font-family: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace;
+	}
+	td.diff-blockheader {
+		font-weight: bold;
+	}
+	.diff-addedline {
+		background-color: #cfc;
+		color: inherit;
+		width: 50%;
+	}
+	.diff-deletedline {
+		background-color: #fdd;
+		color: inherit;
+		width: 50%;
+	}
+	td.diff-context {
+		background-color: #eee;
+		color: inherit;
+		width: 50%;
+	}
+	td.diff-addedline strong,
+	td.diff-deletedline strong {
+		color: #f00;
+		background-color: inherit;
+		font-weight: bold;
+	}
+}
+table.diff_sidebyside { // table header
+	th {
+		width: 50%; // равноразмерность панелей диффа
+	}
+	td.diffnav {
+		padding-bottom: .7em;
+	}
+}
+.diffoptions {
+	form {
+		float: left;
+	}
+	p {
+		float: right;
+	}
+}
+.diffnav {
+	a {
+		display: inline-block;
+		vertical-align: middle;
+		span {
+			display: none;
+		}
+	}
+	a:hover,
+	a:active,
+	a:focus {
+		background-color: @ini_background_alt;
+		text-decoration: none;
+	}
+	a:before {
+		display: inline-block;
+		line-height: 1;
+		padding: .2em .4em;
+		border: 1px solid @ini_border;
+		border-radius: 2px;
+		color: @ini_text;
+	}
+	a.diffprevrev:before {
+		content: '\25C0'; // left triangle
+	}
+	a.diffnextrev:before,
+	a.difflastrev:before {
+		content: '\25B6'; // right triangle
+	}
+	a.diffbothprevrev:before {
+		content: '\25C0\25C0';
+	}
+	a.diffbothnextrev:before {
+		content: '\25B6\25B6';
+	}
+
+	select {
+		width: 60%;
+		min-width: 9em;
+		height: 1.5em; // height is necessary for longer options in Webkit
+		option[selected] {
+			font-weight: bold;
+		}
+	}
+}

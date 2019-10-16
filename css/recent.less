@@ -1,0 +1,59 @@
+form.changes {
+	.changeType {
+		margin-bottom: .5em;
+	}
+	ul {
+		line-height: 2em;
+		margin: 0;
+		li {
+			list-style: none;
+			[dir=rtl] & {
+				margin-right: 0;
+			}
+			* {
+				vertical-align: middle;
+			}
+			a.diff_link {
+				img {
+					height: 11px;
+					width: 15px;
+				}
+			}
+			a.revisions_link {
+				img {
+					height: 14px;
+					width: 12px;
+				}
+			}
+			span.sum {
+				font-weight: bold;
+			}
+			.sizechange {
+				background-color: #ddd;
+				border-radius: .2em;
+				font-size: 80%;
+				padding: .1em .2em;
+				&.positive {
+					background-color: #cfc;;
+				}
+				&.negative {
+					background-color: #fdd;
+				}
+			}
+			&.minor {
+				font-style: italic;
+				opacity: .7;
+			}
+		}
+	}
+}
+
+div.pagenav {
+	margin: 1em 0 0 0;
+	text-align: center;
+	div.pagenav-prev,
+	div.pagenav-next {
+		display: inline;
+		margin: 0 .5em;
+	}
+}

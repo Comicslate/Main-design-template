@@ -1,0 +1,445 @@
+#mediamanager__page {
+	min-width: 800px;
+	width: 100%;
+	text-align: left;
+	h1 {
+		margin: 0 0 .2em;
+	}
+	.panel {
+		float: left;
+	}
+	.namespaces {
+		width: 15%;
+		min-width: 120px;
+		h2 {
+			font-size: 1em;
+			display: inline-block;
+			border-width: 0;
+			padding: 0 .5em;
+			margin: 0 .3em 0 0;
+			border-radius: .5em .5em 0 0;
+			font-weight: normal;
+			background-color: __background_alt__;
+			color: __text__;
+			line-height: 1.5em;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			ul {
+				margin-left: 1em;
+				li {
+					margin: 0;
+				}
+			}
+			.selected {
+				background-color: __highlight__;
+				font-weight: bold;
+			}
+		}
+	}
+	.filelist {
+		width: 50%;
+		min-width: 400px;
+		ul {
+			padding: 0;
+			margin: 0;
+			&.tabs {
+				li {
+					strong {
+						padding: 0 .5em;
+						margin: 0 5px 0 0;
+					}
+					a {
+						padding: 0 .5em;
+						margin: 0 5px 0 0;
+					}
+				}
+			}
+		}
+		.panelContent {
+			ul {
+				li:hover {
+					background-color: __background_alt__;
+				}
+			}
+		}
+		li {
+			dt {
+				a {
+					vertical-align: middle;
+					display: table-cell;
+					overflow: hidden;
+				}
+			}
+		}
+		.thumbs {
+			li {
+				width: 100px;
+				min-height: 130px;
+				display: inline-block;
+				display: -moz-inline-stack;
+				/* the right margin should visually be 10px, but because of its inline-block nature the whitespace inbetween is about 4px more */
+				margin: 0 6px 10px 0;
+				background-color: __background_neu__;
+				color: __text__;
+				padding: 5px;
+				vertical-align: top;
+				text-align: center;
+				position: relative;
+				line-height: 1.2;
+				dt {
+					a {
+						width: 100px;
+						height: 90px;
+						img {
+							max-width: 90px;
+							max-height: 90px;
+						}
+					}
+				}
+				.name,
+				.size,
+				.filesize,
+				.date {
+					display: block;
+					font-size: 90%;
+					margin: 0;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					width: 90px;
+					white-space: nowrap;
+				}
+				.name {
+					padding: 5px 0;
+					font-weight: bold;
+				}
+				.date {
+					font-style: italic;
+					white-space: normal;
+				}
+			}
+		}
+		.rows {
+			li {
+				list-style: none;
+				display: block;
+				position: relative;
+				max-height: 50px;
+				margin: 0;
+				margin-bottom: 3px;
+				background-color: __background__;
+				color: __text__;
+				overflow: hidden;
+				&:nth-child(2n+1) {
+					background-color: __background_neu__;
+				}
+				dt {
+					float: left;
+					width: 10%;
+					height: 40px;
+					text-align: center;
+					a {
+						width: 100px;
+						height: 40px;
+						img {
+							max-width: 40px;
+							max-height: 40px;
+						}
+					}
+				}
+				.name,
+				.size,
+				.filesize,
+				.date {
+					overflow: hidden;
+					text-overflow: ellipsis;
+					float: left;
+					margin-left: 1%;
+					white-space: nowrap;
+				}
+				.name {
+					width: 30%;
+					font-weight: bold;
+				}
+				.size,
+				.filesize {
+					width: 15%;
+				}
+				.date {
+					width: 20%;
+					font-style: italic;
+					white-space: normal;
+				}
+			}
+		}
+	}
+	.file {
+		width: 35%;
+		min-width: 280px;
+		display: contents;
+		ul.tabs {
+			li {
+				strong {
+					padding: 0 .5em;
+					margin: 0 5px 0 0;
+				}
+				a {
+					padding: 0 .5em;
+					margin: 0 5px 0 0;
+				}
+			}
+		}
+		.panelHeader,
+		.panelContent {
+			margin-right: 0;
+		}
+		#mediamanager__diff {
+			table {
+				table-layout: fixed;
+			}
+			td,
+			th {
+				width: 48%;
+				margin: 0 5px 10px 0;
+				padding: 0;
+				vertical-align: top;
+				text-align: left;
+			}
+			th {
+				font-weight: normal;
+				a {
+					font-weight: bold;
+				}
+				span {
+					font-size: 90%;
+				}
+			}
+			dl {
+				dd {
+					strong {
+						background-color: __highlight__;
+						color: __text__;
+						font-weight: normal;
+					}
+				}
+			}
+			div.slider {
+				margin: 10px;
+				width: 95%;
+			}
+			.imageDiff {
+				position: relative;
+				.image2 {
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+				&.opacity {
+					.image2 {
+						opacity: 0.5;
+					}
+				}
+				&.portions {
+					.image2 {
+						border-right: 1px solid red;
+						overflow: hidden;
+					}
+					img {
+						float: left;
+					}
+				}
+				img {
+					width: 100%;
+					max-width: none;
+				}
+			}
+			[dir=rtl] & td,
+			[dir=rtl] & th {
+				text-align: right;
+			}
+		}
+		div.image {
+			margin-bottom: 5px;
+			text-align: center;
+			img {
+				width: 100%;
+			}
+		}
+		ul.actions {
+			text-align: center;
+			margin: 0 0 5px;
+			list-style: none;
+			li {
+				display: inline;
+			}
+		}
+		dl {
+			dt {
+				font-weight: bold;
+				display: block;
+				background-color: __background_alt__;
+				width: calc(~"50% - "2px);
+				float: left;
+				text-align: right;
+				padding-right: 2px;
+			}
+			dd {
+				display: block;
+				background-color: __background_neu__;
+				width: calc(~"50% - "2px);
+				float: right;
+				margin: 0;
+				padding-left: 2px;
+			}
+		}
+		form.diffView {
+			margin-bottom: 10px;
+			display: block;
+		}
+	}
+	.panelHeader {
+		background-color: __background_alt__;
+		margin: 0 10px 0 0;
+		padding: 5px;
+		text-align: left;
+		min-height: 20px;
+		overflow: hidden;
+		h3 {
+			float: left;
+			font-weight: normal;
+			font-size: 1em;
+			padding: 0;
+			margin: 0;
+		}
+		form.options {
+			float: right;
+			.ui-buttonset {
+				label {
+					font-size: 90%;
+					margin-right: -0.4em;
+				}
+				.ui-button-text {
+					padding: .4em .7em;
+					line-height: 1;
+				}
+			}
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li {
+				color: __text__;
+				float: left;
+				line-height: 1;
+				padding-left: 3px;
+				&.listType {
+					padding-left: 30px;
+					background: url(../../images/icon-list.png) 3px 1px no-repeat;
+				}
+				&.sortBy {
+					padding-left: 30px;
+					background: url(../../images/icon-sort.png) 3px 1px no-repeat;
+				}
+			}
+		}
+	}
+	.panelContent {
+		overflow-y: auto;
+		overflow-x: hidden;
+		padding: 0;
+		margin: 0 10px 0 0;
+		position: relative;
+	}
+	.ui-resizable-e {
+		width: 6px;
+		right: 2px;
+		background: transparent url(../../images/resizecol.png) center center no-repeat;
+		&:hover {
+			background-color: __background_alt__;
+		}
+	}
+	div.upload {
+		padding-bottom: 0.5em;
+		#mediamanager__uploader {
+			border-bottom: 1px solid __border__;
+			padding-bottom: 0.5em;
+		}
+	}
+	form.meta {
+		div.row {
+			margin-bottom: 5px;
+		}
+		label {
+			span {
+				display: block;
+			}
+		}
+		input {
+			width: 50%;
+			&.button {
+				width: auto;
+			}
+		}
+		textarea.edit {
+			height: 6em;
+			width: 95%;
+		}
+	}
+	form.changes {
+		ul {
+			margin: 0;
+			list-style-type: none;
+			li {
+				div.li {
+					div {
+						font-size: 90%;
+						color: __text_neu__;
+						padding-left: 18px;
+					}
+					input {
+						position: relative;
+						top: 1px;
+					}
+				}
+			}
+		}
+	}
+	[dir=rtl] & {
+		.namespaces {
+			text-align: right;
+			h2 {
+				margin-right: 10px;
+			}
+			ul {
+				ul {
+					margin-left: 0;
+					margin-right: 1em;
+				}
+			}
+		}
+		.filelist {
+			ul.tabs {
+				margin-right: 10px;
+			}
+			.thumbs {
+				li {
+					margin-right: 0;
+					margin-left: 6px;
+				}
+			}
+		}
+		.panelContent {
+			text-align: right;
+		}
+		form.meta {
+			label {
+				span {
+					text-align: right;
+				}
+			}
+		}
+	}
+}

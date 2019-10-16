@@ -1,0 +1,41 @@
+ul.tabs {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+	li {
+		float: left;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		a {
+			background-color: __background_neu__;
+			color: __text__;
+		}
+		a,
+		strong {
+			border-radius: .5em .5em 0 0;
+			float: left;
+			margin: 0 .3em 0 0;
+			padding: .3em .8em;
+		}
+		a:hover,
+		a:active,
+		a:focus,
+		strong {
+			background-color: __background_alt__;
+			color: __text__;
+			text-decoration: none;
+		}
+	}
+	[dir=rtl] & {
+		li {
+			float: right;
+		
+			strong,
+			a {
+				float: right;
+				margin: 0 0 0 .3em;
+			}
+		}
+	}
+}

@@ -1,0 +1,44 @@
+#dw__register,#dw__login,#dw__resendpwd,#dw__profiledelete {
+	fieldset {
+		legend {
+			background-color: white;
+			border: 1px solid __dark__;
+			border-radius: 5px;
+			box-shadow: 0 0 3px 1px __dark__;
+			padding: 2px 5px;
+		}
+	}
+	button,
+	#plugin__captcha_wrapper {
+		border-radius: 5px;
+		padding: 3px 5px;
+	}
+}
+#dw__login {
+	#remember__me {
+		vertical-align: middle;
+	}
+}	
+#dw__profiledelete {
+	display: block;
+	margin-top: 4px;
+	fieldset {
+		legend {
+			color: red;
+		}
+	}
+	#dw__confirmdelete {
+		vertical-align: middle;
+		+ span {
+			color: red;
+		}
+	}
+	.block {
+		color: red;
+		padding-top: 10px;
+	}
+	button {
+		color: red;
+		font-weight: 600;
+	}
+}

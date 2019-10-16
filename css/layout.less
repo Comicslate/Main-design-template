@@ -1,0 +1,89 @@
+/**
+ * @author Andreas Gohr <andi@splitbrain.org>
+ * @author moraes <moraes@tipos.com.br>
+ */
+div.dokuwiki {
+	.header {
+		padding: 3px 0 0 2px;
+	}
+	.pagename {
+		float: left;
+		font-size: 200%;
+		font-weight: bolder;
+		color: __medium__;
+		text-align: left;
+		vertical-align: middle;
+		padding: 0;
+		a:link,
+		a:visited,
+		a:hover,
+		a:active {
+			color: __extern__;
+			text-decoration: none;
+		}
+	}
+	.bar { // top and bottom bar
+		border-top: 1px solid __dark__;
+		border-bottom: 1px solid __dark__;
+		background: __medium__;
+		padding: 0.1em 0.15em;
+		margin: 0;
+		clear: both;
+	}
+	.bar-left {
+		float: left;
+	}
+	.bar-right {
+		float: right;
+		text-align: right;
+	}
+	#bar__bottom {
+		margin-bottom: 3px;
+	}
+	div.meta { // File Metadata
+		clear: both;
+		margin: 3px 3px 0 7px;
+		color: __extern__;
+		font-size: 70%;
+		div.user {
+			float: left;
+		}
+		div.doc {
+			text-align: right;
+		}
+	}
+	div.uploadform { // Media Selection
+		margin-top: 0.5em;
+		border-top: 1px solid __dark__;
+	}
+	.mediaselect-left {
+		float: left;
+		padding: 0.5em;
+		width: 30%;
+	}
+	.mediaselect-right {
+		float: right;
+		border-left: 1px solid __dark__;
+		padding: 0.5em;
+		width: 65%;
+	}
+	div.mediaref_head {
+		margin-left: 0.5em;
+	}
+	div.mediaref .search_result {
+		padding-left: 1em;
+	}
+	.mediaref_ref {
+		color: __existing__;
+	}
+	div.mediaref_hidden {
+		margin-top: 1em;
+		text-align: center;
+		font-size: 1.2em;
+		color: #BB0000;
+	}
+	div.mediaref_footer {
+		margin-top: 1em;
+		text-align: center;
+	}
+}

@@ -1,0 +1,162 @@
+.search_hit {
+	color: @ini_text;
+	background-color: __highlight__;
+}
+div.nothing {
+	margin-bottom: 1.4em;
+}
+.search-results-form {
+	fieldset.search-form {
+		margin: 1em auto;
+		min-width: 512px;
+		position: relative;
+		width: 50%;
+		button.toggleAssistant {
+			bottom: 6px;
+			height: 25px;
+			left: 6px;
+			position: absolute;
+		}
+		input[name="q"] {
+			height: 21px;
+			min-width: 200px;
+			width: inherit;
+		}
+		button[type="submit"] {
+			height: 25px;
+			margin-left: 4px;
+		}
+		button.toggleAssistant,
+		input[name="q"],
+		button[type="submit"] {
+			border-radius: 5px;
+			padding: 0 5px;
+		}
+		.advancedOptions {
+			padding: .7em 120px .3em 120px;
+			> div {
+				display: inline-block;
+				position: relative;
+				margin: 0 0.5em;
+			}
+			div.toggle {
+				div.current {
+					cursor: pointer;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+
+					&::after {
+						content: '▼';
+						font-size: smaller;
+						color: @ini_text_alt;
+					}
+				}
+				div.changed {
+					font-weight: bold;
+				}
+				ul {
+					display: none;
+					position: absolute;
+					border: 1px solid @ini_border;
+					background-color: @ini_background;
+					padding: 0.25em 0.5em;
+					text-align: left;
+					min-width: 10em;
+					max-width: 15em;
+					max-height: 50vh;
+					overflow: auto;
+					z-index: 100;
+					[dir=rtl] & {
+						text-align: right;
+					}
+					li {
+						margin: 0.25em 0;
+						list-style: none;
+						a {
+							display: block;
+						}
+					}
+				}
+				&.open {
+					div.current::after {
+						content: '▲';
+					}
+					ul {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+div.search_quickresult {
+	margin-bottom: 1.4em;
+	ul {
+		padding: 0;
+		li {
+			float: left;
+			width: 12em;
+			margin: 0 1.5em;
+			[dir=rtl] & {
+				float: right;
+			}
+		}
+	}
+}
+dl.search_results {
+	margin-bottom: 1.2em;
+	dt {
+		font-weight: normal;
+		margin-bottom: .2em;
+	}
+	dd.meta {
+		margin: 0 0 .2em 0;
+	}
+	dd.snippet {
+		color: @ini_text_alt;
+		background-color: inherit;
+		margin: 0 0 1.2em 0;
+		strong.search_hit {
+			font-weight: normal;
+		}
+		.search_sep {
+			color: @ini_text;
+			background-color: inherit;
+		}
+	}
+}
+form.search {
+	div.no {
+		position: relative;
+	}
+	div.ajax_qsearch {
+		position: absolute;
+		top: 0;
+		left: -13.5em; /* -( width of #qsearch__in + padding of .ajax_qsearch + a bit more ) */
+		width: 12em;
+		padding: 0.5em;
+		font-size: .9em;
+		z-index: 20;
+		text-align: left;
+		display: none;
+		strong {
+			display: block;
+			margin-bottom: .3em;
+		}
+		ul {
+			margin: 0 !important;
+			padding: 0 !important;
+			li {
+				margin: 0;
+				padding: 0;
+				display: block !important;
+			}
+		}
+		[dir=rtl] & {
+			left: auto;
+			right: -13.5em;
+			text-align: right;
+		}
+	}
+}
