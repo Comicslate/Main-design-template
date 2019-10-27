@@ -86,7 +86,7 @@ if ( window.location.href.match ( wid_pages ) ) { // запуск на глав�
 
 // пакование меню menu_columns
 
-var menu_page = /[:\/]menu($|#)/i;
+var menu_page = /[:\/]menu($|#|\?)/i;
 if ( window.location.href.match ( menu_page ) ) { // запуск в меню
 	var menu_fix = document.querySelectorAll ( '.page ul' );
 	for ( i in menu_fix ) {
