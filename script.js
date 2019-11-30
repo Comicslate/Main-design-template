@@ -460,8 +460,8 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		/* ГАЛОЧКА ПРИГЛУШЕНИЯ РЕДКИХ КНОПОК НАВИГАТОРА */
 		var folder_cookie2 = 'fogNavi_' + JSINFO.namespace,
 			fognavi_mark = !readCookie ( folder_cookie2 ),
-			fognavi_style_on = '', // стиль приглушения
-			fognavi_style_off = '.cnav.cnavn div a, .cnav.cnavn div a:hover { opacity: 1 !important }', // стиль оярчения
+			fognavi_style_on = '#navver, #navhead, #navtail, #navhor { animation: smooth 5s; opacity: 0.1 } #navprev { animation: smooth2 3s; opacity: 0.5 }', // стиль приглушения
+			fognavi_style_off = '#navver, #navhead, #navtail, #navhor, #navprev { animation: none; opacity: 1 !important }', // стиль оярчения
 			fognavi_checkbox;
 		if ( window.addEventListener ) { // W3C стандарт
 			window.addEventListener ( 'load', createFogNaviCheckbox, false ); // NB **not** 'onload'
