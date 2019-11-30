@@ -310,6 +310,7 @@ for ( var i in lines.default ) {
 
 // Added by EvilCat at 1 Oct 2012
 
+/* УПРАВЛЕНИЕ ПАПОЧНЫМИ ПЕЧЕНЬКАМИ */
 function createCookie ( name, value, days ) { // создание куки с переданными параметрами
 	var date = new Date ( );
 	date.setTime ( date.getTime ( ) + ( days * 24 * 60 * 60 * 1000 ) );
@@ -333,6 +334,7 @@ function eraseCookie ( name ) { // удаление куки
 	createCookie ( name, '', -1 );
 }
 
+/* ГАЛОЧКА ОТКЛЮЧЕНИЯ НАКЛЕЕК */
 function setReveal ( set ) { // синхронизация переменных
 	translate_mark = set;
 	translate_checkbox.innerHTML = translate_mark ? translate_style_on : translate_style_off;
@@ -365,6 +367,7 @@ function createRevealCheckbox ( ) { // создатель() галочки
 	setReveal ( translate_mark );
 }
 
+/* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
 function setReveal1 ( set ) { // синхронизация переменных
 	zoom_mark = set;
 	zoom_checkbox.innerHTML = zoom_mark ? zoom_style_on : zoom_style_off;
@@ -395,6 +398,7 @@ function createZoomCheckbox ( ) { // создатель() галочки
 	setReveal1 ( zoom_mark );
 }
 
+/* ГАЛОЧКА ПРИГЛУШЕНИЯ РЕДКИХ КНОПОК НАВИГАТОРА */
 function setReveal2 ( set ) { // синхронизация переменных
 	fognavi_mark = set;
 	fognavi_checkbox.innerHTML = fognavi_mark ? fognavi_style_on : fognavi_style_off;
