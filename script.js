@@ -425,9 +425,11 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	setReveal2 ( fognavi_mark );
 }
 
-if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/]/i ) != null ) { // запуск в комиксовых разделах сайта
+if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].*\d\d\d\d/i ) != null ) { // запуск в комиксовых разделах сайта
+	var page = document.querySelector ( ".page" );
 
-	if ( window.location.href.match ( /([:\/](index|tags)|[\?&]do=[^e])/i ) == null ) { // и редакторе, но не в индексах и тегах
+	if ( ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) || ( window.location.href.match ( /[\?&]do=edit/i ) != null ) ) { // при наличии переводов или в редакторе
+		/* ГАЛОЧКА ОТКЛЮЧЕНИЯ НАКЛЕЕК */
 		var folder_cookie = 'fnNotReveal_' + JSINFO.namespace,
 			translate_mark = !readCookie ( folder_cookie ),
 			translate_style_on = '', // стиль включения
@@ -438,9 +440,10 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		} else if ( window.attachEvent ) { // Microsoft стандарт
 			window.attachEvent ( 'onload', createRevealCheckbox );
 		}
-	};
+	}
 
-	if ( window.location.href.match ( /[\?&]do=/i ) == null ) { // только на готовых страницах
+	if ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) { // при наличии переводов
+		/* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
 		var folder_cookie1 = 'disZoom_' + JSINFO.namespace,
 			zoom_mark = !readCookie ( folder_cookie1 ),
 			zoom_style_on = '', // стиль расширения
@@ -451,7 +454,10 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		} else if ( window.attachEvent ) { // Microsoft стандарт
 			window.attachEvent ( 'onload', createZoomCheckbox );
 		}
+	}
 
+	if ( window.location.href.match ( /[\?&]do=/i ) == null ) { // только на готовых страницах
+		/* ГАЛОЧКА ПРИГЛУШЕНИЯ РЕДКИХ КНОПОК НАВИГАТОРА */
 		var folder_cookie2 = 'fogNavi_' + JSINFO.namespace,
 			fognavi_mark = !readCookie ( folder_cookie2 ),
 			fognavi_style_on = '', // стиль приглушения
@@ -464,45 +470,42 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		}
 	}
 
-/* плашка статуса перевода */	
-	if ( window.location.href.match ( /\d\d\d\d/i ) != null ) {
-		var page = document.querySelector ( ".page" );
+	/* ПЛАШКА СТАТУСА ПЕРЕВОДА */
+	if (
+		page.querySelectorAll ( ".preview" ).length == 0
+		&&
+		page.querySelectorAll ( ".vshare__none" ).length == 0
+	) {
+		var media = page.querySelectorAll ( "img.media" );
 		if (
-			page.querySelectorAll ( ".preview" ).length == 0
+			media.length > 0
 			&&
-			page.querySelectorAll ( ".vshare__none" ).length == 0
-		) {
-			var media = page.querySelectorAll ( "img.media" );
-			if (
-				media.length > 0
+			(
+				page.querySelectorAll ( ".ct-container" ).length == 0
 				&&
 				(
-					page.querySelectorAll ( ".ct-container" ).length == 0
+					media[0].src != undefined
 					&&
-					(
-						media[0].src != undefined
-						&&
-						!media[0].src.match ( "webmoney" )
-					)
+					!media[0].src.match ( "webmoney" )
 				)
-			) {
-				var brr = document.createElement ( 'br' );
-				brr.style.clear = 'both';
-				page.appendChild ( brr );
+			)
+		) {
+			var brr = document.createElement ( 'br' );
+			brr.style.clear = 'both';
+			page.appendChild ( brr );
 
-				var note = document.createElement ( 'div' );
-				note.className = 'vycenter ';
-				note.innerHTML = '<span class="fest f13">';
-				if ( page.querySelectorAll ( ".fn-container" ).length == 0 ) {
-					note.className += 'note noteimportant';
-					note.innerHTML += line[1];
-				} else {
-					note.className += 'note notetip';
-					note.innerHTML += line[2];
-				}
-				note.innerHTML += '</span>';
-				page.appendChild ( note )
+			var note = document.createElement ( 'div' );
+			note.className = 'vycenter ';
+			note.innerHTML = '<span class="fest f13">';
+			if ( page.querySelectorAll ( ".fn-container" ).length == 0 ) {
+				note.className += 'note noteimportant';
+				note.innerHTML += line[1];
+			} else {
+				note.className += 'note notetip';
+				note.innerHTML += line[2];
 			}
+			note.innerHTML += '</span>';
+			page.appendChild ( note )
 		}
 	}
 }
