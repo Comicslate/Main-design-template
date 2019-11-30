@@ -440,26 +440,28 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		}
 	};
 
-	var folder_cookie1 = 'disZoom_' + JSINFO.namespace,
-		zoom_mark = !readCookie ( folder_cookie1 ),
-		zoom_style_on = '', // стиль расширения
-		zoom_style_off = '.fn-container, .ct-container { margin: 0 auto !important; transform-origin: center top 0 !important; transform: scale(1) !important }', // стиль нормирования
-		zoom_checkbox;
-	if ( window.addEventListener ) { // W3C стандарт
-		window.addEventListener ( 'load', createZoomCheckbox, false ); // NB **not** 'onload'
-	} else if ( window.attachEvent ) { // Microsoft стандарт
-		window.attachEvent ( 'onload', createZoomCheckbox );
-	}
+	if ( window.location.href.match ( /[\?&]do=/i ) == null ) { // только на готовых страницах
+		var folder_cookie1 = 'disZoom_' + JSINFO.namespace,
+			zoom_mark = !readCookie ( folder_cookie1 ),
+			zoom_style_on = '', // стиль расширения
+			zoom_style_off = '.fn-container, .ct-container { margin: 0 auto !important; transform-origin: center top 0 !important; transform: scale(1) !important }', // стиль нормирования
+			zoom_checkbox;
+		if ( window.addEventListener ) { // W3C стандарт
+			window.addEventListener ( 'load', createZoomCheckbox, false ); // NB **not** 'onload'
+		} else if ( window.attachEvent ) { // Microsoft стандарт
+			window.attachEvent ( 'onload', createZoomCheckbox );
+		}
 
-	var folder_cookie2 = 'fogNavi_' + JSINFO.namespace,
-		fognavi_mark = !readCookie ( folder_cookie2 ),
-		fognavi_style_on = '', // стиль приглушения
-		fognavi_style_off = '.cnav.cnavn div a, .cnav.cnavn div a:hover { opacity: 1 !important }', // стиль оярчения
-		fognavi_checkbox;
-	if ( window.addEventListener ) { // W3C стандарт
-		window.addEventListener ( 'load', createFogNaviCheckbox, false ); // NB **not** 'onload'
-	} else if ( window.attachEvent ) { // Microsoft стандарт
-		window.attachEvent ( 'onload', createFogNaviCheckbox );
+		var folder_cookie2 = 'fogNavi_' + JSINFO.namespace,
+			fognavi_mark = !readCookie ( folder_cookie2 ),
+			fognavi_style_on = '', // стиль приглушения
+			fognavi_style_off = '.cnav.cnavn div a, .cnav.cnavn div a:hover { opacity: 1 !important }', // стиль оярчения
+			fognavi_checkbox;
+		if ( window.addEventListener ) { // W3C стандарт
+			window.addEventListener ( 'load', createFogNaviCheckbox, false ); // NB **not** 'onload'
+		} else if ( window.attachEvent ) { // Microsoft стандарт
+			window.attachEvent ( 'onload', createFogNaviCheckbox );
+		}
 	}
 
 /* плашка статуса перевода */	
