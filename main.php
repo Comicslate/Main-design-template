@@ -5,12 +5,10 @@ echo '<!DOCTYPE html>
 	<head>
 		<title>'; tpl_pagetitle ( ); echo ' [' . strip_tags ( $conf['title'] ) . ']</title>
 		<meta charset = "utf-8"/>
-
-		<!-- https://github.com/dotdoom/comicsbot/blob/55fc09116b7a6710b22f44641711329436e8b73b/src/app.ts#L111-L120 -->
 		<meta property="og:image" content="https://app.comicslate.org/embed/image?id='.$ID.'" />
+		<!-- https://github.com/dotdoom/comicsbot/blob/55fc09116b7a6710b22f44641711329436e8b73b/src/app.ts#L111-L120 -->
 		<link rel="alternate" type="application/json+oembed" href="https://app.comicslate.org/embed/json?id='.$ID.'" />
 		<meta name="twitter:card" content="summary_large_image">
-
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1" />
 		' . tpl_favicon ( array ( 'favicon', 'mobile' ) );
 tpl_metaheaders ( );
@@ -20,10 +18,6 @@ echo '
 		<script charset = "UTF-8" src = "//cdn.sendpulse.com/js/push/959988d16690251d333a6f140762013e_1.js" async></script>
 	</head>
 	<body>
-		<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" id = "googleapp" class = "googleplay media" target = "_blank">
-			<img class = "smart" src = "//play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt = "Get it on Google Play">
-			<img class = "smart" src = "//lh3.googleusercontent.com/DxESP0owr-Qim9fKLqmFlQGE-E81fbmP7aEGQi1muk0tYcRCeJxYYvXyW8P9PKaB6CY=w1920-h978" alt = "Get it on Google Play">
-		</a>
 		<div class = "dokuwiki lang-' . $conf["lang"] . '">';
 
 // HEADER
@@ -75,8 +69,19 @@ if ( !empty ( html_msgarea ( ) ) ) {
 				'; html_msgarea ( ); echo '
 			</div>';
 };
+
+$apps = '
+				<div class = "apps">
+					<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank">
+						<img src = "' . DOKU_TPL . 'images/googleapp.svg" alt = "Get it on Google Play">
+					</a>
+					<a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_blank">
+						<img src = "' . DOKU_TPL . 'images/appstore.svg" alt = "Download on the App Store">
+					</a>
+				</div>';
+
 echo '
-			<article class = "page">
+			<article class = "page">' . $apps . '
 				'; tpl_content ( ); echo '
 			</article>';
 tpl_flush ( );
@@ -100,11 +105,7 @@ if ( $conf['breadcrumbs'] ) {
 					</div>
 				</noindex>';
 };
-echo '
-				<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" class = "googleplay media" target = "_blank">
-					<img src = "//play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt = "Get it on Google Play">
-				</a>
-
+echo $apps . '
 				<div class = "count">
 					<a href = "//metrika.yandex.ru/stat/?id=25500497&amp;from=informer" target = "_blank" rel = "nofollow">
 						<img src = "//informer.yandex.ru/informer/25500497/3_0_7BC9F7FF_5BA9D7FF_0_pageviews" alt = "Яндекс.Метрика" title = "Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class = "ym-advanced-informer" data-cid = "25500497" data-lang = "ru" />
@@ -191,6 +192,7 @@ for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
 };
 echo '
 				</div>';
+
 if ( $INFO['ismanager'] ) {
 	echo '
 				<div class = "pageinfo">
