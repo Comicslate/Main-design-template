@@ -368,10 +368,24 @@ function createRevealCheckbox ( ) { // создатель() галочки
 }
 
 /* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
+function piczoom ( ) {
+	var pagewidth = page.offsetWidth - 3,
+		ctc = page.querySelectorAll ( ".page > * > .ct-container, .page > * > .fn-container, .page > * > * > .ct-container, .page > * > * > .fn-container" );
+	for ( i = 0; i < ctc.length; i++ ) {
+		var img = ctc[i].querySelector ( "img" ); // !
+		var scale = pagewidth / img.width,
+			margin = ( scale - 1 ) * img.height + 5;
+		ctc[i].style.transform = "scale(" + scale + ")";
+		ctc[i].style.marginBottom = margin + "px";
+		ctc[i].style.transformOrigin = ( scale < 1 ) ? 'left top 0' : 'center top 0';
+	}
+}
+
 function setReveal1 ( set ) { // синхронизация переменных
 	zoom_mark = set;
 	zoom_checkbox.innerHTML = zoom_mark ? zoom_style_on : zoom_style_off;
 	( zoom_mark == true ) ? eraseCookie ( folder_cookie1 ) : createCookie ( folder_cookie1, false, 9999 );
+	if ( zoom_mark == true ) piczoom ( );
 }
 
 function toggleReveal1 ( ) { // переключатель() галочки
@@ -512,20 +526,3 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		}
 	}
 }
-
-// PicZoom
-
-function piczoom ( ) {
-	var pagewidth = page.offsetWidth - 3,
-		ctc = page.querySelectorAll ( ".page > * > .ct-container, .page > * > .fn-container, .page > * > * > .ct-container, .page > * > * > .fn-container" );
-	for ( i = 0; i < ctc.length; i++ ) {
-		var img = ctc[i].querySelector ( "img" ); // !
-		var scale = pagewidth / img.width,
-			margin = ( scale - 1 ) * img.height + 5;
-		ctc[i].style.transform = "scale(" + scale + ")";
-		ctc[i].style.marginBottom = margin + "px";
-		ctc[i].style.transformOrigin = ( scale < 1 ) ? 'left top 0' : 'center top 0';
-	}
-}
-
-for ( i = 0; i < 10; i++ ) setTimeout ( piczoom, i * 100 );
