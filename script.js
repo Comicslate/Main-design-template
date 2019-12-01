@@ -1,6 +1,6 @@
 //ВЕЗДЕ
 
-var i;
+var i, j;
 
 // счётчик Яндекса yandex_counter
 
@@ -87,11 +87,25 @@ if ( window.location.href.match ( /[:\/]start/i ) ) { // запуск на гл�
 
 // пакование меню menu_columns
 
-var menu_page = /[:\/]menu($|#|\?)/i;
-if ( window.location.href.match ( menu_page ) ) { // запуск в меню
-	var menu_fix = document.querySelectorAll ( '.page ul' );
-	for ( i in menu_fix ) {
-		menu_fix[i].style.cssText += " column-count: 4; column-gap: 2%; column-width: 23.5%;";
+var	page = document.querySelector ( ".page" ), /* требуется начиная отсюда, используется и дальше */
+	pagewidth = page.offsetWidth - 3;
+
+if ( window.location.href.match ( /[:\/]menu(\?rev.+)?$/i ) !== null ) { // запуск в меню
+	var menu_col_ul = document.querySelectorAll ( '.page ul' ),
+		menu_col_div,
+		menu_col_div_sizes = [];
+	for ( i = 0; i < menu_col_ul.length; i++ ) {
+		if ( i != 3 ) { // исключая Интерробанг Студию
+			menu_col_div = menu_col_ul[i].querySelectorAll ( 'div.li' );
+			for ( j = 0; j < menu_col_div.length; j++ ) {
+				menu_col_div[j].style.display = "inline"; // приведение дивов к строчному виду
+				menu_col_div_sizes.push ( menu_col_div[j].offsetWidth ) // заполнение массива их размерами
+			}
+		}
+	};
+	var menu_col_div_size_max = Math.max.apply ( null, menu_col_div_sizes ); // определение наибольшего дива
+	for ( i in menu_col_ul ) {
+		if ( i != 3 && menu_col_ul[i].style ) menu_col_ul[i].style.cssText += " columns: " + menu_col_div_size_max + "px auto; column-gap: 20px;" // адаптивные колонки
 	}
 };
 
@@ -306,7 +320,7 @@ var lang = NS.split ( ':', 2 )[0],
 	},
 	line = [];
 lines.default = lines['en'];
-for ( var i in lines.default ) {
+for ( i in lines.default ) {
 	line[i] = lines[lang][i] || lines.default[i]
 };
 
@@ -322,7 +336,7 @@ function createCookie ( name, value, days ) { // создание куки с п
 function readCookie ( name ) { // чтение куки
 	var nameEQ = name + '=',
 		ca = document.cookie.split ( ';' );
-	for ( var i = 0; i < ca.length; i++ ) {
+	for ( i = 0; i < ca.length; i++ ) {
 		var c = ca[i];
 		while ( c.charAt ( 0 ) == ' ' ) {
 			c = c.substring ( 1, c.length );
@@ -371,8 +385,7 @@ function createRevealCheckbox ( ) { // создатель() галочки
 
 /* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
 function piczoom ( ) {
-	var pagewidth = page.offsetWidth - 3,
-		ctc = page.querySelectorAll ( ".page > * > .ct-container, .page > * > .fn-container, .page > * > * > .ct-container, .page > * > * > .fn-container" );
+	var ctc = page.querySelectorAll ( ".page > * > .ct-container, .page > * > .fn-container, .page > * > * > .ct-container, .page > * > * > .fn-container" );
 	for ( i = 0; i < ctc.length; i++ ) {
 		var img = ctc[i].querySelector ( "img" ); // !
 		var scale = pagewidth / img.width,
@@ -445,7 +458,6 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	setReveal2 ( fognavi_mark );
 }
 
-var	page = document.querySelector ( ".page" );
 if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].*\d\d\d\d/i ) != null ) { // запуск в комиксовых разделах сайта
 	if ( ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) || ( window.location.href.match ( /[\?&]do=edit/i ) != null ) ) { // при наличии переводов или в редакторе
 		/* ГАЛОЧКА ОТКЛЮЧЕНИЯ НАКЛЕЕК */
