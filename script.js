@@ -190,6 +190,13 @@ var lang = NS.split ( ':', 2 )[0],
 			'Πλάτος οθόνης',
 			'Πλοηγός ομίχλης'
 		],
+		'en': [
+			'Show translation',
+			'There are no stickers on this strip!<br>You can fix this by <a href="?do=edit">editing this page</a> with <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=en" target=_blank>CoTAN</a>',
+			'This strip has outdated AIMG syntax<br>You can fix this by <a href="?do=edit">remaking this page</a> with <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=en" target=_blank>CoTAN</a>',
+			'Screen width',
+			'Fog navigator'
+		],
 		'eo': [
 			'Montri tradukojn',
 			'Ne estas glumarkoj en ĉi tiu strio!<br>Vi povas solvi ĉi tion <a href="?do=edit">redaktante la paĝon</a> kun <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=eo" target=_blank>CoTAN</a>',
@@ -295,15 +302,10 @@ var lang = NS.split ( ':', 2 )[0],
 			'屏幕宽度',
 			'雾导航器'
 		],
-		'default': [
-			'Show translation',
-			'There are no stickers on this strip!<br>You can fix this by <a href="?do=edit">editing this page</a> with <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=en" target=_blank>CoTAN</a>',
-			'This strip has outdated AIMG syntax<br>You can fix this by <a href="?do=edit">remaking this page</a> with <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=en" target=_blank>CoTAN</a>',
-			'Screen width',
-			'Fog navigator'
-		]
+		'default': []
 	},
 	line = [];
+lines.default = lines['en'];
 for ( var i in lines.default ) {
 	line[i] = lines[lang][i] || lines.default[i]
 };
