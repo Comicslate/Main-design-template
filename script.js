@@ -458,6 +458,38 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	setReveal2 ( fognavi_mark );
 }
 
+/* ГАЛОЧКА МОРГАНИЯ ФРИФОЛА */
+function setReveal3 ( set ) { // синхронизация переменных
+	blink_mark = set;
+	blink_checkbox.innerHTML = blink_mark ? blink_style_on : blink_style_off;
+	( blink_mark == true ) ? eraseCookie ( folder_cookie3 ) : createCookie ( folder_cookie3, false, 9999 );
+}
+
+function toggleReveal3 ( ) { // переключатель() галочки
+	setReveal3 ( !blink_mark );
+}
+
+function createBlinkCheckbox ( ) { // создатель() галочки
+	var css 	= document.createElement ( 'style' ),
+		obj		= document.createElement ( 'label' ), // создан лейбл
+		check	= document.createElement ( 'input' ), // создан ввод
+		text		= document.createTextNode ( 'Blink texts' ), // создано пояснение
+		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
+
+	css.type = 'text/css';
+	blink_checkbox = css;
+	if ( ref != null ) ref.insertBefore ( css, null );
+	obj.className = 'blinkff';
+	check.type = 'checkbox';
+	check.checked = blink_mark;
+	check.onclick = toggleReveal3;
+	obj.appendChild ( check );
+	obj.appendChild ( text );
+	if ( ref != null ) ref.insertBefore ( obj, null );
+	setReveal3 ( blink_mark );
+}
+
+/* ВВОДНАЯ */
 if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].*\d\d\d\d/i ) != null ) { // запуск в комиксовых разделах сайта
 	if ( ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) || ( window.location.href.match ( /[\?&]do=edit/i ) != null ) ) { // при наличии переводов или в редакторе
 		/* ГАЛОЧКА ОТКЛЮЧЕНИЯ НАКЛЕЕК */
@@ -506,6 +538,8 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		page.querySelectorAll ( ".preview" ).length == 0
 		&&
 		page.querySelectorAll ( ".vshare__none" ).length == 0
+		&&
+		window.location.href.match ( /[\?&]rev=/i ) == null
 	) {
 		var media = page.querySelectorAll ( "img.media" );
 		if (
@@ -538,5 +572,19 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 			note.innerHTML += '</span>';
 			page.appendChild ( note )
 		}
+	}
+}
+
+/* ГАЛОЧКА МОРГАНИЯ ФРИФОЛА */
+if ( window.location.href.match ( /[:\/]en[:\/]sci-fi[:\/]freefall[:\/][dh]?\d\d\d\d/i ) != null ) { // запуск в фрифоле
+	var folder_cookie3 = 'blinkFF_' + JSINFO.namespace,
+		blink_mark = !readCookie ( folder_cookie3 ),
+		blink_style_on = '.f13 { font-size: 1.6em; } .fn-area, .ct-area { animation: mor 2s linear infinite; }', // стиль моргания
+		blink_style_off = '.f13 { font-size: 1.3em; } .fn-area, .ct-area { animation: none; }', // стиль неморгания
+		blink_checkbox;
+	if ( window.addEventListener ) { // W3C стандарт
+		window.addEventListener ( 'load', createBlinkCheckbox, false ); // NB **not** 'onload'
+	} else if ( window.attachEvent ) { // Microsoft стандарт
+		window.attachEvent ( 'onload', createBlinkCheckbox );
 	}
 }
