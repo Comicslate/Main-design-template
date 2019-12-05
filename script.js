@@ -389,7 +389,7 @@ function piczoom ( ) {
 	for ( i = 0; i < ctc.length; i++ ) {
 		var img = ctc[i].querySelector ( "img" ); // !
 		var scale = pagewidth / img.width,
-			margin = ( scale - 1 ) * img.height + 5;
+			margin = ( scale - 1 ) * img.height + 10;
 		ctc[i].style.transform = "scale(" + scale + ")";
 		ctc[i].style.marginBottom = margin + "px";
 		ctc[i].style.transformOrigin = ( scale < 1 ) ? 'left top 0' : 'center top 0';
@@ -586,5 +586,12 @@ if ( window.location.href.match ( /[:\/]en[:\/]sci-fi[:\/]freefall[:\/][dh]?\d\d
 		window.addEventListener ( 'load', createBlinkCheckbox, false ); // NB **not** 'onload'
 	} else if ( window.attachEvent ) { // Microsoft стандарт
 		window.attachEvent ( 'onload', createBlinkCheckbox );
+	}
+}
+
+if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].+[:\/][dh]?\d\d\d\d/i ) != null ) { // запуск в лентах
+	var band_title = Array.from ( page.querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ).reverse ( );
+	for ( i = 0; i < band_title.length - 1; i++ ) {
+		if ( band_title[i].innerHTML == band_title[i + 1].innerHTML ) band_title[i].innerHTML = '';
 	}
 }
