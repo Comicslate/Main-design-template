@@ -579,8 +579,8 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 if ( window.location.href.match ( /[:\/]en[:\/]sci-fi[:\/]freefall[:\/][dh]?\d\d\d\d/i ) != null ) { // запуск в фрифоле
 	var folder_cookie3 = 'blinkFF_' + JSINFO.namespace,
 		blink_mark = !readCookie ( folder_cookie3 ),
-		blink_style_on = '.f13 { font-size: 1.6em; } .fn-area, .ct-area { animation: mor 2s linear infinite; }', // стиль моргания
-		blink_style_off = '.f13 { font-size: 1.3em; } .fn-area, .ct-area { animation: none; }', // стиль неморгания
+		blink_style_on = '.f13 { font-size: 1.6em } .fn-note:hover, .ct-note:hover { opacity: 1 !important } .fn-note, .ct-note { animation: mor 2s linear infinite }', // стиль моргания
+		blink_style_off = '.f13 { font-size: 1.3em } .fn-note:hover, .ct-note:hover { opacity: 0 } .fn-note, .ct-note { animation: none }', // стиль неморгания
 		blink_checkbox;
 	if ( window.addEventListener ) { // W3C стандарт
 		window.addEventListener ( 'load', createBlinkCheckbox, false ); // NB **not** 'onload'
