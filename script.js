@@ -374,7 +374,6 @@ function createRevealCheckbox ( ) { // создатель() галочки
 	obj.accessKey = 't';
 	obj.className = 'fntext';
 	check.type = 'checkbox';
-//	check.id = 'checklab'; // id для контрол-навигации
 	check.checked = translate_mark;
 	check.onclick = toggleReveal;
 	obj.appendChild ( check );
@@ -531,9 +530,23 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		} else if ( window.attachEvent ) { // Microsoft стандарт
 			window.attachEvent ( 'onload', createFogNaviCheckbox );
 		}
+
+		/* ГАЛОЧКА МОРГАНИЯ ФРИФОЛА */
+		if ( window.location.href.match ( /en.sci-fi.freefall/i ) != null ) { // запуск в англофрифоле
+			var folder_cookie3 = 'blinkFF_' + JSINFO.namespace,
+				blink_mark = !readCookie ( folder_cookie3 ),
+				blink_style_on = '.f13 { font-size: 1.6em } .fn-note:hover, .ct-note:hover { opacity: 1 !important } .fn-note, .ct-note { animation: mor 2s linear infinite }', // стиль моргания
+				blink_style_off = '.f13 { font-size: 1.3em } .fn-note:hover, .ct-note:hover { opacity: 0 } .fn-note, .ct-note { animation: none }', // стиль неморгания
+				blink_checkbox;
+			if ( window.addEventListener ) { // W3C стандарт
+				window.addEventListener ( 'load', createBlinkCheckbox, false ); // NB **not** 'onload'
+			} else if ( window.attachEvent ) { // Microsoft стандарт
+				window.attachEvent ( 'onload', createBlinkCheckbox );
+			}
+		}
 	}
 
-	/* ПЛАШКА СТАТУСА ПЕРЕВОДА */
+	/* плашка статуса перевода */
 	if (
 		page.querySelectorAll ( ".preview" ).length == 0
 		&&
@@ -573,25 +586,12 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 			page.appendChild ( note )
 		}
 	}
-}
 
-/* ГАЛОЧКА МОРГАНИЯ ФРИФОЛА */
-if ( window.location.href.match ( /[:\/]en[:\/]sci-fi[:\/]freefall[:\/][dh]?\d\d\d\d/i ) != null ) { // запуск в фрифоле
-	var folder_cookie3 = 'blinkFF_' + JSINFO.namespace,
-		blink_mark = !readCookie ( folder_cookie3 ),
-		blink_style_on = '.f13 { font-size: 1.6em } .fn-note:hover, .ct-note:hover { opacity: 1 !important } .fn-note, .ct-note { animation: mor 2s linear infinite }', // стиль моргания
-		blink_style_off = '.f13 { font-size: 1.3em } .fn-note:hover, .ct-note:hover { opacity: 0 } .fn-note, .ct-note { animation: none }', // стиль неморгания
-		blink_checkbox;
-	if ( window.addEventListener ) { // W3C стандарт
-		window.addEventListener ( 'load', createBlinkCheckbox, false ); // NB **not** 'onload'
-	} else if ( window.attachEvent ) { // Microsoft стандарт
-		window.attachEvent ( 'onload', createBlinkCheckbox );
-	}
-}
-
-if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].+[:\/][dh]?\d\d\d\d/i ) != null ) { // запуск в лентах
-	var band_title = Array.from ( page.querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ).reverse ( );
-	for ( i = 0; i < band_title.length - 1; i++ ) {
-		if ( band_title[i].innerHTML == band_title[i + 1].innerHTML ) band_title[i].innerHTML = '';
+	/* в лентах - сокращение лишних титулов выпусков */
+	if ( window.location.href.match ( /[:\/](d|h)\d\d\d\d/i ) != null ) { // запуск в лентах
+		var band_title = Array.from ( page.querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ).reverse ( );
+		for ( i = 0; i < band_title.length - 1; i++ ) {
+			if ( band_title[i].innerHTML == band_title[i + 1].innerHTML ) band_title[i].innerHTML = '';
+		}
 	}
 }
