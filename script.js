@@ -383,23 +383,22 @@ function createRevealCheckbox ( ) { // создатель() галочки
 }
 
 /* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
-function piczoom ( ) {
+function piczoom ( set ) {
 	var ctc = page.querySelectorAll ( ".page > * > .ct-container, .page > * > .fn-container, .page > * > * > .ct-container, .page > * > * > .fn-container" );
 	for ( i = 0; i < ctc.length; i++ ) {
 		var img = ctc[i].querySelector ( "img" ); // !
 		var scale = pagewidth / img.width,
 			margin = ( scale - 1 ) * img.height + 10;
-		ctc[i].style.transform = "scale(" + scale + ")";
-		ctc[i].style.marginBottom = margin + "px";
-		ctc[i].style.transformOrigin = ( scale < 1 ) ? 'left top 0' : 'center top 0';
+		ctc[i].style.transform = ( set == true ) ? "scale(" + scale + ")" : "";
+		ctc[i].style.marginBottom = ( set == true ) ? margin + "px" : "";
+		ctc[i].style.transformOrigin = ( set == true ) ? ( ( scale < 1 ) ? 'left top 0' : 'center top 0' ) : 'center top 0' ;
 	}
 }
 
 function setReveal1 ( set ) { // синхронизация переменных
 	zoom_mark = set;
-	zoom_checkbox.innerHTML = zoom_mark ? zoom_style_on : zoom_style_off;
 	( zoom_mark == true ) ? eraseCookie ( folder_cookie1 ) : createCookie ( folder_cookie1, false, 9999 );
-	if ( zoom_mark == true ) piczoom ( );
+	piczoom ( zoom_mark );
 }
 
 function toggleReveal1 ( ) { // переключатель() галочки
@@ -407,15 +406,11 @@ function toggleReveal1 ( ) { // переключатель() галочки
 }
 
 function createZoomCheckbox ( ) { // создатель() галочки
-	var css 	= document.createElement ( 'style' ),
-		obj		= document.createElement ( 'label' ), // создан лейбл
+	var obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
 		text		= document.createTextNode ( line[3] ), // создано пояснение
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
-	css.type = 'text/css';
-	zoom_checkbox = css;
-	if ( ref != null ) ref.insertBefore ( css, null );
 	obj.className = 'diszoom';
 	check.type = 'checkbox';
 	check.checked = zoom_mark;
@@ -507,10 +502,7 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 	if ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) { // при наличии переводов
 		/* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
 		var folder_cookie1 = 'disZoom_' + JSINFO.namespace,
-			zoom_mark = !readCookie ( folder_cookie1 ),
-			zoom_style_on = '', // стиль расширения
-			zoom_style_off = '.fn-container, .ct-container { margin: 0 auto !important; transform-origin: center top 0 !important; transform: scale(1) !important }', // стиль нормирования
-			zoom_checkbox;
+			zoom_mark = !readCookie ( folder_cookie1 );
 		if ( window.addEventListener ) { // W3C стандарт
 			window.addEventListener ( 'load', createZoomCheckbox, false ); // NB **not** 'onload'
 		} else if ( window.attachEvent ) { // Microsoft стандарт
