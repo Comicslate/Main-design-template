@@ -652,6 +652,7 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 			if ( band_title[i].innerHTML == band_title[i + 1].innerHTML ) band_title[i].innerHTML = '';
 		}
 	}
-	
-	document.querySelectorAll ( ".cnav a" ).forEach ( function ( e ) { e.href = e.href.replace ( /:/g, '/' ).replace ( '///', '://' ) });
 }
+
+/* слеши для навигатора */
+document.querySelectorAll ( ".cnav a" ).forEach ( function ( e ) { e.href = e.href.replace ( /:/g, '/' ).replace ( '///', '://' ) });
