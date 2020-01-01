@@ -162,11 +162,7 @@
 				}
 			}
 		}
-		h1/*,
-		h2,
-		h3,
-		h4,
-		h5*/ {
+		h1 {
 			&:nth-child(1) {
 				padding: 0;
 			}
@@ -192,24 +188,41 @@
 		.editBox {
 			.toolbar.group {
 				margin: 2px 0;
-/*				#draft__status.draft__status {
-				}
-				#tool__bar.tool__bar {
-					button.toolbutton {
-						img {
+				#tool__bar {
+					button {
+						&:nth-of-type(1),&:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4),&:nth-of-type(5),
+						&:nth-of-type(6),&:nth-of-type(7),&:nth-of-type(8),&:nth-of-type(9),&:nth-of-type(10),
+						&:nth-of-type(11),&:nth-of-type(12),&:nth-of-type(13),&:nth-of-type(14),&:nth-of-type(15) {
+							background: url(/lib/images/toolbar/toolbar.png);
+							height: 16px;
+							margin: -2px 5px 5px 3px;
+							vertical-align: middle;
+							width: 16px;
+							img {
+								display: none;
+							}
 						}
+						&:nth-of-type(1) { background-position: 0 0; }
+						&:nth-of-type(2) { background-position: 0 -16px; }
+						&:nth-of-type(3) { background-position: 0 -32px; }
+						&:nth-of-type(4) { background-position: 0 -48px; }
+						&:nth-of-type(5) { background-position: 0 -64px; }
+						&:nth-of-type(6) { background-position: 0 -80px; }
+						&:nth-of-type(7) { background-position: 0 -96px; }
+						&:nth-of-type(8) { background-position: 0 -112px; }
+						&:nth-of-type(9) { background-position: 0 -128px; }
+						&:nth-of-type(10) { background-position: 0 -144px; }
+						&:nth-of-type(11) { background-position: 0 -160px; }
+						&:nth-of-type(12) { background-position: 0 -176px; }
+						&:nth-of-type(13) { background-position: 0 -192px; }
+						&:nth-of-type(14) { background-position: 0 -208px; }
+						&:nth-of-type(15) { background-position: 0 -224px; }
 					}
-				}*/
+				}
 			}
 			#dw__editform {
-/*				textarea#wiki__text.edit {
-				}*/
 				#wiki__editbar.editBar {
 					margin: 2px 0;
-/*					#size__ctl {
-					}
-					.saveedit {
-					}*/
 					.editButtons {
 						padding: 0 1.0em 0.7em 0;
 						* {
@@ -243,8 +256,6 @@
 							#edit__summary {
 								vertical-align: 2px;
 							}
-/*							#minoredit {
-							}*/
 						}
 					}
 				}
@@ -307,8 +318,7 @@
 				}
 				img {
 					/*opacity: 0.6;*/
-					/*width: 32px;*/
-					width: 16px;
+					width: 24px;
 					&:hover {
 						opacity: 1;
 					}
@@ -377,4 +387,14 @@
 		height: 1px;
 		margin: 10px;
 	}
+}
+
+#send-msg-btn {
+	z-index: 999;
+}
+
+.e_nav img { /* энтити back и up */
+	margin: 0 auto 3px auto;
+	width: 48px;
+	background-color: #969696;
 }
