@@ -1,14 +1,10 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg>
-<metadata>
-Created by FontForge 20120731 at Sat Nov  1 01:06:08 2014
- By Orthosie Webhosting
-(c) 2013 Dmitri Poguliayev / WinKiller Studio. Free for non-commercial use.
-http://wks.arai-kibou.ru/
-</metadata>
+<metadata>(c) 2013 dsp2003. Free for non-commercial use only. Obtain license here:
+http://wks.arai-kibou.ru/fontlab.php</metadata>
 <defs>
-<font id="dspfetcher" horiz-adv-x="875" >
+<font id="main" horiz-adv-x="875" >
   <font-face 
     font-family="dspfetcher"
     font-weight="400"

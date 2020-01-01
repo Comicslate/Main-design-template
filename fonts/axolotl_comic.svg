@@ -2,13 +2,11 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg>
 <metadata>
-Created by FontForge 20120731 at Sat Nov  1 01:05:59 2014
- By Orthosie Webhosting
 (c) 2014 Dmitri Poguliayev / WKStudio. Free for non-commercial use.
 http://wks.arai-kibou.ru/
 </metadata>
 <defs>
-<font id="AxolOTLComic" horiz-adv-x="945" >
+<font id="main" horiz-adv-x="945" >
   <font-face 
     font-family="AxolOTL Comic"
     font-weight="400"

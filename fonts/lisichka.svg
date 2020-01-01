@@ -1,9 +1,10 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata></metadata>
+<metadata>(c) 2012 dsp2003. Free for non-commercial use only. Obtain license here:
+http://wks.arai-kibou.ru/fontlab.php</metadata>
 <defs>
-<font id="LisichkaComic" horiz-adv-x="1199" >
+<font id="main" horiz-adv-x="1199" >
 <font-face units-per-em="2048" ascent="1638" descent="-410" />
 <missing-glyph horiz-adv-x="1001" />
 <glyph horiz-adv-x="2048" />

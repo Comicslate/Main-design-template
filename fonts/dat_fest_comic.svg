@@ -1,14 +1,10 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-<metadata>
-Created by FontForge 20181014 at Wed Jul 24 23:13:36 2019
- By convertio
-(c) 2011-2019 dsp2003. Free for non-commercial use only. Obtain license here:
-http://wks.arai-kibou.ru/fontlab.php
-</metadata>
+<metadata>(c) 2011 dsp2003. Free for non-commercial use only. Obtain license here:
+http://wks.arai-kibou.ru/fontlab.php</metadata>
 <defs>
-<font id="DatFestComic" horiz-adv-x="1451" >
+<font id="main" horiz-adv-x="1451" >
   <font-face 
     font-family="Dat Fest Comic"
     font-weight="400"

@@ -1,14 +1,9 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
-<svg>
-<metadata>
-Created by FontForge 20120731 at Sun Apr 28 16:04:52 2019
- By www-data
-Original font (c) Khrys Bosland.
-Cyrillic glyphs (c) 2019 dsp2003.
-</metadata>
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata></metadata>
 <defs>
-<font id="KBLuckyCloverCyr" horiz-adv-x="692" >
+<font id="main" horiz-adv-x="692" >
   <font-face 
     font-family="KBLuckyCloverCyr"
     font-weight="500"
