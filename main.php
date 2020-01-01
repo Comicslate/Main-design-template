@@ -3,10 +3,9 @@ header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 echo '<!DOCTYPE html>
 <html xml:lang = "' . $conf["lang"] . '" lang = "' . $conf["lang"] . '" dir = "' . $lang['direction'] . '">
 	<head>
+		<meta charset = "utf-8" />
 		<title>'; tpl_pagetitle ( ); echo ' [' . strip_tags ( $conf['title'] ) . ']</title>
-		<meta charset = "utf-8"/>
 		<meta property="og:image" content="https://app.comicslate.org/embed/image?id='.$ID.'" />
-		<!-- https://github.com/dotdoom/comicsbot/blob/55fc09116b7a6710b22f44641711329436e8b73b/src/app.ts#L111-L120 -->
 		<link rel="alternate" type="application/json+oembed" href="https://app.comicslate.org/embed/json?id='.$ID.'" />
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1" />
@@ -22,20 +21,17 @@ echo '
 
 // HEADER
 $rlogo = time ( ) / 600 % 9;
-$lng = '/' . explode ( ":", $INFO['namespace'] )[0];
-if ( $lng == '/' ) $lng = 'ru';
-
 echo '
 			<header>
 				<img class = "logo" src="' . DOKU_TPL . 'images/logo' . $rlogo . '.png" alt = "logotype #' . ( $rlogo + 1 ) . '" />
 				<div class = "menu logo-' . $rlogo . '">';
 $ilinks = array (
-	array ( $lng . '/start', tpl_getLang ( 'start' ), '_self' ),
-	array ( $lng . '/menu', tpl_getLang ( 'menu' ), '_self' ),
-	array ( $lng . '/news/index', tpl_getLang ( 'news' ), '_self' ),
-	array ( $lng . '/wiki/index', tpl_getLang ( 'helproom' ), '_blank' ),
-	array ( '//discord.gg/T8p6M4Q', tpl_getLang ( 'chat' ), '_blank' ),
-	array ( '//app.comicslate.org/', 'Mobile App', '_blank' ),
+	array ( '/'. $conf["lang"] . '/start',				tpl_getLang ( 'start' ),			'_self' ),
+	array ( '/'. $conf["lang"] . '/menu',			tpl_getLang ( 'menu' ),			'_self' ),
+	array ( '/'. $conf["lang"] . '/news/index',	tpl_getLang ( 'news' ),			'_self' ),
+	array ( '/'. $conf["lang"] . '/wiki/index',	tpl_getLang ( 'helproom' ),	'_blank' ),
+	array ( '//discord.gg/T8p6M4Q',			tpl_getLang ( 'chat' ),			'_blank' ),
+	array ( '//app.comicslate.org/',			'Mobile App',						'_blank' ),
 );
 for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) {
 	switch ( $i ) {
