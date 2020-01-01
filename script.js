@@ -654,5 +654,6 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 	}
 }
 
-/* слеши для навигатора */
+/* истребитель двоеточий */
 document.querySelectorAll ( ".cnav a" ).forEach ( function ( e ) { e.href = e.href.replace ( /:/g, '/' ).replace ( '///', '://' ) });
+if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = window.location.pathname.replace ( /:/g, '/' );
