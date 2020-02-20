@@ -162,6 +162,7 @@ html {
 		&.success,
 		&.notify {
 			font-size: 110%;
+			margin: 0 35px 0 5px;
 		}
 		&.nothing {
 			margin: 2em;
@@ -319,6 +320,40 @@ html {
 		display: inline;
 		font: 80% Verdana, sans-serif;
 		margin: 0;
+		&#subscribe__form {
+			display: block;
+			text-align: center;
+			width: 400px;
+			fieldset {
+				text-align: left;
+				margin: .5em 0;
+				legend {
+					background-color: white;
+					border: 1px solid __dark__;
+					border-radius: 5px;
+					box-shadow: 0 0 3px 1px __dark__;
+					padding: 2px 5px;
+				}
+				label {
+					display: block;
+					margin: 0 0.5em 0.5em;
+					input {
+						vertical-align: middle;
+					}
+					span {
+						vertical-align: middle;
+					}
+				}
+			}
+			button {
+				background-image: linear-gradient(to bottom, #CCFFBB, #AADD99);
+				border-radius: 5px;
+				padding: 3px 5px;
+				&:hover {
+					background-image: linear-gradient(to bottom, #CCFFBB, #88BB77);
+				}
+			}
+		}
 	}
 	label {
 		&.block {
@@ -340,7 +375,7 @@ html {
 		border-radius: 5px;
 		box-shadow: 0 0 3px 1px __dark__;
 		margin: auto;
-		padding: 0.5em;
+		padding: .5em;
 		text-align: center;
 		width: 400px;
 		legend {
@@ -405,6 +440,43 @@ html {
 		list-style-type: square;
 		margin: 0 0 0.5em 1.5em;
 		padding: 0;
+	}
+	ul.tabs {
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		li {
+			float: left;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			a {
+				background-color: __background_neu__;
+				color: __text__;
+			}
+			a,
+			strong {
+				border-radius: .5em .5em 0 0;
+				float: left;
+				margin: 0 .3em 0 0;
+				padding: .3em .8em;
+				[dir=rtl] {
+					float: right;
+					margin: 0 0 0 .3em;
+				}
+			}
+			a:hover,
+			a:active,
+			a:focus,
+			strong {
+				background-color: __background_alt__;
+				color: __text__;
+				text-decoration: none;
+			}
+			[dir=rtl] {
+				float: right;
+			}
+		}
 	}
 	ol {
 		font-weight: normal;
