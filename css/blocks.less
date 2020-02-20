@@ -5,6 +5,66 @@
 	/*min-width: 900px;*/ /* смартам не давать кукожить */
 	width: 100%;
 	header {
+		.newlogo {
+			background: no-repeat 100% 0;
+			height: 107px;
+			position: absolute;
+			right: 0;
+			width: 332px;
+			z-index: 1;
+			&.logo0 {
+				background-image: url( images/logo0.png );
+			}
+			&.logo1 {
+				background-image: url( images/logo1.png );
+			}
+			&.logo2 {
+				background-image: url( images/logo2.png );
+			}
+			&.logo3 {
+				background-image: url( images/logo3.png );
+			}
+			&.logo4 {
+				background-image: url( images/logo4.png );
+			}
+			&.logo5 {
+				background-image: url( images/logo5.png );
+			}
+			&.logo6 {
+				background-image: url( images/logo6.png );
+			}
+			&.logo7 {
+				background-image: url( images/logo7.png );
+			}
+			&.logo8 {
+				background-image: url( images/logo8.png );
+			}
+			@media (max-width: 1100px) {
+				right: -16px;
+				transform: scale(.9);
+			}
+			@media (max-width: 1066px) {
+				right: -33px;
+				transform: scale(.8);
+			}
+			@media (max-width: 1033px) {
+				right: -49px;
+				transform: scale(.7);
+			}
+			@media (max-width: 1000px) {
+				right: -66px;
+				transform: scale(.6);
+			}
+			@media (max-width: 966px) {
+				right: -82px;
+				transform: scale(.5);
+			}
+			@media (max-width: 933px) {
+				background-image: url( images/logo.png ) !important;
+				right: 0;
+				transform: scale(1);
+			}
+		}
 		.logo {
 			position: absolute;
 			right: 1px;
@@ -36,37 +96,37 @@
 			width: auto;
 			word-wrap: break-word;
 			z-index: 0;
-			&.logo-0 {
+			&.logo0 {
 				background: #22979E;
 			}
-			&.logo-1 {
+			&.logo1 {
 				background: #829DD3;
 			}
-			&.logo-2 {
+			&.logo2 {
 				background: #EDB1BB;
 				a:hover {
 					color: #0FF !important;
 				}
 			}
-			&.logo-3 {
+			&.logo3 {
 				background: #A387C1;
 			}
-			&.logo-4 {
+			&.logo4 {
 				background: #E183BD;
 			}
-			&.logo-5 {
+			&.logo5 {
 				background: #E9B630;
 				a:hover {
 					color: #0FF !important;
 				}
 			}
-			&.logo-6 {
+			&.logo6 {
 				background: #45A2C4;
 			}
-			&.logo-7 {
+			&.logo7 {
 				background: #AD464A;
 			}
-			&.logo-8 {
+			&.logo8 {
 				background: #89E081;
 			}
 			&.april {
@@ -108,15 +168,43 @@
 	nav.translation {
 		min-height: 28px;
 		div.plugin_translation {
+			border-radius: 5px;
+			display: inline-flex;
 			font-family: DatFestComic;
 			font-size: 120%;
+			margin: 1px 0 0 5px;
+			z-index: 2;
 			ul {
+				margin: 0;
 				li {
-				margin: 0 1px;
-					@media (max-width: 1100px) {
-						a.wikilink2 {
-							display: none;
+					border: dashed 1px #ccc;
+					border-radius: 30%;
+					float: left;
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					&:first-child {
+						/*display: none;*/
+					}
+					&.cur {
+						border-style: solid;
+						font-weight: bold;
+					}
+					a {
+						display: inline-block;
+						text-align: center;
+						width: 24px;
+						&.wikilink2 {
+							opacity: 0.3;
+							&:hover {
+								opacity: 1;
+							}
 						}
+					}
+					img {
+						margin: -.15em .2em;
+						position: relative;
+						top: 0;
 					}
 				}
 			}
@@ -145,7 +233,7 @@
 		position: relative;
 		text-align: justify;
 		&::after {
-			background-image: url ( images/logo.png );
+			background-image: url( images/logo.png );
 			content: "";
 			height: 100%;
 			left: 0;
@@ -205,7 +293,7 @@
 						&:nth-of-type(1),&:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4),&:nth-of-type(5),
 						&:nth-of-type(6),&:nth-of-type(7),&:nth-of-type(8),&:nth-of-type(9),&:nth-of-type(10),
 						&:nth-of-type(11),&:nth-of-type(12),&:nth-of-type(13),&:nth-of-type(14),&:nth-of-type(15) {
-							background: url(/lib/images/toolbar/toolbar.png);
+							background: url( /lib/images/toolbar/toolbar.png );
 							height: 16px;
 							margin: -2px 5px 5px 3px;
 							vertical-align: middle;
@@ -282,6 +370,93 @@
 			margin: 0 7px 0 37px;
 		}
 	}
+/**
+ * @author Anika Henke <anika@selfthinker.org>
+ * @author Andreas Gohr <andi@splitbrain.org>
+ */
+	#pagetools {
+		@ico-width: 28px;
+		@ico-margin: 4px;
+		@item-height: (@ico-width + @ico-margin);
+		position: fixed;
+		right: 0;
+		top: 75px;
+		z-index: 2;
+		ul {
+			text-align: right;
+			border: 1px solid transparent; // add transparent border to prevent jumping when proper border is added on hover
+			margin: 0;
+			z-index: 10;
+			li {
+				list-style: none;
+				a {
+					display: block;
+					line-height: @item-height;
+					span {
+						display: none; // hide label until hover
+						margin: 0 @ico-margin;
+					}
+					svg {
+						margin: 0 @ico-margin/2;
+						vertical-align: middle;
+						fill: @ini_border;
+					}
+				}
+				a:active,
+				a:focus,
+				a:hover { // on interaction show the full item
+					background-color: @ini_background_alt;
+					span {
+						display: inline-block;
+					}
+					svg {
+						fill: @ini_link;
+					}
+				}
+			}
+			li.admin,
+			li.logout,
+			li.login,
+			li.media {
+				border-bottom: skyblue 1px solid;
+				margin-bottom: 2.5px;
+				padding-bottom: 2.5px;
+			}
+			li.edit svg {
+				animation: 1s linear 3s infinite alternate running smooth;
+			}
+		}
+		[dir=rtl] {
+			right: auto;
+			left: 0;
+			ul {
+				right: auto;
+				left: 0;
+				text-align: left;
+			}
+		}
+		&:hover {
+			ul {
+				background-color: @ini_background;
+				border-color: @ini_border;
+				border-radius: 2px;
+				box-shadow: 2px 2px 2px @ini_text_alt;
+				li a span {
+					display: inline-block;
+				}
+			}
+		}
+	}
+	#yandex_rtb {
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		margin: 5px;
+		padding: 5px;
+		yatag {
+			align-content: center;
+			display: flex !important;
+		}
+	}
 	footer {
 		clear: both;
 		div.breadcrumbs {
@@ -324,22 +499,68 @@
 			right: 75px;
 			text-align: center;
 			a {
-				text-decoration: none !important;
-				&:not(:first-child) {
-					/*margin-left: 3px;*/
+				display: inline-block;
+				&.rss {
+					background: url( images/rss.png );
+					border-radius: 5px;
+					bottom: 1px;
+					height: 29px;
+					margin: 0 4px;
+					position: relative;
+					transform: scale(1.15);
+					width: 29px;
 				}
-				img {
-					/*opacity: 0.6;*/
-					width: 24px;
-					&:hover {
-						opacity: 1;
-					}
-					&[alt="Twitter"] {
-						border: 1px solid #ddd;
-						border-radius: 5px;
-						position: relative;
-						top: 1px;
-					}
+				&:not(.rss) {
+					background: url( images/social.png );
+					height: 32px;
+					margin: 0 2px;
+					width: 32px;
+				}
+				&:nth-of-type(1),
+				&.patreon {
+					background-position: 0 0;
+				}
+				&:nth-of-type(2) {
+					background-position: 0 -29px;
+				}
+				&:nth-last-of-type(2) {
+					background-position: 0 -58px;
+				}
+				&:nth-last-of-type(1) {
+					background-position: 0 -87px;
+				}
+				&.patreon {
+					display: none;
+				}
+				&.discord {
+					background-position: 0 -32px;
+				}
+				&.telegram {
+					background-position: 0 -64px;
+				}
+				&.reddit {
+					background-position: 0 -96px;
+				}
+				&.tumblr {
+					background-position: 0 -128px;
+				}
+				&.facebook {
+					background-position: 0 -160px;
+				}
+				&.twitter {
+					background-position: 0 -192px;
+					border: 1px solid #ddd;
+					position: relative;
+					top: 1px;
+				}
+				&.vkontakte {
+					background-position: 0 -224px;
+				}
+				&.telegram,
+				&.facebook,
+				&.twitter,
+				&.vkontakte {
+					border-radius: 5px;
 				}
 			}
 		}
