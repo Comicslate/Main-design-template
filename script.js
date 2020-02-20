@@ -174,168 +174,147 @@ var lang = NS.split ( ':', 2 )[0],
 			'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=be" target=_blank>CoTAN</a>',
 			'У гэтай паласе састарэлы сінтаксіс AIMG<br>Вы можаце выправіць гэта, <a href="?do=edit">перарабіўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=be" target=_blank>CoTAN</a>',
 			'Па шырыні экрана',
-			'Затуманіў навігатар',
-			'Афарбавана'
+			'Затуманіў навігатар'
 		],
 		'bg': [
 			'Показване на превод',
 			'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=bg" target=_blank>CoTAN</a>',
 			'Тази лента има остарял синтаксис на AIMG<br>Можете да поправите това, като <a href="?do=edit">преработите страницата</a> с <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=bg" target=_blank>CoTAN</a>',
 			'Ширина на екрана',
-			'Навигатор за мъгла',
-			'Боядисан'
+			'Навигатор за мъгла'
 		],
 		'da': [
 			'Vis oversættelse',
 			'Der er ingen klistermærker i denne stribe!<br>Du kan rette dette ved at <a href="?do=edit">redigere siden</a> med <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=da" target=_blank>CoTAN</a>',
 			'Denne stribe har forældet AIMG syntaks<br>Du kan løse dette ved at <a href="?do=edit">remake siden</a> med <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=da" target=_blank>CoTAN</a>',
 			'Skærmbredde',
-			'Tåge navigator',
-			'Malet'
+			'Tåge navigator'
 		],
 		'de': [
 			'Übersetzung anzeigen',
 			'In diesem Streifen befinden sich keine Aufkleber!<br>Sie können dies beheben, indem Sie die Seite mit <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=de" target=_blank>CoTAN</a> <a href="?do=edit">bearbeiten</a>',
 			'Dieser Strip hat eine veraltete AIMG-Syntax<br>Sie können dies beheben, indem Sie die Seite mit <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=de" target=_blank>CoTAN</a> <a href="?do=edit">überarbeiten</a>',
 			'Bildschirmbreite',
-			'Nebel-Navigator',
-			'Gemalt'
+			'Nebel-Navigator'
 		],
 		'el': [
 			'εμφάνιση μετάφρασης',
 			'Δεν υπάρχουν αυτοκόλλητα στην ταινία!<br>Μπορείτε να διορθώσετε αυτό με την επεξεργασία της σελίδας με το <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=el" target=_blank>CoTAN</a>',
 			'Αυτή η λωρίδα έχει ξεπερασμένη σύνταξη AIMG<br>Μπορείτε να το διορθώσετε επανατοποθετώντας τη σελίδα με το <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=el" target=_blank>CoTAN</a>',
 			'Πλάτος οθόνης',
-			'Πλοηγός ομίχλης',
-			'Βαμμένο'
+			'Πλοηγός ομίχλης'
 		],
 		'en': [
 			'Show translation',
 			'There are no stickers on this strip!<br>You can fix this by <a href="?do=edit">editing this page</a> with <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=en" target=_blank>CoTAN</a>',
 			'This strip has outdated AIMG syntax<br>You can fix this by <a href="?do=edit">remaking this page</a> with <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=en" target=_blank>CoTAN</a>',
 			'Screen width',
-			'Fog navigator',
-			'Painted'
+			'Fog navigator'
 		],
 		'eo': [
 			'Montri tradukojn',
 			'Ne estas glumarkoj en ĉi tiu strio!<br>Vi povas solvi ĉi tion <a href="?do=edit">redaktante la paĝon</a> kun <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=eo" target=_blank>CoTAN</a>',
 			'Ĉi tiu strio havas malaktualan sintakson de AIMG<br>Vi povas solvi ĉi tion <a href="?do=edit">refarante la paĝon</a> kun <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=eo" target=_blank>CoTAN</a>',
 			'Larĝa ekrano',
-			'Nebula navigilo',
-			'Pentrita'
+			'Nebula navigilo'
 		],
 		'es': [
 			'Mostrar traducción',
 			'¡No hay pegatinas en esta tira!<br>Puedes arreglar esto <a href="?do=edit">editando esta página</a> con <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=es" target=_blank>CoTAN</a>',
 			'Esta tira ha caducado la sintaxis de AIMG<br>Puedes arreglar esto <a href="?do=edit">rehaciendo esta página</a> con <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=es" target=_blank>CoTAN</a>',
 			'Ancho de pantalla',
-			'Navegador de niebla',
-			'Pintado'
+			'Navegador de niebla'
 		],
 		'fi': [
 			'Näytä käännös',
 			'Tässä nauhassa ei ole tarroja!<br>Voit korjata tämän <a href="?do=edit">muokkaamalla sivua</a> <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=fi" target=_blank>CoTANin</a> avulla',
 			'Tällä nauhalla on vanhentunut AIMG-syntaksi<br>Voit korjata tämän <a href="?do=edit">korjaamalla sivun</a> <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=fi" target=_blank>CoTANin</a> avulla',
 			'Näytön leveys',
-			'Sumuavigaattori',
-			'Maalannut'
+			'Sumuavigaattori'
 		],
 		'fr': [
 			'Afficher la traduction',
 			'Il n\'y a pas d\'autocollants dans cette bande!<br>Vous pouvez résoudre ce problème en <a href="?do=edit">modifiant cette page</a> avec <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=fr" target=_blank>CoTAN</a>',
 			'Cette bande a une syntaxe AIMG obsolète<br>Vous pouvez résoudre ce problème en <a href="?do=edit">refaisant cette page</a> avec <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=fr" target=_blank>CoTAN</a>',
 			'Largeur de l\'écran',
-			'Navigateur de brouillard',
-			'Peint'
+			'Navigateur de brouillard'
 		],
 		'he': [
 			'הצג תרגום',
 			'אין מדבקות ברצועה זו!<br>באפשרותך לתקן זאת על-ידי <a href="?do=edit">עריכת הדף</a> באמצעות <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=he" target=_blank>CoTAN</a>',
 			'ברצועה זו יש תחביר AIMG מיושן<br>אתה יכול לתקן את זה על ידי <a href="?do=edit"> עיבוד מחדש של דף זה </a> באמצעות <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=he" target=_blank>CoTAN</a>',
 			'רוחב המסך',
-			'נווט ערפל',
-			'צבוע'
+			'נווט ערפל'
 		],
 		'hi': [
 			'अनुवाद दिखाएं',
 			'इस पट्टी में कोई स्टिकर नहीं हैं!<br>आप <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को एडिट</a> करके इसे ठीक कर सकते हैं',
 			'इस स्ट्रिप में AIMG सिंटैक्स पुराना है<br>आप <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को रीमेक</a> करके इसे ठीक कर सकते हैं',
 			'स्क्रीन की चौड़ाई',
-			'फॉग नाविक',
-			'पेंट'
+			'फॉग नाविक'
 		],
 		'id': [
 			'Tampilkan terjemahan',
 			'Tidak ada stiker di strip ini!<br>Anda dapat memperbaikinya dengan <a href="?do=edit">mengedit halaman</a> dengan <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=id" target=_blank>CoTAN</a>',
 			'Strip ini telah usang sintaks AIMG<br>Anda dapat memperbaikinya dengan <a href="?do=edit">membuat ulang halaman</a> dengan <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=id" target=_blank>CoTAN</a>',
 			'Lebar layar',
-			'Navigator kabut',
-			'Dicat'
+			'Navigator kabut'
 		],
 		'it': [
 			'Mostra traduzione',
 			'Non ci sono adesivi in questa striscia!<br>Puoi sistemarlo <a href="?do=edit">modificando questa pagina</a> con <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=it" target=_blank>CoTAN</a>',
 			'Questa striscia ha una sintassi AIMG obsoleta<br>Puoi sistemarlo <a href="?do=edit">rifacendo questa pagina</a> con <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=it" target=_blank>CoTAN</a>',
 			'Larghezza dello schermo',
-			'Nebulizzatore',
-			'Dipinto'
+			'Nebulizzatore'
 		],
 		'ja': [
 			'翻訳を表示する',
 			'このストリップにはステッカーがありません！<br>あなたは<a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=ja" target=_blank>CoTAN</a>で<a href="?do=edit">このページを編集することによって</a>これを直すことができます',
 			'このストリップはAIMGの構文が古くなっています<br>あなたは<a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=ja" target=_blank>CoTAN</a>で<a href="?do=edit">このページを作り直すことによって</a>これを直すことができます',
 			'画面幅',
-			'霧ナビゲーター',
-			'塗装済み'
+			'霧ナビゲーター'
 		],
 		'ko': [
 			'번역보기',
 			'이 스트립에는 스티커가 없습니다!<br><a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=ko" target=_blank>CoTAN</a>으로 <a href="?do=edit">페이지를 편집하여</a> 문제를 해결할 수 있습니다',
 			'이 스트립은 구식 AIMG 구문을 가지고 있습니다.<br><a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=ko" target=_blank>CoTAN</a>을 사용하여 <a href="?do=edit">페이지를 다시 작성하면</a> 문제를 해결할 수 있습니다',
 			'화면 너비',
-			'안개 네비게이터',
-			'그린'
+			'안개 네비게이터'
 		],
 		'pl': [
 			'Pokaż tłumaczenie',
 			'Na tym pasku nie ma naklejek!<br>Możesz to naprawić, <a href="?do=edit">edytując tę stronę</a> za pomocą <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=pl" target=_blank>CoTAN</a>',
 			'Ten pasek ma przestarzałą składnię AIMG<br>Możesz to naprawić, <a href="?do=edit">przerabiając tę stronę</a> za pomocą <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=pl" target=_blank>CoTAN</a>',
 			'Szerokość ekranu',
-			'Nawigator mgły',
-			'Malowane'
+			'Nawigator mgły'
 		],
 		'pt': [
 			'Mostrar tradução',
 			'Não há adesivos nesta faixa!<br>Você pode corrigir isso <a href="?do=edit">editando esta página</a> com o <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=pt" target=_blank>CoTAN</a>',
 			'Esta faixa tem uma sintaxe desatualizada do AIMG<br>Você pode consertar isso <a href="?do=edit">refazendo esta página</a> com o <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=pt" target=_blank>CoTAN</a>',
 			'Largura da tela',
-			'Navegador de nevoeiro',
-			'Pintado'
+			'Navegador de nevoeiro'
 		],
 		'ru': [
 			'Показать перевод',
 			'В этом выпуске нет наклеек!<br>Вы можете исправить это, <a href="?do=edit">отредактировав страницу</a> с помощью <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=ru" target=_blank>CoTAN</a>',
 			'В этом выпуске устаревший синтаксис AIMG<br>Вы можете исправить это, <a href="?do=edit">переделав страницу</a> с помощью <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=ru" target=_blank>CoTAN</a>',
 			'По ширине экрана',
-			'Затуманить навигатор',
-			'Окрашено'
+			'Затуманить навигатор'
 		],
 		'uk': [
 			'Показати переклад',
 			'У цій смузі немає жодних наклейок!<br>Ви можете виправити це, <a href="?do=edit">відредагувавши цю сторінку</a> за допомогою <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=uk" target=_blank>CoTAN</a>',
 			'Ця смуга має застарілий синтаксис AIMG<br>Ви можете виправити це, переробивши цю сторінку за допомогою <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=uk" target=_blank>CoTAN</a>',
 			'По ширині екрану',
-			'Затуманити навігатор',
-			'Забарвлене'
+			'Затуманити навігатор'
 		],
 		'zh': [
 			'显示翻译',
 			'这条带上没有贴纸！<br>您可以通过<a href="?do=edit">使用</a><a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=zh" target=_blank>CoTAN</a>编辑页面来解决此问题',
 			'这个条带已经过时了AIMG语法<br>您可以通过<a href="?do=edit">使用</a><a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=zh" target=_blank>CoTAN</a>重新构建页面来解决此问题',
 			'屏幕宽度',
-			'雾导航器',
-			'彩绘'
+			'雾导航器'
 		],
 		'default': []
 	},
@@ -393,8 +372,9 @@ function createRevealCheckbox ( ) { // создатель() галочки
 	translate_checkbox = css;
 	if ( ref != null ) ref.insertBefore ( css, null );
 	obj.accessKey = 't';
-	obj.className = 'optcheck';
+	obj.className = 'fntext';
 	check.type = 'checkbox';
+//	check.id = 'checklab'; // id для контрол-навигации
 	check.checked = translate_mark;
 	check.onclick = toggleReveal;
 	obj.appendChild ( check );
@@ -404,22 +384,23 @@ function createRevealCheckbox ( ) { // создатель() галочки
 }
 
 /* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
-function piczoom ( set ) {
+function piczoom ( ) {
 	var ctc = page.querySelectorAll ( ".page > * > .ct-container, .page > * > .fn-container, .page > * > * > .ct-container, .page > * > * > .fn-container" );
 	for ( i = 0; i < ctc.length; i++ ) {
 		var img = ctc[i].querySelector ( "img" ); // !
 		var scale = pagewidth / img.width,
-			margin = ( scale - 1 ) * img.height + 10;
-		ctc[i].style.transform = ( set == true ) ? "scale(" + scale + ")" : "";
-		ctc[i].style.marginBottom = ( set == true ) ? margin + "px" : "";
-		ctc[i].style.transformOrigin = ( set == true ) ? ( ( scale < 1 ) ? 'left top 0' : 'center top 0' ) : 'center top 0' ;
+			margin = ( scale - 1 ) * img.height + 5;
+		ctc[i].style.transform = "scale(" + scale + ")";
+		ctc[i].style.marginBottom = margin + "px";
+		ctc[i].style.transformOrigin = ( scale < 1 ) ? 'left top 0' : 'center top 0';
 	}
 }
 
 function setReveal1 ( set ) { // синхронизация переменных
 	zoom_mark = set;
+	zoom_checkbox.innerHTML = zoom_mark ? zoom_style_on : zoom_style_off;
 	( zoom_mark == true ) ? eraseCookie ( folder_cookie1 ) : createCookie ( folder_cookie1, false, 9999 );
-	piczoom ( zoom_mark );
+	if ( zoom_mark == true ) piczoom ( );
 }
 
 function toggleReveal1 ( ) { // переключатель() галочки
@@ -427,12 +408,16 @@ function toggleReveal1 ( ) { // переключатель() галочки
 }
 
 function createZoomCheckbox ( ) { // создатель() галочки
-	var obj		= document.createElement ( 'label' ), // создан лейбл
+	var css 	= document.createElement ( 'style' ),
+		obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
 		text		= document.createTextNode ( line[3] ), // создано пояснение
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
-	obj.className = 'optcheck';
+	css.type = 'text/css';
+	zoom_checkbox = css;
+	if ( ref != null ) ref.insertBefore ( css, null );
+	obj.className = 'diszoom';
 	check.type = 'checkbox';
 	check.checked = zoom_mark;
 	check.onclick = toggleReveal1;
@@ -463,7 +448,7 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	css.type = 'text/css';
 	fognavi_checkbox = css;
 	if ( ref != null ) ref.insertBefore ( css, null );
-	obj.className = 'optcheck';
+	obj.className = 'fognavi';
 	check.type = 'checkbox';
 	check.checked = fognavi_mark;
 	check.onclick = toggleReveal2;
@@ -473,69 +458,6 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	setReveal2 ( fognavi_mark );
 }
 
-/* ГАЛОЧКА МОРГАНИЯ ФРИФОЛА */
-function setReveal3 ( set ) { // синхронизация переменных
-	blink_mark = set;
-	blink_checkbox.innerHTML = blink_mark ? blink_style_on : blink_style_off;
-	( blink_mark == true ) ? eraseCookie ( folder_cookie3 ) : createCookie ( folder_cookie3, false, 9999 );
-}
-
-function toggleReveal3 ( ) { // переключатель() галочки
-	setReveal3 ( !blink_mark );
-}
-
-function createBlinkCheckbox ( ) { // создатель() галочки
-	var css 	= document.createElement ( 'style' ),
-		obj		= document.createElement ( 'label' ), // создан лейбл
-		check	= document.createElement ( 'input' ), // создан ввод
-		text		= document.createTextNode ( 'Blink texts' ), // создано пояснение
-		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
-
-	css.type = 'text/css';
-	blink_checkbox = css;
-	if ( ref != null ) ref.insertBefore ( css, null );
-	obj.className = 'optcheck';
-	check.type = 'checkbox';
-	check.checked = blink_mark;
-	check.onclick = toggleReveal3;
-	obj.appendChild ( check );
-	obj.appendChild ( text );
-	if ( ref != null ) ref.insertBefore ( obj, null );
-	setReveal3 ( blink_mark );
-}
-
-/* ГАЛОЧКА ОБЕСЦВЕЧИВАНИЯ ФРИФОЛА */
-function setReveal4 ( set ) { // синхронизация переменных
-	color_mark = set;
-	color_checkbox.innerHTML = color_mark ? color_style_on : color_style_off;
-	( color_mark == true ) ? eraseCookie ( folder_cookie4 ) : createCookie ( folder_cookie4, false, 9999 );
-}
-
-function toggleReveal4 ( ) { // переключатель() галочки
-	setReveal4 ( !color_mark );
-}
-
-function createColorCheckbox ( ) { // создатель() галочки
-	var css 	= document.createElement ( 'style' ),
-		obj		= document.createElement ( 'label' ), // создан лейбл
-		check	= document.createElement ( 'input' ), // создан ввод
-		text		= document.createTextNode ( line[5] ), // создано пояснение
-		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
-
-	css.type = 'text/css';
-	color_checkbox = css;
-	if ( ref != null ) ref.insertBefore ( css, null );
-	obj.className = 'optcheck';
-	check.type = 'checkbox';
-	check.checked = color_mark;
-	check.onclick = toggleReveal4;
-	obj.appendChild ( check );
-	obj.appendChild ( text );
-	if ( ref != null ) ref.insertBefore ( obj, null );
-	setReveal4 ( color_mark );
-}
-
-/* ВВОДНАЯ */
 if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].*\d\d\d\d/i ) != null ) { // запуск в комиксовых разделах сайта
 	if ( ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) || ( window.location.href.match ( /[\?&]do=edit/i ) != null ) ) { // при наличии переводов или в редакторе
 		/* ГАЛОЧКА ОТКЛЮЧЕНИЯ НАКЛЕЕК */
@@ -554,7 +476,10 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 	if ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) { // при наличии переводов
 		/* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
 		var folder_cookie1 = 'disZoom_' + JSINFO.namespace,
-			zoom_mark = !readCookie ( folder_cookie1 );
+			zoom_mark = !readCookie ( folder_cookie1 ),
+			zoom_style_on = '', // стиль расширения
+			zoom_style_off = '.fn-container, .ct-container { margin: 0 auto !important; transform-origin: center top 0 !important; transform: scale(1) !important }', // стиль нормирования
+			zoom_checkbox;
 		if ( window.addEventListener ) { // W3C стандарт
 			window.addEventListener ( 'load', createZoomCheckbox, false ); // NB **not** 'onload'
 		} else if ( window.attachEvent ) { // Microsoft стандарт
@@ -574,37 +499,9 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 		} else if ( window.attachEvent ) { // Microsoft стандарт
 			window.attachEvent ( 'onload', createFogNaviCheckbox );
 		}
-
-		if ( window.location.href.match ( /sci-fi.freefall/i ) != null ) { // запуск в фрифоле
-			/* ГАЛОЧКА ОБЕСЦВЕЧИВАНИЯ ФРИФОЛА */
-			var folder_cookie4 = 'colorFF_' + JSINFO.namespace,
-				color_mark = !readCookie ( folder_cookie4 ),
-				color_style_on = '', // стиль раскрасок
-				color_style_off = '.fn-note-content span, .ct-note-content span { color: black }', // стиль побелки
-				color_checkbox;
-			if ( window.addEventListener ) { // W3C стандарт
-				window.addEventListener ( 'load', createColorCheckbox, false ); // NB **not** 'onload'
-			} else if ( window.attachEvent ) { // Microsoft стандарт
-				window.attachEvent ( 'onload', createColorCheckbox );
-			}
-
-			/* ГАЛОЧКА МОРГАНИЯ ФРИФОЛА */
-			if ( window.location.href.match ( /en.sci-fi/i ) != null ) { // запуск в англофрифоле
-				var folder_cookie3 = 'blinkFF_' + JSINFO.namespace,
-					blink_mark = !readCookie ( folder_cookie3 ),
-					blink_style_on = '.f13 { font-size: 1.6em } .fn-note:hover, .ct-note:hover { opacity: 1 !important } .fn-note, .ct-note { animation: mor 2s linear infinite }', // стиль моргания
-					blink_style_off = '.f13 { font-size: 1.3em } .fn-note:hover, .ct-note:hover { opacity: 0 } .fn-note, .ct-note { animation: none }', // стиль неморгания
-					blink_checkbox;
-				if ( window.addEventListener ) { // W3C стандарт
-					window.addEventListener ( 'load', createBlinkCheckbox, false ); // NB **not** 'onload'
-				} else if ( window.attachEvent ) { // Microsoft стандарт
-					window.attachEvent ( 'onload', createBlinkCheckbox );
-				}
-			}
-		}
 	}
 
-	/* плашка статуса перевода */
+	/* ПЛАШКА СТАТУСА ПЕРЕВОДА */
 	if (
 		page.querySelectorAll ( ".preview" ).length == 0
 		&&
@@ -644,15 +541,4 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 			page.appendChild ( note )
 		}
 	}
-
-	/* в лентах - сокращение лишних титулов выпусков */
-	if ( window.location.href.match ( /[:\/](d|h)\d\d\d\d/i ) != null ) { // запуск в лентах
-		var band_title = Array.from ( page.querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ).reverse ( );
-		for ( i = 0; i < band_title.length - 1; i++ ) {
-			if ( band_title[i].innerHTML == band_title[i + 1].innerHTML ) band_title[i].innerHTML = '';
-		}
-	}
 }
-
-/* истребитель двоеточий */
-if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = window.location.pathname.replace ( /:/g, '/' );
