@@ -9,22 +9,24 @@ echo '<!DOCTYPE html>
 		<link rel="alternate" type="application/json+oembed" href="https://app.comicslate.org/embed/json?id='.$ID.'" />
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1" />
+		<script src="//an.yandex.ru/system/context.js" async></script>
+		<script src="//mc.yandex.ru/metrika/tag.js" async></script>
+		<script src = "//cdn.sendpulse.com/js/push/959988d16690251d333a6f140762013e_1.js" async></script>
 		' . tpl_favicon ( array ( 'favicon', 'mobile' ) );
 tpl_metaheaders ( );
 /*echo '
 		<meta http-equiv = "Content-Security-Policy-Report-Only" content = "default-src *; script-src \'self\' \'unsafe-eval\' //cdnjs.cloudflare.com //cdn.sendpulse.com wss://realtime.services.disqus.com //disqus.com; style-src \'self\'; object-src \'self\' //youtube.com; img-src \'self\'; media-src \'self\' //youtube.com; frame-src \'self\'; font-src \'self\'; ">';*/
 echo '
-		<script charset = "UTF-8" src = "//cdn.sendpulse.com/js/push/959988d16690251d333a6f140762013e_1.js" async></script>
 	</head>
 	<body>
 		<div class = "dokuwiki lang-' . $conf["lang"] . '">';
 
-// HEADER
+// HEADER 				<img class = "logo" src="' . DOKU_TPL . 'images/logo' . $rlogo . '.png" alt = "logotype #' . ( $rlogo + 1 ) . '" />
 $rlogo = time ( ) / 600 % 9;
 echo '
 			<header>
-				<img class = "logo" src="' . DOKU_TPL . 'images/logo' . $rlogo . '.png" alt = "logotype #' . ( $rlogo + 1 ) . '" />
-				<div class = "menu logo-' . $rlogo . '">';
+				<div class="newlogo logo' . $rlogo . '"></div>
+				<div class = "menu logo' . $rlogo . '">';
 $ilinks = array (
 	array ( '/'. $conf["lang"] . '/start',				tpl_getLang ( 'start' ),			'_self' ),
 	array ( '/'. $conf["lang"] . '/menu',			tpl_getLang ( 'menu' ),			'_self' ),
@@ -69,10 +71,10 @@ if ( !empty ( html_msgarea ( ) ) ) {
 $apps = '
 				<div class = "apps">
 					<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank">
-						<img src = "' . DOKU_TPL . 'images/googleapp.svg" alt = "Get it on Google Play">
+						<img src = "' . DOKU_TPL . 'images/googleapp_optim.svg" alt = "Get it on Google Play">
 					</a>
 					<a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_blank">
-						<img src = "' . DOKU_TPL . 'images/appstore.svg" alt = "Download on the App Store">
+						<img src = "' . DOKU_TPL . 'images/appstore_optim.svg" alt = "Download on the App Store">
 					</a>
 				</div>';
 
@@ -83,14 +85,17 @@ echo '
 tpl_flush ( );
 
 echo '
-			<aside id = "pagetools">
-				<ul>
-					' . ( new \dokuwiki\Menu\PageMenu ( ) ) -> getListItems ( ) . '
-				</ul>
-			</aside>';
+			<noindex>
+				<aside id = "pagetools">
+					<ul>
+						' . ( new \dokuwiki\Menu\PageMenu ( ) ) -> getListItems ( ) . '
+					</ul>
+				</aside>
+			</noindex>';
 
 // FOOTER
 echo '
+			<div id="yandex_rtb"></div>
 			<footer>';
 
 if ( $conf['breadcrumbs'] ) {
@@ -127,64 +132,61 @@ echo $apps . '
 */
 
 echo '
-				<div class = "social">';
+				<div class = "social">
+					';
 $socbut = array (
 	array (
 		'/feed.php',
 		tpl_getLang ( 'RSS' ),
-		DOKU_TPL . 'images/rss-full.png'
+		'rss'
 	), array (
 		'/feed.php?onlynewpages=1',
 		tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')',
-		DOKU_TPL . 'images/rss-full_new.png'
-/*	), array (
+		'rss'
+	), array (
 		'//patreon.com/comicslate',
 		'Patreon',
-		'//www.google.com/s2/favicons?domain=patreon.com'*/
+		'patreon'
 	), array (
 		'//discord.gg/T8p6M4Q',
 		'Discord',
-		'//www.google.com/s2/favicons?domain=discord.gg'
+		'discord'
 	), array (
 		'//t.me/comicslate',
 		'Telegram',
-		'//www.google.com/s2/favicons?domain=t.me'
+		'telegram'
 	), array (
 		'//www.reddit.com/r/Comicslate',
 		'Reddit',
-		'//www.google.com/s2/favicons?domain=reddit.com'
+		'reddit'
 	), array (
 		'//rainbow-spike.tumblr.com',
 		'Tumblr',
-		'//www.google.com/s2/favicons?domain=tumblr.com'
+		'tumblr'
 	), array (
 		'//facebook.com/groups/comicslate',
 		'Facebook',
-		'//www.google.com/s2/favicons?domain=facebook.com'
+		'facebook'
 	), array (
 		'//twitter.com/Rainbow_Spike',
 		'Twitter',
-//		'//abs.twimg.com/favicons/twitter.ico'
-		'//www.google.com/s2/favicons?domain=twitter.com'
+		'twitter'
 	), array (
 		'//vk.com/comicslate',
 		'VKontakte',
-		'//www.google.com/s2/favicons?domain=vk.com'
+		'vkontakte'
 	), array (
 		'/feed.php?mode=recent&amp;ns=' . $INFO['namespace'],
 		tpl_getLang ( 'RSSpart' ),
-		DOKU_TPL . 'images/rss-chap.png'
+		'rss'
 	), array (
 		'/feed.php?mode=recent&amp;ns=' . $INFO['namespace'] . '&amp;onlynewpages=1',
 		tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')',
-		DOKU_TPL . 'images/rss-chap_new.png'
+		'rss'
 	)
 );
 for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
-	echo '
-					<a href = "' . $socbut[$i][0] . '" class = "media" title = "' . $socbut[$i][1] . '" target = "_blank">
-						<img src = "' . $socbut[$i][2] . '" class = "media" alt = "' . $socbut[$i][1] . '">
-					</a>';
+	echo '<a href = "' . $socbut[$i][0] . '" class = "media ' . $socbut[$i][2] . '" title = "' . $socbut[$i][1] . '" target = "_blank"></a>';
 };
 echo '
 				</div>';
