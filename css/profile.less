@@ -10,18 +10,29 @@
 			box-shadow: 0 0 3px 1px __dark__;
 			padding: 2px 5px;
 		}
-	}
-	button,
-	#plugin__captcha_wrapper {
-		border-radius: 5px;
-		padding: 3px 5px;
+		button,
+		#plugin__captcha_wrapper {
+			border-radius: 5px;
+			padding: 3px 5px;
+		}
 	}
 }
+#dw__register,
+#dw__login,
+#dw__resendpwd {
+	button[type=submit] {
+		background-image: linear-gradient(to bottom, #CCFFBB, #AADD99);
+		&:hover {
+			background-image: linear-gradient(to bottom, #CCFFBB, #88BB77);
+		}
+	}
+}
+
 #dw__login {
-	#remember__me {
+	input#remember__me {
 		vertical-align: middle;
 	}
-}	
+}
 #dw__profiledelete {
 	display: block;
 	margin-top: 4px;
@@ -34,6 +45,7 @@
 		vertical-align: middle;
 		+ span {
 			color: red;
+			font-weight: 600;
 		}
 	}
 	.block {
