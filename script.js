@@ -385,7 +385,8 @@ function createRevealCheckbox ( ) { // создатель() галочки
 	var css		= document.createElement ( 'style' ),
 		obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
-		text		= document.createTextNode ( line[0] ), // создано пояснение
+		span		= document.createElement ( 'span' ), // создано пояснение
+		text		= document.createTextNode ( line[0] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	css.type = 'text/css';
@@ -397,7 +398,8 @@ function createRevealCheckbox ( ) { // создатель() галочки
 	check.checked = translate_mark;
 	check.onclick = toggleReveal;
 	obj.appendChild ( check );
-	obj.appendChild ( text );
+	obj.appendChild ( span );
+	span.appendChild ( text );
 	if ( ref != null ) ref.insertBefore ( obj, null );
 	setReveal ( translate_mark );
 }
@@ -428,7 +430,8 @@ function toggleReveal1 ( ) { // переключатель() галочки
 function createZoomCheckbox ( ) { // создатель() галочки
 	var obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
-		text		= document.createTextNode ( line[3] ), // создано пояснение
+		span		= document.createElement ( 'span' ), // создано пояснение
+		text		= document.createTextNode ( line[3] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	obj.className = 'optcheck';
@@ -436,7 +439,8 @@ function createZoomCheckbox ( ) { // создатель() галочки
 	check.checked = zoom_mark;
 	check.onclick = toggleReveal1;
 	obj.appendChild ( check );
-	obj.appendChild ( text );
+	obj.appendChild ( span );
+	span.appendChild ( text );
 	if ( ref != null ) ref.insertBefore ( obj, null );
 	setReveal1 ( zoom_mark );
 }
@@ -456,7 +460,8 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	var css 	= document.createElement ( 'style' ),
 		obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
-		text		= document.createTextNode ( line[4] ), // создано пояснение
+		span		= document.createElement ( 'span' ), // создано пояснение
+		text		= document.createTextNode ( line[4] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	css.type = 'text/css';
@@ -467,7 +472,8 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	check.checked = fognavi_mark;
 	check.onclick = toggleReveal2;
 	obj.appendChild ( check );
-	obj.appendChild ( text );
+	obj.appendChild ( span );
+	span.appendChild ( text );
 	if ( ref != null ) ref.insertBefore ( obj, null );
 	setReveal2 ( fognavi_mark );
 }
@@ -487,7 +493,8 @@ function createBlinkCheckbox ( ) { // создатель() галочки
 	var css 	= document.createElement ( 'style' ),
 		obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
-		text		= document.createTextNode ( 'Blink texts' ), // создано пояснение
+		span		= document.createElement ( 'span' ), // создано пояснение
+		text		= document.createTextNode ( 'Blink texts' ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	css.type = 'text/css';
@@ -498,7 +505,8 @@ function createBlinkCheckbox ( ) { // создатель() галочки
 	check.checked = blink_mark;
 	check.onclick = toggleReveal3;
 	obj.appendChild ( check );
-	obj.appendChild ( text );
+	obj.appendChild ( span );
+	span.appendChild ( text );
 	if ( ref != null ) ref.insertBefore ( obj, null );
 	setReveal3 ( blink_mark );
 }
@@ -518,7 +526,8 @@ function createColorCheckbox ( ) { // создатель() галочки
 	var css 	= document.createElement ( 'style' ),
 		obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
-		text		= document.createTextNode ( line[5] ), // создано пояснение
+		span		= document.createElement ( 'span' ), // создано пояснение
+		text		= document.createTextNode ( line[5] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	css.type = 'text/css';
@@ -529,7 +538,8 @@ function createColorCheckbox ( ) { // создатель() галочки
 	check.checked = color_mark;
 	check.onclick = toggleReveal4;
 	obj.appendChild ( check );
-	obj.appendChild ( text );
+	obj.appendChild ( span );
+	span.appendChild ( text );
 	if ( ref != null ) ref.insertBefore ( obj, null );
 	setReveal4 ( color_mark );
 }
