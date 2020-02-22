@@ -1,3 +1,9 @@
+@keyframes checkanimate {
+	0%	{	transform: scale(0);	}
+	90%	{	transform: scale(1.4);}
+	100% {	transform: scale(1);	}
+}
+
 .dokuwiki {
 	margin: 0;
 	/*margin: 0 auto -10px auto;*/ /* держать по центру */
@@ -61,8 +67,10 @@
 			}
 			@media (max-width: 933px) {
 				background-image: url( images/logo.png ) !important;
+				height: 64px;
 				right: 0;
 				transform: scale(1);
+				width: 64px;
 			}
 		}
 		.logo {
@@ -172,7 +180,7 @@
 			display: inline-flex;
 			font-family: DatFestComic;
 			font-size: 120%;
-			margin: 1px 0 0 5px;
+			margin: 1px 0 0 7px;
 			z-index: 2;
 			ul {
 				margin: 0;
@@ -213,15 +221,29 @@
 	#translabel {
 		min-height: 21px;
 		label.optcheck {
+			cursor: pointer;
+			display: inline-block;
+		/*	float: right; */ /* для первого апреля */
 			font-size: 9pt;
-			margin-right: 10px;
+			margin: 2px 7px;
+		/*	padding: 0 7px; */ /* для первого апреля */
 			user-select: none;
-		/*	float: right;
-			padding: 0 7px;*/
-		/* для первого апреля */
 			input[type=checkbox] {
-				bottom: -2px;
-				position: relative;
+				display: none;
+				&:checked + span::before {
+					animation: checkanimate 200ms;
+					color: #26e0ec;
+					content: "\f14a";
+					margin-right: 3px;
+				}
+			}
+			span::before {
+				content: "\f096";
+				display: inline-block;
+				font: normal normal normal 1.3em/1 FontAwesome;
+				margin-right: 4px;
+				text-transform: none;
+				vertical-align: bottom;
 			}
 		}
 	}
