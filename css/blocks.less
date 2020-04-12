@@ -6,9 +6,6 @@
 
 .dokuwiki {
 	margin: 0;
-	/*margin: 0 auto -10px auto;*/ /* держать по центру */
-	/*max-width: 1600px;*/ /* компам не давать растягивать */
-	/*min-width: 900px;*/ /* смартам не давать кукожить */
 	width: 100%;
 	header {
 		.newlogo {
@@ -72,33 +69,16 @@
 				transform: scale(1);
 				width: 64px;
 			}
-		}
-		.logo {
-			position: absolute;
-			right: 1px;
-			top: 1px;
-			z-index: 1;
-			&.april {
-				left: 1px;
-				right: auto;
-			}
 			[dir=rtl] & {
-				left: 1px;
+				left: 0;
 				right: auto;
-				&.april {
-					right: 1px;
-					left: auto;
-				}
-			}
-			@media (max-width: 800px) {
-				opacity: 0.3;
 			}
 		}
 		.menu {
 			-webkit-appearance: none;
 			height: 28px;
 			letter-spacing: 0.05em;
-			padding: 0 0 0 7px !important;
+			padding: 0 7px !important;
 			position: relative;
 			text-shadow: 1px 1px 2px black;
 			width: auto;
@@ -180,7 +160,7 @@
 			display: inline-flex;
 			font-family: DatFestComic;
 			font-size: 120%;
-			margin: 1px 0 0 7px;
+			margin: 1px 7px;
 			z-index: 2;
 			ul {
 				margin: 0;
@@ -279,6 +259,7 @@
 						float: right;
 					}
 					img {
+						max-width: 400px;
 						width: 50%;
 					}
 				}
@@ -448,7 +429,7 @@
 				animation: 1s linear 3s infinite alternate running smooth;
 			}
 		}
-		[dir=rtl] {
+		[dir=rtl] & {
 			right: auto;
 			left: 0;
 			ul {
@@ -472,8 +453,13 @@
 	#yandex_rtb {
 		border: 1px solid #ddd;
 		border-radius: 5px;
-		margin: 5px;
+		clear: both;
+		margin: 5px auto;
+		max-height: 310px;
+		max-width: ~"calc(100% - 72px)";
+		overflow: hidden;
 		padding: 5px;
+		/* width: max-content; */
 		yatag {
 			align-content: center;
 			display: flex !important;
@@ -487,14 +473,14 @@
 			padding: 4px 10px;
 		}
 		.apps {
+			display: grid;
+			float: left;
 			a {
-				float: left;
 				left: 30px;
 				position: relative;
 				z-index: 1;
 				img {
 					height: 31px;
-					margin: 0 3px -9px 0;
 				}
 			}
 		}
@@ -503,11 +489,15 @@
 			position: relative;
 			right: 30px;
 			z-index: 1;
-			.ym-advanced-informer {
-				border: 0;
-				height: 31px;
-				margin-top: 4px;
-				width: 88px;
+			a {
+				display: block;
+				width: 105px; /* центрование социал-кнопок */
+				.ym-advanced-informer {
+					border: 0;
+					height: 31px;
+					margin-top: 4px;
+					width: 88px;
+				}
 			}
 			noscript {
 				img {
@@ -517,8 +507,8 @@
 			}
 		}
 		.social {
-			position: relative;
-			right: 75px;
+/*			position: relative;
+			right: 75px;*/
 			text-align: center;
 			a {
 				display: inline-block;
@@ -591,8 +581,6 @@
 			clear: both;
 			font-size: .8em;
 			padding-top: .2em;
-			position: relative;
-			right: 17px;
 			text-align: center;
 		}
 	}
