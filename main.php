@@ -5,9 +5,7 @@ echo '<!DOCTYPE html>
 	<head>
 		<meta charset = "utf-8" />
 		<title>'; tpl_pagetitle ( ); echo ' [' . strip_tags ( $conf['title'] ) . ']</title>
-		<meta property="og:image" content="https://app.comicslate.org/embed/image?id='.$ID.'" />
-		<link rel="alternate" type="application/json+oembed" href="https://app.comicslate.org/embed/json?id='.$ID.'" />
-		<meta name="twitter:card" content="summary_large_image">
+		<link rel="alternate" type="application/json+oembed" href="https://app.comicslate.org/embed.json?id='.$ID.'" />
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1" />
 		<script src="//an.yandex.ru/system/context.js" async></script>
 		<script src="//mc.yandex.ru/metrika/tag.js" async></script>
@@ -21,19 +19,19 @@ echo '
 	<body>
 		<div class = "dokuwiki lang-' . $conf["lang"] . '">';
 
-// HEADER 				<img class = "logo" src="' . DOKU_TPL . 'images/logo' . $rlogo . '.png" alt = "logotype #' . ( $rlogo + 1 ) . '" />
+// HEADER
 $rlogo = time ( ) / 600 % 9;
 echo '
 			<header>
 				<div class="newlogo logo' . $rlogo . '"></div>
 				<div class = "menu logo' . $rlogo . '">';
 $ilinks = array (
-	array ( '/'. $conf["lang"] . '/start',				tpl_getLang ( 'start' ),			'_self' ),
-	array ( '/'. $conf["lang"] . '/menu',			tpl_getLang ( 'menu' ),			'_self' ),
-	array ( '/'. $conf["lang"] . '/news/index',	tpl_getLang ( 'news' ),			'_self' ),
+	array ( '/'. $conf["lang"] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
+	array ( '/'. $conf["lang"] . '/menu',		tpl_getLang ( 'menu' ),		'_self' ),
+	array ( '/'. $conf["lang"] . '/news/index',	tpl_getLang ( 'news' ),		'_self' ),
 	array ( '/'. $conf["lang"] . '/wiki/index',	tpl_getLang ( 'helproom' ),	'_blank' ),
-	array ( '//discord.gg/T8p6M4Q',			tpl_getLang ( 'chat' ),			'_blank' ),
-	array ( '//app.comicslate.org/',			'Mobile App',						'_blank' ),
+	array ( '//discord.gg/T8p6M4Q',				tpl_getLang ( 'chat' ),		'_blank' ),
+	array ( '//app.comicslate.org/',			'Mobile App',				'_blank' ),
 );
 for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) {
 	switch ( $i ) {
@@ -95,7 +93,7 @@ echo '
 
 // FOOTER
 echo '
-			<div id="yandex_rtb"></div>
+			<div id = "yandex_rtb"></div>
 			<footer>';
 
 if ( $conf['breadcrumbs'] ) {
