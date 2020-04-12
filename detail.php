@@ -14,8 +14,8 @@ header('X-UA-Compatible: IE = edge, chrome = 1');
 echo '<!DOCTYPE html>
 <html xml:lang = "' . $conf["lang"] . '" lang = "' . $conf["lang"] . '" dir = "' . $lang['direction'] . '">
 	<head>
-		<title>' . hsc ( tpl_img_getTag ( "IPTC.Headline", $IMG ) ) . ' [' . strip_tags ( $conf['title'] ) . ']</title>
 		<meta charset = "utf-8"/>
+		<title>' . hsc ( tpl_img_getTag ( "IPTC.Headline", $IMG ) ) . ' [' . strip_tags ( $conf['title'] ) . ']</title>
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1"/>
 		' . tpl_favicon ( array ( 'favicon', 'mobile' ) );
 tpl_metaheaders ( );
@@ -28,15 +28,15 @@ echo '
 $rlogo = time ( ) / 600 % 9;
 echo '
 			<header>
-				<img class = "logo" src="' . DOKU_TPL . 'images/logo' . $rlogo . '.png" alt = "logotype #' . ( $rlogo + 1 ) . '" />
-				<div class = "menu logo-' . $rlogo . '">';
+				<div class="newlogo logo' . $rlogo . '"></div>
+				<div class = "menu logo' . $rlogo . '">';
 $ilinks = array (
-	array ( '/'. $conf["lang"] . '/start', tpl_getLang ( 'start' ), '_self' ),
-	array ( '/'. $conf["lang"] . '/menu', tpl_getLang ( 'menu' ), '_self' ),
-	array ( '/'. $conf["lang"] . '/news/index', tpl_getLang ( 'news' ), '_self' ),
-	array ( '/'. $conf["lang"] . '/wiki/index', tpl_getLang ( 'helproom' ), '_blank' ),
-	array ( '//discord.gg/T8p6M4Q', tpl_getLang ( 'chat' ), '_blank' ),
-	array ( '//app.comicslate.org/', 'Mobile App', '_blank' ),
+	array ( '/'. $conf["lang"] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
+	array ( '/'. $conf["lang"] . '/menu',		tpl_getLang ( 'menu' ),		'_self' ),
+	array ( '/'. $conf["lang"] . '/news/index',	tpl_getLang ( 'news' ),		'_self' ),
+	array ( '/'. $conf["lang"] . '/wiki/index',	tpl_getLang ( 'helproom' ),	'_blank' ),
+	array ( '//discord.gg/T8p6M4Q',				tpl_getLang ( 'chat' ),		'_blank' ),
+	array ( '//app.comicslate.org/',			'Mobile App',				'_blank' ),
 );
 for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) {
 	switch ( $i ) {
@@ -165,6 +165,7 @@ tpl_flush ( );
 
 // FOOTER
 echo '
+			<div id = "yandex_rtb"></div>
 			<footer>';
 
 if ( $conf['breadcrumbs'] ) {
@@ -187,44 +188,61 @@ echo $apps . '
 					</noscript>
 				</div>
 
-				<div class = "social">';
+				<div class = "social">
+					';
 $socbut = array (
 	array (
+		'/feed.php',
+		tpl_getLang ( 'RSS' ),
+		'rss'
+	), array (
+		'/feed.php?onlynewpages=1',
+		tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')',
+		'rss'
+	), array (
+		'//patreon.com/comicslate',
+		'Patreon',
+		'patreon'
+	), array (
 		'//discord.gg/T8p6M4Q',
 		'Discord',
-		'//www.google.com/s2/favicons?domain=discord.gg'
+		'discord'
 	), array (
 		'//t.me/comicslate',
 		'Telegram',
-		'//www.google.com/s2/favicons?domain=t.me'
+		'telegram'
 	), array (
 		'//www.reddit.com/r/Comicslate',
 		'Reddit',
-		'//www.google.com/s2/favicons?domain=reddit.com'
+		'reddit'
 	), array (
 		'//rainbow-spike.tumblr.com',
 		'Tumblr',
-		'//www.google.com/s2/favicons?domain=tumblr.com'
+		'tumblr'
 	), array (
 		'//facebook.com/groups/comicslate',
 		'Facebook',
-		'//www.google.com/s2/favicons?domain=facebook.com'
+		'facebook'
 	), array (
 		'//twitter.com/Rainbow_Spike',
 		'Twitter',
-//		'//abs.twimg.com/favicons/twitter.ico'
-		'//www.google.com/s2/favicons?domain=twitter.com'
+		'twitter'
 	), array (
 		'//vk.com/comicslate',
 		'VKontakte',
-		'//www.google.com/s2/favicons?domain=vk.com'
+		'vkontakte'
+	), array (
+		'/feed.php?mode=recent&amp;ns=' . $INFO['namespace'],
+		tpl_getLang ( 'RSSpart' ),
+		'rss'
+	), array (
+		'/feed.php?mode=recent&amp;ns=' . $INFO['namespace'] . '&amp;onlynewpages=1',
+		tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')',
+		'rss'
 	)
 );
 for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
-	echo '
-					<a href = "' . $socbut[$i][0] . '" class = "media" title = "' . $socbut[$i][1] . '" target = "_blank">
-						<img src = "' . $socbut[$i][2] . '" class = "media" alt = "' . $socbut[$i][1] . '">
-					</a>';
+	echo '<a href = "' . $socbut[$i][0] . '" class = "media ' . $socbut[$i][2] . '" title = "' . $socbut[$i][1] . '" target = "_blank"></a>';
 };
 echo '
 				</div>';
