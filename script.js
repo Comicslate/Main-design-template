@@ -545,7 +545,7 @@ function createColorCheckbox ( ) { // создатель() галочки
 }
 
 /* ВВОДНАЯ */
-if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].*\d\d\d\d/i ) != null ) { // запуск в комиксовых разделах сайта
+if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].*(\d\d+|vol\d+|ch\d+|cover\d*)/i ) != null ) { // запуск в комиксовых разделах сайта
 	if ( ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) || ( window.location.href.match ( /[\?&]do=edit/i ) != null ) ) { // при наличии переводов или в редакторе
 		/* ГАЛОЧКА ОТКЛЮЧЕНИЯ НАКЛЕЕК */
 		var folder_cookie = 'fnNotReveal_' + JSINFO.namespace,
@@ -665,3 +665,10 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 
 /* истребитель двоеточий */
 if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = window.location.pathname.replace ( /:/g, '/' );
+
+/* для архива новостей */
+var boxnews = document.querySelector ( ".box.news .spoiler:last-of-type" );
+if ( boxnews != null ) { // запуск
+	boxnews.querySelector ( "input" ).click();
+	boxnews.querySelectorAll ( "li > .li > .wikilink2" ).forEach ( e => e.parentNode.parentNode.style.display = "none" );
+}
