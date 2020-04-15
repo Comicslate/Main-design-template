@@ -1,51 +1,517 @@
-.font-face (@font) {
+.font-face ( @font ) {
 	font-display: swap;
-	src:	url('fonts/@{font}.eot');																/* IE9 Compat Modes */
+	src:	url('fonts/@{font}.eot');										/* IE9 Compat Modes */
 	src:	url('fonts/@{font}.eot?#iefix')	format ( 'embedded-opentype' ),	/* IE6-IE8 */
-			url('fonts/@{font}.otf')			format('opentype'),						/* Open Type Font */
-			url('fonts/@{font}.ttf')			format ( 'truetype' ),						/* Safari, Android, iOS */
-			url('fonts/@{font}.svg#main')	format ( 'svg' ),								/* Legacy iOS */
-			url('fonts/@{font}.woff')			format('woff'),								/* Modern Browsers */
-			url('fonts/@{font}.woff2')		format('woff2');								/* Modern Browsers */
+			url('fonts/@{font}.otf')		format ( 'opentype' ),			/* Open Type Font */
+			url('fonts/@{font}.ttf')		format ( 'truetype' ),			/* Safari, Android, iOS */
+			url('fonts/@{font}.svg#main')	format ( 'svg' ),				/* Legacy iOS */
+			url('fonts/@{font}.woff')		format ( 'woff' ),				/* Modern Browsers */
+			url('fonts/@{font}.woff2')		format ( 'woff2' );				/* Modern Browsers */
 }
 
-@font-face { font-family: AnimeAce;				.font-face (anime_ace); }
-@font-face { font-family: Axolotl;					.font-face (axolotl_comic); }
-@font-face { font-family: DatFestComic;			.font-face (dat_fest_comic); }
-@font-face { font-family: DSP Fetcher;			.font-face (dsp_fetcher); }
-@font-face { font-family: StrippedClone;			.font-face (stripped_clone); }
-@font-face { font-family: LisichkaComic;			.font-face (lisichka); }
-@font-face { font-family: ClaWrite;					.font-face (nest_clawrite); }
-@font-face { font-family: Impact;					.font-face (impact); }
-@font-face { font-family: KBLuckyCloverCyr;	.font-face (kbluckyclovercyr); }
-@font-face { font-family: Tengwar Annatar;		.font-face (tengvar_annatar); }
-@font-face { font-family: FontAwesome;			.font-face (font_awesome;); }
+@font-face {
+	font-family: AnimeAce; 			.font-face ( anime_ace )
+}
+@font-face {
+	font-family: Axolotl;			.font-face ( axolotl_comic )
+}
+@font-face {
+	font-family: DatFestComic;		.font-face ( dat_fest_comic )
+}
+@font-face {
+	font-family: DSP Fetcher;		.font-face ( dsp_fetcher )
+}
+@font-face {
+	font-family: StrippedClone;		.font-face ( stripped_clone )
+}
+@font-face {
+	font-family: LisichkaComic;		.font-face ( lisichka )
+}
+@font-face {
+	font-family: ClaWrite;			.font-face ( nest_clawrite )
+}
+@font-face {
+	font-family: Impact;			.font-face ( impact )
+}
+@font-face {
+	font-family: KBLuckyCloverCyr;	.font-face ( kbluckyclovercyr )
+}
+@font-face {
+	font-family: Tengwar Annatar;	.font-face ( tengvar_annatar )
+}
+@font-face {
+	font-family: FontAwesome;		.font-face ( font_awesome )
+}
 
-.aace	{ font-family: AnimeAce,				cursive; }
-.axol		{ font-family: Axolotl,					cursive; }
-.fest		{ font-family: DatFestComic,			cursive; }
-.dspf	{ font-family: DSP Fetcher,			cursive; }
-.stri		{ font-family: StrippedClone,		cursive; }
-.lisi		{ font-family: LisichkaComic,			cursive; }
-.claw		{ font-family: ClaWrite,					cursive; }
-.impt	{ font-family: Impact,					cursive; }
-.lucl		{ font-family: KBLuckyCloverCyr,	cursive; }
-.tean		{ font-family: Tengwar Annatar,		cursive; }
-.fawe	{ font-family: FontAwesome,			cursive; }
+.aace {
+	font-family: AnimeAce,			cursive
+}
+.axol {
+	font-family: Axolotl,			cursive
+}
+.fest {
+	font-family: DatFestComic,		cursive
+}
+.dspf {
+	font-family: DSP Fetcher,		cursive
+}
+.stri {
+	font-family: StrippedClone,		cursive
+}
+.lisi {
+	font-family: LisichkaComic,		cursive
+}
+.claw {
+	font-family: ClaWrite,			cursive
+}
+.impt {
+	font-family: Impact,			cursive
+}
+.lucl {
+	font-family: KBLuckyCloverCyr,	cursive
+}
+.tean {
+	font-family: Tengwar Annatar,	cursive
+}
+.fawe {
+	font-family: FontAwesome,		cursive
+}
 
 .aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe {
 	-webkit-appearance: none;
-	display: inline;
-	line-height: 100%;
 	word-wrap: break-word;
 }
 
-.f06 {font-size: 0.6em;} .f07 {font-size: 0.7em;} .f08 {font-size: 0.8em;} .f09 {font-size: 0.9em;} .f11 {font-size: 1.1em;} .f12 {font-size: 1.2em;} .f13 {font-size: 1.3em;} .f14 {font-size: 1.4em;} .f15 {font-size: 1.5em;} .f16 {font-size: 1.6em;} .f17 {font-size: 1.7em;} .f18 {font-size: 1.8em;} .f19 {font-size: 1.9em;} .f20 {font-size: 2.0em;} .f21 {font-size: 2.1em;} .f22 {font-size: 2.2em;} .f23 {font-size: 2.3em;} .f24 {font-size: 2.4em;} .f25 {font-size: 2.5em;} .f26 {font-size: 2.6em;} .f27 {font-size: 2.7em;} .f28 {font-size: 2.8em;} .f29 {font-size: 2.9em;} .f30 {font-size: 3.0em;} .f31 {font-size: 3.1em;} .f32 {font-size: 3.2em;} .f33 {font-size: 3.3em;} .f34 {font-size: 3.4em;} .f35 {font-size: 3.5em;} .f36 {font-size: 3.6em;} .f37 {font-size: 3.7em;} .f38 {font-size: 3.8em;} .f39 {font-size: 3.9em;} .f40 {font-size: 4.0em;} .f41 {font-size: 4.1em;} .f42 {font-size: 4.2em;} .f43 {font-size: 4.3em;} .f44 {font-size: 4.4em;} .f45 {font-size: 4.5em;} .f46 {font-size: 4.6em;} .f47 {font-size: 4.7em;} .f48 {font-size: 4.8em;} .f49 {font-size: 4.9em;} .f50 {font-size: 5.0em;} .f51 {font-size: 5.1em;} .f52 {font-size: 5.2em;} .f53 {font-size: 5.3em;} .f54 {font-size: 5.4em;} .f55 {font-size: 5.5em;} .f56 {font-size: 5.6em;} .f57 {font-size: 5.7em;} .f58 {font-size: 5.8em;} .f59 {font-size: 5.9em;} .f60 {font-size: 6.0em;}
-.flo {color: #866444;} .sam {color: #4B70BB;} .hlx {color: #8A796F;} .saw {color: #FE2E06;} .qwe {color: #5E3432;} .dvo {color: #696A00;} .edge {color: #3F5537;} .blunt {color: #554E37;} .max {color: #242424;} .rai {color: #106A10;} .kor {color: #005263;} .mad {color: #333333;} .mayor {color: #491D31;} .mhlp {color: #493025;} .niomi {color: #49211D;} .pol {color: #10106A;} .mst1 {color: #CE5200;} .mst {color: #CE5200;} .bow {color: #C7AE1A;} .ish {color: #4A3110;} .oth {color: black;}
-.znt {color: #1E90FF;}
-.ozy {color: #404040;} .mil {color: #EE7000;}
-.mol {color: #700070;} .tsp {color: #BB81CE;} .rrp {color: #A9A9A9;} .rdp {color: #006BFF;} .fsp {color: #CEC343;} .ppp {color: #DE2E76;} .ajp {color: #CA9954;} .sdr {color: #258B01;} .bmp {color: #DE6E56;}
+.w06 {
+	line-height: 60%
+}
+.w07 {
+	line-height: 70%
+}
+.w08 {
+	line-height: 80%
+}
+.w09 {
+	line-height: 90%
+}
+.w10 {
+	line-height: 100%
+}
+.w11 {
+	line-height: 110%
+}
+.w12 {
+	line-height: 120%
+}
+.w13 {
+	line-height: 130%
+}
+.w14 {
+	line-height: 140%
+}
+.w15 {
+	line-height: 150%
+}
+.w16 {
+	line-height: 160%
+}
+.w17 {
+	line-height: 170%
+}
+.w18 {
+	line-height: 180%
+}
+.w19 {
+	line-height: 190%
+}
+.w20 {
+	line-height: 200%
+}
+.w21 {
+	line-height: 210%
+}
+.w22 {
+	line-height: 220%
+}
+.w23 {
+	line-height: 230%
+}
+.w24 {
+	line-height: 240%
+}
+.w25 {
+	line-height: 250%
+}
+.w26 {
+	line-height: 260%
+}
+.w27 {
+	line-height: 270%
+}
+.w28 {
+	line-height: 280%
+}
+.w29 {
+	line-height: 290%
+}
+.w30 {
+	line-height: 300%
+}
+.w31 {
+	line-height: 310%
+}
+.w32 {
+	line-height: 320%
+}
+.w33 {
+	line-height: 330%
+}
+.w34 {
+	line-height: 340%
+}
+.w35 {
+	line-height: 350%
+}
+.w36 {
+	line-height: 360%
+}
+.w37 {
+	line-height: 370%
+}
+.w38 {
+	line-height: 380%
+}
+.w39 {
+	line-height: 390%
+}
+.w40 {
+	line-height: 400%
+}
+.w41 {
+	line-height: 410%
+}
+.w42 {
+	line-height: 420%
+}
+.w43 {
+	line-height: 430%
+}
+.w44 {
+	line-height: 440%
+}
+.w45 {
+	line-height: 450%
+}
+.w46 {
+	line-height: 460%
+}
+.w47 {
+	line-height: 470%
+}
+.w48 {
+	line-height: 480%
+}
+.w49 {
+	line-height: 490%
+}
+.w50 {
+	line-height: 500%
+}
+.w51 {
+	line-height: 510%
+}
+.w52 {
+	line-height: 520%
+}
+.w53 {
+	line-height: 530%
+}
+.w54 {
+	line-height: 540%
+}
+.w55 {
+	line-height: 550%
+}
+.w56 {
+	line-height: 560%
+}
+.w57 {
+	line-height: 570%
+}
+.w58 {
+	line-height: 580%
+}
+.w59 {
+	line-height: 590%
+}
+.w60 {
+	line-height: 600%
+}
 
+.f06 {
+	font-size: 0.6em
+}
+.f07 {
+	font-size: 0.7em
+}
+.f08 {
+	font-size: 0.8em
+}
+.f09 {
+	font-size: 0.9em
+}
+.f11 {
+	font-size: 1.1em
+}
+.f12 {
+	font-size: 1.2em
+}
+.f13 {
+	font-size: 1.3em
+}
+.f14 {
+	font-size: 1.4em
+}
+.f15 {
+	font-size: 1.5em
+}
+.f16 {
+	font-size: 1.6em
+}
+.f17 {
+	font-size: 1.7em
+}
+.f18 {
+	font-size: 1.8em
+}
+.f19 {
+	font-size: 1.9em
+}
+.f20 {
+	font-size: 2.0em
+}
+.f21 {
+	font-size: 2.1em
+}
+.f22 {
+	font-size: 2.2em
+}
+.f23 {
+	font-size: 2.3em
+}
+.f24 {
+	font-size: 2.4em
+}
+.f25 {
+	font-size: 2.5em
+}
+.f26 {
+	font-size: 2.6em
+}
+.f27 {
+	font-size: 2.7em
+}
+.f28 {
+	font-size: 2.8em
+}
+.f29 {
+	font-size: 2.9em
+}
+.f30 {
+	font-size: 3.0em
+}
+.f31 {
+	font-size: 3.1em
+}
+.f32 {
+	font-size: 3.2em
+}
+.f33 {
+	font-size: 3.3em
+}
+.f34 {
+	font-size: 3.4em
+}
+.f35 {
+	font-size: 3.5em
+}
+.f36 {
+	font-size: 3.6em
+}
+.f37 {
+	font-size: 3.7em
+}
+.f38 {
+	font-size: 3.8em
+}
+.f39 {
+	font-size: 3.9em
+}
+.f40 {
+	font-size: 4.0em
+}
+.f41 {
+	font-size: 4.1em
+}
+.f42 {
+	font-size: 4.2em
+}
+.f43 {
+	font-size: 4.3em
+}
+.f44 {
+	font-size: 4.4em
+}
+.f45 {
+	font-size: 4.5em
+}
+.f46 {
+	font-size: 4.6em
+}
+.f47 {
+	font-size: 4.7em
+}
+.f48 {
+	font-size: 4.8em
+}
+.f49 {
+	font-size: 4.9em
+}
+.f50 {
+	font-size: 5.0em
+}
+.f51 {
+	font-size: 5.1em
+}
+.f52 {
+	font-size: 5.2em
+}
+.f53 {
+	font-size: 5.3em
+}
+.f54 {
+	font-size: 5.4em
+}
+.f55 {
+	font-size: 5.5em
+}
+.f56 {
+	font-size: 5.6em
+}
+.f57 {
+	font-size: 5.7em
+}
+.f58 {
+	font-size: 5.8em
+}
+.f59 {
+	font-size: 5.9em
+}
+.f60 {
+	font-size: 6.0em
+}
+
+.flo {
+	color: #866444
+}
+.sam {
+	color: #4B70BB
+}
+.hlx {
+	color: #8A796F
+}
+.saw {
+	color: #FE2E06
+}
+.qwe {
+	color: #5E3432
+}
+.dvo {
+	color: #696A00
+}
+.edge {
+	color: #3F5537
+}
+.blunt {
+	color: #554E37
+}
+.max {
+	color: #242424
+}
+.rai {
+	color: #106A10
+}
+.kor {
+	color: #005263
+}
+.mad {
+	color: #333333
+}
+.mayor {
+	color: #491D31
+}
+.mhlp {
+	color: #493025
+}
+.niomi {
+	color: #49211D
+}
+.pol {
+	color: #10106A
+}
+.mst1 {
+	color: #CE5200
+}
+.mst {
+	color: #CE5200
+}
+.bow {
+	color: #C7AE1A
+}
+.ish {
+	color: #4A3110
+}
+.oth {
+	color: black
+}
+.znt {
+	color: #1E90FF
+}
+.ozy {
+	color: #404040
+}
+.mil {
+	color: #EE7000
+}
+.mol {
+	color: #700070
+}
+.tsp {
+	color: #BB81CE
+}
+.rrp {
+	color: #A9A9A9
+}
+.rdp {
+	color: #006BFF
+}
+.fsp {
+	color: #CEC343
+}
+.ppp {
+	color: #DE2E76
+}
+.ajp {
+	color: #CA9954
+}
+.sdr {
+	color: #258B01
+}
+.bmp {
+	color: #DE6E56
+}
+
+.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,
 .f06,.f07,.f08,.f09,.f10,.f11,.f12,.f13,.f14,.f15,.f16,.f17,.f18,.f19,.f20,.f21,.f22,.f23,.f24,.f25,.f26,.f27,.f28,.f29,.f30, .f31,.f32,.f33,
 .f34,.f35,.f36,.f37,.f38,.f39,.f40,.f41,.f42,.f43,.f44,.f45,.f46,.f47,.f48,.f49,.f50,.f51,.f52,.f53,.f54,.f55,.f56,.f57,.f58,.f59,.f60,
 .flo,.sam,.hlx,.saw,.qwe,.dvo,.edge,.blunt,.max,.rai,.kor,.mad,.mayor,.mhlp,.niomi,.pol,.mst1,.mst,.bow,.oth,
@@ -53,12 +519,10 @@
 .ozy,.mil,
 .mol,.tsp,.rrp,.rdp,.fsp,.ppp,.ajp,.sdr,.bmp {
 	display: inline;
-	line-height: 100%;
 }
 .mirx,
 .miry {
 	display: inline-block;
-	line-height: 100%;
 }
 .mirx,
 .mirx img {
