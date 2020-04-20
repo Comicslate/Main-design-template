@@ -2,7 +2,7 @@
 
 var i, j;
 
-// счётчик Яндекса yandex_counter
+// счётчик Яндекса
 
 ( function ( d, w, c ) {
 	( w[c] = w[c] || [] ).push ( function ( ) {
@@ -32,15 +32,19 @@ var i, j;
 	} );
 } ) ( this, this.document, "yandexContextAsyncCallbacks" );
 
+// истребитель двоеточий в адресах
+
+if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = window.location.pathname.replace ( /:/g, '/' );
+
 // ЦЕНТРАЛИЗАЦИЯ КАРТИНОК
 
-// деэскизация перемещённых картинок intermedia
+// эскизы перемещённых картинок - удалить привязку к высоте и ширине
 
 document.querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ).forEach (
 	e => e.src = e.src.replace ( /[wh]=\d+\&?/g, '' ).replace ( /[\?\&]$/g, '' )
 );
 
-// перенаправление пути картинок в медиаменеджере intermanager
+// медиаменеджер - перенаправить в папку без языка
 
 if ( window.location.href.match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang|playground|user)/ ) != null ) {
 	var	ns = document.querySelector ( "#media__ns" );
@@ -48,7 +52,7 @@ if ( window.location.href.match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wo
 	window.location = window.location.toString().replace ( /ns=\w\w\w?%3A/, 'ns=' )
 };
 
-// исправление медиаменеджера в сайдбаре sidebarfix
+// сайдбар - удалить язык в медиаменеджере
 
 var sidemedia = document.querySelector ( "#pagetools .media a" );
 if ( sidemedia != null ) {
@@ -58,7 +62,7 @@ if ( sidemedia != null ) {
 
 // ГЛАВНАЯ, МЕНЮ, ИНДЕКСЫ И Т.П.
 
-// добавление языка к последним правкам и тегам pagelist-langs
+// последние правки и теги - дорисовать /язык/
 
 if (
 	window.location.href.match ( /(start|showtag|do=search)/ ) != null
@@ -70,9 +74,9 @@ if (
 	)
 };
 
-// выравнивание первых двух боксов в описании и на главной box_align
+// на главной - выровнять первые 2 бокса
 
-if ( window.location.href.match ( /[:\/]start/i ) ) { // запуск на главной
+if ( window.location.href.match ( /\/start/i ) ) { // запуск на главной
 	var box = document.querySelectorAll ( '.level1 > .box' );
 	if ( box.length >= 2 ) {
 		var left = box[0],
@@ -84,12 +88,12 @@ if ( window.location.href.match ( /[:\/]start/i ) ) { // запуск на гл�
 	};
 };
 
-// пакование меню menu_columns
+// меню - пакование в колонки
 
 var	page = document.querySelector ( ".page" ), /* требуется начиная отсюда, используется и дальше */
 	pagewidth = page.offsetWidth - 3;
 
-if ( window.location.href.match ( /[:\/]menu(\?rev.+)?$/i ) !== null ) { // запуск в меню
+if ( window.location.href.match ( /\/menu(\?rev.+)?$/i ) !== null ) { // запуск в меню
 	var menu_col_ul = document.querySelectorAll ( '.page ul' ),
 		menu_col_div,
 		menu_col_div_sizes = [];
@@ -108,7 +112,7 @@ if ( window.location.href.match ( /[:\/]menu(\?rev.+)?$/i ) !== null ) { // за
 	}
 };
 
-// количественные окончания - 1/2/5 стрип/а/ов numeric_texts
+// индексы - количественные окончания 1/2/5 стрип/а/ов
 
 function getNumEnding ( num, ends ) {
 	if (
@@ -128,7 +132,7 @@ function getNumEnding ( num, ends ) {
 	}
 };
 
-var fix_notes = document.querySelectorAll ( ".notetip, .noteimportant, .notewarning" );
+var fix_notes = document.querySelectorAll ( ".note" );
 for ( i = 0; i < fix_notes.length; i++ )  {
 	var e = fix_notes[i].innerHTML;
 	if ( e != null ) {
@@ -137,10 +141,17 @@ for ( i = 0; i < fix_notes.length; i++ )  {
 	}
 };
 
+// архив новостей - раскрыть последний спойлер, скрыть "красные" месяцы
+
+var boxnews = document.querySelector ( ".box.news .spoiler:last-of-type" );
+if ( boxnews != null ) { // запуск
+	boxnews.querySelector ( "input" ).click();
+	boxnews.querySelectorAll ( "li > .li > .wikilink2" ).forEach ( e => e.parentNode.parentNode.style.display = "none" );
+}
 
 // ПОЧТИ ВЕЗДЕ
 
-// [[ссылка]]ми attach_text2link
+// [[ссылка]]ми
 
 document.querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ).forEach (
 	e => {
@@ -150,7 +161,7 @@ document.querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ).forEach (
 	}
 );
 
-// красные ссылки транслятора red_translations
+// транслятор - красные ссылки ведут в редактор
 
 if ( document.querySelector ( '.plugin_translation') != null ) {
 	if ( document.querySelector ( '.plugin_translation .wikilink1 ') != null ) {
@@ -163,6 +174,7 @@ if ( document.querySelector ( '.plugin_translation') != null ) {
 };
 
 // ПЕРЕВОДЫ
+
 var lang = NS.split ( ':', 2 )[0],
 	lines = {
 		'ady': [
@@ -545,7 +557,7 @@ function createColorCheckbox ( ) { // создатель() галочки
 }
 
 /* ВВОДНАЯ */
-if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)[:\/].*(\d\d+|vol\d+|ch\d+|cover\d*)/i ) != null ) { // запуск в комиксовых разделах сайта
+if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\/.*(\d\d+|vol\d+|ch\d+|cover\d*)/i ) != null ) { // запуск в комиксовых разделах сайта
 	if ( ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) || ( window.location.href.match ( /[\?&]do=edit/i ) != null ) ) { // при наличии переводов или в редакторе
 		/* ГАЛОЧКА ОТКЛЮЧЕНИЯ НАКЛЕЕК */
 		var folder_cookie = 'fnNotReveal_' + JSINFO.namespace,
@@ -655,7 +667,7 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 	}
 
 	/* в лентах - сокращение лишних титулов выпусков */
-	if ( window.location.href.match ( /[:\/](d|h)\d\d\d\d/i ) != null ) { // запуск в лентах
+	if ( window.location.href.match ( /\/(d|h)\d\d\d\d/i ) != null ) { // запуск в лентах
 		var band_title = Array.from ( page.querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ).reverse ( );
 		for ( i = 0; i < band_title.length - 1; i++ ) {
 			if ( band_title[i].innerHTML == band_title[i + 1].innerHTML ) band_title[i].innerHTML = '';
@@ -663,12 +675,28 @@ if ( window.location.href.match ( /[:\/](sci-fi|tlk|wolves|mlp|furry|gamer|other
 	}
 }
 
-/* истребитель двоеточий */
-if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = window.location.pathname.replace ( /:/g, '/' );
-
-/* для архива новостей */
-var boxnews = document.querySelector ( ".box.news .spoiler:last-of-type" );
-if ( boxnews != null ) { // запуск
-	boxnews.querySelector ( "input" ).click();
-	boxnews.querySelectorAll ( "li > .li > .wikilink2" ).forEach ( e => e.parentNode.parentNode.style.display = "none" );
+/* замена энтити */
+function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
+	var fontValue = parseFloat ( value.replace ( ",", "." ).replace ( "-", "" ) );
+	if ( fontValue > 0 ) {
+		switch ( marker ) {
+			case '!':
+				return '<span style = "font-size: ' + fontValue + 'em">';
+				break;
+			case '=':
+				return '<span style = "line-height: ' + fontValue * 100 + '%">';
+				break;
+			default:
+				return '<abbr title="Incorrect marker" >'+ openSB + marker + value + closeSB + '</abbr>';
+				break
+		}
+	} else {
+		return '<abbr title="Incorrect digit" >' + openSB + marker + value + closeSB + '</abbr>'
+	}
+}
+var	notedit = document.querySelectorAll ( ".page > div:not(.editBox)" );
+for ( i = 0; i < notedit.length; i++ ) {
+	notedit[i].innerHTML = notedit[i].innerHTML
+		.replace ( /(\[)(.)(-?\d+[\.,]\d+)(\])/g, fontChanger )
+		.replace ( /\[\/\]/g, '</span>' );
 }
