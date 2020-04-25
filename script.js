@@ -2,7 +2,7 @@
 
 var i, j;
 
-// счётчик Яндекса
+/* счётчик Яндекса */
 
 ( function ( d, w, c ) {
 	( w[c] = w[c] || [] ).push ( function ( ) {
@@ -32,19 +32,45 @@ var i, j;
 	} );
 } ) ( this, this.document, "yandexContextAsyncCallbacks" );
 
-// истребитель двоеточий в адресах
+/* истребитель двоеточий в адресах */
 
 if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = window.location.pathname.replace ( /:/g, '/' );
 
+/* замена энтити */
+function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
+	var fontValue = parseFloat ( value.replace ( ",", "." ).replace ( "-", "" ) );
+	if ( fontValue > 0 ) {
+		switch ( marker ) {
+			case '!':
+				return '<span style = "font-size: ' + fontValue + 'em">';
+				break;
+			case '=':
+				return '<span style = "line-height: ' + fontValue * 100 + '%; display: inline-block;">';
+				break;
+			default:
+				return '<abbr title="Incorrect marker" >'+ openSB + marker + value + closeSB + '</abbr>';
+				break
+		}
+	} else {
+		return '<abbr title="Incorrect digit" >' + openSB + marker + value + closeSB + '</abbr>'
+	}
+}
+var	notedit = document.querySelectorAll ( ".page > div:not(.editBox):not(.search_fulltextresult):not(.table), .export > div" );
+for ( i = 0; i < notedit.length; i++ ) {
+	notedit[i].innerHTML = notedit[i].innerHTML
+		.replace ( /(\[)(.)(-?\d+[\.,]\d+)(\])/g, fontChanger )
+		.replace ( /\[\/\]/g, '</span>' );
+}
+
 // ЦЕНТРАЛИЗАЦИЯ КАРТИНОК
 
-// эскизы перемещённых картинок - удалить привязку к высоте и ширине
+/* эскизы перемещённых картинок - удалить привязку к высоте и ширине */
 
 document.querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ).forEach (
 	e => e.src = e.src.replace ( /[wh]=\d+\&?/g, '' ).replace ( /[\?\&]$/g, '' )
 );
 
-// медиаменеджер - перенаправить в папку без языка
+/* медиаменеджер - перенаправить в папку без языка */
 
 if ( window.location.href.match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang|playground|user)/ ) != null ) {
 	var	ns = document.querySelector ( "#media__ns" );
@@ -52,7 +78,7 @@ if ( window.location.href.match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wo
 	window.location = window.location.toString().replace ( /ns=\w\w\w?%3A/, 'ns=' )
 };
 
-// сайдбар - удалить язык в медиаменеджере
+/* сайдбар - удалить язык в медиаменеджере */
 
 var sidemedia = document.querySelector ( "#pagetools .media a" );
 if ( sidemedia != null ) {
@@ -62,7 +88,7 @@ if ( sidemedia != null ) {
 
 // ГЛАВНАЯ, МЕНЮ, ИНДЕКСЫ И Т.П.
 
-// последние правки и теги - дорисовать /язык/
+/* последние правки и теги - дорисовать /язык/ */
 
 if (
 	window.location.href.match ( /(start|showtag|do=search)/ ) != null
@@ -74,7 +100,7 @@ if (
 	)
 };
 
-// на главной - выровнять первые 2 бокса
+/* на главной - выровнять первые 2 бокса */
 
 if ( window.location.href.match ( /\/start/i ) ) { // запуск на главной
 	var box = document.querySelectorAll ( '.level1 > .box' );
@@ -88,7 +114,7 @@ if ( window.location.href.match ( /\/start/i ) ) { // запуск на глав
 	};
 };
 
-// меню - пакование в колонки
+/* меню - пакование в колонки */
 
 var	page = document.querySelector ( ".page" ), /* требуется начиная отсюда, используется и дальше */
 	pagewidth = page.offsetWidth - 3;
@@ -112,7 +138,7 @@ if ( window.location.href.match ( /\/menu(\?rev.+)?$/i ) !== null ) { // зап�
 	}
 };
 
-// индексы - количественные окончания 1/2/5 стрип/а/ов
+/* индексы - количественные окончания 1/2/5 стрип/а/ов */
 
 function getNumEnding ( num, ends ) {
 	if (
@@ -141,7 +167,7 @@ for ( i = 0; i < fix_notes.length; i++ )  {
 	}
 };
 
-// архив новостей - раскрыть последний спойлер, скрыть "красные" месяцы
+/* архив новостей - раскрыть последний спойлер, скрыть "красные" месяцы */
 
 var boxnews = document.querySelector ( ".box.news .spoiler:last-of-type" );
 if ( boxnews != null ) { // запуск
@@ -151,7 +177,7 @@ if ( boxnews != null ) { // запуск
 
 // ПОЧТИ ВЕЗДЕ
 
-// [[ссылка]]ми
+/* [[ссылка]]ми */
 
 document.querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ).forEach (
 	e => {
@@ -161,7 +187,7 @@ document.querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ).forEach (
 	}
 );
 
-// транслятор - красные ссылки ведут в редактор
+/* транслятор - красные ссылки ведут в редактор */
 
 if ( document.querySelector ( '.plugin_translation') != null ) {
 	if ( document.querySelector ( '.plugin_translation .wikilink1 ') != null ) {
@@ -673,30 +699,4 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 			if ( band_title[i].innerHTML == band_title[i + 1].innerHTML ) band_title[i].innerHTML = '';
 		}
 	}
-}
-
-/* замена энтити */
-function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
-	var fontValue = parseFloat ( value.replace ( ",", "." ).replace ( "-", "" ) );
-	if ( fontValue > 0 ) {
-		switch ( marker ) {
-			case '!':
-				return '<span style = "font-size: ' + fontValue + 'em">';
-				break;
-			case '=':
-				return '<span style = "line-height: ' + fontValue * 100 + '%">';
-				break;
-			default:
-				return '<abbr title="Incorrect marker" >'+ openSB + marker + value + closeSB + '</abbr>';
-				break
-		}
-	} else {
-		return '<abbr title="Incorrect digit" >' + openSB + marker + value + closeSB + '</abbr>'
-	}
-}
-var	notedit = document.querySelectorAll ( ".page > div:not(.editBox)" );
-for ( i = 0; i < notedit.length; i++ ) {
-	notedit[i].innerHTML = notedit[i].innerHTML
-		.replace ( /(\[)(.)(-?\d+[\.,]\d+)(\])/g, fontChanger )
-		.replace ( /\[\/\]/g, '</span>' );
 }
