@@ -55,7 +55,7 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 		return '<abbr title="Incorrect digit" >' + openSB + marker + value + closeSB + '</abbr>'
 	}
 }
-var	notedit = document.querySelectorAll ( ".page > div:not(.editBox):not(.search_fulltextresult):not(.table), .export > div" );
+var	notedit = document.querySelectorAll ( ".page > div:not(.editBox):not(.search_fulltextresult):not(.table):not(#batchedit), .export > div" );
 for ( i = 0; i < notedit.length; i++ ) {
 	notedit[i].innerHTML = notedit[i].innerHTML
 		.replace ( /(\[)(.)(-?\d+[\.,]\d+)(\])/g, fontChanger )
@@ -639,8 +639,8 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 			if ( window.location.href.match ( /en.sci-fi/i ) != null ) { // запуск в англофрифоле
 				var folder_cookie3 = 'blinkFF_' + JSINFO.namespace,
 					blink_mark = !readCookie ( folder_cookie3 ),
-					blink_style_on = '.f13 { font-size: 1.6em } .fn-note:hover, .ct-note:hover { opacity: 1 !important } .fn-note, .ct-note { animation: mor 2s linear infinite }', // стиль моргания
-					blink_style_off = '.f13 { font-size: 1.3em } .fn-note:hover, .ct-note:hover { opacity: 0 } .fn-note, .ct-note { animation: none }', // стиль неморгания
+					blink_style_on = '.ct-note-content .fest { font-size: 1.6em !important } .fn-note:hover, .ct-note:hover { opacity: 1 !important } .fn-note, .ct-note { animation: mor 2s linear infinite }', // стиль моргания
+					blink_style_off = '.ct-note-content .fest { font-size: 1.3em } .fn-note:hover, .ct-note:hover { opacity: 0 } .fn-note, .ct-note { animation: none }', // стиль неморгания
 					blink_checkbox;
 				if ( window.addEventListener ) { // W3C стандарт
 					window.addEventListener ( 'load', createBlinkCheckbox, false ); // NB **not** 'onload'
@@ -673,22 +673,18 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 				)
 			)
 		) {
-			var brr = document.createElement ( 'br' );
-			brr.style.clear = 'both';
-			page.appendChild ( brr );
+			var note = document.createElement ( 'div' ),
+				span = document.createElement ( 'span' ),
+				fncon = page.querySelectorAll ( ".fn-container" );
 
-			var note = document.createElement ( 'div' );
-			note.className = 'vycenter ';
-			note.innerHTML = '<span class="fest f13">';
-			if ( page.querySelectorAll ( ".fn-container" ).length == 0 ) {
-				note.className += 'note noteimportant';
-				note.innerHTML += line[1];
-			} else {
-				note.className += 'note notetip';
-				note.innerHTML += line[2];
-			}
-			note.innerHTML += '</span>';
-			page.appendChild ( note )
+			note.style.marginTop = '1.5em';
+			note.className = 'vycenter note note' + ( ( fncon.length == 0 ) ? 'important' : 'tip' );
+			page.appendChild ( note );
+
+			span.style.fontSize = '1.3em';
+			span.className = 'fest';
+			span.innerHTML = ( fncon.length == 0 ? line[1] : line[2] );
+			note.appendChild ( span );
 		}
 	}
 
