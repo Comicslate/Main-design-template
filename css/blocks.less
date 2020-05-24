@@ -188,7 +188,7 @@
 								opacity: 1;
 							}
 						}
-						&[title="sjn"] { /* синдарин иначе не влазит */
+						&[title="Sindarin"] { /* синдарин иначе не влазит */
 							font-size: 90%;
 						}
 					}
@@ -227,6 +227,75 @@
 				margin-right: 4px;
 				text-transform: none;
 				vertical-align: bottom;
+			}
+		}
+	}
+	article#dokuwiki__detail {
+		padding-left: 1em;
+		[dir=rtl] & {
+			padding-right: 1em;
+		}
+		div.apps {
+			display: none;
+		}
+		@media (max-width: 800px) {
+			div.apps {
+				display: block;
+				a {
+					&:first-child img {
+						float: left;
+					}
+					&:last-child img {
+						float: right;
+					}
+					img {
+						width: 50%;
+					}
+				}
+			}
+		}
+		h1 {
+			padding: 1em 0;
+		}
+		div.img_big {
+			float: left;
+			[dir=rtl] & {
+				float: right;
+			}
+			p.img_caption {
+				text-align: center;
+			}
+		}
+		div.img_detail {
+			float: left;
+			margin: 0 1em;
+			[dir=rtl] & {
+				float: right;
+			}
+			#back {
+				font-size: 1.3em;
+				margin-top: 0;
+				bdi {
+					padding-left: .5em;
+					position: relative;
+					top: 2px;
+				}
+			}
+			dl.img_tags {
+				dd {
+					background-color: __medium__;
+					font-style: italic;
+				}
+				dt {
+					background-color: __lightgray__;
+					display: inline-block;
+					font-weight: bold;
+					margin-top: 0.5em;
+				}
+				dd, dt {
+					line-height: 2;
+					padding: 0 1em;
+				}
 			}
 		}
 	}
@@ -331,7 +400,7 @@
 					margin: 2px 0;
 					.editButtons {
 						padding: 0 1.0em 0.7em 0;
-						* {
+						button, input {
 							border-radius: 3px;
 							border: 1px solid #888;
 							padding: 1px 6px;
