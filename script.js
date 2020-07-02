@@ -431,7 +431,7 @@ function createRevealCheckbox ( ) { // создатель() галочки
 	translate_checkbox = css;
 	if ( ref != null ) ref.insertBefore ( css, null );
 	obj.accessKey = 't';
-	obj.className = 'optcheck';
+	obj.className = 'optcheck reveal_check';
 	check.type = 'checkbox';
 	check.checked = translate_mark;
 	check.onclick = toggleReveal;
@@ -472,7 +472,7 @@ function createZoomCheckbox ( ) { // создатель() галочки
 		text		= document.createTextNode ( line[3] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
-	obj.className = 'optcheck';
+	obj.className = 'optcheck zoom_check';
 	check.type = 'checkbox';
 	check.checked = zoom_mark;
 	check.onclick = toggleReveal1;
@@ -505,7 +505,7 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	css.type = 'text/css';
 	fognavi_checkbox = css;
 	if ( ref != null ) ref.insertBefore ( css, null );
-	obj.className = 'optcheck';
+	obj.className = 'optcheck fognavi_check';
 	check.type = 'checkbox';
 	check.checked = fognavi_mark;
 	check.onclick = toggleReveal2;
@@ -514,39 +514,6 @@ function createFogNaviCheckbox ( ) { // создатель() галочки
 	span.appendChild ( text );
 	if ( ref != null ) ref.insertBefore ( obj, null );
 	setReveal2 ( fognavi_mark );
-}
-
-/* ГАЛОЧКА МОРГАНИЯ ФРИФОЛА */
-function setReveal3 ( set ) { // синхронизация переменных
-	blink_mark = set;
-	blink_checkbox.innerHTML = blink_mark ? blink_style_on : blink_style_off;
-	( blink_mark == true ) ? eraseCookie ( folder_cookie3 ) : createCookie ( folder_cookie3, false, 9999 );
-}
-
-function toggleReveal3 ( ) { // переключатель() галочки
-	setReveal3 ( !blink_mark );
-}
-
-function createBlinkCheckbox ( ) { // создатель() галочки
-	var css 	= document.createElement ( 'style' ),
-		obj		= document.createElement ( 'label' ), // создан лейбл
-		check	= document.createElement ( 'input' ), // создан ввод
-		span		= document.createElement ( 'span' ), // создано пояснение
-		text		= document.createTextNode ( 'Blink texts' ), // создан текст пояснения
-		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
-
-	css.type = 'text/css';
-	blink_checkbox = css;
-	if ( ref != null ) ref.insertBefore ( css, null );
-	obj.className = 'optcheck';
-	check.type = 'checkbox';
-	check.checked = blink_mark;
-	check.onclick = toggleReveal3;
-	obj.appendChild ( check );
-	obj.appendChild ( span );
-	span.appendChild ( text );
-	if ( ref != null ) ref.insertBefore ( obj, null );
-	setReveal3 ( blink_mark );
 }
 
 /* ГАЛОЧКА ОБЕСЦВЕЧИВАНИЯ ФРИФОЛА */
@@ -571,7 +538,7 @@ function createColorCheckbox ( ) { // создатель() галочки
 	css.type = 'text/css';
 	color_checkbox = css;
 	if ( ref != null ) ref.insertBefore ( css, null );
-	obj.className = 'optcheck';
+	obj.className = 'optcheck color_check';
 	check.type = 'checkbox';
 	check.checked = color_mark;
 	check.onclick = toggleReveal4;
@@ -633,20 +600,6 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 				window.addEventListener ( 'load', createColorCheckbox, false ); // NB **not** 'onload'
 			} else if ( window.attachEvent ) { // Microsoft стандарт
 				window.attachEvent ( 'onload', createColorCheckbox );
-			}
-
-			/* ГАЛОЧКА МОРГАНИЯ ФРИФОЛА */
-			if ( window.location.href.match ( /en.sci-fi/i ) != null ) { // запуск в англофрифоле
-				var folder_cookie3 = 'blinkFF_' + JSINFO.namespace,
-					blink_mark = !readCookie ( folder_cookie3 ),
-					blink_style_on = '.ct-note-content .fest { font-size: 1.6em !important } .fn-note:hover, .ct-note:hover { opacity: 1 !important } .fn-note, .ct-note { animation: mor 2s linear infinite }', // стиль моргания
-					blink_style_off = '.ct-note-content .fest { font-size: 1.3em } .fn-note:hover, .ct-note:hover { opacity: 0 } .fn-note, .ct-note { animation: none }', // стиль неморгания
-					blink_checkbox;
-				if ( window.addEventListener ) { // W3C стандарт
-					window.addEventListener ( 'load', createBlinkCheckbox, false ); // NB **not** 'onload'
-				} else if ( window.attachEvent ) { // Microsoft стандарт
-					window.attachEvent ( 'onload', createBlinkCheckbox );
-				}
 			}
 		}
 	}
