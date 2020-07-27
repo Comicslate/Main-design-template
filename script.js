@@ -19,7 +19,7 @@ var i, j;
 	} );
 } ) ( document, window, "yandex_metrika_callbacks2" );
 
-( function ( w, d, n ) {
+/* ( function ( w, d, n ) {
 	( w[n] = w[n] || [] ).push ( function ( ) {
 		Ya.Context.AdvManager.render ( {
 			blockId: "R-A-492328-1",
@@ -30,7 +30,7 @@ var i, j;
 			}
 		} );
 	} );
-} ) ( this, this.document, "yandexContextAsyncCallbacks" );
+} ) ( this, this.document, "yandexContextAsyncCallbacks" ); */
 
 /* истребитель двоеточий в адресах */
 
@@ -38,7 +38,7 @@ if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = 
 
 /* замена энтити */
 function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
-	var fontValue = parseFloat ( value.replace ( ",", "." ).replace ( "-", "" ) );
+	var fontValue = parseFloat ( value.replace ( ",", "." ) );
 	if ( fontValue > 0 ) {
 		switch ( marker ) {
 			case '!':
@@ -46,6 +46,10 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 				break;
 			case '=':
 				return '<span style = "line-height: ' + fontValue * 100 + '%; display: inline-block;">';
+				break;
+			case 'y':
+			case 'x':
+				return '<p style = "transform: scale' + marker + '(' + fontValue + ');">';
 				break;
 			default:
 				return '<abbr title="Incorrect marker" >'+ openSB + marker + value + closeSB + '</abbr>';
@@ -58,7 +62,7 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 var	notedit = document.querySelectorAll ( ".page > div:not(.editBox):not(.search_fulltextresult):not(.table):not(#batchedit), .export > div" );
 for ( i = 0; i < notedit.length; i++ ) {
 	notedit[i].innerHTML = notedit[i].innerHTML
-		.replace ( /(\[)(.)(-?\d+[\.,]\d+)(\])/g, fontChanger )
+		.replace ( /(\[)(.)(-?\d+[\.,]?\d*)(\])/g, fontChanger )
 		.replace ( /\[\/\]/g, '</span>' );
 }
 
