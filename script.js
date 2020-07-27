@@ -52,7 +52,7 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 				return '<p style = "transform: scale' + marker + '(' + fontValue + ');">';
 				break;
 			default:
-				return '<abbr title="Incorrect marker" >'+ openSB + marker + value + closeSB + '</abbr>';
+				return '<abbr title="Incorrect marker" >' + openSB + marker + value + closeSB + '</abbr>';
 				break
 		}
 	} else {
