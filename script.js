@@ -49,7 +49,7 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 				break;
 			case 'y':
 			case 'x':
-				return '<p style = "transform: scale' + marker + '(' + fontValue + ');">';
+				return '<p style = "transform: scale' + marker + '(' + fontValue + '); display: inline-block;">';
 				break;
 			default:
 				return '<abbr title="Incorrect marker" >' + openSB + marker + value + closeSB + '</abbr>';
