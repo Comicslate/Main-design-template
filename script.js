@@ -5,7 +5,7 @@ var i, j;
 /* счётчик Яндекса */
 
 ( function ( d, w, c ) {
-	( w[c] = w[c] || [] ).push ( function ( ) {
+	( w [ c ] = w [ c ] || [ ] ).push ( function ( ) {
 		try {
 			w.yaCounter25500497 = new Ya.Metrika2 ( {
 				id: 25500497,
@@ -18,19 +18,6 @@ var i, j;
 		catch ( e ) { }
 	} );
 } ) ( document, window, "yandex_metrika_callbacks2" );
-
-/* ( function ( w, d, n ) {
-	( w[n] = w[n] || [] ).push ( function ( ) {
-		Ya.Context.AdvManager.render ( {
-			blockId: "R-A-492328-1",
-			renderTo: "yandex_rtb",
-			async: true,
-			onRender: function ( data ) {
-				console.log ( data.product );
-			}
-		} );
-	} );
-} ) ( this, this.document, "yandexContextAsyncCallbacks" ); */
 
 /* истребитель двоеточий в адресах */
 
@@ -61,7 +48,7 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 }
 var	notedit = document.querySelectorAll ( ".page > div:not(.editBox):not(.search_fulltextresult):not(.table):not(#batchedit), .export > div" );
 for ( i = 0; i < notedit.length; i++ ) {
-	notedit[i].innerHTML = notedit[i].innerHTML
+	notedit [ i ].innerHTML = notedit [ i ].innerHTML
 		.replace ( /(\[)(.)(-?\d+[\.,]?\d*)(\])/g, fontChanger )
 		.replace ( /\[\/\]/g, '</span>' );
 }
@@ -79,7 +66,7 @@ document.querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ).forEach (
 if ( window.location.href.match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang|playground|user)/ ) != null ) {
 	var	ns = document.querySelector ( "#media__ns" );
 	ns.innerHTML = ns.innerHTML.replace ( /^:\w\w\w?:/, 'Redirect... :' );
-	window.location = window.location.toString().replace ( /ns=\w\w\w?%3A/, 'ns=' )
+	window.location = window.location.toString ( ).replace ( /ns=\w\w\w?%3A/, 'ns=' )
 };
 
 /* сайдбар - удалить язык в медиаменеджере */
@@ -99,7 +86,7 @@ if (
 ) {
 	document.querySelectorAll ( ".pagelist a, .taglist a, .search_quickhits a, .search_results a.wikilink1 " ).forEach (
 		e => {
-			if ( e.href != undefined ) e.innerHTML = e.href.substr ( 23, 4 ).split( '/' )[0].toUpperCase() + ' / ' + e.innerHTML
+			if ( e.href != undefined ) e.innerHTML = e.href.substr ( 23, 4 ).split( '/' ) [ 0 ].toUpperCase ( ) + ' / ' + e.innerHTML
 		}
 	)
 };
@@ -109,8 +96,8 @@ if (
 if ( window.location.href.match ( /\/start/i ) ) { // запуск на главной
 	var box = document.querySelectorAll ( '.level1 > .box' );
 	if ( box.length >= 2 ) {
-		var left = box[0],
-			right = box[1],
+		var left = box [ 0 ],
+			right = box [ 1 ],
 			left_h = Math.max ( 600, left.offsetHeight ),
 			right_h = Math.max ( 600, right.offsetHeight );
 		right.style.cssText += " height: " + Math.min ( right_h, left_h ) + "px; margin: 0;";
@@ -121,24 +108,25 @@ if ( window.location.href.match ( /\/start/i ) ) { // запуск на глав
 /* меню - пакование в колонки */
 
 var	page = document.querySelector ( ".page" ), /* требуется начиная отсюда, используется и дальше */
-	pagewidth = page.offsetWidth - 3;
+	preview = page.querySelector ( ".preview" ),
+	pagewidth = ( preview != null ) ? ( preview.offsetWidth - 3 ) : ( page.offsetWidth - 3 );
 
 if ( window.location.href.match ( /\/menu(\?rev.+)?$/i ) !== null ) { // запуск в меню
 	var menu_col_ul = document.querySelectorAll ( '.page ul' ),
 		menu_col_div,
-		menu_col_div_sizes = [];
+		menu_col_div_sizes = [ ];
 	for ( i = 0; i < menu_col_ul.length; i++ ) {
 		if ( i != 3 ) { // исключая Интерробанг Студию
-			menu_col_div = menu_col_ul[i].querySelectorAll ( 'div.li' );
+			menu_col_div = menu_col_ul [ i ].querySelectorAll ( 'div.li' );
 			for ( j = 0; j < menu_col_div.length; j++ ) {
-				menu_col_div[j].style.display = "inline"; // приведение дивов к строчному виду
-				menu_col_div_sizes.push ( menu_col_div[j].offsetWidth ) // заполнение массива их размерами
+				menu_col_div [ j ].style.display = "inline"; // приведение дивов к строчному виду
+				menu_col_div_sizes.push ( menu_col_div [ j ].offsetWidth ) // заполнение массива их размерами
 			}
 		}
 	};
 	var menu_col_div_size_max = Math.max.apply ( null, menu_col_div_sizes ); // определение наибольшего дива
 	for ( i in menu_col_ul ) {
-		if ( i != 3 && menu_col_ul[i].style ) menu_col_ul[i].style.cssText += " columns: " + menu_col_div_size_max + "px auto; column-gap: 20px;" // адаптивные колонки
+		if ( i != 3 && menu_col_ul [ i ].style ) menu_col_ul [ i ].style.cssText += " columns: " + menu_col_div_size_max + "px auto; column-gap: 20px;" // адаптивные колонки
 	}
 };
 
@@ -150,24 +138,24 @@ function getNumEnding ( num, ends ) {
 		&&
 		num % 100 <= 19
 	) {
-		return ends[2];
+		return ends [ 2 ];
 	} else {
 		switch ( num % 10 ) {
-			case (1): return ends[0];
-			case (2):
-			case (3):
-			case (4): return ends[1];
-			default: return ends[2];
+			case ( 1 ): return ends [ 0 ];
+			case ( 2 ):
+			case ( 3 ):
+			case ( 4 ): return ends [ 1 ];
+			default: return ends [ 2 ];
 		}
 	}
 };
 
 var fix_notes = document.querySelectorAll ( ".note" );
 for ( i = 0; i < fix_notes.length; i++ )  {
-	var e = fix_notes[i].innerHTML;
+	var e = fix_notes [ i ].innerHTML;
 	if ( e != null ) {
 		var et = e.match ( / (0*(\d+)).*(стрипов)/ );
-		if ( et != null ) fix_notes[i].innerHTML = e.replace ( et[1], et[2] ).replace ( et[3], getNumEnding ( et[2], ['стрип', 'стрипа', 'стрипов'] ) );
+		if ( et != null ) fix_notes [ i ].innerHTML = e.replace ( et [ 1 ], et [ 2 ] ).replace ( et [ 3 ], getNumEnding ( et [ 2 ], [ 'стрип', 'стрипа', 'стрипов' ] ) );
 	}
 };
 
@@ -175,7 +163,7 @@ for ( i = 0; i < fix_notes.length; i++ )  {
 
 var boxnews = document.querySelector ( ".box.news .spoiler:last-of-type" );
 if ( boxnews != null ) { // запуск
-	boxnews.querySelector ( "input" ).click();
+	boxnews.querySelector ( "input" ).click ( );
 	boxnews.querySelectorAll ( "li > .li > .wikilink2" ).forEach ( e => e.parentNode.parentNode.style.display = "none" );
 }
 
@@ -205,7 +193,7 @@ if ( document.querySelector ( '.plugin_translation') != null ) {
 
 // ПЕРЕВОДЫ
 
-var lang = NS.split ( ':', 2 )[0],
+var lang = NS.split ( ':', 2 ) [ 0 ],
 	lines = {
 		'ady': [
 			'Гъэлъэгъон зэдзэкIар'
@@ -378,12 +366,12 @@ var lang = NS.split ( ':', 2 )[0],
 			'雾导航器',
 			'彩绘'
 		],
-		'default': []
+		'default': [ ]
 	},
-	line = [];
-lines.default = lines['en'];
+	line = [ ];
+lines.default = lines [ 'en' ];
 for ( i in lines.default ) {
-	line[i] = lines[lang][i] || lines.default[i]
+	line [ i ] = lines[lang] [ i ] || lines.default [ i ]
 };
 
 // Added by EvilCat at 1 Oct 2012
@@ -399,7 +387,7 @@ function readCookie ( name ) { // чтение куки
 	var nameEQ = name + '=',
 		ca = document.cookie.split ( ';' );
 	for ( i = 0; i < ca.length; i++ ) {
-		var c = ca[i];
+		var c = ca [ i ];
 		while ( c.charAt ( 0 ) == ' ' ) {
 			c = c.substring ( 1, c.length );
 		}
@@ -419,16 +407,16 @@ function setReveal ( set ) { // синхронизация переменных
 	( translate_mark == true ) ? eraseCookie ( folder_cookie ) : createCookie ( folder_cookie, false, 9999 );
 }
 
-function toggleReveal ( ) { // переключатель() галочки
+function toggleReveal ( ) { // переключатель ( ) галочки
 	setReveal ( !translate_mark );
 }
 
-function createRevealCheckbox ( ) { // создатель() галочки
+function createRevealCheckbox ( ) { // создатель ( ) галочки
 	var css		= document.createElement ( 'style' ),
 		obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
 		span		= document.createElement ( 'span' ), // создано пояснение
-		text		= document.createTextNode ( line[0] ), // создан текст пояснения
+		text		= document.createTextNode ( line [ 0 ] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	css.type = 'text/css';
@@ -448,14 +436,14 @@ function createRevealCheckbox ( ) { // создатель() галочки
 
 /* ГАЛОЧКА РАСШИРЕНИЯ КОМИКСОВ */
 function piczoom ( set ) {
-	var ctc = page.querySelectorAll ( ".page > * > .ct-container, .page > * > .fn-container, .page > * > * > .ct-container, .page > * > * > .fn-container" );
+	var ctc = page.querySelectorAll ( ".page .ct-container, .page .fn-container" );
 	for ( i = 0; i < ctc.length; i++ ) {
-		var img = ctc[i].querySelector ( "img" ); // !
-		var scale = pagewidth / img.width,
+		var img = ctc [ i ].querySelector ( "img" ), // !
+			scale = pagewidth / img.width,
 			margin = ( scale - 1 ) * img.height + 10;
-		ctc[i].style.transform = ( set == true ) ? "scale(" + scale + ")" : "";
-		ctc[i].style.marginBottom = ( set == true ) ? margin + "px" : "";
-		ctc[i].style.transformOrigin = ( set == true ) ? ( ( scale < 1 ) ? 'left top 0' : 'center top 0' ) : 'center top 0' ;
+		ctc [ i ].style.transform = ( set == true ) ? "scale(" + scale + ")" : "";
+		ctc [ i ].style.marginBottom = ( set == true ) ? margin + "px" : "";
+		ctc [ i ].style.transformOrigin = ( set == true ) ? ( ( scale < 1 ) ? 'left top 0' : 'center top 0' ) : 'center top 0' ;
 	}
 }
 
@@ -465,15 +453,15 @@ function setReveal1 ( set ) { // синхронизация переменных
 	piczoom ( zoom_mark );
 }
 
-function toggleReveal1 ( ) { // переключатель() галочки
+function toggleReveal1 ( ) { // переключатель ( ) галочки
 	setReveal1 ( !zoom_mark );
 }
 
-function createZoomCheckbox ( ) { // создатель() галочки
+function createZoomCheckbox ( ) { // создатель ( ) галочки
 	var obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
-		span		= document.createElement ( 'span' ), // создано пояснение
-		text		= document.createTextNode ( line[3] ), // создан текст пояснения
+		span	= document.createElement ( 'span' ), // создано пояснение
+		text	= document.createTextNode ( line [ 3 ] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	obj.className = 'optcheck zoom_check';
@@ -494,16 +482,16 @@ function setReveal2 ( set ) { // синхронизация переменных
 	( fognavi_mark == true ) ? eraseCookie ( folder_cookie2 ) : createCookie ( folder_cookie2, false, 9999 );
 }
 
-function toggleReveal2 ( ) { // переключатель() галочки
+function toggleReveal2 ( ) { // переключатель ( ) галочки
 	setReveal2 ( !fognavi_mark );
 }
 
-function createFogNaviCheckbox ( ) { // создатель() галочки
+function createFogNaviCheckbox ( ) { // создатель ( ) галочки
 	var css 	= document.createElement ( 'style' ),
 		obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
-		span		= document.createElement ( 'span' ), // создано пояснение
-		text		= document.createTextNode ( line[4] ), // создан текст пояснения
+		span	= document.createElement ( 'span' ), // создано пояснение
+		text	= document.createTextNode ( line [ 4 ] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	css.type = 'text/css';
@@ -527,16 +515,16 @@ function setReveal4 ( set ) { // синхронизация переменных
 	( color_mark == true ) ? eraseCookie ( folder_cookie4 ) : createCookie ( folder_cookie4, false, 9999 );
 }
 
-function toggleReveal4 ( ) { // переключатель() галочки
+function toggleReveal4 ( ) { // переключатель ( ) галочки
 	setReveal4 ( !color_mark );
 }
 
-function createColorCheckbox ( ) { // создатель() галочки
+function createColorCheckbox ( ) { // создатель ( ) галочки
 	var css 	= document.createElement ( 'style' ),
 		obj		= document.createElement ( 'label' ), // создан лейбл
 		check	= document.createElement ( 'input' ), // создан ввод
-		span		= document.createElement ( 'span' ), // создано пояснение
-		text		= document.createTextNode ( line[5] ), // создан текст пояснения
+		span	= document.createElement ( 'span' ), // создано пояснение
+		text	= document.createTextNode ( line [ 5 ] ), // создан текст пояснения
 		ref		= document.querySelector ( '#translabel' ); // поиск места вставки
 
 	css.type = 'text/css';
@@ -554,7 +542,7 @@ function createColorCheckbox ( ) { // создатель() галочки
 }
 
 /* ВВОДНАЯ */
-if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\/.*(\d\d+|vol\d+|ch\d+|cover\d*)/i ) != null ) { // запуск в комиксовых разделах сайта
+if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\/.*(\d\d+|vol\d+|ch\d+|cover\d*|pro*)/i ) != null ) { // запуск в комиксовых разделах сайта
 	if ( ( page.querySelectorAll ( ".fn-container, .ct-container" ).length > 0 ) || ( window.location.href.match ( /[\?&]do=edit/i ) != null ) ) { // при наличии переводов или в редакторе
 		/* ГАЛОЧКА ОТКЛЮЧЕНИЯ НАКЛЕЕК */
 		var folder_cookie = 'fnNotReveal_' + JSINFO.namespace,
@@ -610,7 +598,7 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 
 	/* плашка статуса перевода */
 	if (
-		page.querySelectorAll ( ".preview" ).length == 0
+		preview != null
 		&&
 		page.querySelectorAll ( ".vshare__none" ).length == 0
 		&&
@@ -624,9 +612,9 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 				page.querySelectorAll ( ".ct-container" ).length == 0
 				&&
 				(
-					media[0].src != undefined
+					media [ 0 ].src != undefined
 					&&
-					!media[0].src.match ( "webmoney" )
+					!media [ 0 ].src.match ( "webmoney" )
 				)
 			)
 		) {
@@ -640,7 +628,7 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 
 			span.style.fontSize = '1.3em';
 			span.className = 'fest';
-			span.innerHTML = ( fncon.length == 0 ? line[1] : line[2] );
+			span.innerHTML = ( fncon.length == 0 ? line [ 1 ] : line [ 2 ] );
 			note.appendChild ( span );
 		}
 	}
@@ -649,7 +637,7 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 	if ( window.location.href.match ( /\/(d|h)\d\d\d\d/i ) != null ) { // запуск в лентах
 		var band_title = Array.from ( page.querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ).reverse ( );
 		for ( i = 0; i < band_title.length - 1; i++ ) {
-			if ( band_title[i].innerHTML == band_title[i + 1].innerHTML ) band_title[i].innerHTML = '';
+			if ( band_title [ i ].innerHTML == band_title[ i + 1 ].innerHTML ) band_title [ i ].innerHTML = '';
 		}
 	}
 }
