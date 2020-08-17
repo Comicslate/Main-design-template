@@ -1,4 +1,4 @@
-// ver. 2020.08.17 14:22 GMT+10
+// ver. 2020.08.18 07:34 GMT+10
 //ВЕЗДЕ
 
 var i, j;
@@ -191,7 +191,7 @@ if ( document.querySelector ( '.plugin_translation') != null ) {
 
 if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\/.*(\d\d+|vol\d+|ch\d+|cover\d*|pro*)/i ) != null ) {
 	var page = document.querySelector ( ".page" );
-
+	
 	/* плашка статуса перевода */
 	var lang = NS.split ( ':', 2 ) [ 0 ],
 		line = [ ],
@@ -285,9 +285,9 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 	lines.default = lines [ 'en' ];
 	for ( i in lines.default ) { line [ i ] = lines[lang] [ i ] || lines.default [ i ] };
 	if (
-		page.querySelector ( ".preview" ) != null
+		page.querySelector ( ".preview" ) == null
 		&&
-		page.querySelectorAll ( ".vshare__none" ).length == 0
+		page.querySelector ( ".vshare__none" ) == null
 		&&
 		window.location.href.match ( /[\?&]rev=/i ) == null
 	) {
