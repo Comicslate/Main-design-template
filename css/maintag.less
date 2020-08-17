@@ -52,11 +52,10 @@
 	}
 }
 html {
-	font-size: 17.6px;
 	body {
 		background-color: #FFF;
 		color: Black;
-		font: 80% Verdana, sans-serif;
+		font: 14px Verdana, sans-serif;
 		margin: 0;
 		padding: 0;
 	}
@@ -582,65 +581,41 @@ html {
 		text-decoration: none;
 		&:hover {
 			color: __black__;
-			text-decoration: none;
 		}
 		&.urlextern {
 			color: __extern__;
-			text-decoration: none;
 			&:visited {
 				color: Purple;
-			}
-			&:hover {
-				text-decoration: underline;
 			}
 		}
 		&.interwiki {
 			color: __extern__;
-			text-decoration: none;
 			&:visited {
 				color: Purple;
-			}
-			&:hover {
-				text-decoration: underline;
 			}
 		}
 		&.media {
 			color: __extern__;
-			text-decoration: none;
-			&:hover {
-				color: __extern__;
-				text-decoration: underline;
-			}
 		}
 		&.mail {
 			background: transparent url(images/mail_icon.gif) 0 1px no-repeat;
 			color: __extern__;
 			padding: 1px 0 1px 16px;
-			text-decoration: none;
-			&:hover {
-				text-decoration: underline;
-			}
 		}
 		&.wikilink1 {
-			&:link,
-			&:visited {
-				color: __existing__;
-				text-decoration: none;
-			}
+			color: __existing__;
+			text-shadow: 0 -15px 2.5px transparent,0 15px 2.5px transparent;
 			&:hover {
-				color: __existing__;
-				text-decoration: underline;
+				text-shadow: 0 0 2.5px #0f0,0 0 2.5px #0f0;
+				transition: all .4s linear 0s;
 			}
 		}
 		&.wikilink2 {
-			&:link,
-			&:visited {
-				color: __missing__;
-				text-decoration: none;
-			}
+			color: __missing__;
+			text-shadow: 0 -5px 2.5px transparent,0 5px 2.5px transparent;
 			&:hover {
-				color: __missing__;
-				text-decoration: underline;
+				text-shadow: 0 0 1px #f00,0 0 1px #f00;
+				transition: all .4s linear 0s;
 			}
 		}
 		&.spell_error {
@@ -663,5 +638,9 @@ html {
 		&.mediaright {
 			margin: 0 0 0 1.5em;
 		}
+	}
+	audio {
+		padding: 5px 0;
+		vertical-align: middle;
 	}
 }
