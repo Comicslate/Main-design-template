@@ -4,11 +4,15 @@ form.changes {
 	}
 	ul {
 		line-height: 2em;
-		margin: 0;
+		margin: 0 0 .5em 0;
 		li {
 			list-style: none;
+			border-bottom: 1px solid #eee;
 			[dir=rtl] & {
 				margin-right: 0;
+			}
+			input {
+				vertical-align: middle;
 			}
 			a.diff_link {
 				img {
@@ -26,15 +30,14 @@ form.changes {
 				font-weight: bold;
 			}
 			.sizechange {
-				background-color: #ddd;
 				border-radius: .2em;
 				font-size: 80%;
 				padding: .1em .2em;
 				&.positive {
-					background-color: #cfc;;
+					border: 1px solid #cfc;
 				}
 				&.negative {
-					background-color: #fdd;
+					border: 1px solid #fdd;
 				}
 			}
 			&.minor {
