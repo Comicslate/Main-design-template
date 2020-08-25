@@ -1,30 +1,33 @@
-// ver. 2020.08.18 07:34 GMT+10
+// ver. 2020.08.25 23:35 GMT+10
 //ВЕЗДЕ
 
 var i, j;
 
 /* счётчик Яндекса */
 
-( function ( d, w, c ) {
-	( w [ c ] = w [ c ] || [ ] ).push ( function ( ) {
-		try {
-			w.yaCounter25500497 = new Ya.Metrika2 ( {
-				id: 25500497,
-				clickmap: true,
-				trackLinks: true,
-				accurateTrackBounce: true,
-				webvisor: true
-			} );
-		}
-		catch ( e ) { }
-	} );
-} ) ( document, window, "yandex_metrika_callbacks2" );
+if ( window.location.href.match ( /do=edit/i ) == null ) { // запуск не в редакторе
+	( function ( d, w, c ) {
+		( w [ c ] = w [ c ] || [ ] ).push ( function ( ) {
+			try {
+				w.yaCounter25500497 = new Ya.Metrika2 ( {
+					id: 25500497,
+					clickmap: true,
+					trackLinks: true,
+					accurateTrackBounce: true,
+					webvisor: true
+				} );
+			}
+			catch ( e ) { }
+		} );
+	} ) ( document, window, "yandex_metrika_callbacks2" )
+};
 
 /* истребитель двоеточий в адресах */
 
 if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = window.location.pathname.replace ( /:/g, '/' );
 
 /* замена энтити */
+
 function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 	var fontValue = parseFloat ( value.replace ( ",", "." ) );
 	if ( fontValue > 0 ) {
@@ -177,22 +180,21 @@ document.querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ).forEach (
 
 /* транслятор - красные ссылки ведут в редактор */
 
-if ( document.querySelector ( '.plugin_translation') != null ) {
-	if ( document.querySelector ( '.plugin_translation .wikilink1 ') != null ) {
-		document.querySelectorAll ( ".plugin_translation .wikilink2:not([href$='do=edit'])" ).forEach (
-			function (e) {
-				e.href += '?do=edit'
-			}
-		)
-	}
+if ( document.querySelector ( '.plugin_translation .wikilink2 ') != null ) {
+	document.querySelectorAll ( ".plugin_translation .wikilink2:not([href$='do=edit'])" ).forEach (
+		function (e) {
+			e.href += '?do=edit'
+		}
+	)
 };
 
 // В КОМИКСОВЫХ РАЗДЕЛАХ САЙТА
 
-if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\/.*(\d\d+|vol\d+|ch\d+|cover\d*|pro*)/i ) != null ) {
+if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\/.*(\d+|cover|pro)/i ) != null ) {
 	var page = document.querySelector ( ".page" );
-	
+
 	/* плашка статуса перевода */
+
 	var lang = NS.split ( ':', 2 ) [ 0 ],
 		line = [ ],
 		lines = {
@@ -321,7 +323,8 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 	}
 
 	/* в лентах - сокращение лишних титулов выпусков */
-	if ( window.location.href.match ( /\/(d|h)\d\d\d\d/i ) != null ) { // запуск в лентах
+
+	if ( window.location.href.match ( /\/(d|h)\d+/i ) != null ) {
 		var band_title = Array.from ( page.querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ).reverse ( );
 		for ( i = 0; i < band_title.length - 1; i++ ) {
 			if ( band_title [ i ].innerHTML == band_title[ i + 1 ].innerHTML ) band_title [ i ].innerHTML = '';
