@@ -11,6 +11,8 @@ echo '<!DOCTYPE html>
 		<script src = "//mc.yandex.ru/metrika/tag.js" async></script>
 		<script src = "//cdn.sendpulse.com/js/push/959988d16690251d333a6f140762013e_1.js" async></script>
 		' . tpl_favicon ( array ( 'favicon', 'mobile' ) );
+global $USERINFO, $JSINFO;
+$JSINFO [ 'user18' ] = array_search ( 'user18', $USERINFO [ 'grps' ] );
 tpl_metaheaders ( );
 /*echo '
 		<meta http-equiv = "Content-Security-Policy-Report-Only" content = "default-src *; script-src \'self\' \'unsafe-eval\' //cdnjs.cloudflare.com //cdn.sendpulse.com; style-src \'self\'; object-src \'self\' //youtube.com; img-src \'self\'; media-src \'self\' //youtube.com; frame-src \'self\'; font-src \'self\'; ">';*/
