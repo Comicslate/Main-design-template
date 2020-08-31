@@ -1,4 +1,4 @@
-// ver. 2020.08.25 23:35 GMT+10
+// ver. 2020.08.31 11:27 GMT+10
 //ВЕЗДЕ
 
 var i, j;
@@ -156,6 +156,13 @@ for ( i = 0; i < fix_notes.length; i++ )  {
 		var et = e.match ( / (0*(\d+)).*(стрипов)/ );
 		if ( et != null ) fix_notes [ i ].innerHTML = e.replace ( et [ 1 ], et [ 2 ] ).replace ( et [ 3 ], getNumEnding ( et [ 2 ], [ 'стрип', 'стрипа', 'стрипов' ] ) );
 	}
+};
+
+if ( JSINFO [ 'user18' ] == 1 ) {
+	var noteadult = document.querySelectorAll ( '.noteadult' );
+	for ( i = 0; i < noteadult.length; i++ )  {
+		noteadult [ i ].innerHTML = noteadult [ i ].innerHTML.replace ( /\. .+/i, "." )
+	};
 };
 
 /* архив новостей - раскрыть последний спойлер, скрыть "красные" месяцы */
