@@ -1,4 +1,4 @@
-// ver. 2020.08.31 11:27 GMT+10
+// ver. 2020.09.02 07:52 GMT+10
 //ВЕЗДЕ
 
 var i, j;
@@ -158,7 +158,7 @@ for ( i = 0; i < fix_notes.length; i++ )  {
 	}
 };
 
-if ( JSINFO [ 'user18' ] == 1 ) {
+if ( typeof ( JSINFO [ 'user18' ] ) == "number" ) {
 	var noteadult = document.querySelectorAll ( '.noteadult' );
 	for ( i = 0; i < noteadult.length; i++ )  {
 		noteadult [ i ].innerHTML = noteadult [ i ].innerHTML.replace ( /\. .+/i, "." )
