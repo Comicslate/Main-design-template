@@ -162,6 +162,8 @@ html {
 		&.notify {
 			font-size: 110%;
 			margin: 0 35px 0 5px;
+			position: relative;
+			z-index: 9999;
 		}
 		&.nothing {
 			margin: 2em;
@@ -439,6 +441,9 @@ html {
 		list-style-type: square;
 		margin: 0 0 0.5em 1.5em;
 		padding: 0;
+	}
+	ul + ul {
+		margin-top: 1.5em;
 	}
 	ul.tabs {
 		margin: 0;
