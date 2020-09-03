@@ -1,6 +1,6 @@
-.search_hit {
-	color: @ini_text;
+.search_hit { /* общесайтовый, поэтому тут */
 	background-color: __highlight__;
+	color: @ini_text;
 }
 div.nothing {
 	margin-bottom: 1.4em;
@@ -33,39 +33,36 @@ div.nothing {
 			padding: 0 5px;
 		}
 		.advancedOptions {
-			padding: .7em 120px .3em 120px;
-			> div {
+			padding: .7em 0 .3em 0;
+			div.toggle {
 				display: inline-block;
 				position: relative;
 				margin: 0 0.5em;
-			}
-			div.toggle {
 				div.current {
 					cursor: pointer;
-					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
-
+					white-space: nowrap;
 					&::after {
+						color: @ini_text_alt;
 						content: '▼';
 						font-size: smaller;
-						color: @ini_text_alt;
 					}
 				}
 				div.changed {
 					font-weight: bold;
 				}
 				ul {
-					display: none;
-					position: absolute;
-					border: 1px solid @ini_border;
 					background-color: @ini_background;
-					padding: 0.25em 0.5em;
-					text-align: left;
-					min-width: 10em;
-					max-width: 15em;
+					border: 1px solid @ini_border;
+					display: none;
 					max-height: 50vh;
+					max-width: 15em;
+					min-width: 10em;
 					overflow: auto;
+					padding: 0.25em 0.5em;
+					position: absolute;
+					text-align: left;
 					z-index: 100;
 					[dir=rtl] & {
 						text-align: right;
@@ -96,67 +93,62 @@ div.search_quickresult {
 		padding: 0;
 		li {
 			float: left;
-			width: 12em;
 			margin: 0 1.5em;
+			width: 12em;
 			[dir=rtl] & {
 				float: right;
 			}
 		}
 	}
 }
-dl.search_results {
-	margin-bottom: 1.2em;
-	dt {
-		font-weight: normal;
-		margin-bottom: .2em;
-	}
-	dd.meta {
-		margin: 0 0 .2em 0;
-	}
-	dd.snippet {
-		color: @ini_text_alt;
-		background-color: inherit;
-		margin: 0 0 1.2em 0;
-		strong.search_hit {
+div.search_fulltextresult {
+	dl.search_results {
+		dt {
 			font-weight: normal;
+			margin-bottom: .2em;
 		}
-		.search_sep {
-			color: @ini_text;
+		dd.meta {
+			margin: 0 0 .2em 0;
+		}
+		dd.snippet {
 			background-color: inherit;
+			color: @ini_text_alt;
+			margin: 0 0 1.2em 0;
+			.search_sep {
+				background-color: inherit;
+				color: @ini_text;
+			}
 		}
 	}
 }
-form.search {
-	div.no {
-		position: relative;
-	}
-	div.ajax_qsearch {
-		position: absolute;
-		top: 0;
-		left: -13.5em; /* -( width of #qsearch__in + padding of .ajax_qsearch + a bit more ) */
-		width: 12em;
-		padding: 0.5em;
-		font-size: .9em;
-		z-index: 20;
-		text-align: left;
-		display: none;
-		strong {
-			display: block;
-			margin-bottom: .3em;
-		}
-		ul {
-			margin: 0 !important;
-			padding: 0 !important;
-			li {
-				margin: 0;
-				padding: 0;
-				display: block !important;
+
+.searcher {
+	display: inline;
+	form#dw__search {
+		div.no {
+			position: relative;
+			input#qsearch__in {
+				font-size: 120% !important;
+				margin: -7px 0 0 10px;
+				max-width: 200px;
+				min-width: 50px;
+				width: 20%;
+				[dir=rtl] & {
+					margin: -7px 10px 0 0;
+				}
 			}
-		}
-		[dir=rtl] & {
-			left: auto;
-			right: -13.5em;
-			text-align: right;
+			button {
+				border-radius: 5px;
+				font-size: 13px;
+				margin: 3px 0 0 4px;
+				padding: 1px 5px;
+				[dir=rtl] & {
+					margin: 3px 4px 0 0;
+				}
+			}
+			div#qsearch__out { /* всплывающие результаты; вырубить нахрен, неуправляемые background и частично position */
+				display: none !important;
+			}
 		}
 	}
 }
