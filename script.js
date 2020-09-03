@@ -1,4 +1,4 @@
-// ver. 2020.09.02 07:52 GMT+10
+// ver. 2020.09.03 23:06 GMT+10
 //ВЕЗДЕ
 
 var i, j;
@@ -93,20 +93,6 @@ if (
 			if ( e.href != undefined ) e.innerHTML = e.href.substr ( 23, 4 ).split( '/' ) [ 0 ].toUpperCase ( ) + ' / ' + e.innerHTML
 		}
 	)
-};
-
-/* на главной - выровнять первые 2 бокса */
-
-if ( window.location.href.match ( /\/start/i ) ) { // запуск на главной
-	var box = document.querySelectorAll ( '.level1 > .box' );
-	if ( box.length >= 2 ) {
-		var left = box [ 0 ],
-			right = box [ 1 ],
-			left_h = Math.max ( 600, left.offsetHeight ),
-			right_h = Math.max ( 600, right.offsetHeight );
-		right.style.cssText += " height: " + Math.min ( right_h, left_h ) + "px; margin: 0;";
-		left.style.cssText += " height: " + Math.min ( right_h, left_h ) + "px; margin: 0;";
-	};
 };
 
 /* меню - пакование в колонки */
