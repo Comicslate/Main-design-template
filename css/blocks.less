@@ -125,27 +125,6 @@
 				}
 			}
 		}
-		.searcher {
-			display: inline;
-			input#qsearch__in {
-				font-size: 120% !important;
-				margin: -7px 0 0 10px;
-				max-width: 200px;
-				min-width: 50px;
-				width: 20%;
-				[dir=rtl] & {
-					margin: -7px 10px 0 0;
-				}
-			}
-			button {
-				border-radius: 5px;
-				font-size: 13px;
-				margin: 4px 0 0 4px;
-				[dir=rtl] & {
-					margin: 4px 4px 0 0;
-				}
-			}
-		}
 	}
 	nav.translation {
 		min-height: 28px;
@@ -512,43 +491,8 @@
 			font-size: 8pt;
 			padding: 4px 10px;
 		}
-		.apps {
-			display: grid;
-			float: left;
-			a {
-				left: 30px;
-				position: relative;
-				z-index: 1;
-				img {
-					height: 31px;
-				}
-			}
-		}
-		.count {
-			float: right;
-			position: relative;
-			right: 30px;
-			z-index: 1;
-			a {
-				display: block;
-				width: 105px; /* центрование социал-кнопок */
-				.ym-advanced-informer {
-					border: 0;
-					height: 31px;
-					margin-top: 4px;
-					width: 88px;
-				}
-			}
-			noscript {
-				img {
-					left: -9999px;
-					position: absolute;
-				}
-			}
-		}
 		.social {
-/*			position: relative;
-			right: 75px;*/
+			padding-top: .3em;
 			text-align: center;
 			a {
 				display: inline-block;
@@ -561,12 +505,18 @@
 					position: relative;
 					transform: scale(1.15);
 					width: 29px;
+					@media (max-width: 500px) {
+						margin: 0 2px;
+					}
 				}
 				&:not(.rss) {
 					background: url( images/social.png );
 					height: 32px;
 					margin: 0 2px;
 					width: 32px;
+					@media (max-width: 500px) {
+						margin: 0;
+					}
 				}
 				&:nth-of-type(1),
 				&.patreon {
@@ -616,11 +566,43 @@
 				}
 			}
 		}
+		.apps {
+			float: left;
+			left: 30px;
+			position: relative;
+			z-index: 1;
+			img {
+				height: 31px;
+			}
+		}
+		.count {
+			bottom: 4px;
+			float: right;
+			position: relative;
+			right: 30px;
+			text-align: right;
+			z-index: 1;
+			a {
+				display: block;
+				width: 105px; /* центрование социал-кнопок */
+				.ym-advanced-informer {
+					border: 0;
+					height: 31px;
+					margin-top: 4px;
+					width: 88px;
+				}
+			}
+			noscript {
+				img {
+					left: -9999px;
+					position: absolute;
+				}
+			}
+		}
 		.pageinfo,
 		.user {
 			clear: both;
 			font-size: .8em;
-			padding-top: .2em;
 			text-align: center;
 		}
 	}
