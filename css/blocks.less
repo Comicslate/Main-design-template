@@ -1,3 +1,28 @@
+@keyframes rot {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes smooth1 {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.1;
+	}
+}
+@keyframes smooth2 {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.5;
+	}
+}
+
 .dokuwiki {
 	margin: 0;
 	width: 100%;
@@ -445,7 +470,7 @@
 				padding-bottom: 2.5px;
 			}
 			li.edit svg {
-				animation: 1s linear 3s infinite alternate running smooth;
+				animation: 1s linear 3s infinite alternate running smooth1;
 			}
 		}
 		[dir=rtl] & {
