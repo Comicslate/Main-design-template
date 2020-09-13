@@ -1,32 +1,3 @@
-@keyframes blink {
-	0% {
-		opacity: 0;
-	}
-	1% {
-		opacity: 1;
-	}
-	59% {
-		opacity: 1;
-	}
-	60% {
-		opacity: 0;
-	}
-	62% {
-		opacity: 1;
-	}
-	69% {
-		opacity: 1;
-	}
-	70% {
-		opacity: 0;
-	}
-	72% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 1;
-	}
-}
 html {
 	body {
 		background-color: #FFF;
@@ -140,6 +111,9 @@ html {
 			margin: 0 35px 0 5px;
 			position: relative;
 			z-index: 9999;
+			* {
+				vertical-align: middle;
+			}
 		}
 		&.nothing {
 			margin: 2em;
