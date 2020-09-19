@@ -10,7 +10,7 @@ if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) ) echo '<script charset="UTF-8"
 echo tpl_favicon ( array ( 'favicon', 'mobile' ) );
 tpl_metaheaders ( );
 /*echo '<meta http-equiv = "Content-Security-Policy-Report-Only" content = "default-src *; script-src \'self\' \'unsafe-eval\' //cdnjs.cloudflare.com //cdn.sendpulse.com; style-src \'self\'; object-src \'self\' //youtube.com; img-src \'self\'; media-src \'self\' //youtube.com; frame-src \'self\'; font-src \'self\'; ">';*/
-echo '</head>';
+echo '<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua&display=swap" rel="stylesheet"></head>';
 
 echo '<body><div class = "dokuwiki lang-' . $conf [ "lang" ] . '">';
 
