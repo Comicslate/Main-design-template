@@ -6,11 +6,9 @@ echo '<head><meta charset = "utf-8" />';
 echo '<title>'; tpl_pagetitle ( ); echo ' [' . strip_tags ( $conf [ "title" ] ) . ']</title>';
 echo '<link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" /><meta name = "viewport" content = "width = device-width, initial-scale = 1" />';
 echo '<script src = "//mc.yandex.ru/metrika/tag.js" async></script><script src = "//cdn.sendpulse.com/js/push/959988d16690251d333a6f140762013e_1.js" async></script>';
-if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) ) echo '<script charset="UTF-8" src="/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
+if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) ) echo '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
 echo tpl_favicon ( array ( 'favicon', 'mobile' ) );
 tpl_metaheaders ( );
-/*echo '<meta http-equiv = "Content-Security-Policy-Report-Only" content = "default-src *; script-src \'self\' \'unsafe-eval\' //cdnjs.cloudflare.com //cdn.sendpulse.com; style-src \'self\'; object-src \'self\' //youtube.com; img-src \'self\'; media-src \'self\' //youtube.com; frame-src \'self\'; font-src \'self\'; ">';*/
-
 $gfonts = array (
 	'Suez+One',
 	'Jua',
@@ -19,14 +17,14 @@ $gfonts = array (
 	'Inknut+Antiqua'
 );
 for ( $i = 0; $i <= count ( $gfonts ) - 1; $i++ ) {
-	echo '<link href="https://fonts.googleapis.com/css2?family=' . $gfonts [ $i ] . '&amp;display=swap" rel="stylesheet">';
+	echo '<link href = "https://fonts.googleapis.com/css2?family=' . $gfonts [ $i ] . '&amp;display=swap" rel = "stylesheet">';
 };
 
-echo '<body><div class = "dokuwiki lang-' . $conf [ "lang" ] . '">';
+echo '</head><body><div class = "dokuwiki lang-' . $conf [ "lang" ] . '">';
 
 // HEADER
 $rlogo = time ( ) / 600 % 9;
-echo '<header><div class="newlogo logo' . $rlogo . '"></div><div class = "menu logo' . $rlogo . '">';
+echo '<header><div class = "newlogo logo' . $rlogo . '"></div><div class = "menu logo' . $rlogo . '">';
 $ilinks = array (
 	array ( '/'. $conf [ "lang" ] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
 	array ( '/'. $conf [ "lang" ] . '/menu',		tpl_getLang ( 'menu' ),		'_self' ),
@@ -100,4 +98,4 @@ if ( !empty ( $_SERVER['REMOTE_USER'] ) ) {
 echo '</footer>';
 
 // END
-echo '<!--<div id = "yandex_rtb"></div>--></div><div class="no">'; tpl_indexerWebBug ( ); echo '</div></body></html>'; ?>
+echo '<!--<div id = "yandex_rtb"></div>--></div><div class = "no">'; tpl_indexerWebBug ( ); echo '</div></body></html>'; ?>
