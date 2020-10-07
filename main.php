@@ -2,22 +2,21 @@
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 echo '<!DOCTYPE html><html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">';
 
-echo '<head><meta charset = "utf-8" />';
-echo '<title>'; tpl_pagetitle ( ); echo ' [' . strip_tags ( $conf [ "title" ] ) . ']</title>';
-echo '<link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" /><meta name = "viewport" content = "width = device-width, initial-scale = 1" />';
-echo '<script src = "//mc.yandex.ru/metrika/tag.js" async></script><script src = "//cdn.sendpulse.com/js/push/959988d16690251d333a6f140762013e_1.js" async></script>';
-if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) ) echo '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
+echo '<head><meta charset = "utf-8" /><title>'; tpl_pagetitle ( ); echo ' [' . strip_tags ( $conf [ "title" ] ) . ']</title><link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" /><meta name = "viewport" content = "width = device-width, initial-scale = 1" /><script src = "//mc.yandex.ru/metrika/tag.js" async></script><script src = "//cdn.sendpulse.com/js/push/959988d16690251d333a6f140762013e_1.js" async></script>';
+if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) )
+	echo '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
 echo tpl_favicon ( array ( 'favicon', 'mobile' ) );
 tpl_metaheaders ( );
 $gfonts = array (
-	'Suez+One',
+	'Frank+Ruhl+Libre:wght@500',
 	'Jua',
 	'Kosugi+Maru',
 	'ZCOOL+KuaiLe',
 	'Inknut+Antiqua'
 );
 for ( $i = 0; $i <= count ( $gfonts ) - 1; $i++ ) {
-	echo '<link href = "https://fonts.googleapis.com/css2?family=' . $gfonts [ $i ] . '&amp;display=swap" rel = "stylesheet">';
+	echo '<link href = "https://fonts.googleapis.com/css2?family=' . $gfonts [ $i ] . '&amp;display=swap" rel = "stylesheet">
+';
 };
 
 echo '</head><body><div class = "dokuwiki lang-' . $conf [ "lang" ] . '">';
@@ -46,7 +45,8 @@ echo '</div></header>';
 // TRANSLATION
 echo '<nav class = "translation">';
 $translation = plugin_load ( 'helper', 'translation' );
-if ( $translation ) echo $translation -> showTranslations ( );
+if ( $translation )
+	echo $translation -> showTranslations ( );
 echo '</nav>';
 
 // CHECKBOXES
@@ -88,7 +88,8 @@ for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
 	echo '<a href = "' . $socbut [ $i ] [ 0 ] . '" class = "media ' . $socbut [ $i ] [ 2 ] . '" title = "' . $socbut [ $i ] [ 1 ] . '" target = "_blank"></a>';
 };
 echo '</div>'. $apps;
-if ( $ACT != 'edit' ) echo '<div class = "count"><a href = "//metrika.yandex.ru/stat/?id=25500497&amp;from=informer" target = "_blank" rel = "nofollow"><img src = "//informer.yandex.ru/informer/25500497/3_0_7BC9F7FF_5BA9D7FF_0_pageviews" alt = "Яндекс.Метрика" title = "Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class = "ym-advanced-informer" data-cid = "25500497" data-lang = "ru" /></a><noscript><div><img src = "//mc.yandex.ru/watch/25500497" alt = "" /></div></noscript></div>';
+if ( $ACT != 'edit' )
+	echo '<div class = "count"><a href = "//metrika.yandex.ru/stat/?id=25500497&amp;from=informer" target = "_blank" rel = "nofollow"><img src = "//informer.yandex.ru/informer/25500497/3_0_7BC9F7FF_5BA9D7FF_0_pageviews" alt = "Яндекс.Метрика" title = "Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class = "ym-advanced-informer" data-cid = "25500497" data-lang = "ru" /></a><noscript><div><img src = "//mc.yandex.ru/watch/25500497" alt = "" /></div></noscript></div>';
 if ( $INFO [ 'ismanager' ] ) {
 	echo '<div class = "pageinfo">'; tpl_pageinfo ( ); echo '</div>';
 };
