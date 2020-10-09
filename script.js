@@ -1,4 +1,5 @@
-// ver. 2020.09.07 03:48 GMT+10
+console.log ( 'DokuScripts ver. 2020.10.10 00:23 GMT+10' );
+
 //ВЕЗДЕ
 
 var i, j;
@@ -181,9 +182,9 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 
 	/* плашка статуса перевода */
 
-	var lang = NS.split ( ':', 2 ) [ 0 ],
-		line = [ ],
-		lines = {
+	var lang = JSINFO [ 'lang' ],
+		tr_stat = [ ],
+		tr_stats = {
 			'be': [
 				'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=be" target=_blank>CoTAN</a>',
 				'У гэтай паласе састарэлы сінтаксіс AIMG<br>Вы можаце выправіць гэта, <a href="?do=edit">перарабіўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=be" target=_blank>CoTAN</a>',
@@ -260,6 +261,8 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 				'В этом выпуске нет наклеек!<br>Вы можете исправить это, <a href="?do=edit">отредактировав страницу</a> с помощью <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=ru" target=_blank>CoTAN</a>',
 				'В этом выпуске устаревший синтаксис AIMG<br>Вы можете исправить это, <a href="?do=edit">переделав страницу</a> с помощью <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=ru" target=_blank>CoTAN</a>',
 			],
+			'sib': [ ],
+			'sjn': [ ],
 			'uk': [
 				'У цій смузі немає жодних наклейок!<br>Ви можете виправити це, <a href="?do=edit">відредагувавши цю сторінку</a> за допомогою <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=uk" target=_blank>CoTAN</a>',
 				'Ця смуга має застарілий синтаксис AIMG<br>Ви можете виправити це, переробивши цю сторінку за допомогою <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=uk" target=_blank>CoTAN</a>',
@@ -270,8 +273,10 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 			],
 			'default': [ ]
 		};
-	lines.default = lines [ 'en' ];
-	for ( i in lines.default ) { line [ i ] = lines[lang] [ i ] || lines.default [ i ] };
+	tr_stats.default = tr_stats [ 'en' ];
+	tr_stats [ 'sib' ] = tr_stats [ 'ru' ];
+	tr_stats [ 'sjn' ] = tr_stats [ 'en' ];
+	for ( i in tr_stats.default ) { tr_stat [ i ] = tr_stats [ lang ] [ i ] || tr_stats.default [ i ] };
 	if (
 		page.querySelector ( ".preview" ) == null
 		&&
@@ -303,7 +308,7 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 
 			span.style.fontSize = '1.3em';
 			span.className = 'fest';
-			span.innerHTML = ( fncon.length == 0 ? line [ 0 ] : line [ 1 ] );
+			span.innerHTML = ( fncon.length == 0 ? tr_stat [ 0 ] : tr_stat [ 1 ] );
 			note.appendChild ( span );
 		}
 	}
