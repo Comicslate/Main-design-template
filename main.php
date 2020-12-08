@@ -2,9 +2,10 @@
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 echo '<!DOCTYPE html><html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">';
 
-echo '<head><meta charset = "utf-8" /><title>'; tpl_pagetitle ( ); echo ' [' . strip_tags ( $conf [ "title" ] ) . ']</title><link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" /><meta name = "viewport" content = "width = device-width, initial-scale = 1" /><script src = "//mc.yandex.ru/metrika/tag.js" async></script><script src = "//cdn.sendpulse.com/js/push/959988d16690251d333a6f140762013e_1.js" async></script>';
-if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) )
+echo '<head><meta charset = "utf-8" /><title>'; tpl_pagetitle ( ); echo ' [' . strip_tags ( $conf [ "title" ] ) . ']</title><link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" /><meta name = "viewport" content = "width = device-width, initial-scale = 1" /><script src = "//mc.yandex.ru/metrika/tag.js" async></script>';
+if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) ) {
 	echo '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
+}
 echo tpl_favicon ( array ( 'favicon', 'mobile' ) );
 tpl_metaheaders ( );
 $gfonts = array (
