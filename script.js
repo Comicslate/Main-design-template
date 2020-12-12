@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2020.10.10 00:23 GMT+10' );
+console.log ( 'DokuScripts ver. 2020.12.12 22:00 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -138,10 +138,13 @@ function getNumEnding ( num, ends ) {
 };
 var fix_notes = document.querySelectorAll ( ".page .note" );
 for ( i = 0; i < fix_notes.length; i++ )  {
-	var e = fix_notes [ i ].innerHTML;
-	if ( e != null ) {
-		var et = e.match ( / (0*(\d+)).*(стрипов)/ );
-		if ( et != null ) fix_notes [ i ].innerHTML = e.replace ( et [ 1 ], et [ 2 ] ).replace ( et [ 3 ], getNumEnding ( et [ 2 ], [ 'стрип', 'стрипа', 'стрипов' ] ) );
+	var fix_note_text = fix_notes [ i ].innerHTML,
+		fix_note_match = fix_note_text.match ( / 0*\d+.{0,3}стрипов/g );
+	if ( fix_note_match != null ) {
+		for ( j = 0; j < fix_note_match.length; j++ )  {
+			var fix_note_repl = fix_note_match [ j ].match ( / (0*(\d+)).*(стрипов)/ );
+			fix_notes [ i ].innerHTML = fix_note_text.replace ( fix_note_repl [ 1 ], fix_note_repl [ 2 ] ).replace ( fix_note_repl [ 3 ], getNumEnding ( fix_note_repl [ 2 ], [ 'стрип', 'стрипа', 'стрипов' ] ) );
+		}
 	}
 };
 
@@ -186,90 +189,90 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 		tr_stat = [ ],
 		tr_stats = {
 			'be': [
-				'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=be" target=_blank>CoTAN</a>',
-				'У гэтай паласе састарэлы сінтаксіс AIMG<br>Вы можаце выправіць гэта, <a href="?do=edit">перарабіўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=be" target=_blank>CoTAN</a>',
+				'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=be" target=_blank>CoTAN</a>',
+				'У гэтай паласе састарэлы сінтаксіс AIMG<br>Вы можаце выправіць гэта, <a href="?do=edit">перарабіўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=be" target=_blank>CoTAN</a>',
 			],
 			'bg': [
-				'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=bg" target=_blank>CoTAN</a>',
-				'Тази лента има остарял синтаксис на AIMG<br>Можете да поправите това, като <a href="?do=edit">преработите страницата</a> с <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=bg" target=_blank>CoTAN</a>',
+				'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=bg" target=_blank>CoTAN</a>',
+				'Тази лента има остарял синтаксис на AIMG<br>Можете да поправите това, като <a href="?do=edit">преработите страницата</a> с <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=bg" target=_blank>CoTAN</a>',
 			],
 			'da': [
-				'Der er ingen klistermærker i denne stribe!<br>Du kan rette dette ved at <a href="?do=edit">redigere siden</a> med <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=da" target=_blank>CoTAN</a>',
-				'Denne stribe har forældet AIMG syntaks<br>Du kan løse dette ved at <a href="?do=edit">remake siden</a> med <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=da" target=_blank>CoTAN</a>',
+				'Der er ingen klistermærker i denne stribe!<br>Du kan rette dette ved at <a href="?do=edit">redigere siden</a> med <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=da" target=_blank>CoTAN</a>',
+				'Denne stribe har forældet AIMG syntaks<br>Du kan løse dette ved at <a href="?do=edit">remake siden</a> med <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=da" target=_blank>CoTAN</a>',
 			],
 			'de': [
-				'In diesem Streifen befinden sich keine Aufkleber!<br>Sie können dies beheben, indem Sie die Seite mit <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=de" target=_blank>CoTAN</a> <a href="?do=edit">bearbeiten</a>',
-				'Dieser Strip hat eine veraltete AIMG-Syntax<br>Sie können dies beheben, indem Sie die Seite mit <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=de" target=_blank>CoTAN</a> <a href="?do=edit">überarbeiten</a>',
+				'In diesem Streifen befinden sich keine Aufkleber!<br>Sie können dies beheben, indem Sie die Seite mit <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=de" target=_blank>CoTAN</a> <a href="?do=edit">bearbeiten</a>',
+				'Dieser Strip hat eine veraltete AIMG-Syntax<br>Sie können dies beheben, indem Sie die Seite mit <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=de" target=_blank>CoTAN</a> <a href="?do=edit">überarbeiten</a>',
 			],
 			'el': [
-				'Δεν υπάρχουν αυτοκόλλητα στην ταινία!<br>Μπορείτε να διορθώσετε αυτό με την επεξεργασία της σελίδας με το <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=el" target=_blank>CoTAN</a>',
-				'Αυτή η λωρίδα έχει ξεπερασμένη σύνταξη AIMG<br>Μπορείτε να το διορθώσετε επανατοποθετώντας τη σελίδα με το <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=el" target=_blank>CoTAN</a>',
+				'Δεν υπάρχουν αυτοκόλλητα στην ταινία!<br>Μπορείτε να διορθώσετε αυτό με την επεξεργασία της σελίδας με το <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=el" target=_blank>CoTAN</a>',
+				'Αυτή η λωρίδα έχει ξεπερασμένη σύνταξη AIMG<br>Μπορείτε να το διορθώσετε επανατοποθετώντας τη σελίδα με το <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=el" target=_blank>CoTAN</a>',
 			],
 			'en': [
-				'There are no stickers on this strip!<br>You can fix this by <a href="?do=edit">editing this page</a> with <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=en" target=_blank>CoTAN</a>',
-				'This strip has outdated AIMG syntax<br>You can fix this by <a href="?do=edit">remaking this page</a> with <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=en" target=_blank>CoTAN</a>',
+				'There are no stickers on this strip!<br>You can fix this by <a href="?do=edit">editing this page</a> with <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=en" target=_blank>CoTAN</a>',
+				'This strip has outdated AIMG syntax<br>You can fix this by <a href="?do=edit">remaking this page</a> with <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=en" target=_blank>CoTAN</a>',
 			],
 			'eo': [
-				'Ne estas glumarkoj en ĉi tiu strio!<br>Vi povas solvi ĉi tion <a href="?do=edit">redaktante la paĝon</a> kun <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=eo" target=_blank>CoTAN</a>',
-				'Ĉi tiu strio havas malaktualan sintakson de AIMG<br>Vi povas solvi ĉi tion <a href="?do=edit">refarante la paĝon</a> kun <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=eo" target=_blank>CoTAN</a>',
+				'Ne estas glumarkoj en ĉi tiu strio!<br>Vi povas solvi ĉi tion <a href="?do=edit">redaktante la paĝon</a> kun <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=eo" target=_blank>CoTAN</a>',
+				'Ĉi tiu strio havas malaktualan sintakson de AIMG<br>Vi povas solvi ĉi tion <a href="?do=edit">refarante la paĝon</a> kun <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=eo" target=_blank>CoTAN</a>',
 			],
 			'es': [
-				'¡No hay pegatinas en esta tira!<br>Puedes arreglar esto <a href="?do=edit">editando esta página</a> con <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=es" target=_blank>CoTAN</a>',
-				'Esta tira ha caducado la sintaxis de AIMG<br>Puedes arreglar esto <a href="?do=edit">rehaciendo esta página</a> con <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=es" target=_blank>CoTAN</a>',
+				'¡No hay pegatinas en esta tira!<br>Puedes arreglar esto <a href="?do=edit">editando esta página</a> con <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=es" target=_blank>CoTAN</a>',
+				'Esta tira ha caducado la sintaxis de AIMG<br>Puedes arreglar esto <a href="?do=edit">rehaciendo esta página</a> con <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=es" target=_blank>CoTAN</a>',
 			],
 			'fi': [
-				'Tässä nauhassa ei ole tarroja!<br>Voit korjata tämän <a href="?do=edit">muokkaamalla sivua</a> <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=fi" target=_blank>CoTANin</a> avulla',
-				'Tällä nauhalla on vanhentunut AIMG-syntaksi<br>Voit korjata tämän <a href="?do=edit">korjaamalla sivun</a> <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=fi" target=_blank>CoTANin</a> avulla',
+				'Tässä nauhassa ei ole tarroja!<br>Voit korjata tämän <a href="?do=edit">muokkaamalla sivua</a> <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=fi" target=_blank>CoTANin</a> avulla',
+				'Tällä nauhalla on vanhentunut AIMG-syntaksi<br>Voit korjata tämän <a href="?do=edit">korjaamalla sivun</a> <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=fi" target=_blank>CoTANin</a> avulla',
 			],
 			'fr': [
-				'Il n\'y a pas d\'autocollants dans cette bande!<br>Vous pouvez résoudre ce problème en <a href="?do=edit">modifiant cette page</a> avec <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=fr" target=_blank>CoTAN</a>',
-				'Cette bande a une syntaxe AIMG obsolète<br>Vous pouvez résoudre ce problème en <a href="?do=edit">refaisant cette page</a> avec <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=fr" target=_blank>CoTAN</a>',
+				'Il n\'y a pas d\'autocollants dans cette bande!<br>Vous pouvez résoudre ce problème en <a href="?do=edit">modifiant cette page</a> avec <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=fr" target=_blank>CoTAN</a>',
+				'Cette bande a une syntaxe AIMG obsolète<br>Vous pouvez résoudre ce problème en <a href="?do=edit">refaisant cette page</a> avec <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=fr" target=_blank>CoTAN</a>',
 			],
 			'he': [
-				'אין מדבקות ברצועה זו!<br>באפשרותך לתקן זאת על-ידי <a href="?do=edit">עריכת הדף</a> באמצעות <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=he" target=_blank>CoTAN</a>',
-				'ברצועה זו יש תחביר AIMG מיושן<br>אתה יכול לתקן את זה על ידי <a href="?do=edit"> עיבוד מחדש של דף זה </a> באמצעות <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=he" target=_blank>CoTAN</a>',
+				'אין מדבקות ברצועה זו!<br>באפשרותך לתקן זאת על-ידי <a href="?do=edit">עריכת הדף</a> באמצעות <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=he" target=_blank>CoTAN</a>',
+				'ברצועה זו יש תחביר AIMG מיושן<br>אתה יכול לתקן את זה על ידי <a href="?do=edit"> עיבוד מחדש של דף זה </a> באמצעות <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=he" target=_blank>CoTAN</a>',
 			],
 			'hi': [
-				'इस पट्टी में कोई स्टिकर नहीं हैं!<br>आप <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को एडिट</a> करके इसे ठीक कर सकते हैं',
-				'इस स्ट्रिप में AIMG सिंटैक्स पुराना है<br>आप <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को रीमेक</a> करके इसे ठीक कर सकते हैं',
+				'इस पट्टी में कोई स्टिकर नहीं हैं!<br>आप <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को एडिट</a> करके इसे ठीक कर सकते हैं',
+				'इस स्ट्रिप में AIMG सिंटैक्स पुराना है<br>आप <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को रीमेक</a> करके इसे ठीक कर सकते हैं',
 			],
 			'id': [
-				'Tidak ada stiker di strip ini!<br>Anda dapat memperbaikinya dengan <a href="?do=edit">mengedit halaman</a> dengan <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=id" target=_blank>CoTAN</a>',
-				'Strip ini telah usang sintaks AIMG<br>Anda dapat memperbaikinya dengan <a href="?do=edit">membuat ulang halaman</a> dengan <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=id" target=_blank>CoTAN</a>',
+				'Tidak ada stiker di strip ini!<br>Anda dapat memperbaikinya dengan <a href="?do=edit">mengedit halaman</a> dengan <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=id" target=_blank>CoTAN</a>',
+				'Strip ini telah usang sintaks AIMG<br>Anda dapat memperbaikinya dengan <a href="?do=edit">membuat ulang halaman</a> dengan <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=id" target=_blank>CoTAN</a>',
 			],
 			'it': [
-				'Non ci sono adesivi in questa striscia!<br>Puoi sistemarlo <a href="?do=edit">modificando questa pagina</a> con <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=it" target=_blank>CoTAN</a>',
-				'Questa striscia ha una sintassi AIMG obsoleta<br>Puoi sistemarlo <a href="?do=edit">rifacendo questa pagina</a> con <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=it" target=_blank>CoTAN</a>',
+				'Non ci sono adesivi in questa striscia!<br>Puoi sistemarlo <a href="?do=edit">modificando questa pagina</a> con <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=it" target=_blank>CoTAN</a>',
+				'Questa striscia ha una sintassi AIMG obsoleta<br>Puoi sistemarlo <a href="?do=edit">rifacendo questa pagina</a> con <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=it" target=_blank>CoTAN</a>',
 			],
 			'ja': [
-				'このストリップにはステッカーがありません！<br>あなたは<a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=ja" target=_blank>CoTAN</a>で<a href="?do=edit">このページを編集することによって</a>これを直すことができます',
-				'このストリップはAIMGの構文が古くなっています<br>あなたは<a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=ja" target=_blank>CoTAN</a>で<a href="?do=edit">このページを作り直すことによって</a>これを直すことができます',
+				'このストリップにはステッカーがありません！<br>あなたは<a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=ja" target=_blank>CoTAN</a>で<a href="?do=edit">このページを編集することによって</a>これを直すことができます',
+				'このストリップはAIMGの構文が古くなっています<br>あなたは<a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=ja" target=_blank>CoTAN</a>で<a href="?do=edit">このページを作り直すことによって</a>これを直すことができます',
 			],
 			'ko': [
-				'이 스트립에는 스티커가 없습니다!<br><a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=ko" target=_blank>CoTAN</a>으로 <a href="?do=edit">페이지를 편집하여</a> 문제를 해결할 수 있습니다',
-				'이 스트립은 구식 AIMG 구문을 가지고 있습니다.<br><a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=ko" target=_blank>CoTAN</a>을 사용하여 <a href="?do=edit">페이지를 다시 작성하면</a> 문제를 해결할 수 있습니다',
+				'이 스트립에는 스티커가 없습니다!<br><a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=ko" target=_blank>CoTAN</a>으로 <a href="?do=edit">페이지를 편집하여</a> 문제를 해결할 수 있습니다',
+				'이 스트립은 구식 AIMG 구문을 가지고 있습니다.<br><a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=ko" target=_blank>CoTAN</a>을 사용하여 <a href="?do=edit">페이지를 다시 작성하면</a> 문제를 해결할 수 있습니다',
 			],
 			'pl': [
-				'Na tym pasku nie ma naklejek!<br>Możesz to naprawić, <a href="?do=edit">edytując tę stronę</a> za pomocą <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=pl" target=_blank>CoTAN</a>',
-				'Ten pasek ma przestarzałą składnię AIMG<br>Możesz to naprawić, <a href="?do=edit">przerabiając tę stronę</a> za pomocą <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=pl" target=_blank>CoTAN</a>',
+				'Na tym pasku nie ma naklejek!<br>Możesz to naprawić, <a href="?do=edit">edytując tę stronę</a> za pomocą <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=pl" target=_blank>CoTAN</a>',
+				'Ten pasek ma przestarzałą składnię AIMG<br>Możesz to naprawić, <a href="?do=edit">przerabiając tę stronę</a> za pomocą <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=pl" target=_blank>CoTAN</a>',
 			],
 			'pt': [
-				'Não há adesivos nesta faixa!<br>Você pode corrigir isso <a href="?do=edit">editando esta página</a> com o <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=pt" target=_blank>CoTAN</a>',
-				'Esta faixa tem uma sintaxe desatualizada do AIMG<br>Você pode consertar isso <a href="?do=edit">refazendo esta página</a> com o <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=pt" target=_blank>CoTAN</a>',
+				'Não há adesivos nesta faixa!<br>Você pode corrigir isso <a href="?do=edit">editando esta página</a> com o <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=pt" target=_blank>CoTAN</a>',
+				'Esta faixa tem uma sintaxe desatualizada do AIMG<br>Você pode consertar isso <a href="?do=edit">refazendo esta página</a> com o <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=pt" target=_blank>CoTAN</a>',
 			],
 			'ru': [
-				'В этом выпуске нет наклеек!<br>Вы можете исправить это, <a href="?do=edit">отредактировав страницу</a> с помощью <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=ru" target=_blank>CoTAN</a>',
-				'В этом выпуске устаревший синтаксис AIMG<br>Вы можете исправить это, <a href="?do=edit">переделав страницу</a> с помощью <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=ru" target=_blank>CoTAN</a>',
+				'В этом выпуске нет наклеек!<br>Вы можете исправить это, <a href="?do=edit">отредактировав страницу</a> с помощью <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=ru" target=_blank>CoTAN</a>',
+				'В этом выпуске устаревший синтаксис AIMG<br>Вы можете исправить это, <a href="?do=edit">переделав страницу</a> с помощью <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=ru" target=_blank>CoTAN</a>',
 			],
 			'sib': [ ],
 			'sjn': [ ],
 			'uk': [
-				'У цій смузі немає жодних наклейок!<br>Ви можете виправити це, <a href="?do=edit">відредагувавши цю сторінку</a> за допомогою <a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=uk" target=_blank>CoTAN</a>',
-				'Ця смуга має застарілий синтаксис AIMG<br>Ви можете виправити це, переробивши цю сторінку за допомогою <a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=uk" target=_blank>CoTAN</a>',
+				'У цій смузі немає жодних наклейок!<br>Ви можете виправити це, <a href="?do=edit">відредагувавши цю сторінку</a> за допомогою <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=uk" target=_blank>CoTAN</a>',
+				'Ця смуга має застарілий синтаксис AIMG<br>Ви можете виправити це, переробивши цю сторінку за допомогою <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=uk" target=_blank>CoTAN</a>',
 			],
 			'zh': [
-				'这条带上没有贴纸！<br>您可以通过<a href="?do=edit">使用</a><a href="https://www.youtube.com/embed/Kb1CWfnKQlo?hl=zh" target=_blank>CoTAN</a>编辑页面来解决此问题',
-				'这个条带已经过时了AIMG语法<br>您可以通过<a href="?do=edit">使用</a><a href="https://www.youtube.com/embed/glYz4eY9IzE?hl=zh" target=_blank>CoTAN</a>重新构建页面来解决此问题',
+				'这条带上没有贴纸！<br>您可以通过<a href="?do=edit">使用</a><a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=zh" target=_blank>CoTAN</a>编辑页面来解决此问题',
+				'这个条带已经过时了AIMG语法<br>您可以通过<a href="?do=edit">使用</a><a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=zh" target=_blank>CoTAN</a>重新构建页面来解决此问题',
 			],
 			'default': [ ]
 		};
