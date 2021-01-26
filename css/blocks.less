@@ -33,141 +33,136 @@
 		}
 	}
 	header {
-		.newlogo {
-			background: no-repeat 100% 0;
-			height: 107px;
-			max-width: 332px;
-			position: absolute;
-			right: 0;
-			width: 100%;
-			z-index: 1;
-			&.logo0 {
-				background-image: url( images/logo0.png );
+		-webkit-appearance: none;
+		display: flex;
+		height: 28px;
+		letter-spacing: .05em;
+		padding: 0 7px;
+		position: relative;
+		text-shadow: 1px 1px 2px black;
+		width: ~"calc(100% - 14px)";
+		word-wrap: break-word;
+		z-index: 0;
+		&.logo0 {
+			background: #22979E;
+			.newlogo { background-image: url( images/logo0.png ) !important; }
+		}
+		&.logo1 {
+			background: #829DD3;
+			.newlogo { background-image: url( images/logo1.png ) !important; }
+		}
+		&.logo2 {
+			background: #EDB1BB;
+			a:hover {
+				color: #0FF !important;
 			}
-			&.logo1 {
-				background-image: url( images/logo1.png );
+			.newlogo { background-image: url( images/logo2.png ) !important; }
+		}
+		&.logo3 {
+			background: #A387C1;
+			.newlogo { background-image: url( images/logo3.png ) !important; }
+		}
+		&.logo4 {
+			background: #E183BD;
+			.newlogo { background-image: url( images/logo4.png ) !important; }
+		}
+		&.logo5 {
+			background: #E9B630;
+			a:hover {
+				color: #0FF !important;
 			}
-			&.logo2 {
-				background-image: url( images/logo2.png );
-			}
-			&.logo3 {
-				background-image: url( images/logo3.png );
-			}
-			&.logo4 {
-				background-image: url( images/logo4.png );
-			}
-			&.logo5 {
-				background-image: url( images/logo5.png );
-			}
-			&.logo6 {
-				background-image: url( images/logo6.png );
-			}
-			&.logo7 {
-				background-image: url( images/logo7.png );
-			}
-			&.logo8 {
-				background-image: url( images/logo8.png );
-			}
-			@media (max-width: 1120px) and (min-width: 1090px) {
-				right: -16px;
-				transform: scale(.9);
-			}
-			@media (max-width: 1090px) and (min-width: 1055px) {
-				right: -33px;
-				transform: scale(.8);
-			}
-			@media (max-width: 1055px) and (min-width: 1020px) {
-				right: -49px;
-				transform: scale(.7);
-			}
-			@media (max-width: 1020px) and (min-width: 980px) {
-				right: -66px;
-				transform: scale(.6);
-			}
-			@media (max-width: 980px) and (min-width: 940px) {
-				right: -82px;
-				transform: scale(.5);
-			}
-			@media (max-width: 940px) {
-				background-image: url( images/logo.png ) !important;
-				height: 64px;
-				right: 0;
-				transform: scale(1);
-				width: 64px;
-			}
-			[dir=rtl] & {
-				left: 0;
-				right: auto;
+			.newlogo { background-image: url( images/logo5.png ) !important; }
+		}
+		&.logo6 {
+			background: #45A2C4;
+			.newlogo { background-image: url( images/logo6.png ) !important; }
+		}
+		&.logo7 {
+			background: #AD464A;
+			.newlogo { background-image: url( images/logo7.png ) !important; }
+		}
+		&.logo8 {
+			background: #89E081;
+			.newlogo { background-image: url( images/logo8.png ) !important; }
+		}
+		&.april {
+			a {
+				position: relative;
+				top: -2px;
 			}
 		}
-		.menu {
-			-webkit-appearance: none;
-			height: 28px;
-			letter-spacing: 0.05em;
-			max-height: 28px;
-			padding: 0 7px;
-			position: relative;
-			text-shadow: 1px 1px 2px black;
-			width: ~"calc(100% - 14px)";
-			word-wrap: break-word;
-			z-index: 0;
-			&.logo0 {
-				background: #22979E;
-			}
-			&.logo1 {
-				background: #829DD3;
-			}
-			&.logo2 {
-				background: #EDB1BB;
-				a:hover {
-					color: #0FF !important;
-				}
-			}
-			&.logo3 {
-				background: #A387C1;
-			}
-			&.logo4 {
-				background: #E183BD;
-			}
-			&.logo5 {
-				background: #E9B630;
-				a:hover {
-					color: #0FF !important;
-				}
-			}
-			&.logo6 {
-				background: #45A2C4;
-			}
-			&.logo7 {
-				background: #AD464A;
-			}
-			&.logo8 {
-				background: #89E081;
-			}
-			&.april {
-				a {
-					position: relative;
-					top: -2px;
-				}
-			}
+		.top-texts {
+			flex: 0 0 auto;
 			a {
-				color: white !important;
+				color: white;
 				font: bold 15px DatFestComic, cursive;
+				position: relative;
+				top: 4px;
 				&:hover {
-					color: #FF0 !important;
+					color: #FF0;
+				}
+			}
+		}
+		.searcher {
+			flex: 0 0 auto;
+			margin: 0 7px;
+			form#dw__search {
+				display: block;
+				div.no {
+					position: relative;
+					input#qsearch__in {
+						font-size: 120%;
+					}
+					button {
+						border-radius: 5px;
+						font-size: 13px;
+						padding: 1px 5px;
+						position: relative;
+						top: 3px;
+					}
+					div#qsearch__out { /* всплывающие результаты; вырубить нахрен, неуправляемые background и частично position */
+						display: none !important;
+					}
+				}
+			}
+		}
+		.newlogo-wrap {
+			flex-shrink: 1;
+			position: relative;
+			width: 100%;
+			.newlogo {
+				background: no-repeat 100% 0;
+				background-size: contain;
+				height: 107px;
+				max-width: 332px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 100%;
+				z-index: 1;
+				@media (max-width: 940px) {
+					background-image: url( images/logo.png ) !important;
+					height: 64px;
+					right: 0;
+					width: 64px;
+				}
+				[dir=rtl] & {
+					left: 0;
+					right: auto;
 				}
 			}
 		}
 	}
 	nav.translation {
 		height: 28px;
-		max-height: 28px;
+		overflow: hidden;
 		div.plugin_translation {
 			border-radius: 5px;
 			display: inline-flex;
-			font-family: DatFestComic;
+			font-family: DatFestComic, cursive;
 			font-size: 120%;
 			margin: 1px 7px;
+			position: relative;
 			z-index: 2;
 			ul {
 				margin: 0;
@@ -178,9 +173,6 @@
 					list-style-type: none;
 					margin: 0;
 					padding: 0;
-					&:first-child {
-						/*display: none;*/
-					}
 					&.cur {
 						border-style: solid;
 						font-weight: bold;
@@ -346,7 +338,7 @@
 						&:nth-of-type(1),&:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4),&:nth-of-type(5),
 						&:nth-of-type(6),&:nth-of-type(7),&:nth-of-type(8),&:nth-of-type(9),&:nth-of-type(10),
 						&:nth-of-type(11),&:nth-of-type(12),&:nth-of-type(13),&:nth-of-type(14),&:nth-of-type(15) {
-							background: url( /lib/images/toolbar/toolbar.png );
+							background: url( https://comicslate.org/lib/images/toolbar/toolbar.png );
 							height: 16px;
 							margin: -2px 5px 5px 3px;
 							vertical-align: middle;
