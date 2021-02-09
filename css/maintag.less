@@ -345,6 +345,9 @@ html {
 		padding: 3px 0 5px 3px;
 		width: 100%;
 	}
+	.lang-he textarea.edit {
+		text-align: right;
+	}
 	input.edit,
 	select.edit {
 		background-color: __white__;
@@ -355,8 +358,10 @@ html {
 		display: inline;
 		font-size: 100%;
 		margin: 1px;
-		padding: .2em .3em;
 		vertical-align: middle;
+	}
+	input.edit {
+		padding: .2em .3em;
 	}
 	select.edit {
 		padding: .1em 0;
@@ -406,15 +411,15 @@ html {
 			padding: 0;
 			a {
 				background-color: __background_neu__;
-				color: __text__;
 			}
 			a,
 			strong {
 				border-radius: .5em .5em 0 0;
+				color: __text__;
 				float: left;
 				margin: 0 .3em 0 0;
 				padding: .3em .8em;
-				[dir=rtl] {
+				[dir=rtl] & {
 					float: right;
 					margin: 0 0 0 .3em;
 				}
@@ -424,10 +429,9 @@ html {
 			a:focus,
 			strong {
 				background-color: __background_alt__;
-				color: __text__;
 				text-decoration: none;
 			}
-			[dir=rtl] {
+			[dir=rtl] & {
 				float: right;
 			}
 		}
