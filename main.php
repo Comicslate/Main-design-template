@@ -24,7 +24,7 @@ echo '</head><body><div class = "dokuwiki lang-' . $conf [ "lang" ] . '">';
 
 // HEADER
 $rlogo = time ( ) / 600 % 9;
-echo '<header><div class = "newlogo logo' . $rlogo . '"></div><div class = "menu logo' . $rlogo . '">';
+echo '<header class = "logo' . $rlogo . '"><div class="top-texts">';
 $ilinks = array (
 	array ( '/'. $conf [ "lang" ] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
 	array ( '/'. $conf [ "lang" ] . '/menu',		tpl_getLang ( 'menu' ),		'_self' ),
@@ -40,8 +40,10 @@ for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) {
 	}
 	echo '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
 };
+echo '</div>';
 echo '<div class = "searcher">'; tpl_searchform ( ); echo '</div>';
-echo '</div></header>';
+echo '<div class="newlogo-wrap"><div class = "newlogo"></div></div>';
+echo '</header>';
 
 // TRANSLATION
 echo '<nav class = "translation">';
@@ -64,9 +66,9 @@ tpl_flush ( ); echo '<article class = "page">' . $apps; tpl_content ( ); echo '<
 echo '<noindex><aside id = "pagetools"><ul>' . ( new \dokuwiki\Menu\PageMenu ( ) ) -> getListItems ( ) . '</ul></aside></noindex>';
 
 // FOOTER
-echo '<footer>';
+echo '<footer><noindex>';
 if ( $conf['breadcrumbs'] ) {
-	echo '<noindex><div class = "breadcrumbs">'; tpl_breadcrumbs ( ); echo '</div></noindex>';
+	echo '<div class = "breadcrumbs">'; tpl_breadcrumbs ( ); echo '</div>';
 };
 echo '<div class = "social">';
 $rss_new = ' (' . tpl_getLang ( 'RSSnew' ) . ')';
@@ -97,7 +99,7 @@ if ( $INFO [ 'ismanager' ] ) {
 if ( !empty ( $_SERVER['REMOTE_USER'] ) ) {
 	echo '<div class = "user">'; tpl_userinfo ( ); echo '</div>';
 };
-echo '</footer>';
+echo '</noindex></footer>';
 
 // END
 echo '<!--<div id = "yandex_rtb"></div>--></div><div class = "no">'; tpl_indexerWebBug ( ); echo '</div></body></html>'; ?>
