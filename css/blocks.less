@@ -23,6 +23,10 @@
 	}
 }
 
+.logon ( @n ) {
+	&.logo@{n} .newlogo { background-image: url( images/logo@{n}.png ) !important; }
+}
+
 .dokuwiki {
 	margin: 0;
 	width: 100%;
@@ -30,6 +34,9 @@
 		margin: 3px;
 		abbr {
 			text-decoration: none;
+		}
+		a {
+			color: inherit !important;
 		}
 	}
 	header {
@@ -43,47 +50,39 @@
 		width: ~"calc(100% - 14px)";
 		word-wrap: break-word;
 		z-index: 0;
+		.logon ( 0 );.logon ( 1 );.logon ( 2 );.logon ( 3 );.logon ( 4 );.logon ( 5 );.logon ( 6 );.logon ( 7 );.logon ( 8 );
 		&.logo0 {
 			background: #22979E;
-			.newlogo { background-image: url( images/logo0.png ) !important; }
 		}
 		&.logo1 {
 			background: #829DD3;
-			.newlogo { background-image: url( images/logo1.png ) !important; }
 		}
 		&.logo2 {
 			background: #EDB1BB;
 			a:hover {
 				color: #0FF !important;
 			}
-			.newlogo { background-image: url( images/logo2.png ) !important; }
 		}
 		&.logo3 {
 			background: #A387C1;
-			.newlogo { background-image: url( images/logo3.png ) !important; }
 		}
 		&.logo4 {
 			background: #E183BD;
-			.newlogo { background-image: url( images/logo4.png ) !important; }
 		}
 		&.logo5 {
 			background: #E9B630;
 			a:hover {
 				color: #0FF !important;
 			}
-			.newlogo { background-image: url( images/logo5.png ) !important; }
 		}
 		&.logo6 {
 			background: #45A2C4;
-			.newlogo { background-image: url( images/logo6.png ) !important; }
 		}
 		&.logo7 {
 			background: #AD464A;
-			.newlogo { background-image: url( images/logo7.png ) !important; }
 		}
 		&.logo8 {
 			background: #89E081;
-			.newlogo { background-image: url( images/logo8.png ) !important; }
 		}
 		&.april {
 			a {
