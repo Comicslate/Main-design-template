@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2020.12.12 22:00 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.02.12 20:11 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -148,13 +148,34 @@ for ( i = 0; i < fix_notes.length; i++ )  {
 	}
 };
 
+/* спрятать тег i */
+
+var tags = document.querySelector ( '.tags' );
+if ( tags != null ) { // нашёлся див с тегами
+	var ihide = tags.querySelector ( 'a[title="tag:i"]' ),
+		tag = tags.querySelectorAll ( 'a' );
+	if ( ihide != null ) { // нашёлся i-тег
+		if ( tag.length == 1 ) { // если тег один >> i-тег
+			tags.style.display = 'none'; // просто скрыть весь див
+		} else { // если тегов много
+			for ( i = 0; i < tag.length; i++ ) { // для каждого тега
+				if ( tag [ i ].title == "tag:i" ) { // если i-тег
+					tag [ i ].style.display = 'none'; // скрыть i-тег
+					if ( tag [ i ].nextSibling.textContent.match ( ',' ) != null ) tag [ i ].nextSibling.textContent = ''; // скрыть след.запятую
+				}
+			}
+			if ( tag [ tag.length - 1 ].previousSibling.textContent.match ( ',' ) != null ) tag [ tag.length - 1 ].previousSibling.textContent = ''; // у последнего i-тега скрыть пред.запятую
+		}
+	}
+};
+
 /* архив новостей - раскрыть последний спойлер, скрыть "красные" месяцы */
 
 var boxnews = document.querySelector ( ".box.news .spoiler:last-of-type" );
 if ( boxnews != null ) { // запуск
 	boxnews.querySelector ( "input" ).click ( );
 	boxnews.querySelectorAll ( "li > .li > .wikilink2" ).forEach ( e => e.parentNode.parentNode.style.display = "none" );
-}
+};
 
 // ПОЧТИ ВЕЗДЕ
 
