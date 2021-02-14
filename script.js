@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.02.12 20:11 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.02.14 21:11 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -15,7 +15,7 @@ if ( window.location.href.match ( /do=edit/i ) == null ) { // запуск не 
 					clickmap: true,
 					trackLinks: true,
 					accurateTrackBounce: true,
-					webvisor: true
+					webvisor: false
 				} );
 			}
 			catch ( e ) { }
