@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.02.14 21:11 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.02.15 03:27 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -136,14 +136,16 @@ function getNumEnding ( num, ends ) {
 		}
 	}
 };
-var fix_notes = document.querySelectorAll ( ".page .note" );
-for ( i = 0; i < fix_notes.length; i++ )  {
-	var fix_note_text = fix_notes [ i ].innerHTML,
-		fix_note_match = fix_note_text.match ( / 0*\d+.{0,3}стрипов/g );
-	if ( fix_note_match != null ) {
-		for ( j = 0; j < fix_note_match.length; j++ )  {
-			var fix_note_repl = fix_note_match [ j ].match ( / (0*(\d+)).*(стрипов)/ );
-			fix_notes [ i ].innerHTML = fix_note_text.replace ( fix_note_repl [ 1 ], fix_note_repl [ 2 ] ).replace ( fix_note_repl [ 3 ], getNumEnding ( fix_note_repl [ 2 ], [ 'стрип', 'стрипа', 'стрипов' ] ) );
+var fix_notes = document.querySelectorAll ( ".lang-ru .page .note" );
+if ( fix_notes.length > 0 ) {
+	for ( i = 0; i < fix_notes.length; i++ )  {
+		var fix_note_text = fix_notes [ i ].textContent,
+			fix_note_match = fix_note_text.match ( / 0*\d+.{0,3}стрипов/g );
+		if ( fix_note_match != null ) {
+			for ( j = 0; j < fix_note_match.length; j++ )  {
+				var fix_note_repl = fix_note_match [ j ].match ( / (0*(\d+)).*(стрипов)/ );
+				fix_notes [ i ].innerHTML = fix_notes [ i ].innerHTML.replace ( fix_note_repl [ 1 ], fix_note_repl [ 2 ] ).replace ( fix_note_repl [ 3 ], getNumEnding ( fix_note_repl [ 2 ], [ 'стрип', 'стрипа', 'стрипов' ] ) );
+			}
 		}
 	}
 };
