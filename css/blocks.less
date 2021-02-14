@@ -413,6 +413,32 @@
 		[dir=rtl] & {
 			margin: 0 7px 0 37px;
 		}
+		div.index__tree {
+			li {
+/*				&:nth-of-type(odd) {
+					background-color: #f8f8f8;
+				}
+				&:nth-of-type(even) {
+					background-color: #ffffff;
+				}*/
+				&.closed {
+					opacity: 0.5;
+				}
+				.curid a {
+					font-weight: bold;
+				}
+				div.li {
+					margin-bottom: 3px;
+					a.idx_dir {
+						background-color: white;
+						border: 2px solid #eee;
+						border-radius: 5px;
+						box-shadow: 0 0 3px 1px __dark__;
+						padding: 0 5px;
+					}
+				}
+			}
+		}
 	}
 /**
  * @author Anika Henke <anika@selfthinker.org>
@@ -630,9 +656,6 @@
 	}
 	.middle {
 		vertical-align: middle;
-	}
-	#index__tree .li {
-		margin-bottom: 3px;
 	}
 	#acl__manager {
 		table {
