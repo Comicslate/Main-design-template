@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.02.15 03:27 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.03.07 03:24 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -39,6 +39,10 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 			case '=':
 				return '<span style = "line-height: ' + fontValue * 100 + '%; display: inline-block;">';
 				break;
+			case '_':
+				if ( fontValue > 1500 ) fontValue = 1500;
+				return '<span style = "width: ' + fontValue + 'px; display: inline-block;"></span>';
+				break;
 			case 'y':
 			case 'x':
 				return '<p style = "transform: scale' + marker + '(' + fontValue + '); display: inline-block;">';
@@ -54,7 +58,7 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 var notedit = document.querySelectorAll ( ".page > div:not(.editBox):not(.search_fulltextresult):not(.table):not(#batchedit), .export > div" );
 for ( i = 0; i < notedit.length; i++ ) {
 	notedit [ i ].innerHTML = notedit [ i ].innerHTML
-		.replace ( /(\[)(.)(-?\d+[\.,]?\d*)(\])/g, fontChanger )
+		.replace ( /(\[)(.)(\d+[\.,]?\d*)(\])/g, fontChanger )
 		.replace ( /\[\/\]/g, '</span>' );
 }
 
@@ -89,7 +93,7 @@ if ( sidemedia != null ) {
 if (
 	window.location.href.match ( /(start|showtag|do=search)/ ) != null
 ) {
-	document.querySelectorAll ( ".pagelist a, .taglist a, .search_quickhits a, .search_results a.wikilink1 " ).forEach (
+	document.querySelectorAll ( "td.page a, .pagelist a, .taglist a, .search_quickhits a, .search_results a.wikilink1 " ).forEach (
 		e => {
 			if ( e.href != undefined ) e.innerHTML = e.href.substr ( 23, 4 ).split( '/' ) [ 0 ].toUpperCase ( ) + ' / ' + e.innerHTML
 		}
@@ -98,7 +102,7 @@ if (
 
 /* меню - пакование в колонки */
 
-if ( window.location.href.match ( /\/menu(\?rev.+)?$/i ) !== null ) { // запуск в меню
+if ( window.location.href.match ( /\/menu[\?|#]?/i ) !== null ) { // запуск в меню
 	var menu_col_ul = document.querySelectorAll ( '.page ul' ),
 		menu_col_div,
 		menu_col_div_sizes = [ ];
