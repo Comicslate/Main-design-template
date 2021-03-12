@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.03.07 03:24 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.03.12 11:15 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -34,7 +34,7 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 	if ( fontValue > 0 ) {
 		switch ( marker ) {
 			case '!':
-				return '<span style = "font-size: ' + fontValue + 'em">';
+				return '<span style = "font-size: ' + fontValue + 'em; display: inline-block;">';
 				break;
 			case '=':
 				return '<span style = "line-height: ' + fontValue * 100 + '%; display: inline-block;">';
@@ -45,14 +45,14 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 				break;
 			case 'y':
 			case 'x':
-				return '<p style = "transform: scale' + marker + '(' + fontValue + '); display: inline-block;">';
+				return '<span style = "transform: scale' + marker + '(' + fontValue + '); display: inline-block;">';
 				break;
 			default:
 				return '<abbr title="Incorrect marker" >' + openSB + marker + value + closeSB + '</abbr>';
 				break
 		}
 	} else {
-		return '<abbr title="Incorrect digit" >' + openSB + marker + value + closeSB + '</abbr>'
+		return '<abbr title = "Incorrect digit" >' + openSB + marker + value + closeSB + '</abbr>'
 	}
 }
 var notedit = document.querySelectorAll ( ".page > div:not(.editBox):not(.search_fulltextresult):not(.table):not(#batchedit), .export > div" );
@@ -154,23 +154,23 @@ if ( fix_notes.length > 0 ) {
 	}
 };
 
-/* спрятать тег i */
+/* спрятать тег Не_сортировать */
 
 var tags = document.querySelector ( '.tags' );
 if ( tags != null ) { // нашёлся див с тегами
-	var ihide = tags.querySelector ( 'a[title="tag:i"]' ),
+	var ihide = tags.querySelector ( 'a[title="tag:не_сортировать"]' ),
 		tag = tags.querySelectorAll ( 'a' );
-	if ( ihide != null ) { // нашёлся i-тег
-		if ( tag.length == 1 ) { // если тег один >> i-тег
+	if ( ihide != null ) { // нашёлся сорт-тег
+		if ( tag.length == 1 ) { // если тег один >> сорт-тег
 			tags.style.display = 'none'; // просто скрыть весь див
 		} else { // если тегов много
 			for ( i = 0; i < tag.length; i++ ) { // для каждого тега
-				if ( tag [ i ].title == "tag:i" ) { // если i-тег
-					tag [ i ].style.display = 'none'; // скрыть i-тег
+				if ( tag [ i ].title == "tag:не_сортировать" ) { // если сорт-тег
+					tag [ i ].style.display = 'none'; // скрыть сорт-тег
 					if ( tag [ i ].nextSibling.textContent.match ( ',' ) != null ) tag [ i ].nextSibling.textContent = ''; // скрыть след.запятую
 				}
 			}
-			if ( tag [ tag.length - 1 ].previousSibling.textContent.match ( ',' ) != null ) tag [ tag.length - 1 ].previousSibling.textContent = ''; // у последнего i-тега скрыть пред.запятую
+			if ( tag [ tag.length - 1 ].previousSibling.textContent.match ( ',' ) != null ) tag [ tag.length - 1 ].previousSibling.textContent = ''; // у последнего сорт-тега скрыть пред.запятую
 		}
 	}
 };
