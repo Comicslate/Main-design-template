@@ -48,6 +48,9 @@
 @font-face {
 	font-family: UnicephalonCyr;	.font-face ( unicephalon_cyr )
 }
+@font-face {
+	font-family: VagRoundCyr;	.font-face ( vag_round_cyr )
+}
 
 .aace {
 	font-family: AnimeAce,			cursive;
@@ -58,6 +61,9 @@
 /*.export .ct-note {
 	padding: 0 1px !important;
 }*/
+.export .ct-area .ct-note .ct-note-content {
+	font: 85% "Open Sans";
+}
 .lang-he .fest {
 	font-family: 'Frank Ruhl Libre';
 	letter-spacing: -0.05px; /* достаточно -0,01, перестраховка */
@@ -121,111 +127,51 @@
 .unic {
 	font-family: UnicephalonCyr,	cursive;
 }
+.vag {
+	font-family: VagRoundCyr,	cursive;
+}
 
-.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic {
+.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic,.vag {
 	-webkit-appearance: none;
+	font-feature-settings: "kern" 1;
+	font-kerning: normal;
 	word-wrap: break-word;
 }
 
-.flo {
-	color: #866444;
-}
-.sam {
-	color: #4B70BB;
-}
-.hlx {
-	color: #8A796F;
-}
-.saw {
-	color: #FE2E06;
-}
-.qwe {
-	color: #5E3432;
-}
-.dvo {
-	color: #696A00;
-}
-.edge {
-	color: #3F5537;
-}
-.blunt {
-	color: #554E37;
-}
-.max {
-	color: #242424;
-}
-.rai {
-	color: #106A10;
-}
-.kor {
-	color: #005263;
-}
-.mad {
-	color: #333333;
-}
-.mayor {
-	color: #491D31;
-}
-.mhlp {
-	color: #493025;
-}
-.niomi {
-	color: #49211D;
-}
-.pol {
-	color: #10106A;
-}
-.mst, .mst1 {
-	color: #CE5200;
-}
-.bow {
-	color: #C7AE1A;
-}
-.ish {
-	color: #4A3110;
-}
-.gre {
-	color: #215f7a;
-}
-.oth {
-	color: black;
-}
-.znt {
-	color: #1E90FF;
-}
-.ozy {
-	color: #404040;
-}
-.mil {
-	color: #EE7000;
-}
-.mol {
-	color: #700070;
-}
-.tsp {
-	color: #BB81CE;
-}
-.rrp {
-	color: #A9A9A9;
-}
-.rdp {
-	color: #006BFF;
-}
-.fsp {
-	color: #CEC343;
-}
-.ppp {
-	color: #DE2E76;
-}
-.ajp {
-	color: #CA9954;
-}
-.sdr {
-	color: #258B01;
-}
-.bmp {
-	color: #DE6E56;
-}
+.flo { color: #866444; }
+.sam { color: #4B70BB; }
+.hlx { color: #8A796F; }
+.saw { color: #FE2E06; }
+.qwe { color: #5E3432; }
+.dvo { color: #696A00; }
+.edge { color: #3F5537; }
+.blunt { color: #554E37; }
+.max { color: #242424; }
+.rai { color: #106A10; }
+.kor { color: #005263; }
+.mad { color: #333333; }
+.mayor { color: #491D31; }
+.mhlp { color: #493025; }
+.niomi { color: #49211D; }
+.pol { color: #10106A; }
+.mst, .mst1 { color: #CE5200; }
+.bow { color: #C7AE1A; }
+.ish { color: #4A3110; }
+.gre { color: #215f7a; }
+.oth { color: black; }
+.znt { color: #1E90FF; }
+.ozy { color: #404040; }
+.mil { color: #EE7000; }
+.mol { color: #700070; }
+.tsp { color: #BB81CE; }
+.rrp { color: #A9A9A9; }
+.rdp { color: #006BFF; }
+.fsp { color: #CEC343; }
+.ppp { color: #DE2E76; }
+.ajp { color: #CA9954; }
+.sdr { color: #258B01; }
+.bmp { color: #DE6E56; }
+.vag { color: #00a90c; }
 
 .aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic,
 .f06,.f07,.f08,.f09,.f10,.f11,.f12,.f13,.f14,.f15,.f16,.f17,.f18,.f19,.f20,.f21,.f22,.f23,.f24,.f25,.f26,.f27,.f28,.f29,.f30, .f31,.f32,.f33,
@@ -249,9 +195,6 @@
 .miry img {
 	transform: scaleY(-1);
 	filter: FlipV;
-}
-.vyleft,.vyjust,.vyright {
-	margin-top: -0.5em; /* фикс из-за вкладывания в параграф */
 }
 .vyleft {
 	float: left;
