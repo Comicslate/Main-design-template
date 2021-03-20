@@ -21,10 +21,18 @@ $ilinks = array (
 	array ( '//app.comicslate.org/',				'Mobile App',				'_blank' ),
 );
 
+$t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
 $translation = plugin_load ( 'helper', 'translation' );
-$trans = ( $translation ) ? $t4 . $translation -> showTranslations ( ) : '';
+$trans = ( $translation ) ? $translation -> showTranslations ( ) : '';
 
-$apps = "\t\t\t\t" . '<div class = "apps"><a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank"><img src = "' . DOKU_TPL . 'images/googleapp_optim.svg" alt = "Get it on Google Play"></a><a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_blank"><img src = "' . DOKU_TPL . 'images/appstore_optim.svg" alt = "Download on the App Store"></a></div>' . $t4;
+$apps = "\t\t\t\t" . '<div class = "apps">' .
+$t5 . '<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank">' .
+$t6 . '<img src = "' . DOKU_TPL . 'images/googleapp_optim.svg" alt = "Get it on Google Play">' .
+$t5 . '</a>' .
+$t5 . '<a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_blank">' .
+$t6 . '<img src = "' . DOKU_TPL . 'images/appstore_optim.svg" alt = "Download on the App Store">' .
+$t5 . '</a>' .
+$t4 . '</div>' . $t4;
 
 $socbut = array (
 	array ( '/feed.php', tpl_getLang ( 'RSS' ), 'rss' ),
@@ -40,12 +48,6 @@ $socbut = array (
 	array ( '/feed.php?mode=recent&amp;ns=' . $INFO [ 'namespace' ], tpl_getLang ( 'RSSpart' ), 'rss' ),
 	array ( '/feed.php?mode=recent&amp;ns=' . $INFO [ 'namespace' ] . '&amp;onlynewpages=1', tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' )
 );
-$t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
-
-
-
-
-
 
 
 
@@ -72,9 +74,9 @@ $t2; tpl_metaheaders ( );
 echo "\n\t" . '</head>' .
 
 "\n\t" . '<body>' . // BODY
-$t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . '">';
+$t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . '">' .
 
-echo $t3 . '<header class = "logo' . $rlogo . '">' . // MENU1
+$t3 . '<header class = "logo' . $rlogo . '">' . // MENU1
 $t4 . '<div class = "top-texts">'; // Topline
 for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) {
 	switch ( $i ) {
@@ -104,7 +106,7 @@ if ( !empty ( html_msgarea ( ) ) ) { // MESSAGE
 
 tpl_flush ( );
 echo $t3 . '<article class = "page">' . // PAGE
-"\n"; $apps; // App buttons top
+"\n" . $apps; // App buttons top
 tpl_content ( );
 echo $t3 . '</article>';
 tpl_flush ( );
@@ -115,9 +117,9 @@ $t5 . '<ul>' .
 $t6 . ( new \dokuwiki\Menu\PageMenu ( ) ) -> getListItems ( ) .
 $t5 . '</ul>' .
 $t4 . '</aside>' .
-$t3 . '</noindex>';
+$t3 . '</noindex>' .
 
-echo $t3 . '<footer>' . // FOOTER
+$t3 . '<footer>' . // FOOTER
 $t4 . '<noindex>';
 
 if ( $conf [ 'breadcrumbs' ] ) { // Breadcrumbs
@@ -132,10 +134,10 @@ for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
 };
 echo $t5 . '</div>' .
 
-"\n\t" . $apps . "\t"; // App buttons bottom
+"\n" . $apps . "\t"; // App buttons bottom
 
 if ( $ACT != 'edit' ) {
-	echo $t5 . '<div class = "count">' . // Yandex Counter
+	echo '<div class = "count">' . // Yandex Counter
 	$t6 . '<a href = "//metrika.yandex.ru/stat/?id=25500497&amp;from=informer" target = "_blank" rel = "nofollow">' .
 	$t6 . "\t" . '<img src = "//informer.yandex.ru/informer/25500497/3_0_7BC9F7FF_5BA9D7FF_0_pageviews" alt = "Яндекс.Метрика" title = "Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class = "ym-advanced-informer" data-cid = "25500497" data-lang = "ru" />' .
 	$t6 . '</a>' .
@@ -160,9 +162,9 @@ if ( !empty ( $_SERVER['REMOTE_USER'] ) ) { // Userinfo
 };
 
 echo $t4 . '</noindex>' .
-$t3 . '</footer>';
+$t3 . '</footer>' .
 
-echo $t3 . '<!--<div id = "yandex_rtb"></div>-->' . // END
+// $t3 . '<div id = "yandex_rtb"></div>' . // END
 $t2 . '</div>' .
 $t2 . '<div class = "no">' .
 $t3; tpl_indexerWebBug ( ); // Indexer
