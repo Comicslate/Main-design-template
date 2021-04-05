@@ -155,49 +155,6 @@
 	nav.translation {
 		height: 28px;
 		overflow: hidden;
-		div.plugin_translation {
-			border-radius: 5px;
-			display: inline-flex;
-			font-family: DatFestComic, cursive;
-			font-size: 120%;
-			margin: 1px 7px;
-			position: relative;
-			z-index: 2;
-			ul {
-				margin: 0;
-				li {
-					border: dashed 1px #ccc;
-					border-radius: 30%;
-					float: left;
-					list-style-type: none;
-					margin: 0;
-					padding: 0;
-					&.cur {
-						border-style: solid;
-						font-weight: bold;
-					}
-					a {
-						display: inline-block;
-						text-align: center;
-						width: 24px;
-						&.wikilink2 {
-							opacity: 0.3;
-							&:hover {
-								opacity: 1;
-							}
-						}
-						&[title="Sindarin"] { /* синдарин иначе не влазит */
-							font-size: 90%;
-						}
-					}
-					img {
-						margin: -.15em .2em;
-						position: relative;
-						top: 0;
-					}
-				}
-			}
-		}
 	}
 	article#dokuwiki__detail {
 		padding-left: 1em;
