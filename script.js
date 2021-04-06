@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.03.20 18:51 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.04.06 10:26 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -196,16 +196,6 @@ document.querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ).forEach (
 		}
 	}
 );
-
-/* транслятор - красные ссылки ведут в редактор */
-
-if ( document.querySelector ( '.plugin_translation .wikilink2 ') != null ) {
-	document.querySelectorAll ( ".plugin_translation .wikilink2:not([href$='do=edit'])" ).forEach (
-		function (e) {
-			e.href += '?do=edit'
-		}
-	)
-};
 
 // В КОМИКСОВЫХ РАЗДЕЛАХ САЙТА
 
