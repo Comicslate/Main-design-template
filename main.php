@@ -68,8 +68,7 @@ echo $t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) .
 $t2 . '<link rel = "preconnect" href="https://fonts.gstatic.com" />';
 if ( preg_match ( '/(h[ei]|ko|ja|zh)/', $conf [ "lang" ] ) )
 	echo  $t2 . '<link rel = "preload" href = "https://fonts.googleapis.com/css2?family=' . $dfont . '&amp;display=swap" as = "style" crossorigin = "anonymous">';
-echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic.otf" as = "font" type = "font/otf" crossorigin = "anonymous">' .
-$t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/font_awesome.otf" as = "font" type = "font/otf" crossorigin = "anonymous">' .
+echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic1.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
 $t2; tpl_metaheaders ( );
 echo "\n\t" . '</head>' .
 
