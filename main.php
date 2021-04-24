@@ -10,7 +10,7 @@ switch ( $conf [ "lang" ] ) {
 	default : break;
 };
 
-$rlogo = time ( ) / 300 % 9;
+/*$rlogo = time ( ) / 300 % 9;*/
 
 $ilinks = array (
 	array ( '/'. $conf [ "lang" ] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
@@ -75,25 +75,28 @@ echo "\n\t" . '</head>' .
 "\n\t" . '<body>' . // BODY
 $t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . '">' .
 
-$t3 . '<header class = "logo' . $rlogo . '">' . // MENU1
-$t4 . '<div class = "top-texts">'; // Topline
-for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) {
+$t3 . '<div id="head">' .
+$t4 . '<div id="logo">' . // Logo
+$t5 . '<a id="inlogo" href = "' . $ilinks [ 0 ] [ 0 ] . '" title="' . $ilinks [ 0 ] [ 1 ] . '"></a>' .
+$t4 . '</div>' .
+$t4 . '<div id="menu">' .
+$t5 . '<header>' . // Topline
+$t6 . '<span id="upmenu">';
+for ( $i = 1; $i <= count ( $ilinks ) - 1; $i++ ) {
 	switch ( $i ) {
-		case 0 : break;
+		case 1 : break;
 		default : echo ' , ';
 	}
-	echo $t5 . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
+	echo 		$t6 . "\t" . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
 };
-echo $t4 . '</div>' .
-$t4 . '<div class = "searcher">' . // Search
-$t5 ; tpl_searchform ( );
-echo $t4 . '</div>' .
-$t4 . '<div class = "newlogo-wrap">' . // Logo
-$t5 . '<div class = "newlogo"></div>' .
+echo $t6 . '</span>' .
+$t6 . '<div id="search">' . // Search
+$t6 . "\t" ; tpl_searchform ( );
+echo $t6 . '</div>' .
+$t5 . '</header>' .
+$t5 . '<nav>' . $trans . $t5 . '</nav>' . // MENU2
 $t4 . '</div>' .
-$t3 . '</header>' .
-
-$t3 . '<nav class = "translation">' . $trans . $t3 . '</nav>' . // MENU2
+$t3 . '</div>' .
 
 $t3 . '<div id = "translabel"></div>'; // CHECKBOX
 
