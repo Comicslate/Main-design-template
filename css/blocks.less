@@ -23,15 +23,12 @@
 	}
 }
 
-.logon ( @n ) {
-	&.logo@{n} .newlogo { background-image: url( images/logo@{n}.png ) !important; }
-}
-
 .dokuwiki {
 	margin: 0;
 	width: 100%;
 	&.export {
-		margin: 3px;
+			box-sizing: border-box;
+			padding: 3px;
 		abbr {
 			text-decoration: none;
 		}
@@ -39,122 +36,76 @@
 			color: inherit !important;
 		}
 	}
-	header {
-		-webkit-appearance: none;
-		display: flex;
-		height: 28px;
-		letter-spacing: .05em;
-		padding: 0 7px;
-		position: relative;
-		text-shadow: 1px 1px 2px black;
-		width: ~"calc(100% - 14px)";
-		word-wrap: break-word;
-		z-index: 0;
-		.logon ( 0 );.logon ( 1 );.logon ( 2 );.logon ( 3 );.logon ( 4 );.logon ( 5 );.logon ( 6 );.logon ( 7 );.logon ( 8 );
-		&.logo0 {
-			background: #22979E;
+
+	#head {
+		* {
+			outline: none;
 		}
-		&.logo1 {
-			background: #829DD3;
-		}
-		&.logo2 {
-			background: #EDB1BB;
-			a:hover {
-				color: #0FF !important;
-			}
-		}
-		&.logo3 {
-			background: #A387C1;
-		}
-		&.logo4 {
-			background: #E183BD;
-		}
-		&.logo5 {
-			background: #E9B630;
-			a:hover {
-				color: #0FF !important;
-			}
-		}
-		&.logo6 {
-			background: #45A2C4;
-		}
-		&.logo7 {
-			background: #AD464A;
-		}
-		&.logo8 {
-			background: #89E081;
-		}
-		&.april {
-			a {
-				position: relative;
-				top: -2px;
-			}
-		}
-		.top-texts {
-			flex: 0 0 auto;
-			a {
-				color: white;
-				font: bold 15px DatFestComic, cursive;
-				position: relative;
-				top: 4px;
-				&:hover {
-					color: #FF0;
+		#logo {
+			float: left;
+			#inlogo {
+				background: url( images/nlogo1.svg ) no-repeat;
+				display: inline-block;
+				height: 53px;
+				width: 332px;
+				@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
+					background: url( images/nlogo2.svg ) no-repeat;
+					width: 40px;
 				}
 			}
 		}
-		.searcher {
-			flex: 0 0 auto;
-			margin: 0 7px;
-			form#dw__search {
-				display: block;
-				div.no {
+		#menu {
+			header {
+				background: #A387C1;
+				letter-spacing: .05em;
+				line-height: 1.6em;
+				min-height: 28px;
+				text-shadow: 1px 1px 2px black;
+				#upmenu {
+					font: bold 15px DatFestComic,cursive;
 					position: relative;
-					input#qsearch__in {
-						font-size: 120%;
+					top: 4px;
+					a {
+						color: white;
 					}
-					button {
-						border-radius: 5px;
-						font-size: 13px;
-						padding: 1px 5px;
-						position: relative;
-						top: 3px;
+					a:hover {
+						color: #FF0;
 					}
-					div#qsearch__out { /* всплывающие результаты; вырубить нахрен, неуправляемые background и частично position */
-						display: none !important;
+				}
+				#search {
+					display: inline-block;
+					float: right;
+					margin: 0 8px;
+					form#dw__search {
+						display: block;
+						div.no {
+							position: relative;
+							* {
+								border-radius: 10px;
+								font-size: 120%;
+							}
+							button {
+								padding: 1px 6px 2px 3px;
+								position: relative;
+								top: 3px;
+								left: 2px;
+							}
+							div#qsearch__out { /* всплывающие результаты; вырубить нахрен, неуправляемые background и частично position */
+								display: none !important;
+							}
+						}
 					}
 				}
 			}
-		}
-		.newlogo-wrap {
-			flex-shrink: 1;
-			position: relative;
-			width: 100%;
-			.newlogo {
-				background: no-repeat 100% 0;
-				background-size: contain;
-				height: 107px;
-				max-width: 332px;
-				position: absolute;
-				right: 0;
-				top: 0;
-				width: 100%;
-				z-index: 1;
-				@media (max-width: 940px) {
-					background-image: url( images/logo.png ) !important;
-					height: 64px;
-					right: 0;
-					width: 64px;
-				}
-				[dir=rtl] & {
-					left: 0;
-					right: auto;
+			nav {
+				min-height: 28px;
+				.plugin_translation { /* временно, потом поправить в плагине, также там в ul убрать flex и попрятать красные ссылки */
+					border-radius: unset;
+					margin: 0;
+					position: inherit;
 				}
 			}
 		}
-	}
-	nav.translation {
-		height: 28px;
-		overflow: hidden;
 	}
 	article#dokuwiki__detail {
 		padding-left: 1em;
@@ -628,6 +579,8 @@
 	.hyph { /* переносы */
 		hyphens: auto;
 		-webkit-hyphens: auto;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
 	}
 	[dir=rtl] .note {
 		background-position: right 20px top 12px;
