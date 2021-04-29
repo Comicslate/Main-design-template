@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
+/*
+  * ver. 2021.04.29 22:42 GMT+10
+  */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' ); 
 
 switch ( $conf [ "lang" ] ) {
@@ -26,10 +29,10 @@ $trans = ( $translation ) ? $translation -> showTranslations ( ) : '';
 
 $apps = "\t\t\t\t" . '<div class = "apps">' .
 $t5 . '<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank">' .
-$t6 . '<img src = "' . DOKU_TPL . 'images/googleapp_optim.svg" alt = "Get it on Google Play">' .
+$t6 . '<img src = "' . DOKU_TPL . 'images/googleapp.svg" alt = "Get it on Google Play">' .
 $t5 . '</a>' .
 $t5 . '<a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_blank">' .
-$t6 . '<img src = "' . DOKU_TPL . 'images/appstore_optim.svg" alt = "Download on the App Store">' .
+$t6 . '<img src = "' . DOKU_TPL . 'images/appstore.svg" alt = "Download on the App Store">' .
 $t5 . '</a>' .
 $t4 . '</div>' . $t4;
 
@@ -58,15 +61,17 @@ $t2 . '<title>' .
 $t3 ; tpl_pagetitle ( ); echo ' [Comicslate]' .
 $t2 . '</title>' .
 $t2 . '<link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" />' .
-$t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />' .
-$t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>';
+$t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />';
+if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] == 'uk' )
+	echo $t2 . '<script src = "//an.yandex.ru/system/context.js" async></script>'; // реклама РСИ
+echo $t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>';
 if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) )
 	echo $t2 . '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
 echo $t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) .
 $t2 . '<link rel = "preconnect" href="https://fonts.gstatic.com" />';
 if ( preg_match ( '/(h[ei]|ko|ja|zh)/', $conf [ "lang" ] ) )
 	echo  $t2 . '<link rel = "preload" href = "https://fonts.googleapis.com/css2?family=' . $dfont . '&amp;display=swap" as = "style" crossorigin = "anonymous">';
-echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic1.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
+echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
 $t2; tpl_metaheaders ( );
 echo "\n\t" . '</head>' .
 
@@ -113,10 +118,8 @@ $t5 . '<ul>' .
 $t6 . ( new \dokuwiki\Menu\PageMenu ( ) ) -> getListItems ( ) .
 $t5 . '</ul>' .
 $t4 . '</aside>' .
-$t3 . '</noindex>' .
 
-$t3 . '<footer>' . // FOOTER
-$t4 . '<noindex>';
+$t4 . '<footer>'; // FOOTER
 
 if ( $conf [ 'breadcrumbs' ] ) { // Breadcrumbs
 	echo $t5 . '<div class = "breadcrumbs">';
@@ -157,11 +160,12 @@ if ( !empty ( $_SERVER['REMOTE_USER'] ) ) { // Userinfo
 	echo $t5 . '</div>';
 };
 
-echo $t4 . '</noindex>' .
-$t3 . '</footer>' .
+echo $t4 . '</footer>' .
+$t3 . '</noindex>';
 
-// $t3 . '<div id = "yandex_rtb"></div>' . // END
-$t2 . '</div>' .
+if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] == 'uk' )
+	echo $t3 . '<div id = "yandex_rtb_R-A-492328-1"></div>'; // реклама РСИ
+echo $t2 . '</div>' .
 $t2 . '<div class = "no">' .
 $t3; tpl_indexerWebBug ( ); // Indexer
 echo $t2 . '</div>' .
