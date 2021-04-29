@@ -2,9 +2,9 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20190801 at Sun Jan 31 23:58:18 2021
+Created by FontForge 20190801 at Mon Apr  5 23:38:35 2021
  By www-data
-(c) 2011-2020 dsp2003. Free for non-commercial use only. Obtain license here:
+(c) 2011-2021 dsp2oo3. Free for non-commercial use only. Obtain license here:
 http://wks.arai-kibou.ru/fontlab.php
 </metadata>
 <defs>
@@ -22,7 +22,7 @@ http://wks.arai-kibou.ru/fontlab.php
     bbox="-681 -429.817 1721.85 1843.55"
     underline-thickness="150"
     underline-position="-292"
-    unicode-range="U+001D-F005"
+    unicode-range="U+001D-F14A"
   />
 <missing-glyph horiz-adv-x="1536" 
 d="M256 0v1280h1024v-1280h-1024zM288 32h960v1216h-960v-1216z" />
@@ -1665,6 +1665,11 @@ q62 -87 120 -29l127 258q-83 94 -156 40z" />
 d="M-590 1722l-91 -269q62 -87 120 -29l127 258q-83 94 -156 40z" />
     <glyph glyph-name="uni0341" unicode="&#x341;" horiz-adv-x="0" 
 d="M-590 1722l-91 -269q62 -87 120 -29l127 258q-83 94 -156 40z" />
+    <glyph glyph-name="ch_selected" unicode="&#xf14a;" horiz-adv-x="1300" 
+d="M200 0q-200 0 -200 200v800q0 200 200 200h800q200 0 200 -200v-800q0 -200 -221 -200h-779zM100 1000v-800q0 -100 100 -100h800q100 0 100 100v800q0 100 -100 100h-800q-100 0 -100 -100zM252 474q17 110 127 128q57 -75 170 -173q119 242 221 507q105 151 206 -27
+q-139 -384 -288 -629q-57 -96 -130 -85q-68 0 -233 184z" />
+    <glyph glyph-name="ch_empty" unicode="&#xf096;" horiz-adv-x="1300" 
+d="M200 0q-200 0 -200 200v800q0 200 200 200h800q200 0 200 -200v-800q0 -200 -221 -200h-779zM100 1000v-800q0 -100 100 -100h800q100 0 100 100v800q0 100 -100 100h-800q-100 0 -100 -100z" />
     <hkern u1="&#x413;" u2="&#x43b;" k="280" />
     <hkern u1="&#x413;" u2="&#x434;" k="424" />
     <hkern u1="&#x413;" u2="&#x430;" k="290" />
