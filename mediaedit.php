@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 /**
  * DokuWiki Default Template
@@ -12,8 +13,7 @@
  * @author Andreas Gohr <andi@splitbrain.org>
  */
 header('X-UA-Compatible: IE = edge, chrome = 1');
-echo '<!DOCTYPE html>
-<html xml:lang="'.$conf["lang"].'" lang="'.$conf["lang"].'" dir="ltr">
+echo "\n" . '<html xml:lang="'.$conf["lang"].'" lang="'.$conf["lang"].'" dir="ltr">
 <head><title>'.hsc($lang['mediaselect']).' ['.hsc($conf['title']).']</title>
 <meta charset="utf-8"/>
 <meta name="description" content="'.strip_tags($conf['title']).' - '.tpl_getLang('descr').'"/>';
