@@ -36,7 +36,6 @@
 			color: inherit !important;
 		}
 	}
-
 	#head {
 		* {
 			outline: none;
@@ -62,6 +61,7 @@
 				min-height: 28px;
 				text-shadow: 1px 1px 2px black;
 				#upmenu {
+					color: white;
 					font: bold 15px DatFestComic,cursive;
 					position: relative;
 					top: 4px;
@@ -70,6 +70,12 @@
 					}
 					a:hover {
 						color: #FF0;
+					}
+					a + a {
+						margin-left: 8px;
+						@media (max-width: 750px) {
+							margin-left: 3px;
+						}
 					}
 				}
 				#search {
@@ -99,14 +105,36 @@
 			}
 			nav {
 				min-height: 28px;
-				.plugin_translation { /* временно, потом поправить в плагине, также там в ul убрать flex и попрятать красные ссылки */
-					border-radius: unset;
-					margin: 0;
-					position: inherit;
+				&:hover::after {
+					font: bold 15px DatFestComic,cursive;
+					color: #bbb;
 				}
 			}
 		}
 	}
+	&.lang-be { nav:hover::after { content: "🡐 Мовы"; } }
+	&.lang-bg { nav:hover::after { content: "🡐 Езици"; } }
+	&.lang-da { nav:hover::after { content: "🡐 Sprog"; } }
+	&.lang-de { nav:hover::after { content: "🡐 Sprachen"; } }
+	&.lang-el { nav:hover::after { content: "🡐 Γλώσσες"; } }
+	&.lang-en { nav:hover::after { content: "🡐 Languages"; } }
+	&.lang-eo { nav:hover::after { content: "🡐 Lingvoj"; } }
+	&.lang-es { nav:hover::after { content: "🡐 Idiomas"; } }
+	&.lang-fi { nav:hover::after { content: "🡐 Kielet"; } }
+	&.lang-fr { nav:hover::after { content: "🡐 Langues"; } }
+	&.lang-he { nav:hover::after { content: "🡐 שפות"; } }
+	&.lang-hi { nav:hover::after { content: "🡐 बोली"; } }
+	&.lang-hu { nav:hover::after { content: "🡐 Nyelvek"; } }
+	&.lang-id { nav:hover::after { content: "🡐 Bahasa"; } }
+	&.lang-it { nav:hover::after { content: "🡐 Lingue"; } }
+	&.lang-ja { nav:hover::after { content: "🡐 言語"; } }
+	&.lang-ko { nav:hover::after { content: "🡐 언어"; } }
+	&.lang-pl { nav:hover::after { content: "🡐 Języki"; } }
+	&.lang-pt { nav:hover::after { content: "🡐 Línguas"; } }
+	&.lang-ru { nav:hover::after { content: "🡐 Языки"; } }
+	&.lang-tr { nav:hover::after { content: "🡐 Diller"; } }
+	&.lang-uk { nav:hover::after { content: "🡐 Мови"; } }
+	&.lang-zh { nav:hover::after { content: "🡐 语言"; } }
 	article#dokuwiki__detail {
 		padding-left: 1em;
 		[dir=rtl] & {
