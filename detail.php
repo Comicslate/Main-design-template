@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 /**
  * DokuWiki Image Detail Template
@@ -12,8 +13,6 @@
  */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
-$rlogo = time ( ) / 300 % 9;
-
 $ilinks = array (
 	array ( '/'. $conf [ "lang" ] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
 	array ( '/'. $conf [ "lang" ] . '/menu',		tpl_getLang ( 'menu' ),		'_self' ),
@@ -25,7 +24,14 @@ $ilinks = array (
 
 $t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
 
-$apps = "\t\t\t\t" . '<div class = "apps"><a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank"><img src = "' . DOKU_TPL . 'images/googleapp_optim.svg" alt = "Get it on Google Play"></a><a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_blank"><img src = "' . DOKU_TPL . 'images/appstore_optim.svg" alt = "Download on the App Store"></a></div>' . $t4;
+$apps = "\t\t\t\t" . '<div class = "apps">' .
+$t5 . '<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank">' .
+$t6 . '<img src = "' . DOKU_TPL . 'images/googleapp_optim.svg" alt = "Get it on Google Play">' .
+$t5 . '</a>' .
+$t5 . '<a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_blank">' .
+$t6 . '<img src = "' . DOKU_TPL . 'images/appstore_optim.svg" alt = "Download on the App Store">' .
+$t5 . '</a>' .
+$t4 . '</div>' . $t4;
 
 $socbut = array (
 	array ( '/feed.php', tpl_getLang ( 'RSS' ), 'rss' ),
@@ -44,8 +50,7 @@ $socbut = array (
 
 
 
-echo '<!DOCTYPE html>' .
-"\n" . '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">' .
+echo "\n" . '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">' .
 
 "\n\t" . '<head>' . // HEAD
 $t2 . '<meta charset = "utf-8" />' .
@@ -60,27 +65,28 @@ echo "\n\t" . '</head>' .
 "\n\t" . '<body>' . // BODY
 $t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . '">' .
 
-$t3 . '<header class = "logo' . $rlogo . '">' . // MENU1
-$t4 . '<div class = "top-texts">'; // Topline
-for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) {
-	switch ( $i ) {
-		case 0 : break;
-		default : echo ' , ';
-	}
-	echo $t5 . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
-};
-echo $t4 . '</div>' .
-$t4 . '<div class = "searcher">' . // Search
-$t5 ; tpl_searchform ( );
-echo $t4 . '</div>' .
-$t4 . '<div class = "newlogo-wrap">' . // Logo
-$t5 . '<div class = "newlogo"></div>' .
+$t3 . '<div id="head">' .
+$t4 . '<div id="logo">' . // Logo
+$t5 . '<a id="inlogo" href = "' . $ilinks [ 0 ] [ 0 ] . '" title="' . $ilinks [ 0 ] [ 1 ] . '"></a>' .
 $t4 . '</div>' .
-$t3 . '</header>';
+$t4 . '<div id="menu">' .
+$t5 . '<header>' . // Topline
+$t6 . '<span id="upmenu">';
+for ( $i = 1; $i <= count ( $ilinks ) - 1; $i++ ) {
+	echo $t6 . "\t" . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
+};
+echo $t6 . '</span>' .
+$t6 . '<div id="search">' . // Search
+$t6 . "\t" ; tpl_searchform ( );
+echo $t6 . '</div>' .
+$t5 . '</header>' .
+$t5 . '<nav>' . $trans . $t5 . '</nav>' . // MENU2
+$t4 . '</div>' .
+$t3 . '</div>' .
 
 tpl_flush ( );
 echo $t3 . '<article id = "dokuwiki__detail">' . // PAGE
-"\n"; $apps; // App buttons top
+"\n" . $apps; // App buttons top
 
 if ( $ERROR ) {
 	print $ERROR;
@@ -184,9 +190,9 @@ $t5 . '<ul>' .
 $t6 . ( new \dokuwiki\Menu\PageMenu ( ) ) -> getListItems ( ) .
 $t5 . '</ul>' .
 $t4 . '</aside>' .
-$t3 . '</noindex>';
+$t3 . '</noindex>' .
 
-echo $t3 . '<footer>' . // FOOTER
+$t3 . '<footer>' . // FOOTER
 $t4 . '<noindex>';
 
 if ( $conf [ 'breadcrumbs' ] ) { // Breadcrumbs
@@ -201,7 +207,7 @@ for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
 };
 echo $t5 . '</div>' .
 
-"\n\t" . $apps . "\t"; // App buttons bottom
+"\n" . $apps . "\t"; // App buttons bottom
 
 if ( $INFO [ 'ismanager' ] ) { // Pageinfo
 	echo $t5 . '<div class = "pageinfo">' .
@@ -220,4 +226,4 @@ $t3 . '</footer>' .
 
 $t2 . '</div>' .
 "\n\t" . '</body>' .
-"\n" . '</html>'; ?>
+"\n" . '</html>';
