@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' ); 
 
@@ -9,8 +10,6 @@ switch ( $conf [ "lang" ] ) {
 	case 'zh' : $dfont = 'ZCOOL+KuaiLe'; break;
 	default : break;
 };
-
-/*$rlogo = time ( ) / 300 % 9;*/
 
 $ilinks = array (
 	array ( '/'. $conf [ "lang" ] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
@@ -51,8 +50,7 @@ $socbut = array (
 
 
 
-echo '<!DOCTYPE html>' .
-"\n" . '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">' .
+echo "\n" . '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">' .
 
 "\n\t" . '<head>' . // HEAD
 $t2 . '<meta charset = "utf-8" />' .
@@ -83,11 +81,7 @@ $t4 . '<div id="menu">' .
 $t5 . '<header>' . // Topline
 $t6 . '<span id="upmenu">';
 for ( $i = 1; $i <= count ( $ilinks ) - 1; $i++ ) {
-	switch ( $i ) {
-		case 1 : break;
-		default : echo ' , ';
-	}
-	echo 		$t6 . "\t" . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
+	echo $t6 . "\t" . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
 };
 echo $t6 . '</span>' .
 $t6 . '<div id="search">' . // Search
