@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.04.29 22:42 GMT+10
+  * ver. 2021.04.30 01:48 GMT+10
   */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' ); 
 
@@ -67,7 +67,15 @@ if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] ==
 echo $t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>';
 if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) )
 	echo $t2 . '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
-echo $t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) .
+echo $t2 . '<link rel="apple-touch-icon" sizes="180x180" href="/lib/tpl/comicslate/images/apple-touch-icon.png">' .
+$t2 . '<link rel="icon" type="image/png" sizes="32x32" href="/lib/tpl/comicslate/images/favicon-32x32.png">' .
+$t2 . '<link rel="icon" type="image/png" sizes="16x16" href="/lib/tpl/comicslate/images/favicon-16x16.png">' .
+$t2 . '<link rel="manifest" href="/lib/tpl/comicslate/images/site.webmanifest">' .
+$t2 . '<link rel="mask-icon" href="/lib/tpl/comicslate/images/safari-pinned-tab.svg" color="#5bbad5">' .
+$t2 . '<link rel="shortcut icon" href="/lib/tpl/comicslate/images/favicon.ico">' .
+$t2 . '<meta name="msapplication-TileColor" content="#da532c">' .
+$t2 . '<meta name="msapplication-config" content="/lib/tpl/comicslate/images/browserconfig.xml">' .
+$t2 . '<meta name="theme-color" content="#ffffff">' .
 $t2 . '<link rel = "preconnect" href="https://fonts.gstatic.com" />';
 if ( preg_match ( '/(h[ei]|ko|ja|zh)/', $conf [ "lang" ] ) )
 	echo  $t2 . '<link rel = "preload" href = "https://fonts.googleapis.com/css2?family=' . $dfont . '&amp;display=swap" as = "style" crossorigin = "anonymous">';
