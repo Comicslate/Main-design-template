@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.04.06 10:26 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.04.29 22:31 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -22,6 +22,17 @@ if ( window.location.href.match ( /do=edit/i ) == null ) { // запуск не 
 		} );
 	} ) ( document, window, "yandex_metrika_callbacks2" )
 };
+
+( function ( w, d, n ) {
+	w[n] = w[n] || [];
+	w[n].push ( function ( ) {
+		Ya.Context.AdvManager.render ( {
+			blockId: "R-A-492328-1",
+			renderTo: "yandex_rtb_R-A-492328-1",
+			async: true
+		} );
+	} );
+} ) ( this, this.document, "yandexContextAsyncCallbacks" );
 
 /* истребитель двоеточий в адресах */
 
