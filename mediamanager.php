@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 /**
  * DokuWiki Default Template
@@ -11,7 +12,7 @@
 // must be run from within DokuWiki
 if (!defined('DOKU_INC')) die();
 header('X-UA-Compatible: IE = edge, chrome = 1');
-echo '<!DOCTYPE html><html xml:lang="'.$conf["lang"].'" lang="'.$conf["lang"].'" dir="ltr"><head>'.PHP_EOL.
+echo "\n" . '<html xml:lang="'.$conf["lang"].'" lang="'.$conf["lang"].'" dir="ltr"><head>'.PHP_EOL.
 '<title>'.hsc($lang['mediaselect']).' ['.strip_tags($conf['title']).']</title>'.PHP_EOL.
 '<meta charset="utf-8"/>'.PHP_EOL;
 tpl_metaheaders();
