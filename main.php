@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.05.03 14:52 GMT+10
+  * ver. 2021.05.04 00:47 GMT+10
   */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -11,7 +11,7 @@ switch ( $conf [ "lang" ] ) {
 	case 'ko' : $dfont = 'Jua'; break;
 	case 'ja' : $dfont = 'Kosugi+Maru'; break;
 	case 'zh' : $dfont = 'ZCOOL+KuaiLe'; break;
-	case 'ru' : case 'be' : case 'uk' : $grlng = ' slav'; break;
+	case 'ru' : case 'be' : case 'bg' : case 'uk' : $grlng = ' slav'; break;
 	default : break;
 };
 
@@ -172,7 +172,7 @@ if ( !empty ( $_SERVER['REMOTE_USER'] ) ) { // Userinfo
 echo $t4 . '</footer>' .
 $t3 . '</noindex>';
 
-if ( $grlng )
+if ( $grlng && $ACT == 'show' )
 	echo $t3 . '<div id = "yandex_rtb_R-A-492328-1"></div>'; // реклама РСИ
 echo $t2 . '</div>' .
 $t2 . '<div class = "no">' .
