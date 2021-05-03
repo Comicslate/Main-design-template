@@ -54,6 +54,14 @@
 				display: inline-block;
 				height: 53px;
 				width: 332px;
+				&:hover::after {
+					animation: op01 0.4s;
+					background: url( images/ck4.png) no-repeat;
+					content: '';
+					display: inline-block;
+					height: 53px;
+					width: 332px;
+				}
 				@media (max-width: 1024px) {
 					width: 40px;
 				}
@@ -456,6 +464,9 @@
 	&.slav {
 		#head #logo #inlogo {
 			background: url( images/logor.svg ) no-repeat;
+			&:hover::after {
+				background-position-x: 10%;
+			}
 			@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
 				background: url( images/logor_mob.svg ) no-repeat;
 			}
@@ -483,12 +494,7 @@
 		#head #logo #inlogo {
 			background: url( images/logo.svg ) no-repeat;
 			&:hover::after {
-				animation: op01 0.4s;
-				background: url( images/ck4.png) no-repeat 12%;
-				content: '';
-				display: inline-block;
-				height: 53px;
-				width: 332px;
+				background-position-x: 12%;
 			}
 			@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
 				background: url( images/logo_mob.svg ) no-repeat;
