@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.04.30 01:48 GMT+10
+  * ver. 2021.05.03 14:52 GMT+10
   */
-header ( 'X-UA-Compatible: IE = edge, chrome = 1' ); 
+header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
 switch ( $conf [ "lang" ] ) {
 	case 'he' : $dfont = 'Frank+Ruhl+Libre:wght@700'; break;
@@ -11,6 +11,7 @@ switch ( $conf [ "lang" ] ) {
 	case 'ko' : $dfont = 'Jua'; break;
 	case 'ja' : $dfont = 'Kosugi+Maru'; break;
 	case 'zh' : $dfont = 'ZCOOL+KuaiLe'; break;
+	case 'ru' : case 'be' : case 'uk' : $grlng = ' slav'; break;
 	default : break;
 };
 
@@ -84,7 +85,7 @@ $t2; tpl_metaheaders ( );
 echo "\n\t" . '</head>' .
 
 "\n\t" . '<body>' . // BODY
-$t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . '">' .
+$t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . $grlng .'">' .
 
 $t3 . '<div id="head">' .
 $t4 . '<div id="logo">' . // Logo
@@ -171,7 +172,7 @@ if ( !empty ( $_SERVER['REMOTE_USER'] ) ) { // Userinfo
 echo $t4 . '</footer>' .
 $t3 . '</noindex>';
 
-if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] == 'uk' )
+if ( $grlng )
 	echo $t3 . '<div id = "yandex_rtb_R-A-492328-1"></div>'; // реклама РСИ
 echo $t2 . '</div>' .
 $t2 . '<div class = "no">' .
