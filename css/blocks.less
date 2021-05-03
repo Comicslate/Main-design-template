@@ -6,7 +6,7 @@
 		transform: rotate(360deg);
 	}
 }
-@keyframes smooth1 {
+@keyframes op10 {
 	0% {
 		opacity: 1;
 	}
@@ -14,12 +14,20 @@
 		opacity: 0.1;
 	}
 }
-@keyframes smooth2 {
+@keyframes op2 {
 	0% {
 		opacity: 1;
 	}
 	100% {
 		opacity: 0.5;
+	}
+}
+@keyframes op01 {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }
 
@@ -43,12 +51,10 @@
 		#logo {
 			float: left;
 			#inlogo {
-				background: url( images/nlogo1.svg ) no-repeat;
 				display: inline-block;
 				height: 53px;
 				width: 332px;
-				@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
-					background: url( images/nlogo2.svg ) no-repeat;
+				@media (max-width: 1024px) {
 					width: 40px;
 				}
 			}
@@ -212,7 +218,6 @@
 		position: relative;
 		text-align: justify;
 		&::after {
-			background-image: url( images/logo.png );
 			content: "";
 			height: 100%;
 			left: 0;
@@ -424,7 +429,7 @@
 				padding-bottom: 2.5px;
 			}
 			li.edit svg {
-				animation: 1s linear 3s infinite alternate running smooth1;
+				animation: 1s linear 3s infinite alternate running op10;
 			}
 		}
 		[dir=rtl] & {
@@ -448,19 +453,49 @@
 			}
 		}
 	}
-	#yandex_rtb {
-		border: 1px solid #ddd;
-		border-radius: 5px;
-		clear: both;
-		margin: 5px auto;
-		max-height: 310px;
-		max-width: ~"calc(100% - 72px)";
-		overflow: hidden;
-		padding: 5px;
-		/* width: max-content; */
-		yatag {
-			align-content: center;
-/*			display: flex !important;*/
+	&.slav {
+		#head #logo #inlogo {
+			background: url( images/logor.svg ) no-repeat;
+			@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
+				background: url( images/logor_mob.svg ) no-repeat;
+			}
+		}
+		article.page::after {
+			background-image: url( images/logor_back.svg );
+		}
+		#yandex_rtb {
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			clear: both;
+			margin: 5px auto;
+			max-height: 310px;
+			max-width: ~"calc(100% - 72px)";
+			overflow: hidden;
+			padding: 5px;
+			/* width: max-content; */
+			yatag {
+				align-content: center;
+	/*			display: flex !important;*/
+			}
+		}
+	}
+	&:not(.slav) {
+		#head #logo #inlogo {
+			background: url( images/logo.svg ) no-repeat;
+			&:hover::after {
+				animation: op01 0.4s;
+				background: url( images/ck4.png) no-repeat 12%;
+				content: '';
+				display: inline-block;
+				height: 53px;
+				width: 332px;
+			}
+			@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
+				background: url( images/logo_mob.svg ) no-repeat;
+			}
+		}
+		article.page::after {
+			background-image: url( images/logo_back.svg );
 		}
 	}
 	footer {
