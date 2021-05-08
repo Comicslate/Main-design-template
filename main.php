@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.05.04 00:47 GMT+10
+  * ver. 2021.05.08 02:25 GMT+10
   */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -14,6 +14,8 @@ switch ( $conf [ "lang" ] ) {
 	case 'ru' : case 'be' : case 'bg' : case 'uk' : $grlng = ' slav'; break;
 	default : break;
 };
+
+$rlogo = rand ( 0, 6 );
 
 $ilinks = array (
 	array ( '/'. $conf [ "lang" ] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
@@ -68,16 +70,16 @@ if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] ==
 echo $t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>';
 if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) )
 	echo $t2 . '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
-echo $t2 . '<link rel="apple-touch-icon" sizes="180x180" href="/lib/tpl/comicslate/images/apple-touch-icon.png">' .
-$t2 . '<link rel="icon" type="image/png" sizes="32x32" href="/lib/tpl/comicslate/images/favicon-32x32.png">' .
-$t2 . '<link rel="icon" type="image/png" sizes="16x16" href="/lib/tpl/comicslate/images/favicon-16x16.png">' .
-$t2 . '<link rel="manifest" href="/lib/tpl/comicslate/images/site.webmanifest">' .
-$t2 . '<link rel="mask-icon" href="/lib/tpl/comicslate/images/safari-pinned-tab.svg" color="#5bbad5">' .
-$t2 . '<link rel="shortcut icon" href="/lib/tpl/comicslate/images/favicon.ico">' .
-$t2 . '<meta name="msapplication-TileColor" content="#da532c">' .
-$t2 . '<meta name="msapplication-config" content="/lib/tpl/comicslate/images/browserconfig.xml">' .
-$t2 . '<meta name="theme-color" content="#ffffff">' .
-$t2 . '<link rel = "preconnect" href="https://fonts.gstatic.com" />';
+echo $t2 . '<link rel = "apple-touch-icon" sizes = "180x180" href = "/lib/tpl/comicslate/images/fav/apple-touch-icon.png">' .
+$t2 . '<link rel = "icon" type = "image/png" sizes = "32x32" href = "/lib/tpl/comicslate/images/fav/favicon-32x32.png">' .
+$t2 . '<link rel = "icon" type = "image/png" sizes = "16x16" href = "/lib/tpl/comicslate/images/fav/favicon-16x16.png">' .
+$t2 . '<link rel = "manifest" href = "/lib/tpl/comicslate/images/fav/site.webmanifest">' .
+$t2 . '<link rel = "mask-icon" href = "/lib/tpl/comicslate/images/fav/safari-pinned-tab.svg" color = "#5bbad5">' .
+$t2 . '<link rel = "shortcut icon" href = "/lib/tpl/comicslate/images/fav/favicon.ico">' .
+$t2 . '<meta name = "msapplication-TileColor" content = "#da532c">' .
+$t2 . '<meta name = "msapplication-config" content = "/lib/tpl/comicslate/images/fav/browserconfig.xml">' .
+$t2 . '<meta name = "theme-color" content = "#ffffff">' .
+$t2 . '<link rel = "preconnect" href = "https://fonts.gstatic.com" />';
 if ( preg_match ( '/(h[ei]|ko|ja|zh)/', $conf [ "lang" ] ) )
 	echo  $t2 . '<link rel = "preload" href = "https://fonts.googleapis.com/css2?family=' . $dfont . '&amp;display=swap" as = "style" crossorigin = "anonymous">';
 echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
@@ -87,18 +89,18 @@ echo "\n\t" . '</head>' .
 "\n\t" . '<body>' . // BODY
 $t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . $grlng .'">' .
 
-$t3 . '<div id="head">' .
-$t4 . '<div id="logo">' . // Logo
-$t5 . '<a id="inlogo" href = "' . $ilinks [ 0 ] [ 0 ] . '" title="' . $ilinks [ 0 ] [ 1 ] . '"></a>' .
+$t3 . '<div id = "head">' .
+$t4 . '<div id = "logo">' . // Logo
+$t5 . '<a id = "inlogo" rnd = "' . $rlogo . '"  href = "' . $ilinks [ 0 ] [ 0 ] . '" title = "' . $ilinks [ 0 ] [ 1 ] . '"></a>' .
 $t4 . '</div>' .
-$t4 . '<div id="menu">' .
-$t5 . '<header>' . // Topline
-$t6 . '<span id="upmenu">';
+$t4 . '<div id = "menu">' .
+$t5 . '<header rnd = "' . $rlogo . '">' . // Topline
+$t6 . '<span id = "upmenu">';
 for ( $i = 1; $i <= count ( $ilinks ) - 1; $i++ ) {
 	echo $t6 . "\t" . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
 };
 echo $t6 . '</span>' .
-$t6 . '<div id="search">' . // Search
+$t6 . '<div id = "search">' . // Search
 $t6 . "\t" ; tpl_searchform ( );
 echo $t6 . '</div>' .
 $t5 . '</header>' .
