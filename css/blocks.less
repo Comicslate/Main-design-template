@@ -44,6 +44,32 @@
 			color: inherit !important;
 		}
 	}
+	&.slav {
+		#head #logo #inlogo {
+			background: url( images/logo/logor.svg ) no-repeat;
+			height: 53px;
+			transform: translate(1px, 0);
+			&:hover::after {
+				transform: translate(-1px, 0);
+			}
+			@media (max-width: 1024px) {
+				background: url( images/logo/logor_mob.svg ) no-repeat;
+			}
+		}
+	}
+	&:not(.slav) {
+		#head #logo #inlogo {
+			background: url( images/logo/logo.svg ) no-repeat;
+			height: 46.5px;
+			transform: translate(0, 7px);
+			&:hover::after {
+				transform: translate(0, -7px);
+			}
+			@media (max-width: 1024px) {
+				background: url( images/logo/logo_mob.svg ) no-repeat;
+			}
+		}
+	}
 	#head {
 		* {
 			outline: none;
@@ -52,17 +78,50 @@
 			float: left;
 			#inlogo {
 				display: inline-block;
-				height: 53px;
 				width: 332px;
 				&:hover::after {
 					animation: op01 0.4s;
-					background: url( images/ck4.png) no-repeat;
+					background-size: contain !important;
 					content: '';
 					display: inline-block;
-					height: 53px;
-					width: 332px;
+					width: inherit;
 				}
-				@media (max-width: 1024px) {
+				&[rnd="0"]:hover::after {
+					background: url(images/logo/logo-jenny.png) no-repeat;
+					height: 39px;
+					margin: 6px 0 0 24px;
+				}
+				&[rnd="1"]:hover::after {
+					background: url(images/logo/logo-sam.png) no-repeat;
+					height: 59px;
+					margin: 0 0 -3px 32px;
+				}
+				&[rnd="2"]:hover::after {
+					background: url(images/logo/logo-kitty.png) no-repeat;
+					height: 35px;
+					margin: 9px 0 0 29px;
+				}
+				&[rnd="3"]:hover::after {
+					background: url(images/logo/logo-pinkie.png) no-repeat;
+					height: 54px;
+					margin: 0 0 0 14px;
+				}
+				&[rnd="4"]:hover::after {
+					background: url(images/logo/logo-bob.png) no-repeat;
+					height: 35px;
+					margin: 11px 0 0 34px;
+				}
+				&[rnd="5"]:hover::after {
+					background: url(images/logo/logo-ninwah.png) no-repeat;
+					height: 39px;
+					margin: 7px 0 0 23px;
+				}
+				&[rnd="6"]:hover::after {
+					background: url(images/logo/logo-gamercat.png) no-repeat;
+					height: 34px;
+					margin: 9px 0 0 28px;
+				}
+				@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
 					width: 40px;
 					&:hover::after {
 						background: none;
@@ -72,11 +131,34 @@
 		}
 		#menu {
 			header {
-				background: #A387C1;
 				letter-spacing: .05em;
 				line-height: 1.6em;
-				min-height: 28px;
+				min-height: 30px;
 				text-shadow: 1px 1px 2px black;
+				&[rnd="0"] {
+					background: #22979E;
+				}
+				&[rnd="1"] {
+					background: #829DD3;
+				}
+				&[rnd="2"] {
+					background: #A387C1;
+				}
+				&[rnd="3"] {
+					background: #E183BD;
+				}
+				&[rnd="4"] {
+					background: #E9B630;
+					#upmenu a:hover {
+						color: #0FF;
+					}
+				}
+				&[rnd="5"] {
+					background: #45A2C4;
+				}
+				&[rnd="6"] {
+					background: #AD464A;
+				}
 				#upmenu {
 					color: white;
 					font: bold 15px DatFestComic,cursive;
@@ -121,7 +203,7 @@
 				}
 			}
 			nav {
-				min-height: 28px;
+				min-height: 30px;
 				&:hover::after {
 					font: bold 15px DatFestComic,cursive;
 					color: #bbb;
@@ -387,6 +469,16 @@
 			}
 		}
 	}
+	&.slav {
+		article.page::after {
+			background-image: url( images/logo/logor_back.svg );
+		}
+	}
+	&:not(.slav) {
+		article.page::after {
+			background-image: url( images/logo/logo_back.svg );
+		}
+	}
 /**
  * @author Anika Henke <anika@selfthinker.org>
  * @author Andreas Gohr <andi@splitbrain.org>
@@ -465,18 +557,6 @@
 		}
 	}
 	&.slav {
-		#head #logo #inlogo {
-			background: url( images/logor.svg ) no-repeat;
-			&:hover::after {
-				background-position-x: 10%;
-			}
-			@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
-				background: url( images/logor_mob.svg ) no-repeat;
-			}
-		}
-		article.page::after {
-			background-image: url( images/logor_back.svg );
-		}
 		#yandex_rtb {
 			border: 1px solid #ddd;
 			border-radius: 5px;
@@ -491,20 +571,6 @@
 				align-content: center;
 	/*			display: flex !important;*/
 			}
-		}
-	}
-	&:not(.slav) {
-		#head #logo #inlogo {
-			background: url( images/logo.svg ) no-repeat;
-			&:hover::after {
-				background-position-x: 12%;
-			}
-			@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
-				background: url( images/logo_mob.svg ) no-repeat;
-			}
-		}
-		article.page::after {
-			background-image: url( images/logo_back.svg );
 		}
 	}
 	footer {
