@@ -1,0 +1,227 @@
+.font-face ( @font ) {
+	font-display: swap;
+	src:	url('fonts/@{font}.eot');										/* IE9 Compat Modes */
+	src:	url('fonts/@{font}.eot?#iefix')	format ( 'embedded-opentype' ),	/* IE6-IE8 */
+/*			url('fonts/@{font}.otf')		format ( 'opentype' ),*/			/* Open Type Font */
+			url('fonts/@{font}.ttf')		format ( 'truetype' ),			/* Safari, Android, iOS */
+			url('fonts/@{font}.svg#main')	format ( 'svg' ),				/* Legacy iOS */
+			url('fonts/@{font}.woff')		format ( 'woff' ),				/* Modern Browsers */
+			url('fonts/@{font}.woff2')		format ( 'woff2' );				/* Modern Browsers */
+}
+
+@font-face {
+	font-family: AnimeAce; 				.font-face ( anime_ace )
+}
+@font-face {
+	font-family: Axolotl;					.font-face ( axolotl_comic )
+}
+@font-face {
+	font-family: DatFestComic;			.font-face ( dat_fest_comic1 )
+}
+@font-face {
+	font-family: DSPFetcher;				.font-face ( dsp_fetcher )
+}
+@font-face {
+	font-family: StrippedClone;			.font-face ( stripped_clone )
+}
+@font-face {
+	font-family: LisichkaComic;			.font-face ( lisichka )
+}
+@font-face {
+	font-family: ClaWrite;					.font-face ( nest_clawrite )
+}
+@font-face {
+	font-family: Impact;						.font-face ( impact )
+}
+@font-face {
+	font-family: KBLuckyCloverCyr;	.font-face ( kbluckyclovercyr )
+}
+@font-face {
+	font-family: TengwarAnnatar;		.font-face ( tengvar_annatar )
+}
+@font-face {
+	font-family: FontAwesome;			.font-face ( font_awesome )
+}
+@font-face {
+	font-family: SpaceCyr;					.font-face ( space_cyr )
+}
+@font-face {
+	font-family: UnicephalonCyr;		.font-face ( unicephalon_cyr )
+}
+@font-face {
+	font-family: VagRoundCyr;			.font-face ( vag_round_cyr )
+}
+
+.aace {
+	font-family: AnimeAce, cursive;
+}
+.axol {
+	font-family: Axolotl, cursive;
+}
+/*.export .ct-note {
+	padding: 0 1px !important;
+}*/
+.lang-he .fest {
+	font-family: 'Frank Ruhl Libre';
+	letter-spacing: -0.05px; /* достаточно -0,01, перестраховка */
+}
+.export.lang-hi .fest {
+	line-height: 100% !important;
+}
+.lang-hi .fest {
+	font-family: 'Inknut Antiqua';
+	letter-spacing: -1.22px;
+	line-height: 136%;
+}
+.lang-ko .fest {
+	font-family: Jua;
+	letter-spacing: 1.5px;
+	line-height: 136%;
+}
+.lang-ja .fest {
+	font-family: 'Kosugi Maru';
+	line-height: 128%;
+}
+.lang-sjn .fest {
+	font-family: TengwarAnnatar, cursive;
+}
+.lang-zh .fest {
+	font-family: 'ZCOOL KuaiLe';
+	letter-spacing: 1.1px;
+	line-height: 132%;
+}
+.fest {
+	font-family: DatFestComic, cursive;
+}
+
+.dspf {
+	font-family: DSPFetcher, cursive;
+}
+.stri {
+	font-family: StrippedClone, cursive;
+}
+.lisi {
+	font-family: LisichkaComic, cursive;
+}
+.claw {
+	font-family: ClaWrite, cursive;
+}
+.impt {
+	font-family: Impact, cursive;
+}
+.lucl {
+	font-family: KBLuckyCloverCyr, cursive;
+}
+.tean {
+	font-family: TengwarAnnatar, cursive;
+}
+.fawe {
+	font-family: FontAwesome, cursive;
+}
+.spac {
+	font-family: SpaceCyr, cursive;
+}
+.unic {
+	font-family: UnicephalonCyr, cursive;
+}
+.vag {
+	font-family: VagRoundCyr, cursive;
+}
+.ops {
+	font-family: "Open Sans";
+}
+
+.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic,.vag,.ops {
+	-webkit-appearance: none;
+	font-feature-settings: "kern" 1;
+	font-kerning: normal;
+	word-wrap: break-word;
+}
+
+.flo { color: #866444; }
+.sam { color: #4B70BB; }
+.hlx { color: #8A796F; }
+.saw { color: #FE2E06; }
+.qwe { color: #5E3432; }
+.dvo { color: #696A00; }
+.edge { color: #3F5537; }
+.blunt { color: #554E37; }
+.max { color: #242424; }
+.rai { color: #106A10; }
+.kor { color: #005263; }
+.mad { color: #333333; }
+.mayor { color: #491D31; }
+.mhlp { color: #493025; }
+.niomi { color: #49211D; }
+.pol { color: #10106A; }
+.mst, .mst1 { color: #CE5200; }
+.bow { color: #C7AE1A; }
+.ish { color: #4A3110; }
+.gre { color: #215f7a; }
+.oth { color: black; }
+.znt { color: #1E90FF; }
+.ozy { color: #404040; }
+.mil { color: #EE7000; }
+.mol { color: #700070; }
+.tsp { color: #BB81CE; }
+.rrp { color: #A9A9A9; }
+.rdp { color: #006BFF; }
+.fsp { color: #CEC343; }
+.ppp { color: #DE2E76; }
+.ajp { color: #CA9954; }
+.sdr { color: #258B01; }
+.bmp { color: #DE6E56; }
+.vag { color: #00a90c; }
+
+.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic,.vag,.ops,
+.flo,.sam,.hlx,.saw,.qwe,.dvo,.edge,.blunt,.max,.rai,.kor,.mad,.mayor,.mhlp,.niomi,.pol,.mst1,.mst,.bow,.ish,.gre,.oth,
+.znt,
+.ozy,.mil,
+.mol,.tsp,.rrp,.rdp,.fsp,.ppp,.ajp,.sdr,.bmp {
+	display: inline;
+}
+.mirx,
+.miry {
+	display: inline-block;
+}
+.mirx,
+.mirx img {
+	transform: scaleX(-1);
+	filter: FlipH;
+}
+.miry,
+.miry img {
+	transform: scaleY(-1);
+	filter: FlipV;
+}
+.vyleft {
+	float: left;
+	text-align: left !important;
+}
+.vyjust {
+	float: left;
+	text-align: justify !important;
+}
+.vyright {
+	float: right;
+	text-align: right !important;
+}
+.vycenter {
+	margin: 0 auto;
+	text-align: center !important;
+	.notetip& {
+		padding: 15px 20px 15px 40px;
+	}
+}
+
+@keyframes mor {
+	50% {
+		visibility: hidden;
+	}
+	100% {
+		visibility: hidden;
+	}
+}
+.anim_mor {
+	animation: mor .5s linear infinite;
+}
