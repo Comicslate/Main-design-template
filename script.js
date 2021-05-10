@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.04.29 22:31 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.05.10 22:20 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -265,6 +265,10 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 			'hi': [
 				'इस पट्टी में कोई स्टिकर नहीं हैं!<br>आप <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को एडिट</a> करके इसे ठीक कर सकते हैं',
 				'इस स्ट्रिप में AIMG सिंटैक्स पुराना है<br>आप <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को रीमेक</a> करके इसे ठीक कर सकते हैं',
+			],
+			'hu': [
+				'Nincsenek matricák ezen a szalagon!<br>Ezt az oldal <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=en" target=_blank>CoTAN</a>-nal segítségével történő <a href="?do=edit">szerkesztésével javíthatod</a>',
+				'Ez a szalag elavult AIMG szintaxissal rendelkezik<br>Ezt az oldal <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=en" target=_blank>CoTAN</a>-nal történő <a href="?do=edit">újraszerkesztésével javíthatod</a>',
 			],
 			'id': [
 				'Tidak ada stiker di strip ini!<br>Anda dapat memperbaikinya dengan <a href="?do=edit">mengedit halaman</a> dengan <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=id" target=_blank>CoTAN</a>',
