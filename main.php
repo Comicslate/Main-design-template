@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.05.08 02:25 GMT+10
+  * ver. 2021.05.10 23:26 GMT+10
   */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -82,7 +82,8 @@ $t2 . '<meta name = "theme-color" content = "#ffffff">' .
 $t2 . '<link rel = "preconnect" href = "https://fonts.gstatic.com" />';
 if ( preg_match ( '/(h[ei]|ko|ja|zh)/', $conf [ "lang" ] ) )
 	echo  $t2 . '<link rel = "preload" href = "https://fonts.googleapis.com/css2?family=' . $dfont . '&amp;display=swap" as = "style" crossorigin = "anonymous">';
-echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
+echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic1.ttf" as = "font" type = "font/ttf" crossorigin = "anonymous">' .
+        $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic1.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
 $t2; tpl_metaheaders ( );
 echo "\n\t" . '</head>' .
 
