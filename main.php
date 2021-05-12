@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.05.10 23:26 GMT+10
+  * ver. 2021.05.11 21:47 GMT+10
   */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
+$t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
+
+echo '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">' .
+
+"\n\t" . '<head>' . // HEAD
+$t2 . '<meta charset = "utf-8" />' .
+$t2 . '<title>' . $t3 ; tpl_pagetitle ( ); echo ' [Comicslate]' . $t2 . '</title>' .
+$t2 . '<link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" />' .
+$t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />' .
+$t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>' .
+$t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) . // favicon
+"\t\t" . '<link rel="icon" href="/lib/tpl/comicslate/images/logo/logo_back.svg" type="image/svg+xml">' .
+$t2 . '<link rel = "manifest" href = "/lib/tpl/comicslate/images/site.webmanifest">';
+
+if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] == 'uk' ) echo $t2 . '<script src = "//an.yandex.ru/system/context.js" async></script>'; // реклама РСИ
+if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) ) echo $t2 . '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>'; // cotan
+
+echo $t2 . '<link rel = "preconnect" href = "https://fonts.gstatic.com" />'; // шрифты
 switch ( $conf [ "lang" ] ) {
 	case 'he' : $dfont = 'Frank+Ruhl+Libre:wght@700'; break;
 	case 'hi' : $dfont = 'Inknut+Antiqua'; break;
@@ -14,22 +32,49 @@ switch ( $conf [ "lang" ] ) {
 	case 'ru' : case 'be' : case 'bg' : case 'uk' : $grlng = ' slav'; break;
 	default : break;
 };
+if ( preg_match ( '/(h[ei]|ko|ja|zh)/', $conf [ "lang" ] ) ) echo  $t2 . '<link rel = "preload" href = "https://fonts.googleapis.com/css2?family=' . $dfont . '&amp;display=swap" as = "style" crossorigin = "anonymous">';
+echo $t2 . '<link rel = "preload" href = "fonts/dat_fest_comic1.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
+        $t2 . '<link rel = "preload" href = "fonts/dat_fest_comic1.ttf" as = "font" type = "font/ttf" crossorigin = "anonymous">' .
 
-$rlogo = rand ( 0, 6 );
+$t2; tpl_metaheaders ( );
+echo "\t" . '</head>' .
 
+"\n\t" . '<body>' . // BODY
+$t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . $grlng .'">' .
+
+$t3 . '<div id = "head">' . // MENU
+$t4 . '<div id = "logo">' . // Logo
+$t5 . '<a id = "inlogo" rnd = "' . rand ( 0, 6 ) . '"  href = "/'. $conf [ "lang" ] . '/start" title = "' . tpl_getLang ( 'start' ) . '"></a>' .
+$t4 . '</div>' .
+$t4 . '<div id = "menu">' .
+
+// Topline & search
+$t5 . '<header rnd = "' . rand ( 0, 6 ) . '">' .
+$t6 . '<span id = "upmenu">';
 $ilinks = array (
-	array ( '/'. $conf [ "lang" ] . '/start',		tpl_getLang ( 'start' ),	'_self' ),
 	array ( '/'. $conf [ "lang" ] . '/menu',		tpl_getLang ( 'menu' ),		'_self' ),
 	array ( '/'. $conf [ "lang" ] . '/news/index',	tpl_getLang ( 'news' ),		'_self' ),
 	array ( '/'. $conf [ "lang" ] . '/wiki/index',	tpl_getLang ( 'helproom' ),	'_blank' ),
 	array ( '//discord.gg/T8p6M4Q',					tpl_getLang ( 'chat' ),		'_blank' ),
 	array ( '//app.comicslate.org/',				'Mobile App',				'_blank' ),
 );
+for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) { echo $t6 . "\t" . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>'; };
+echo $t6 . '</span>' .
+$t6 . '<div id = "search">' . $t6 . "\t" ; tpl_searchform ( ); echo $t6 . '</div>' .
+$t5 . '</header>' ;
 
-$t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
+// Languages
 $translation = plugin_load ( 'helper', 'translation' );
-$trans = ( $translation ) ? $translation -> showTranslations ( ) : '';
+echo $t5 . '<nav>' . ( $translation ? $translation -> showTranslations ( ) : '' ) . $t5 . '</nav>' .
 
+$t4 . '</div>' .
+$t3 . '</div>' .
+
+$t3 . '<div id = "translabel"></div>'; // CHECKBOX
+
+if ( !empty ( html_msgarea ( ) ) ) { echo $t3 . '<div class = "meta">' . $t4; html_msgarea ( ); echo $t3 . '</div>'; }; // MESSAGE
+
+tpl_flush ( );
 $apps = "\t\t\t\t" . '<div class = "apps">' .
 $t5 . '<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank">' .
 $t6 . '<img src = "' . DOKU_TPL . 'images/googleapp.svg" alt = "Get it on Google Play">' .
@@ -38,86 +83,6 @@ $t5 . '<a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_bl
 $t6 . '<img src = "' . DOKU_TPL . 'images/appstore.svg" alt = "Download on the App Store">' .
 $t5 . '</a>' .
 $t4 . '</div>' . $t4;
-
-$socbut = array (
-	array ( '/feed.php', tpl_getLang ( 'RSS' ), 'rss' ),
-	array ( '/feed.php?onlynewpages=1', tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' ),
-	array ( '//patreon.com/comicslate', 'Patreon', 'patreon' ),
-	array ( '//discord.gg/T8p6M4Q', 'Discord', 'discord' ),
-	array ( '//t.me/comicslate', 'Telegram', 'telegram' ),
-	array ( '//www.reddit.com/r/Comicslate', 'Reddit', 'reddit' ),
-	array ( '//rainbow-spike.tumblr.com', 'Tumblr', 'tumblr' ),
-	array ( '//facebook.com/groups/comicslate', 'Facebook', 'facebook' ),
-	array ( '//twitter.com/Rainbow_Spike', 'Twitter', 'twitter' ),
-	array ( '//vk.com/comicslate', 'VKontakte', 'vkontakte' ),
-	array ( '/feed.php?mode=recent&amp;ns=' . $INFO [ 'namespace' ], tpl_getLang ( 'RSSpart' ), 'rss' ),
-	array ( '/feed.php?mode=recent&amp;ns=' . $INFO [ 'namespace' ] . '&amp;onlynewpages=1', tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' )
-);
-
-
-
-echo "\n" . '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">' .
-
-"\n\t" . '<head>' . // HEAD
-$t2 . '<meta charset = "utf-8" />' .
-$t2 . '<title>' .
-$t3 ; tpl_pagetitle ( ); echo ' [Comicslate]' .
-$t2 . '</title>' .
-$t2 . '<link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" />' .
-$t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />';
-if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] == 'uk' )
-	echo $t2 . '<script src = "//an.yandex.ru/system/context.js" async></script>'; // реклама РСИ
-echo $t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>';
-if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) )
-	echo $t2 . '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>';
-echo $t2 . '<link rel = "apple-touch-icon" sizes = "180x180" href = "/lib/tpl/comicslate/images/fav/apple-touch-icon.png">' .
-$t2 . '<link rel = "icon" type = "image/png" sizes = "32x32" href = "/lib/tpl/comicslate/images/fav/favicon-32x32.png">' .
-$t2 . '<link rel = "icon" type = "image/png" sizes = "16x16" href = "/lib/tpl/comicslate/images/fav/favicon-16x16.png">' .
-$t2 . '<link rel = "manifest" href = "/lib/tpl/comicslate/images/fav/site.webmanifest">' .
-$t2 . '<link rel = "mask-icon" href = "/lib/tpl/comicslate/images/fav/safari-pinned-tab.svg" color = "#5bbad5">' .
-$t2 . '<link rel = "shortcut icon" href = "/lib/tpl/comicslate/images/fav/favicon.ico">' .
-$t2 . '<meta name = "msapplication-TileColor" content = "#da532c">' .
-$t2 . '<meta name = "msapplication-config" content = "/lib/tpl/comicslate/images/fav/browserconfig.xml">' .
-$t2 . '<meta name = "theme-color" content = "#ffffff">' .
-$t2 . '<link rel = "preconnect" href = "https://fonts.gstatic.com" />';
-if ( preg_match ( '/(h[ei]|ko|ja|zh)/', $conf [ "lang" ] ) )
-	echo  $t2 . '<link rel = "preload" href = "https://fonts.googleapis.com/css2?family=' . $dfont . '&amp;display=swap" as = "style" crossorigin = "anonymous">';
-echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic1.ttf" as = "font" type = "font/ttf" crossorigin = "anonymous">' .
-        $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic1.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
-$t2; tpl_metaheaders ( );
-echo "\n\t" . '</head>' .
-
-"\n\t" . '<body>' . // BODY
-$t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . $grlng .'">' .
-
-$t3 . '<div id = "head">' .
-$t4 . '<div id = "logo">' . // Logo
-$t5 . '<a id = "inlogo" rnd = "' . $rlogo . '"  href = "' . $ilinks [ 0 ] [ 0 ] . '" title = "' . $ilinks [ 0 ] [ 1 ] . '"></a>' .
-$t4 . '</div>' .
-$t4 . '<div id = "menu">' .
-$t5 . '<header rnd = "' . $rlogo . '">' . // Topline
-$t6 . '<span id = "upmenu">';
-for ( $i = 1; $i <= count ( $ilinks ) - 1; $i++ ) {
-	echo $t6 . "\t" . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>';
-};
-echo $t6 . '</span>' .
-$t6 . '<div id = "search">' . // Search
-$t6 . "\t" ; tpl_searchform ( );
-echo $t6 . '</div>' .
-$t5 . '</header>' .
-$t5 . '<nav>' . $trans . $t5 . '</nav>' . // MENU2
-$t4 . '</div>' .
-$t3 . '</div>' .
-
-$t3 . '<div id = "translabel"></div>'; // CHECKBOX
-
-if ( !empty ( html_msgarea ( ) ) ) { // MESSAGE
-	echo $t3 . '<div class = "meta">' . $t4;
-	html_msgarea ( );
-	echo $t3 . '</div>';
-};
-
-tpl_flush ( );
 echo $t3 . '<article class = "page">' . // PAGE
 "\n" . $apps; // App buttons top
 tpl_content ( );
@@ -139,7 +104,21 @@ if ( $conf [ 'breadcrumbs' ] ) { // Breadcrumbs
 	echo '</div>';
 };
 
-echo $t5 . '<div class = "social">'; // Social
+$socbut = array ( // Social
+	array ( '/feed.php', tpl_getLang ( 'RSS' ), 'rss' ),
+	array ( '/feed.php?onlynewpages=1', tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' ),
+	array ( '//patreon.com/comicslate', 'Patreon', 'patreon' ),
+	array ( '//discord.gg/T8p6M4Q', 'Discord', 'discord' ),
+	array ( '//t.me/comicslate', 'Telegram', 'telegram' ),
+	array ( '//www.reddit.com/r/Comicslate', 'Reddit', 'reddit' ),
+	array ( '//rainbow-spike.tumblr.com', 'Tumblr', 'tumblr' ),
+	array ( '//facebook.com/groups/comicslate', 'Facebook', 'facebook' ),
+	array ( '//twitter.com/Rainbow_Spike', 'Twitter', 'twitter' ),
+	array ( '//vk.com/comicslate', 'VKontakte', 'vkontakte' ),
+	array ( '/feed.php?mode=recent&amp;ns=' . $INFO [ 'namespace' ], tpl_getLang ( 'RSSpart' ), 'rss' ),
+	array ( '/feed.php?mode=recent&amp;ns=' . $INFO [ 'namespace' ] . '&amp;onlynewpages=1', tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' )
+);
+echo $t5 . '<div class = "social">';
 for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
 	echo $t6 . '<a href = "' . $socbut [ $i ] [ 0 ] . '" class = "media ' . $socbut [ $i ] [ 2 ] . '" title = "' . $socbut [ $i ] [ 1 ] . '" target = "_blank"></a>';
 };
