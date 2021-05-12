@@ -715,10 +715,14 @@
 		padding: 3px 5px;
 	}
 	.hyph { /* переносы */
+		display: inline;
 		hyphens: auto;
 		-webkit-hyphens: auto;
 		overflow-wrap: break-word;
 		word-wrap: break-word;
+		* {
+			display: inline !important;
+		}
 	}
 	[dir=rtl] .note {
 		background-position: right 20px top 12px;
