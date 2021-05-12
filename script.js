@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.05.10 22:20 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.05.12 04:21 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -111,10 +111,10 @@ if (
 	)
 };
 
-/* меню - пакование в колонки */
+/* меню и админка - пакование в колонки */
 
-if ( window.location.href.match ( /\/menu[\?|#]?/i ) !== null ) { // запуск в меню
-	var menu_col_ul = document.querySelectorAll ( '.page ul' ),
+if ( window.location.href.match ( /(\/menu[\?|#]?|do=admin)/i ) !== null ) {
+	var menu_col_ul = document.querySelectorAll ( '.page ul, .admin_plugins ul' ),
 		menu_col_div,
 		menu_col_div_sizes = [ ];
 	for ( i = 0; i < menu_col_ul.length; i++ ) {
@@ -155,7 +155,7 @@ var fix_notes = document.querySelectorAll ( ".page .note" );
 if ( fix_notes.length > 0 ) {
 	for ( i = 0; i < fix_notes.length; i++ ) {
 		var fix_note_match = fix_notes [ i ].textContent.match ( /\[\]/g ),
-			tailnum = document.querySelector ( ".cnavi #navtail" );
+			tailnum = document.querySelector ( ".cnavi .ntail" );
 		if ( fix_note_match != null && tailnum != null ) fix_notes [ i ].innerHTML = fix_notes [ i ].innerHTML.replace ( /\[\]/g, tailnum.getAttribute ( 'dt-data' ) * 1 );
 		fix_note_match = fix_notes [ i ].textContent.match ( / 0*\d+.{0,3}стрипов/g );
 		if ( fix_note_match != null ) {
