@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.05.11 21:47 GMT+10
+  * ver. 2021.05.16 19:25 GMT+10
   */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -13,16 +13,20 @@ echo '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] .
 $t2 . '<meta charset = "utf-8" />' .
 $t2 . '<title>' . $t3 ; tpl_pagetitle ( ); echo ' [Comicslate]' . $t2 . '</title>' .
 $t2 . '<link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" />' .
-$t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />' .
-$t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>' .
-$t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) . // favicon
+$t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />';
+echo $t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) . // favicon
 "\t\t" . '<link rel="icon" href="/lib/tpl/comicslate/images/logo/logo_back.svg" type="image/svg+xml">' .
 $t2 . '<link rel = "manifest" href = "/lib/tpl/comicslate/images/site.webmanifest">';
 
 if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] == 'uk' ) echo $t2 . '<script src = "//an.yandex.ru/system/context.js" async></script>'; // реклама РСИ
-if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) ) echo $t2 . '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>'; // cotan
+if ( $ACT != 'edit' ) {
+	echo $t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>' . $t2 . '<script src = "/lib/tpl/comicslate/yscript.js" async></script>'; // Метрика
+} else {
+	echo $t2 . '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>'; // CoTAN
+}
 
 echo $t2 . '<link rel = "preconnect" href = "https://fonts.gstatic.com" />'; // шрифты
+$grlng = '';
 switch ( $conf [ "lang" ] ) {
 	case 'he' : $dfont = 'Frank+Ruhl+Libre:wght@700'; break;
 	case 'hi' : $dfont = 'Inknut+Antiqua'; break;
@@ -33,8 +37,8 @@ switch ( $conf [ "lang" ] ) {
 	default : break;
 };
 if ( preg_match ( '/(h[ei]|ko|ja|zh)/', $conf [ "lang" ] ) ) echo  $t2 . '<link rel = "preload" href = "https://fonts.googleapis.com/css2?family=' . $dfont . '&amp;display=swap" as = "style" crossorigin = "anonymous">';
-echo $t2 . '<link rel = "preload" href = "fonts/dat_fest_comic1.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
-        $t2 . '<link rel = "preload" href = "fonts/dat_fest_comic1.ttf" as = "font" type = "font/ttf" crossorigin = "anonymous">' .
+echo $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic1.woff" as = "font" type = "font/woff" crossorigin = "anonymous">' .
+        $t2 . '<link rel = "preload" href = "/lib/tpl/comicslate/fonts/dat_fest_comic1.ttf" as = "font" type = "font/ttf" crossorigin = "anonymous">' .
 
 $t2; tpl_metaheaders ( );
 echo "\t" . '</head>' .
@@ -129,7 +133,7 @@ echo $t5 . '</div>' .
 if ( $ACT != 'edit' ) {
 	echo '<div class = "count">' . // Yandex Counter
 	$t6 . '<a href = "//metrika.yandex.ru/stat/?id=25500497&amp;from=informer" target = "_blank" rel = "nofollow">' .
-	$t6 . "\t" . '<img src = "//informer.yandex.ru/informer/25500497/3_0_7BC9F7FF_5BA9D7FF_0_pageviews" alt = "Яндекс.Метрика" title = "Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class = "ym-advanced-informer" data-cid = "25500497" data-lang = "ru" />' .
+	$t6 . "\t" . '<img src = "//informer.yandex.ru/informer/25500497/3_0_7BC9F7FF_5BA9D7FF_0_pageviews" alt = "Яндекс.Метрика" title = "Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class = "ym-advanced-informer" data-cid = "25500497" data-lang = "' . $conf [ "lang" ] .'" />' .
 	$t6 . '</a>' .
 	$t6 . '<noscript>' .
 	$t6 . "\t" . '<div>' .
@@ -154,8 +158,7 @@ if ( !empty ( $_SERVER['REMOTE_USER'] ) ) { // Userinfo
 echo $t4 . '</footer>' .
 $t3 . '</noindex>';
 
-if ( $grlng && $ACT == 'show' )
-	echo $t3 . '<div id = "yandex_rtb_R-A-492328-1"></div>'; // реклама РСИ
+if ( $grlng != '' && $ACT == 'show' ) echo $t3 . '<div id = "yandex_rtb_R-A-492328-1"></div>'; // реклама РСИ
 echo $t2 . '</div>' .
 $t2 . '<div class = "no">' .
 $t3; tpl_indexerWebBug ( ); // Indexer
