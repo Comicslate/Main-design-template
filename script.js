@@ -1,27 +1,10 @@
-console.log ( 'DokuScripts ver. 2021.05.12 04:21 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.05.16 19:25 GMT+10' );
 
 //ВЕЗДЕ
 
 var i, j;
 
-/* счётчик Яндекса */
-
-if ( window.location.href.match ( /do=edit/i ) == null ) { // запуск не в редакторе
-	( function ( d, w, c ) {
-		( w [ c ] = w [ c ] || [ ] ).push ( function ( ) {
-			try {
-				w.yaCounter25500497 = new Ya.Metrika2 ( {
-					id: 25500497,
-					clickmap: true,
-					trackLinks: true,
-					accurateTrackBounce: true,
-					webvisor: false
-				} );
-			}
-			catch ( e ) { }
-		} );
-	} ) ( document, window, "yandex_metrika_callbacks2" )
-};
+/* реклама Яндекса */
 
 ( function ( w, d, n ) {
 	w[n] = w[n] || [];
@@ -315,6 +298,8 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 	tr_stats [ 'sjn' ] = tr_stats [ 'en' ];
 	for ( i in tr_stats.default ) { tr_stat [ i ] = tr_stats [ lang ] [ i ] || tr_stats.default [ i ] };
 	if (
+		page
+		&&
 		page.querySelector ( ".preview" ) == null
 		&&
 		page.querySelector ( ".vshare__none" ) == null
@@ -350,12 +335,38 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 		}
 	}
 
-	/* в лентах - сокращение лишних титулов выпусков */
+	/* в лентах - сокращение лишних титулов выпусков и озеленение заголовков */
 
-	if ( window.location.href.match ( /\/(d|h)\d+/i ) != null ) {
-		var band_title = Array.from ( page.querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ).reverse ( );
-		for ( i = 0; i < band_title.length - 1; i++ ) {
-			if ( band_title [ i ].innerHTML == band_title[ i + 1 ].innerHTML ) band_title [ i ].innerHTML = '';
+	if (
+		page
+		&&
+		window . location . href . match ( /\/(d|h)\d+/i ) != null
+	) {
+		var band_title = Array . from ( page . querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ) . reverse ( );
+		for ( i = 0; i < band_title . length - 1; i++ ) {
+			if ( band_title [ i ] . innerHTML == band_title [ i + 1 ] . innerHTML ) band_title [ i ] . innerHTML = '';
+		}
+		var div_incs = page . querySelectorAll ( 'div[id*="plugin_include__"]' );
+		if ( div_incs ) {
+			for ( i = 0; i < div_incs . length; i++ ) {
+				var h5 = div_incs [ i ] . querySelector ( 'h5' );
+				if ( h5 ) {
+					var h5a = document . createElement ( 'a' );
+					h5a . innerHTML = h5 . innerHTML;
+					h5a . href = div_incs [ i ] . id . slice ( 14 ) . replace ( /__/g, '/' );
+					h5a . className = 'wikilink1';
+					h5 . innerHTML = '';
+					h5 . appendChild ( h5a);
+				}
+			}
 		}
 	}
+	
+	/* автопереход по редиректу в экспорте */
+
+	if (
+		window.location.href.match ( /do=export_xhtml/i ) != null
+		&&
+		document.querySelector ( ".noteredirect a" )
+	) window.location.href = document.querySelector ( ".noteredirect a" ).href + '?do=export_xhtml'
 }
