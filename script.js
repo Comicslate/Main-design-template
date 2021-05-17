@@ -1,4 +1,4 @@
-console.log ( 'DokuScripts ver. 2021.05.16 19:25 GMT+10' );
+console.log ( 'DokuScripts ver. 2021.05.18 00:08 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -60,8 +60,8 @@ for ( i = 0; i < notedit.length; i++ ) {
 
 /* эскизы перемещённых картинок - удалить привязку к высоте и ширине */
 
-document.querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ).forEach (
-	e => e.src = e.src.replace ( /[wh]=\d+\&?/g, '' ).replace ( /[\?\&]$/g, '' )
+document . querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ) . forEach (
+	e => e . src = e . src . replace ( /[wh]=\d+\&?/g, '' ) . replace ( /tok=......\&?/g, '' ) . replace ( /[\?\&]$/g, '' )
 );
 
 /* медиаменеджер - перенаправить в папку без языка */
@@ -74,9 +74,9 @@ if ( window.location.href.match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wo
 
 /* сайдбар - удалить язык в медиаменеджере */
 
-var sidemedia = document.querySelector ( "#pagetools .media a" );
+var sidemedia = document . querySelector ( "#pagetools .media a" );
 if ( sidemedia != null ) {
-	sidemedia.href = sidemedia.href.replace ( /ns=\w\w\w?%3A/, 'ns=' );
+	sidemedia . href = sidemedia . href . replace ( /ns=\w\w\w?%3A/, 'ns=' );
 };
 
 
@@ -115,238 +115,77 @@ if ( window.location.href.match ( /(\/menu[\?|#]?|do=admin)/i ) !== null ) {
 	}
 };
 
-/* индексы - количественные окончания 1/2/5 стрип/а/ов */
-
-function getNumEnding ( num, ends ) {
-	if (
-		num % 100 >= 11
-		&&
-		num % 100 <= 19
-	) {
-		return ends [ 2 ];
-	} else {
-		switch ( num % 10 ) {
-			case ( 1 ): return ends [ 0 ];
-			case ( 2 ):
-			case ( 3 ):
-			case ( 4 ): return ends [ 1 ];
-			default: return ends [ 2 ];
-		}
-	}
-};
-var fix_notes = document.querySelectorAll ( ".page .note" );
-if ( fix_notes.length > 0 ) {
-	for ( i = 0; i < fix_notes.length; i++ ) {
-		var fix_note_match = fix_notes [ i ].textContent.match ( /\[\]/g ),
-			tailnum = document.querySelector ( ".cnavi .ntail" );
-		if ( fix_note_match != null && tailnum != null ) fix_notes [ i ].innerHTML = fix_notes [ i ].innerHTML.replace ( /\[\]/g, tailnum.getAttribute ( 'dt-data' ) * 1 );
-		fix_note_match = fix_notes [ i ].textContent.match ( / 0*\d+.{0,3}стрипов/g );
-		if ( fix_note_match != null ) {
-			for ( j = 0; j < fix_note_match.length; j++ ) {
-				var fix_note_repl = fix_note_match [ j ].match ( / (0*(\d+)).*(стрипов)/ );
-				fix_notes [ i ].innerHTML = fix_notes [ i ].innerHTML.replace ( fix_note_repl [ 1 ], fix_note_repl [ 2 ] ).replace ( fix_note_repl [ 3 ], getNumEnding ( fix_note_repl [ 2 ], [ 'стрип', 'стрипа', 'стрипов' ] ) );
-			}
-		}
-	}
-};
-
-/* спрятать тег Не_сортировать */
-
-var tags = document.querySelector ( '.tags' );
-if ( tags != null ) { // нашёлся див с тегами
-	var ihide = tags.querySelector ( 'a[title="tag:не_сортировать"]' ),
-		tag = tags.querySelectorAll ( 'a' );
-	if ( ihide != null ) { // нашёлся сорт-тег
-		if ( tag.length == 1 ) { // если тег один >> сорт-тег
-			tags.style.display = 'none'; // просто скрыть весь див
-		} else { // если тегов много
-			for ( i = 0; i < tag.length; i++ ) { // для каждого тега
-				if ( tag [ i ].title == "tag:не_сортировать" ) { // если сорт-тег
-					tag [ i ].style.display = 'none'; // скрыть сорт-тег
-					if ( tag [ i ].nextSibling.textContent.match ( ',' ) != null ) tag [ i ].nextSibling.textContent = ''; // скрыть след.запятую
-				}
-			}
-			if ( tag [ tag.length - 1 ].previousSibling.textContent.match ( ',' ) != null ) tag [ tag.length - 1 ].previousSibling.textContent = ''; // у последнего сорт-тега скрыть пред.запятую
-		}
-	}
-};
-
-/* архив новостей - раскрыть последний спойлер, скрыть "красные" месяцы */
-
-var boxnews = document.querySelector ( ".box.news .spoiler:last-of-type" );
-if ( boxnews != null ) { // запуск
-	boxnews.querySelector ( "input" ).click ( );
-	boxnews.querySelectorAll ( "li > .li > .wikilink2" ).forEach ( e => e.parentNode.parentNode.style.display = "none" );
-};
-
 // ПОЧТИ ВЕЗДЕ
 
 /* [[ссылка]]ми */
 
-document.querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ).forEach (
+document . querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ) . forEach (
 	e => {
-		if ( e.parentElement != null ) {
-			e.parentElement.innerHTML = e.parentElement.innerHTML.replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" )
+		if ( e . parentElement != null ) {
+			e . parentElement . innerHTML = e . parentElement . innerHTML . replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" )
 		}
 	}
 );
 
 // В КОМИКСОВЫХ РАЗДЕЛАХ САЙТА
 
-if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\/.*(\d+|cover|pro)/i ) != null ) {
-	var page = document.querySelector ( ".page" );
+if ( window . location . href . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//i ) ) {
 
 	/* плашка статуса перевода */
-
-	var lang = JSINFO [ 'lang' ],
-		tr_stat = [ ],
-		tr_stats = {
-			'be': [
-				'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=be" target=_blank>CoTAN</a>',
-				'У гэтай паласе састарэлы сінтаксіс AIMG<br>Вы можаце выправіць гэта, <a href="?do=edit">перарабіўшы старонку</a> з дапамогай <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=be" target=_blank>CoTAN</a>',
-			],
-			'bg': [
-				'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=bg" target=_blank>CoTAN</a>',
-				'Тази лента има остарял синтаксис на AIMG<br>Можете да поправите това, като <a href="?do=edit">преработите страницата</a> с <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=bg" target=_blank>CoTAN</a>',
-			],
-			'da': [
-				'Der er ingen klistermærker i denne stribe!<br>Du kan rette dette ved at <a href="?do=edit">redigere siden</a> med <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=da" target=_blank>CoTAN</a>',
-				'Denne stribe har forældet AIMG syntaks<br>Du kan løse dette ved at <a href="?do=edit">remake siden</a> med <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=da" target=_blank>CoTAN</a>',
-			],
-			'de': [
-				'In diesem Streifen befinden sich keine Aufkleber!<br>Sie können dies beheben, indem Sie die Seite mit <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=de" target=_blank>CoTAN</a> <a href="?do=edit">bearbeiten</a>',
-				'Dieser Strip hat eine veraltete AIMG-Syntax<br>Sie können dies beheben, indem Sie die Seite mit <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=de" target=_blank>CoTAN</a> <a href="?do=edit">überarbeiten</a>',
-			],
-			'el': [
-				'Δεν υπάρχουν αυτοκόλλητα στην ταινία!<br>Μπορείτε να διορθώσετε αυτό με την επεξεργασία της σελίδας με το <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=el" target=_blank>CoTAN</a>',
-				'Αυτή η λωρίδα έχει ξεπερασμένη σύνταξη AIMG<br>Μπορείτε να το διορθώσετε επανατοποθετώντας τη σελίδα με το <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=el" target=_blank>CoTAN</a>',
-			],
-			'en': [
-				'There are no stickers on this strip!<br>You can fix this by <a href="?do=edit">editing this page</a> with <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=en" target=_blank>CoTAN</a>',
-				'This strip has outdated AIMG syntax<br>You can fix this by <a href="?do=edit">remaking this page</a> with <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=en" target=_blank>CoTAN</a>',
-			],
-			'eo': [
-				'Ne estas glumarkoj en ĉi tiu strio!<br>Vi povas solvi ĉi tion <a href="?do=edit">redaktante la paĝon</a> kun <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=eo" target=_blank>CoTAN</a>',
-				'Ĉi tiu strio havas malaktualan sintakson de AIMG<br>Vi povas solvi ĉi tion <a href="?do=edit">refarante la paĝon</a> kun <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=eo" target=_blank>CoTAN</a>',
-			],
-			'es': [
-				'¡No hay pegatinas en esta tira!<br>Puedes arreglar esto <a href="?do=edit">editando esta página</a> con <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=es" target=_blank>CoTAN</a>',
-				'Esta tira ha caducado la sintaxis de AIMG<br>Puedes arreglar esto <a href="?do=edit">rehaciendo esta página</a> con <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=es" target=_blank>CoTAN</a>',
-			],
-			'fi': [
-				'Tässä nauhassa ei ole tarroja!<br>Voit korjata tämän <a href="?do=edit">muokkaamalla sivua</a> <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=fi" target=_blank>CoTANin</a> avulla',
-				'Tällä nauhalla on vanhentunut AIMG-syntaksi<br>Voit korjata tämän <a href="?do=edit">korjaamalla sivun</a> <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=fi" target=_blank>CoTANin</a> avulla',
-			],
-			'fr': [
-				'Il n\'y a pas d\'autocollants dans cette bande!<br>Vous pouvez résoudre ce problème en <a href="?do=edit">modifiant cette page</a> avec <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=fr" target=_blank>CoTAN</a>',
-				'Cette bande a une syntaxe AIMG obsolète<br>Vous pouvez résoudre ce problème en <a href="?do=edit">refaisant cette page</a> avec <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=fr" target=_blank>CoTAN</a>',
-			],
-			'he': [
-				'אין מדבקות ברצועה זו!<br>באפשרותך לתקן זאת על-ידי <a href="?do=edit">עריכת הדף</a> באמצעות <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=he" target=_blank>CoTAN</a>',
-				'ברצועה זו יש תחביר AIMG מיושן<br>אתה יכול לתקן את זה על ידי <a href="?do=edit"> עיבוד מחדש של דף זה </a> באמצעות <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=he" target=_blank>CoTAN</a>',
-			],
-			'hi': [
-				'इस पट्टी में कोई स्टिकर नहीं हैं!<br>आप <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को एडिट</a> करके इसे ठीक कर सकते हैं',
-				'इस स्ट्रिप में AIMG सिंटैक्स पुराना है<br>आप <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=hi" target=_blank>CoTAN</a> के साथ <a href="?do=edit">पेज को रीमेक</a> करके इसे ठीक कर सकते हैं',
-			],
-			'hu': [
-				'Nincsenek matricák ezen a szalagon!<br>Ezt az oldal <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=en" target=_blank>CoTAN</a>-nal segítségével történő <a href="?do=edit">szerkesztésével javíthatod</a>',
-				'Ez a szalag elavult AIMG szintaxissal rendelkezik<br>Ezt az oldal <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=en" target=_blank>CoTAN</a>-nal történő <a href="?do=edit">újraszerkesztésével javíthatod</a>',
-			],
-			'id': [
-				'Tidak ada stiker di strip ini!<br>Anda dapat memperbaikinya dengan <a href="?do=edit">mengedit halaman</a> dengan <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=id" target=_blank>CoTAN</a>',
-				'Strip ini telah usang sintaks AIMG<br>Anda dapat memperbaikinya dengan <a href="?do=edit">membuat ulang halaman</a> dengan <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=id" target=_blank>CoTAN</a>',
-			],
-			'it': [
-				'Non ci sono adesivi in questa striscia!<br>Puoi sistemarlo <a href="?do=edit">modificando questa pagina</a> con <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=it" target=_blank>CoTAN</a>',
-				'Questa striscia ha una sintassi AIMG obsoleta<br>Puoi sistemarlo <a href="?do=edit">rifacendo questa pagina</a> con <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=it" target=_blank>CoTAN</a>',
-			],
-			'ja': [
-				'このストリップにはステッカーがありません！<br>あなたは<a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=ja" target=_blank>CoTAN</a>で<a href="?do=edit">このページを編集することによって</a>これを直すことができます',
-				'このストリップはAIMGの構文が古くなっています<br>あなたは<a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=ja" target=_blank>CoTAN</a>で<a href="?do=edit">このページを作り直すことによって</a>これを直すことができます',
-			],
-			'ko': [
-				'이 스트립에는 스티커가 없습니다!<br><a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=ko" target=_blank>CoTAN</a>으로 <a href="?do=edit">페이지를 편집하여</a> 문제를 해결할 수 있습니다',
-				'이 스트립은 구식 AIMG 구문을 가지고 있습니다.<br><a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=ko" target=_blank>CoTAN</a>을 사용하여 <a href="?do=edit">페이지를 다시 작성하면</a> 문제를 해결할 수 있습니다',
-			],
-			'pl': [
-				'Na tym pasku nie ma naklejek!<br>Możesz to naprawić, <a href="?do=edit">edytując tę stronę</a> za pomocą <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=pl" target=_blank>CoTAN</a>',
-				'Ten pasek ma przestarzałą składnię AIMG<br>Możesz to naprawić, <a href="?do=edit">przerabiając tę stronę</a> za pomocą <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=pl" target=_blank>CoTAN</a>',
-			],
-			'pt': [
-				'Não há adesivos nesta faixa!<br>Você pode corrigir isso <a href="?do=edit">editando esta página</a> com o <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=pt" target=_blank>CoTAN</a>',
-				'Esta faixa tem uma sintaxe desatualizada do AIMG<br>Você pode consertar isso <a href="?do=edit">refazendo esta página</a> com o <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=pt" target=_blank>CoTAN</a>',
-			],
-			'ru': [
-				'В этом выпуске нет наклеек!<br>Вы можете исправить это, <a href="?do=edit">отредактировав страницу</a> с помощью <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=ru" target=_blank>CoTAN</a>',
-				'В этом выпуске устаревший синтаксис AIMG<br>Вы можете исправить это, <a href="?do=edit">переделав страницу</a> с помощью <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=ru" target=_blank>CoTAN</a>',
-			],
-			'sib': [ ],
-			'sjn': [ ],
-			'uk': [
-				'У цій смузі немає жодних наклейок!<br>Ви можете виправити це, <a href="?do=edit">відредагувавши цю сторінку</a> за допомогою <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=uk" target=_blank>CoTAN</a>',
-				'Ця смуга має застарілий синтаксис AIMG<br>Ви можете виправити це, переробивши цю сторінку за допомогою <a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=uk" target=_blank>CoTAN</a>',
-			],
-			'zh': [
-				'这条带上没有贴纸！<br>您可以通过<a href="?do=edit">使用</a><a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=zh" target=_blank>CoTAN</a>编辑页面来解决此问题',
-				'这个条带已经过时了AIMG语法<br>您可以通过<a href="?do=edit">使用</a><a href="https://www.youtube.com/embed/lAiL_KsCxAE?hl=zh" target=_blank>CoTAN</a>重新构建页面来解决此问题',
-			],
-			'default': [ ]
-		};
-	tr_stats.default = tr_stats [ 'en' ];
-	tr_stats [ 'sib' ] = tr_stats [ 'ru' ];
-	tr_stats [ 'sjn' ] = tr_stats [ 'en' ];
-	for ( i in tr_stats.default ) { tr_stat [ i ] = tr_stats [ lang ] [ i ] || tr_stats.default [ i ] };
 	if (
-		page
+		!window . location . href . match ( /[\?&](do=pre|rev=)/i )
 		&&
-		page.querySelector ( ".preview" ) == null
+		document . querySelectorAll ( ".ct-container, .fn-container" ) . length == 0
 		&&
-		page.querySelector ( ".vshare__none" ) == null
-		&&
-		window.location.href.match ( /[\?&]rev=/i ) == null
+		document . querySelector ( "img.media" )
 	) {
-		var media = page.querySelectorAll ( "img.media" );
-		if (
-			media.length > 0
-			&&
-			(
-				page.querySelectorAll ( ".ct-container" ).length == 0
-				&&
-				(
-					media [ 0 ].src != undefined
-					&&
-					!media [ 0 ].src.match ( "webmoney" )
-				)
-			)
-		) {
-			var note = document.createElement ( 'div' ),
-				span = document.createElement ( 'span' ),
-				fncon = page.querySelectorAll ( ".fn-container" );
-
-			note.style.marginTop = '1.5em';
-			note.className = 'vycenter note note' + ( ( fncon.length == 0 ) ? 'important' : 'tip' );
-			page.appendChild ( note );
-
-			span.style.fontSize = '1.3em';
-			span.className = 'fest';
-			span.innerHTML = ( fncon.length == 0 ? tr_stat [ 0 ] : tr_stat [ 1 ] );
-			note.appendChild ( span );
-		}
+		var lang = JSINFO [ 'lang' ],
+			cot_vid = ' <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=' + lang + '" target=_blank>CoTAN</a> ',
+			clangs = {
+				'be': 'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай' + cot_vid,
+				'bg': 'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с' + cot_vid,
+				'da': 'Der er ingen klistermærker i denne stribe!<br>Du kan rette dette ved at <a href="?do=edit">redigere siden</a> med' + cot_vid,
+				'de': 'In diesem Streifen befinden sich keine Aufkleber!<br>Sie können dies beheben, indem Sie die Seite mit' + cot_vid + '<a href="?do=edit">bearbeiten</a>',
+				'el': 'Δεν υπάρχουν αυτοκόλλητα στην ταινία!<br>Μπορείτε να διορθώσετε αυτό με την <a href="?do=edit">επεξεργασία της σελίδας</a> με το' + cot_vid,
+				'en': 'There are no stickers on this strip!<br>You can fix this by <a href="?do=edit">editing this page</a> with' + cot_vid,
+				'eo': 'Ne estas glumarkoj en ĉi tiu strio!<br>Vi povas solvi ĉi tion <a href="?do=edit">redaktante la paĝon</a> kun' + cot_vid,
+				'es': '¡No hay pegatinas en esta tira!<br>Puedes arreglar esto <a href="?do=edit">editando esta página</a> con' + cot_vid,
+				'fi': 'Tässä nauhassa ei ole tarroja!<br>Voit korjata tämän <a href="?do=edit">muokkaamalla sivua</a>' + cot_vid + 'avulla',
+				'fr': 'Il n\'y a pas d\'autocollants dans cette bande!<br>Vous pouvez résoudre ce problème en <a href="?do=edit">modifiant cette page</a> avec' + cot_vid,
+				'he': 'אין מדבקות ברצועה זו!<br>באפשרותך לתקן זאת על-ידי <a href="?do=edit">עריכת הדף</a> באמצעות' + cot_vid,
+				'hi': 'इस पट्टी में कोई स्टिकर नहीं हैं!<br>आप' + cot_vid + 'के साथ <a href="?do=edit">पेज को एडिट</a> करके इसे ठीक कर सकते हैं',
+				'hu': 'Nincsenek matricák ezen a szalagon!<br>Ezt az oldal' + cot_vid + '-nal segítségével történő <a href="?do=edit">szerkesztésével javíthatod</a>',
+				'id': 'Tidak ada stiker di strip ini!<br>Anda dapat memperbaikinya dengan <a href="?do=edit">mengedit halaman</a> dengan' + cot_vid,
+				'it': 'Non ci sono adesivi in questa striscia!<br>Puoi sistemarlo <a href="?do=edit">modificando questa pagina</a> con' + cot_vid,
+				'ja': 'このストリップにはステッカーがありません！<br>あなたは' + cot_vid + 'で<a href="?do=edit">このページを編集することによって</a>これを直すことができます',
+				'ko': '이 스트립에는 스티커가 없습니다!<br>' + cot_vid + '으로 <a href="?do=edit">페이지를 편집하여</a> 문제를 해결할 수 있습니다',
+				'pl': 'Na tym pasku nie ma naklejek!<br>Możesz to naprawić, <a href="?do=edit">edytując tę stronę</a> za pomocą' + cot_vid,
+				'pt': 'Não há adesivos nesta faixa!<br>Você pode corrigir isso <a href="?do=edit">editando esta página</a> com o' + cot_vid,
+				'ru': 'В этом выпуске нет наклеек!<br>Вы можете исправить это, <a href="?do=edit">отредактировав страницу</a> с помощью' + cot_vid,
+				'sib': '',
+				'sjn': '',
+				'uk': 'У цій смузі немає жодних наклейок!<br>Ви можете виправити це, <a href="?do=edit">відредагувавши цю сторінку</a> за допомогою' + cot_vid,
+				'zh': '这条带上没有贴纸！<br>您可以通过<a href="?do=edit">使用</a>' + cot_vid + '编辑页面来解决此问题'
+			},
+			clang,
+			note = document . createElement ( 'div' ),
+			cnavn = document . querySelector ( ".cnavn" );
+		clangs [ 'sib' ] = clangs [ 'ru' ];
+		clangs [ 'sjn' ] = clangs [ 'en' ];
+		clang = clangs [ lang ] || clangs [ 'en' ],
+		note . style . margin = '1em auto';
+		note . className = 'vycenter note noteimportant';
+		note . innerHTML = '<span style = "font-size: 1.3em" class = "fest">' + clang + '</span>';
+		cnavn . parentNode . insertBefore ( note, cnavn . nextSibling );
 	}
 
 	/* в лентах - сокращение лишних титулов выпусков и озеленение заголовков */
-
-	if (
-		page
-		&&
-		window . location . href . match ( /\/(d|h)\d+/i ) != null
-	) {
-		var band_title = Array . from ( page . querySelectorAll ( ".plugin_include_content > .level5 > p > strong" ) ) . reverse ( );
+	if ( window . location . href . match ( /\/(d|h)\d+/i ) != null ) {
+		var band_title = Array . from ( document . querySelectorAll ( ".page .plugin_include_content > .level5 > p > strong" ) ) . reverse ( );
 		for ( i = 0; i < band_title . length - 1; i++ ) {
 			if ( band_title [ i ] . innerHTML == band_title [ i + 1 ] . innerHTML ) band_title [ i ] . innerHTML = '';
 		}
-		var div_incs = page . querySelectorAll ( 'div[id*="plugin_include__"]' );
+		var div_incs = document . querySelectorAll ( '.page div[id*="plugin_include__"]' );
 		if ( div_incs ) {
 			for ( i = 0; i < div_incs . length; i++ ) {
 				var h5 = div_incs [ i ] . querySelector ( 'h5' );
@@ -363,10 +202,9 @@ if ( window.location.href.match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|in
 	}
 	
 	/* автопереход по редиректу в экспорте */
-
 	if (
-		window.location.href.match ( /do=export_xhtml/i ) != null
+		window . location . href . match ( /do=export_xhtml/i ) != null
 		&&
-		document.querySelector ( ".noteredirect a" )
-	) window.location.href = document.querySelector ( ".noteredirect a" ).href + '?do=export_xhtml'
+		document . querySelector ( ".noteredirect a" )
+	) window . location . href = document . querySelector ( ".noteredirect a" ) . href + '?do=export_xhtml'
 }
