@@ -7,33 +7,39 @@ div.nothing {
 }
 .search-results-form {
 	fieldset.search-form {
+		border-radius: 20px;
 		margin: 1em auto;
-		min-width: 512px;
+		min-width: 500px;
+		max-width: 1000px;
 		position: relative;
 		width: 50%;
-		button.toggleAssistant {
-			bottom: 6px;
-			height: 25px;
-			left: 6px;
-			position: absolute;
-		}
-		input[name="q"] {
-			height: 21px;
-			min-width: 200px;
-			width: inherit;
-		}
-		button[type="submit"] {
-			height: 25px;
-			margin-left: 4px;
-		}
 		button.toggleAssistant,
 		input[name="q"],
 		button[type="submit"] {
-			border-radius: 5px;
+			border-radius: 15px;
 			padding: 0 5px;
 		}
+		button.toggleAssistant { /* "настройка поиска" */
+			top: 5px;
+			height: 30px;
+			position: absolute;
+			right: 6px;
+		}
+		input[name="q"] {
+			float: left;
+			height: 26px;
+			min-width: 300px;
+			width: ~"calc(100% - 200px)";
+		}
+		button[type="submit"] { /* "поиск" */
+			background-image: linear-gradient(to bottom,#CFB,#AD9);
+			float: left;
+			height: 30px;
+			margin-left: 4px;
+		}
 		.advancedOptions {
-			padding: .7em 0 .3em 0;
+			float: left;
+			padding: 11px 0 5px 5px;
 			div.toggle {
 				display: inline-block;
 				position: relative;
@@ -52,23 +58,23 @@ div.nothing {
 				div.changed {
 					font-weight: bold;
 				}
-				ul {
+				ul { /* выпадающий список */
 					background-color: @ini_background;
 					border: 1px solid @ini_border;
+					border-radius: 15px;
 					display: none;
-					max-height: 50vh;
-					max-width: 35em;
-					min-width: 10em;
+					margin: 3px 0;
+					max-width: 560px;
+					min-width: 260px;
 					overflow: auto;
-					padding: 0.25em 0.5em;
+					padding: 5px;
 					position: absolute;
 					text-align: left;
-					z-index: 100;
 					[dir=rtl] & {
 						text-align: right;
 					}
 					li {
-						margin: 0.25em 0;
+						margin: 3px;
 						list-style: none;
 						a {
 							display: block;
