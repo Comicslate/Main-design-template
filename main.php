@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.05.16 19:40 GMT+10
+  * ver. 2021.06.20 01:35 GMT+10
   */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -11,7 +11,7 @@ echo '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] .
 
 "\n\t" . '<head>' . // HEAD
 $t2 . '<meta charset = "utf-8" />' .
-$t2 . '<title>' . $t3 ; tpl_pagetitle ( ); echo ' [Comicslate]' . $t2 . '</title>' .
+$t2 . '<title>CL / ' . strtoupper ( $conf [ "lang" ] ) . ' / '; tpl_pagetitle ( ); echo '</title>' .
 $t2 . '<link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" />' .
 $t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />';
 echo $t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) . // favicon
@@ -20,7 +20,7 @@ $t2 . '<link rel = "manifest" href = "/lib/tpl/comicslate/images/site.webmanifes
 
 if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] == 'uk' ) echo $t2 . '<script src = "//an.yandex.ru/system/context.js" async></script>'; // реклама РСИ
 if ( $ACT == 'show' ) echo $t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>' . $t2 . '<script src = "/lib/tpl/comicslate/yscript.js" async></script>'; // Метрика
-if ( ( $ACT == 'edit' ) || ( $ACT == 'preview' ) ) echo $t2 . '<script charset = "UTF-8" src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>'; // CoTAN
+if ( ( $ACT == 'edit' || $ACT == 'preview' ) && ( explode ( "&", $_SERVER [ "QUERY_STRING" ] ) [ 2 ] != 'nocotan' ) ) echo $t2 . '<script src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>'; // CoTAN
 
 echo $t2 . '<link rel = "preconnect" href = "https://fonts.gstatic.com" />'; // шрифты
 $grlng = '';
@@ -127,10 +127,10 @@ echo $t5 . '</div>' .
 
 "\n" . $apps . "\t"; // App buttons bottom
 
-if ( $ACT != 'edit' ) {
+if ( $ACT == 'show' ) {
 	echo '<div class = "count">' . // Yandex Counter
 	$t6 . '<a href = "//metrika.yandex.ru/stat/?id=25500497&amp;from=informer" target = "_blank" rel = "nofollow">' .
-	$t6 . "\t" . '<img src = "//informer.yandex.ru/informer/25500497/3_0_7BC9F7FF_5BA9D7FF_0_pageviews" alt = "Яндекс.Метрика" title = "Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class = "ym-advanced-informer" data-cid = "25500497" data-lang = "' . $conf [ "lang" ] .'" />' .
+	$t6 . "\t" . '<img src = "//informer.yandex.ru/informer/25500497/3_0_7BC9F7FF_5BA9D7FF_0_pageviews" class = "ym-advanced-informer" alt = "Яндекс.Метрика" title = "Яндекс.Метрика: данные за 24 часа (просмотры, уник. посетители и визиты)" data-cid = "25500497" data-lang = "' . $conf [ "lang" ] .'" />' .
 	$t6 . '</a>' .
 	$t6 . '<noscript>' .
 	$t6 . "\t" . '<div>' .
