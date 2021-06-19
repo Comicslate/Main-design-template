@@ -1,30 +1,28 @@
-console.log ( 'DokuScripts ver. 2021.05.18 00:08 GMT+10' );
+console . log ( 'DokuScripts ver. 2021.06.19 15:21 GMT+10' );
 
 //ВЕЗДЕ
 
-var i, j;
+var i, j, lang = JSINFO [ 'lang' ], lhref = window . location . href;
+if ( lang . length > 3 ) lang = '';
 
 /* реклама Яндекса */
-
-( function ( w, d, n ) {
-	w[n] = w[n] || [];
-	w[n].push ( function ( ) {
-		Ya.Context.AdvManager.render ( {
+( function ( n ) {
+	this [ n ] = this [ n ] || [ ];
+	this [ n ] . push ( function ( ) {
+		Ya . Context . AdvManager . render ( {
 			blockId: "R-A-492328-1",
 			renderTo: "yandex_rtb_R-A-492328-1",
 			async: true
 		} );
 	} );
-} ) ( this, this.document, "yandexContextAsyncCallbacks" );
+} ) ( "yandexContextAsyncCallbacks" );
 
 /* истребитель двоеточий в адресах */
-
-if ( window.location.pathname.match (/:/i) != null ) window.location.pathname = window.location.pathname.replace ( /:/g, '/' );
+if ( window . location . pathname . match ( /:/i ) != null ) window . location . pathname = window . location . pathname . replace ( /:/g, '/' );
 
 /* замена энтити */
-
 function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
-	var fontValue = parseFloat ( value.replace ( ",", "." ) );
+	var fontValue = parseFloat ( value . replace ( ",", "." ) );
 	if ( fontValue > 0 ) {
 		switch ( marker ) {
 			case '!':
@@ -48,99 +46,99 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 	} else {
 		return '<abbr title = "Incorrect digit" >' + openSB + marker + value + closeSB + '</abbr>'
 	}
-}
-var notedit = document.querySelectorAll ( ".page > div:not(.editBox):not(.search_fulltextresult):not(.table):not(#batchedit), .export > div" );
-for ( i = 0; i < notedit.length; i++ ) {
-	notedit [ i ].innerHTML = notedit [ i ].innerHTML
-		.replace ( /(\[)(.)(\d+[\.,]?\d*)(\])/g, fontChanger )
-		.replace ( /\[\/\]/g, '</span>' );
-}
-
-// ЦЕНТРАЛИЗАЦИЯ КАРТИНОК
-
-/* эскизы перемещённых картинок - удалить привязку к высоте и ширине */
-
-document . querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ) . forEach (
-	e => e . src = e . src . replace ( /[wh]=\d+\&?/g, '' ) . replace ( /tok=......\&?/g, '' ) . replace ( /[\?\&]$/g, '' )
-);
-
-/* медиаменеджер - перенаправить в папку без языка */
-
-if ( window.location.href.match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang|playground|user)/ ) != null ) {
-	var ns = document.querySelector ( "#media__ns" );
-	ns.innerHTML = ns.innerHTML.replace ( /^:\w\w\w?:/, 'Redirect... :' );
-	window.location = window.location.toString ( ).replace ( /ns=\w\w\w?%3A/, 'ns=' )
 };
-
-/* сайдбар - удалить язык в медиаменеджере */
-
-var sidemedia = document . querySelector ( "#pagetools .media a" );
-if ( sidemedia != null ) {
-	sidemedia . href = sidemedia . href . replace ( /ns=\w\w\w?%3A/, 'ns=' );
-};
-
-
-// ГЛАВНАЯ, МЕНЮ, ИНДЕКСЫ И Т.П.
-
-/* последние правки и теги - дорисовать /язык/ */
-
-if (
-	window.location.href.match ( /(start|showtag|do=search)/ ) != null
-) {
-	document.querySelectorAll ( "td.page a, .pagelist a, .taglist a, .search_quickhits a, .search_results a.wikilink1 " ).forEach (
-		e => {
-			if ( e.href != undefined ) e.innerHTML = e.href.substr ( 23, 4 ).split( '/' ) [ 0 ].toUpperCase ( ) + ' / ' + e.innerHTML
-		}
-	)
-};
-
-/* меню и админка - пакование в колонки */
-
-if ( window.location.href.match ( /(\/menu[\?|#]?|do=admin)/i ) !== null ) {
-	var menu_col_ul = document.querySelectorAll ( '.page ul, .admin_plugins ul' ),
-		menu_col_div,
-		menu_col_div_sizes = [ ];
-	for ( i = 0; i < menu_col_ul.length; i++ ) {
-		if ( i != 3 ) { // исключая Интерробанг Студию
-			menu_col_div = menu_col_ul [ i ].querySelectorAll ( 'div.li' );
-			for ( j = 0; j < menu_col_div.length; j++ ) {
-				menu_col_div [ j ].style.display = "inline"; // приведение дивов к строчному виду
-				menu_col_div_sizes.push ( menu_col_div [ j ].offsetWidth ) // заполнение массива их размерами
-			}
-		}
-	};
-	var menu_col_div_size_max = Math.max.apply ( null, menu_col_div_sizes ); // определение наибольшего дива
-	for ( i in menu_col_ul ) {
-		if ( i != 3 && menu_col_ul [ i ].style ) menu_col_ul [ i ].style.cssText += " columns: " + menu_col_div_size_max + "px auto; column-gap: 20px;" // адаптивные колонки
+var notedit = document . querySelectorAll ( '.page > div:not(.editBox):not(.search_fulltextresult):not(.table):not(#batchedit), .export > div' );
+if ( notedit ) {
+	for ( i = 0; i < notedit . length; i++ ) {
+		notedit [ i ] . innerHTML = notedit [ i ] . innerHTML . replace ( /(\[)(.)(\d+[\.,]?\d*)(\])/g, fontChanger ) . replace ( /\[\/\]/g, '</span>' );
 	}
 };
 
 // ПОЧТИ ВЕЗДЕ
 
 /* [[ссылка]]ми */
-
-document . querySelectorAll ( ".page a.wikilink1, .page a.wikilink2" ) . forEach (
+document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2' ) . forEach (
 	e => {
-		if ( e . parentElement != null ) {
-			e . parentElement . innerHTML = e . parentElement . innerHTML . replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" )
-		}
+		if ( e . parentElement != null ) e . parentElement . innerHTML = e . parentElement . innerHTML . replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" )
 	}
 );
 
-// В КОМИКСОВЫХ РАЗДЕЛАХ САЙТА
+/* язык в титулах (кроме тегов) */
+if (
+	lang != ''
+	&&
+	!lhref . match ( /\/tag\//i )
+) {
+	document . querySelectorAll ( '.page > h5, .page > h4, .page > h3, .page > h2, .page > h1' ) . forEach (
+		e => e . innerHTML = lang . toUpperCase ( ) + ' / ' + e . innerHTML
+	)
+};
 
-if ( window . location . href . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//i ) ) {
+// ЦЕНТРАЛИЗАЦИЯ КАРТИНОК
 
+/* эскизы перемещённых картинок - удалить привязку к высоте и ширине */
+document . querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ) . forEach (
+	e => e . src = e . src . replace ( /[wh]=\d+\&?/g, '' ) . replace ( /tok=......\&?/g, '' ) . replace ( /[\?\&]$/g, '' )
+);
+
+/* медиаменеджер - перенаправить в папку без языка */
+if ( lhref . match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang|playground|user)/ ) != null ) {
+	var ns = document . querySelector ( '#media__ns' );
+	ns . innerHTML = ns . innerHTML . replace ( /^:\w\w\w?:/, 'Redirect... :' );
+	window . location = window . location . toString ( ) . replace ( /ns=\w\w\w?%3A/, 'ns=' )
+};
+
+/* сайдбар - удалить язык в медиаменеджере */
+var sidemedia = document . querySelector ( '#pagetools .media a' );
+if ( sidemedia != null ) sidemedia . href = sidemedia . href . replace ( /ns=\w\w\w?%3A/, 'ns=' );
+
+// ГЛАВНАЯ, МЕНЮ, ИНДЕКСЫ И Т.П.
+
+/* последние правки - дорисовать "ЯЗЫК / " */
+if ( lhref . match ( /(start|do=search)/ ) ) {
+	document . querySelectorAll ( 'td.page a, .pagelist a, .taglist a, .search_quickhits a, .search_results a.wikilink1' ) . forEach (
+		e => e . innerHTML = lang . toUpperCase ( ) + ' / ' + e . innerHTML
+	)
+};
+/* теги - дорисовать "ЯЗЫК / " */
+if ( lhref . match ( /(showtag)/ ) ) {
+	document . querySelectorAll ( 'td.page a' ) . forEach (
+		e => e . innerHTML = e . title . split ( ':' ) [ 0 ] . toUpperCase ( ) + ' / ' + e . innerHTML
+	)
+};
+
+/* меню и админка - пакование в колонки */
+if ( lhref . match ( /(\/menu[\?|#]?|do=admin)/i ) !== null ) {
+	var col_ul = document . querySelectorAll ( '.page ul, .admin_plugins ul' ),
+		col_li,
+		col_sz = [ ];
+	for ( i = 0; i < col_ul . length; i++ ) {
+		if ( i != 3 ) { // исключая Интерробанг Студию
+			col_li = col_ul [ i ] . querySelectorAll ( 'div.li' );
+			for ( j = 0; j < col_li . length; j++ ) {
+				col_li [ j ] . style . display = "inline"; // приведение дивов к строчному виду
+				col_sz . push ( col_li [ j ] . offsetWidth ) // заполнение массива их размерами
+			}
+		}
+	};
+	var col_sm = Math . max . apply ( null, col_sz ); // определение наибольшего дива
+	for ( i in col_ul ) {
+		if ( i != 3 && col_ul [ i ] . style ) col_ul [ i ] . style . cssText += " columns: " + col_sm + "px auto; column-gap: 20px;" // адаптивные колонки
+	}
+};
+
+// В КОМИКСОВЫХ РАЗДЕЛАХ
+
+if ( lhref . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//i ) ) {
 	/* плашка статуса перевода */
 	if (
-		!window . location . href . match ( /[\?&](do=pre|rev=)/i )
+		!lhref . match ( /(\/(d|h)\d+|[\?&](do=pre|rev=))/i )
 		&&
-		document . querySelectorAll ( ".ct-container, .fn-container" ) . length == 0
+		document . querySelectorAll ( '.ct-container, .fn-container' ) . length == 0
 		&&
-		document . querySelector ( "img.media" )
+		document . querySelector ( 'img.media' )
 	) {
-		var lang = JSINFO [ 'lang' ],
-			cot_vid = ' <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=' + lang + '" target=_blank>CoTAN</a> ',
+		var cot_vid = ' <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=' + lang + '" target=_blank>CoTAN</a> ',
 			clangs = {
 				'be': 'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай' + cot_vid,
 				'bg': 'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с' + cot_vid,
@@ -169,19 +167,18 @@ if ( window . location . href . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|ot
 			},
 			clang,
 			note = document . createElement ( 'div' ),
-			cnavn = document . querySelector ( ".cnavn" );
+			cnavn = document . querySelector ( '.cnavn' );
 		clangs [ 'sib' ] = clangs [ 'ru' ];
 		clangs [ 'sjn' ] = clangs [ 'en' ];
 		clang = clangs [ lang ] || clangs [ 'en' ],
 		note . style . margin = '1em auto';
 		note . className = 'vycenter note noteimportant';
 		note . innerHTML = '<span style = "font-size: 1.3em" class = "fest">' + clang + '</span>';
-		cnavn . parentNode . insertBefore ( note, cnavn . nextSibling );
-	}
-
+		if ( cnavn ) cnavn . parentNode . insertBefore ( note, cnavn . nextSibling );
+	};
 	/* в лентах - сокращение лишних титулов выпусков и озеленение заголовков */
-	if ( window . location . href . match ( /\/(d|h)\d+/i ) != null ) {
-		var band_title = Array . from ( document . querySelectorAll ( ".page .plugin_include_content > .level5 > p > strong" ) ) . reverse ( );
+	if ( lhref . match ( /\/(d|h)\d+/i ) != null ) {
+		var band_title = Array . from ( document . querySelectorAll ( '.page .plugin_include_content > .level5 > p > strong' ) ) . reverse ( );
 		for ( i = 0; i < band_title . length - 1; i++ ) {
 			if ( band_title [ i ] . innerHTML == band_title [ i + 1 ] . innerHTML ) band_title [ i ] . innerHTML = '';
 		}
@@ -195,16 +192,19 @@ if ( window . location . href . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|ot
 					h5a . href = div_incs [ i ] . id . slice ( 14 ) . replace ( /__/g, '/' );
 					h5a . className = 'wikilink1';
 					h5 . innerHTML = '';
-					h5 . appendChild ( h5a);
+					h5 . appendChild ( h5a );
 				}
 			}
 		}
+	};
+	if ( lhref . match ( /do=export/i ) != null ) {
+		/* автопереход по редиректу в экспорте */
+		if ( document . querySelector ( '.noteredirect a' ) ) window . location . href = document . querySelector ( '.noteredirect a' ) . href + '?do=export_xhtml';
+		/* скрытие наклеек по атрибуту hide=1 */
+		if ( lhref . match ( /hide=1/i ) != null ) {
+			document . querySelectorAll ( '.ct-area, .fn-area' ) . forEach (
+				e => e . style . display = 'none'
+			)
+		}
 	}
-	
-	/* автопереход по редиректу в экспорте */
-	if (
-		window . location . href . match ( /do=export_xhtml/i ) != null
-		&&
-		document . querySelector ( ".noteredirect a" )
-	) window . location . href = document . querySelector ( ".noteredirect a" ) . href + '?do=export_xhtml'
-}
+};
