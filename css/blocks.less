@@ -84,7 +84,10 @@
 					background-size: contain !important;
 					content: '';
 					display: inline-block;
-					width: inherit;
+					width: 100px;
+					@media (max-width: 1024px) {
+						background: none !important;
+					}
 				}
 				&[rnd="0"]:hover::after {
 					background: url(images/logo/logo-jenny.png) no-repeat;
@@ -121,11 +124,8 @@
 					height: 34px;
 					margin: 9px 0 0 28px;
 				}
-				@media (max-width: 1024px) { /* в опционных галках поправить на 1024 */
+				@media (max-width: 1024px) {
 					width: 40px;
-					&:hover::after {
-						background: none;
-					}
 				}
 			}
 		}
@@ -402,7 +402,8 @@
 				#wiki__editbar.editBar {
 					margin: 0;
 					.editButtons {
-						padding: 0 1.0em 0.7em 0;
+						display: inline-block;
+						padding: 0 4px 11px 0;
 						button, input {
 							border-radius: 3px;
 							border: 1px solid #888;
@@ -490,12 +491,10 @@
 		position: fixed;
 		right: 0;
 		top: 75px;
-		z-index: 3;
 		ul {
 			text-align: right;
 			border: 1px solid transparent; // add transparent border to prevent jumping when proper border is added on hover
 			margin: 0;
-			z-index: 10;
 			li {
 				list-style: none;
 				a {
@@ -659,7 +658,6 @@
 			float: left;
 			left: 30px;
 			position: relative;
-			z-index: 1;
 			img {
 				height: 31px;
 			}
@@ -670,11 +668,10 @@
 			position: relative;
 			right: 30px;
 			text-align: right;
-			z-index: 1;
 			a {
 				display: block;
 				width: 105px; /* центрование социал-кнопок */
-				.ym-advanced-informer {
+				img {
 					border: 0;
 					height: 31px;
 					margin-top: 4px;
@@ -707,14 +704,14 @@
 	.april {
 		transform: rotate(180deg);
 	}
-/*	.pad { // белый фон в редакторе наклеек
+	.pad { // белый фон в просмотре
 		background-color: white;
-	}*/
-	.m {
+	}
+	.m { // скруглятор
 		border-radius: 5px;
 		padding: 3px 5px;
 	}
-	.hyph { /* переносы */
+	.hyph { // переносы
 		display: inline;
 		hyphens: auto;
 		-webkit-hyphens: auto;
@@ -745,6 +742,10 @@
 		height: 1px;
 		margin: 10px;
 	}
+}
+
+#ym-informer { // счётчик
+	border-radius: 15px !important;
 }
 
 #send-msg-btn {
