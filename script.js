@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2021.06.28 17:39 GMT+10' );
+console . log ( 'DokuScripts ver. 2021.06.29 04:52 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -73,7 +73,7 @@ if (
 	!lhref . match ( /\/tag\//i )
 ) {
 	var ltitle = document . querySelector ( '.page > h1, .page > h2, .page > h3, .page > h4, .page > h5' );
-	ltitle . innerHTML = lang . toUpperCase ( ) + ' / ' + ltitle . innerHTML;
+	if ( ltitle != null ) ltitle . innerHTML = lang . toUpperCase ( ) + ' / ' + ltitle . innerHTML;
 };
 
 // ЦЕНТРАЛИЗАЦИЯ КАРТИНОК
