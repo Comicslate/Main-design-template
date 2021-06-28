@@ -1,8 +1,11 @@
-console . log ( 'DokuScripts ver. 2021.06.19 15:21 GMT+10' );
+console . log ( 'DokuScripts ver. 2021.06.28 17:39 GMT+10' );
 
 //ВЕЗДЕ
 
-var i, j, lang = JSINFO [ 'lang' ], lhref = window . location . href;
+var i, j,
+	lang = JSINFO [ 'lang' ],
+	lhref = window . location . href,
+	lpath = window . location . pathname;
 if ( lang . length > 3 ) lang = '';
 
 /* реклама Яндекса */
@@ -18,7 +21,7 @@ if ( lang . length > 3 ) lang = '';
 } ) ( "yandexContextAsyncCallbacks" );
 
 /* истребитель двоеточий в адресах */
-if ( window . location . pathname . match ( /:/i ) != null ) window . location . pathname = window . location . pathname . replace ( /:/g, '/' );
+if ( lpath . match ( /:/i ) != null ) window . location . pathname = lpath . replace ( /:/g, '/' );
 
 /* замена энтити */
 function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
@@ -69,9 +72,8 @@ if (
 	&&
 	!lhref . match ( /\/tag\//i )
 ) {
-	document . querySelectorAll ( '.page > h5, .page > h4, .page > h3, .page > h2, .page > h1' ) . forEach (
-		e => e . innerHTML = lang . toUpperCase ( ) + ' / ' + e . innerHTML
-	)
+	var ltitle = document . querySelector ( '.page > h1, .page > h2, .page > h3, .page > h4, .page > h5' );
+	ltitle . innerHTML = lang . toUpperCase ( ) + ' / ' + ltitle . innerHTML;
 };
 
 // ЦЕНТРАЛИЗАЦИЯ КАРТИНОК
