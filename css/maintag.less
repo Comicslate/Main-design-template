@@ -1,605 +1,613 @@
-html {
-	body {
-		background-color: #FFF;
-		color: Black;
-		font: 14px Verdana, sans-serif;
-		margin: 0;
-		padding: 0;
-	}
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		background-color: transparent;
-		border-bottom: none;
-		clear: left;
-		color: Black;
-		font-family: Helvetica, "Bitstream Vera Sans", "Nimbus Sans L", sans-serif;
-		font-size: 100%;
-		font-weight: bold;
-		margin: 0;
-		padding: 1em 0 0 0;
-		a {
-			color: __black__;
-			text-decoration: none;
-			&:hover {
-				color: __black__;
-				text-decoration: none;
-			}
-		}
-	}
-	h1 {
-		font-size: 15pt;
-	}
-	h2 {
-		border-bottom: 1px solid __dark__;
-		font-size: 14pt;
-	}
-	h3 {
-		font-size: 13pt;
-	}
-	h4 {
-		font-size: 11pt;
-	}
-	h5 {
-		font-size: 10pt;
-	}
-	table {
-		border: 0;
-		border-spacing: 0;
-		font-size: 100%;
-		margin: 0;
-		padding: 0;
-		tr,
-		td,
-		th {
-			margin: 0;
-			padding: 0;
-		}
-		&.inline {
-			background-color: __white__;
-			border-collapse: collapse;
-			border-spacing: 0;
-			th {
-				background-color: __medium__;
-				font-weight: normal;
-			}
-			td,
-			th {
-				border: 1px solid __dark__;
-				font: 85% Verdana, "Bitstream Vera Sans", "Nimbus Sans L", sans-serif;
-				padding: 3px;
-				width: auto;
-			}
-		}
-		&.newpage {
-			/*border: solid 1px #f5f5f5;
-			border-radius: 5px;*/
-			td {
-				border-right: solid 1px #ddd;
-				padding: 0 10px !important;
-				&:nth-last-of-type(1) {
-					border-right: 0;
-					text-align: center;
-				}
-				&:nth-last-of-type(2) {
-					text-align: center;
-				}
-				img.medialeft {
-					margin: 5px 5px 0 0;
-				}
-				.vyleft {
-					margin-top: 0;
-				}
-			}
-		}
-	}
-	div {
-		&.level1,
-		&.level2,
-		&.level3,
-		&.level4,
-		&.level5 {
-			margin: 1em 0 0 0;
-		}
-		&.error,
-		&.info,
-		&.success,
-		&.notify {
-			font-size: 110%;
-			margin: 0 35px 0 5px;
-			position: relative;
-			z-index: 2;
-			& > * {
-				vertical-align: middle;
-			}
-		}
-		&.nothing {
-			margin: 2em;
-			text-align: center;
-		}
-		&#size__ctl {
-			float: right;
-			height: 2.7em;
-			width: 40px;
-			img {
-				cursor: pointer;
-			}
-		}
-		&.secedit {
-			button {
-				background-color: __white__;
-				border: 0 solid __dark__;
-				color: __darkgray__;
-				cursor: pointer;
-				display: inline;
-				float: right;
-				font-size: 10px;
-				margin: 0;
-				padding: 0;
-				text-decoration: none;
-				vertical-align: middle;
-			}
-		}
-		&.preview {
-			background: __lighter__;
-			border: 1px dashed __black__;
-			margin-left: 2em;
-			padding: 4px;
-		}
-		&.insitu-footnote {
-			background: __light__;
-			border: 1px solid __dark__;
-			font-size: 80%;
-			line-height: 1.2em;
-			max-width: 40%; /* IE's width is handled in javascript */
-			padding: 4px;
-			text-align: left;
-		}
-		&.picker {
-			background: __light__;
-			border: 1px solid __dark__;
-			width: auto;
-		}
-		&#spell__suggest {
-			background-color: __white__;
-			border: 1px solid __black__;
-			display: none;
-			font-size: 80%;
-			padding: 2px;
-		}
-		&#spell__result {
-			background-color: __lighter__;
-			border: 1px solid __dark__;
-			color: Black;
-			display: none;
-			font-size: 14px;
-			padding: 3px;
-		}
-		&.mediaedit {
-			div.data {
-				label {
-					display: block;
-					float: left;
-					margin-right: .5em;
-					text-align: right;
-					width: 20%;
-				}
-				input,
-				textarea {
-					margin: .1em;
-					padding: .1em;
-					width: 75%;
-				}
-				input.button {
-					display: block;
-					margin-left: auto;
-					margin-right: auto;
-					width: 10em;
-				}
-			}
-		}
-		&.areamenu {
-			color: __extern__;
-			font-size: 8pt;
-			text-decoration: none;
-			div#cloud {
-				text-align: center;
-				a {
-					&.cloud1_tag1,
-					&.cloud1_tag2 {
-						font-size: 10px;
-					}
-					&.cloud2_tag1,
-					&.cloud2_tag2 {
-						font-size: 12px;
-					}
-					&.cloud3_tag1,
-					&.cloud3_tag2 {
-						font-size: 14px;
-					}
-					&.cloud4_tag1,
-					&.cloud4_tag2 {
-						font-size: 16px;
-					}
-					&.cloud5_tag1,
-					&.cloud5_tag2 {
-						font-size: 18px;
-					}
-				}
-			}
-			p {
-				color: __black__;
-			}
-			a {
-				&.wikilink1 {
-					color: #080;
-				}
-				&:hover {
-					color: #F55;
-					text-decoration: underline;
-				}
-			}
-		}
-		&.taglist {
-			th,
-			td {
-				border: 1px #eee solid;
-				padding: 0 5px;
-			}
-			th {
-				text-align: center;
-			}
-			td {
-				ul {
-					list-style-type: none;
-					margin: 0;
-				}
-			}
-		}
-		&.mediaselect-right li,
-		&.uploadform {
-			clear: both;
-		}
-		&.comment_buttons {
-			padding-top: 12px;
-		}
-	}
-	form {
-		border: none;
-		display: inline;
-		font: 80% Verdana, sans-serif;
-		margin: 0;
-		&#subscribe__form {
-			display: block;
-			text-align: center;
-			width: 400px;
-			fieldset {
-				text-align: left;
-				margin: .5em 0;
-				legend {
-					background-color: white;
-					border: 1px solid __dark__;
-					border-radius: 5px;
-					box-shadow: 0 0 3px 1px __dark__;
-					padding: 2px 5px;
-				}
-				label {
-					display: block;
-					margin: 0 .5em .5em;
-					input {
-						vertical-align: middle;
-					}
-					span {
-						vertical-align: middle;
-					}
-				}
-			}
-			button {
-				background-image: linear-gradient(to bottom, #CCFFBB, #AADD99);
-				border-radius: 5px;
-				padding: 3px 5px;
-				&:hover {
-					background-image: linear-gradient(to bottom, #CCFFBB, #88BB77);
-				}
-			}
-		}
-	}
-	label {
-		&.block {
-			display: block;
-			font-weight: bold;
-			text-align: right;
-			input.edit {
-				width: 50%;
-			}
-		}
-		&.simple {
-			display: block;
-			font-weight: normal;
-			text-align: left;
-		}
-	}
-	fieldset {
-		border: 1px solid __dark__;
-		border-radius: 5px;
-		box-shadow: 0 0 3px 1px __dark__;
-		margin: auto;
-		padding: .5em;
-		text-align: center;
-		width: 400px;
-		legend {
-			color: black;
-			font-weight: bold;
-		}
-	}
-	textarea.edit {
-		background-color: __white__;
-		border: 1px solid __dark__;
-		border-radius: 5px;
-		box-shadow: 0 0 3px 1px __dark__;
-		color: Black;
-		font-family: monospace;
-		font-size: 14px;
-		padding: 3px 0 5px 3px;
-		width: 100%;
-	}
-	.lang-he textarea.edit {
-		text-align: right;
-	}
-	input.edit,
-	select.edit {
-		background-color: __white__;
-		border: 1px solid __dark__;
-		border-radius: 5px;
-		box-shadow: 0 0 3px 1px __dark__;
-		color: __darkgray__;
-		display: inline;
-		font-size: 100%;
-		margin: 1px;
-		vertical-align: middle;
-	}
-	input.edit {
-		padding: .2em .3em;
-	}
-	select.edit {
-		padding: .1em 0;
-	}
-	input.missing {
-		background-color: #FCC;
-		border: 1px solid __dark__;
-		border-radius: 5px;
-		box-shadow: 0 0 3px 1px __dark__;
-		color: __darkgray__;
-		display: inline;
-		font-size: 100%;
-		margin: 1px;
-		padding: .2em .3em;
-		vertical-align: middle;
-	}
-	input.button,
-	button.button {
-		background-color: __white__;
-		border: 1px solid __dark__;
-		box-shadow: 0 0 2px 0 __black__;
-		color: __black__;
-		cursor: pointer;
-		margin: 1px;
-		padding: .125em .4em;
-		text-decoration: none;
-		vertical-align: middle;
-	}
-	ul {
-		line-height: 1.5em;
-		list-style-image: none;
-		list-style-type: square;
-		margin: 0 0 .5em 1.5em;
-		padding: 0;
-	}
-	ul + ul {
-		margin-top: 1.5em;
-	}
-	ul.tabs {
-		margin: 0;
-		overflow: hidden;
-		padding: 0;
-		li {
-			float: left;
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			a {
-				background-color: __background_neu__;
-			}
-			a,
-			strong {
-				border-radius: .5em .5em 0 0;
-				color: __text__;
-				float: left;
-				margin: 0 .3em 0 0;
-				padding: .3em .8em;
-				[dir=rtl] & {
-					float: right;
-					margin: 0 0 0 .3em;
-				}
-			}
-			a:hover,
-			a:active,
-			a:focus,
-			strong {
-				background-color: __background_alt__;
-				text-decoration: none;
-			}
-			[dir=rtl] & {
-				float: right;
-			}
-		}
-	}
-	ol {
-		font-weight: normal;
-		line-height: 1.5em;
-		list-style-image: none;
-		list-style-type: decimal;
-		margin: 0 0 .5em 1.5em;
-		padding: 0;
-		ol {
-			list-style-type: upper-roman;
-			ol {
-				list-style-type: lower-alpha;
-				ol {
-					list-style-type: lower-greek;
-				}
-			}
-		}
-	}
-	li {
-		&.level1,
-		&.level2,
-		&.level3,
-		&.level4,
-		&.level5 {
-			margin-left: 0;
-			margin-right: 1em; /* для rtl */
-		}
-		&.open {
-			list-style-image: url(images/open.gif);
-		}
-		&.closed {
-			list-style-image: url(images/closed.gif);
-		}
-	}
-	pre {
-		&.pre,
-		&.code {
-			background-color: __lighter__;
-			border: 1px dashed __dark__;
-			color: Black;
-			font-size: 10pt;
-			overflow: auto;
-			padding: .5em;
-		}
-		&.file {
-			background-color: __medium__;
-			border: 1px dashed __dark__;
-			color: Black;
-			font-size: 10pt;
-			overflow: auto;
-			padding: .5em;
-		}
-	}
-	code {
-		background-color: inherit;
-		box-shadow: inset 0 0 .3em #999;
-		color: #333;
-		font-family: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace;
-		padding: 0 2px;
-	}
-	button {
-		&.toolbutton {
-			background-color: inherit;
-			border: 0;
-			cursor: pointer;
-			margin: 0 1px 0 0;
-			padding: 3px;
-		}
-		&.pickerbutton {
-			background-color: transparent;
-			border: 0;
-			cursor: pointer;
-			font-size: 80%;
-			margin: 0 1px 1px 0;
-			padding: 0;
-		}
-	}
-	hr {
-		border: 0;
-		border-top: 1px solid __dark__;
-		height: 0;
-		text-align: center;
-	}
-	blockquote {
-		border-left: 2px solid __dark__;
-		margin-left: 0;
-		padding-left: 3px;
-	}
-	p {
-		margin: .5em 0;
-		padding: 0;
-	}
-	span {
-		&.spell_noerr {
-			color: #093;
-		}
-		&.spell_wait {
-			color: #06c;
-		}
-	}
+body {
+	background-color: #FFF;
+	color: Black;
+	font: 14px Verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+	background-color: transparent;
+	border-bottom: none;
+	clear: left;
+	color: Black;
+	font-family: Helvetica, "Bitstream Vera Sans", "Nimbus Sans L", sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	margin: 0;
+	padding: 1em 0 0 0;
 	a {
-		color: __extern__;
+		color: __black__;
 		text-decoration: none;
 		&:hover {
 			color: __black__;
-		}
-		&.urlextern {
-			color: __extern__;
-			&:visited {
-				color: Purple;
-			}
-		}
-		&.interwiki {
-			color: __extern__;
-			&:visited {
-				color: Purple;
-			}
-		}
-		&.media {
-			color: __extern__;
-		}
-		&.mail {
-			background: transparent url(images/mail_icon.gif) 0 1px no-repeat;
-			color: __extern__;
-			padding: 1px 0 1px 16px;
-		}
-		&.wikilink1 {
-			color: __existing__;
-			text-shadow: 0 -15px 2.5px transparent,0 15px 2.5px transparent;
-			&:hover {
-				text-shadow: 0 0 2.5px #0f0,0 0 2.5px #0f0;
-				transition: all .4s linear 0s;
-			}
-		}
-		&.wikilink2 {
-			color: __missing__;
-			text-shadow: 0 -5px 2.5px transparent,0 5px 2.5px transparent;
-			&:hover {
-				text-shadow: 0 0 1px #f00,0 0 1px #f00;
-				transition: all .4s linear 0s;
-			}
-		}
-		&.spell_error {
-			color: #f00;
-			text-decoration: underline;
+			text-decoration: none;
 		}
 	}
-	acronym {
-		border-bottom: 1px dotted __black__;
-		cursor: help;
+}
+h1 {
+	font-size: 15pt;
+}
+h2 {
+	border-bottom: 1px solid __dark__;
+	font-size: 14pt;
+}
+h3 {
+	font-size: 13pt;
+}
+h4 {
+	font-size: 11pt;
+}
+h5 {
+	font-size: 10pt;
+}
+table {
+	border: 0;
+	border-spacing: 0;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	tr,
+	td,
+	th {
+		margin: 0;
+		padding: 0;
 	}
-	img {
+	&.inline {
+		background-color: __white__;
+		border-collapse: collapse;
+		border-spacing: 0;
+		th {
+			background-color: __medium__;
+			font-weight: normal;
+		}
+		td,
+		th {
+			border: 1px solid __dark__;
+			font: 85% Verdana, "Bitstream Vera Sans", "Nimbus Sans L", sans-serif;
+			padding: 3px;
+			width: auto;
+		}
+	}
+	&.newpage {
+		/*border: solid 1px #f5f5f5;
+		border-radius: 5px;*/
+		td {
+			border-right: solid 1px #ddd;
+			padding: 0 10px !important;
+			&:nth-last-of-type(1) {
+				border-right: 0;
+				text-align: center;
+			}
+			&:nth-last-of-type(2) {
+				text-align: center;
+			}
+			img.medialeft {
+				margin: 5px 5px 0 0;
+			}
+			.vyleft {
+				margin-top: 0;
+			}
+		}
+	}
+}
+div {
+	&.level1,
+	&.level2,
+	&.level3,
+	&.level4,
+	&.level5 {
+		margin: 1em 0 0 0;
+	}
+	&.error,
+	&.info,
+	&.success,
+	&.notify {
+		font-size: 110%;
+		position: relative;
+		z-index: 2;
+		[dir=ltr] & { margin: 0 35px 0 5px; }
+		[dir=rtl] & { margin: 0 5px 0 35px; }
+	}
+	&.nothing {
+		margin: 2em;
+		text-align: center;
+	}
+	&#size__ctl {
+		float: right;
+		height: 2.7em;
+		width: 40px;
+		img {
+			cursor: pointer;
+		}
+	}
+	&.secedit {
+		button {
+			background-color: __white__;
+			border: 0 solid __dark__;
+			color: __darkgray__;
+			cursor: pointer;
+			display: inline;
+			float: right;
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			text-decoration: none;
+			vertical-align: middle;
+		}
+	}
+	&.preview {
+		background: __lighter__;
+		border: 1px dashed __black__;
+		margin-left: 2em;
+		padding: 4px;
+	}
+	&.insitu-footnote {
+		background: __light__;
+		border: 1px solid __dark__;
+		font-size: 80%;
+		line-height: 1.2em;
+		max-width: 40%; /* IE's width is handled in javascript */
+		padding: 4px;
+		text-align: left;
+	}
+	&.picker {
+		background: __light__;
+		border: 1px solid __dark__;
+		width: auto;
+	}
+	&#spell__suggest {
+		background-color: __white__;
+		border: 1px solid __black__;
+		display: none;
+		font-size: 80%;
+		padding: 2px;
+	}
+	&#spell__result {
+		background-color: __lighter__;
+		border: 1px solid __dark__;
+		color: Black;
+		display: none;
+		font-size: 14px;
+		padding: 3px;
+	}
+	&.mediaedit {
+		div.data {
+			label {
+				display: block;
+				float: left;
+				margin-right: .5em;
+				text-align: right;
+				width: 20%;
+			}
+			input,
+			textarea {
+				margin: .1em;
+				padding: .1em;
+				width: 75%;
+			}
+			input.button {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 10em;
+			}
+		}
+	}
+	&.areamenu {
+		color: __extern__;
+		font-size: 8pt;
+		text-decoration: none;
+		div#cloud {
+			text-align: center;
+			a {
+				&.cloud1_tag1,
+				&.cloud1_tag2 {
+					font-size: 10px;
+				}
+				&.cloud2_tag1,
+				&.cloud2_tag2 {
+					font-size: 12px;
+				}
+				&.cloud3_tag1,
+				&.cloud3_tag2 {
+					font-size: 14px;
+				}
+				&.cloud4_tag1,
+				&.cloud4_tag2 {
+					font-size: 16px;
+				}
+				&.cloud5_tag1,
+				&.cloud5_tag2 {
+					font-size: 18px;
+				}
+			}
+		}
+		p {
+			color: __black__;
+		}
+		a {
+			&.wikilink1 {
+				color: #080;
+			}
+			&:hover {
+				color: #F55;
+				text-decoration: underline;
+			}
+		}
+	}
+	&.taglist {
+		th,
+		td {
+			border: 1px #eee solid;
+			padding: 0 5px;
+		}
+		th {
+			text-align: center;
+		}
+		td {
+			ul {
+				list-style-type: none;
+				margin: 0;
+			}
+		}
+	}
+	&.mediaselect-right li,
+	&.uploadform {
+		clear: both;
+	}
+	&.comment_buttons {
+		padding-top: 12px;
+	}
+}
+form {
+	border: none;
+	display: inline;
+	font: 80% Verdana, sans-serif;
+	margin: 0;
+	&#subscribe__form {
+		display: block;
+		text-align: center;
+		width: 400px;
+		fieldset {
+			text-align: left;
+			margin: .5em 0;
+			legend {
+				background-color: white;
+				border: 1px solid __dark__;
+				border-radius: 5px;
+				box-shadow: 0 0 3px 1px __dark__;
+				padding: 2px 5px;
+			}
+			label {
+				display: block;
+				margin: 0 .5em .5em;
+				input {
+					vertical-align: middle;
+				}
+				span {
+					vertical-align: middle;
+				}
+			}
+		}
+		button {
+			background-image: linear-gradient(to bottom, #CCFFBB, #AADD99);
+			border-radius: 5px;
+			padding: 3px 5px;
+			&:hover {
+				background-image: linear-gradient(to bottom, #CCFFBB, #88BB77);
+			}
+		}
+	}
+}
+label {
+	&.block {
+		display: block;
+		font-weight: bold;
+		text-align: right;
+		input.edit {
+			width: 50%;
+		}
+	}
+	&.simple {
+		display: block;
+		font-weight: normal;
+		text-align: left;
+	}
+}
+fieldset {
+	border: 1px solid __dark__;
+	border-radius: 5px;
+	box-shadow: 0 0 3px 1px __dark__;
+	margin: auto;
+	padding: .5em;
+	text-align: center;
+	width: 400px;
+	legend {
+		color: black;
+		font-weight: bold;
+	}
+}
+textarea.edit {
+	background-color: __white__;
+	border: 1px solid __dark__;
+	border-radius: 5px;
+	box-shadow: 0 0 3px 1px __dark__;
+	color: Black;
+	font-family: monospace;
+	font-size: 14px;
+	padding: 3px 0 5px 3px;
+	width: 100%;
+}
+.lang-he textarea.edit {
+	text-align: right;
+}
+input.edit,
+select.edit {
+	background-color: __white__;
+	border: 1px solid __dark__;
+	border-radius: 5px;
+	box-shadow: 0 0 3px 1px __dark__;
+	color: __darkgray__;
+	display: inline;
+	font-size: 100%;
+	margin: 1px;
+	vertical-align: middle;
+}
+input.edit {
+	padding: .2em .3em;
+}
+select.edit {
+	padding: .1em 0;
+}
+input.missing {
+	background-color: #FCC;
+	border: 1px solid __dark__;
+	border-radius: 5px;
+	box-shadow: 0 0 3px 1px __dark__;
+	color: __darkgray__;
+	display: inline;
+	font-size: 100%;
+	margin: 1px;
+	padding: .2em .3em;
+	vertical-align: middle;
+}
+input.button,
+button.button {
+	background-color: __white__;
+	border: 1px solid __dark__;
+	box-shadow: 0 0 2px 0 __black__;
+	color: __black__;
+	cursor: pointer;
+	margin: 1px;
+	padding: .125em .4em;
+	text-decoration: none;
+	vertical-align: middle;
+}
+ul {
+	line-height: 1.5em;
+	list-style-image: none;
+	list-style-type: square;
+	padding: 0;
+	[dir=ltr] & { margin: 0 0 .5em 1.5em; }
+	[dir=rtl] & { margin: 0 1.5em .5em 0; }
+}
+ul + ul {
+	margin-top: 1.5em;
+}
+ul.tabs {
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		[dir=ltr] & { float: left; }
+		[dir=rtl] & { float: right; }
+		a {
+			background-color: __background_neu__;
+		}
+		a, strong {
+			border-radius: .5em .5em 0 0;
+			color: __text__;
+			padding: .3em .8em;
+			[dir=ltr] & {
+				float: left;
+				margin: 0 .3em 0 0;
+			}
+			[dir=rtl] & {
+				float: right;
+				margin: 0 0 0 .3em;
+			}
+		}
+		a:hover,
+		a:active,
+		a:focus,
+		strong {
+			background-color: __background_alt__;
+			text-decoration: none;
+		}
+	}
+}
+ol {
+	font-weight: normal;
+	line-height: 1.5em;
+	list-style-image: none;
+	list-style-type: decimal;
+	margin: 0 0 .5em 1.5em;
+	padding: 0;
+	ol {
+		list-style-type: upper-roman;
+		ol {
+			list-style-type: lower-alpha;
+			ol {
+				list-style-type: lower-greek;
+			}
+		}
+	}
+}
+li {
+	&.level1,
+	&.level2,
+	&.level3,
+	&.level4,
+	&.level5 {
+		margin: 0;
+	}
+	&.open, &.closed {
+		list-style: none;
+		&::before {
+			border-bottom:2px solid black;
+			border-right:2px solid black;
+			content: '';
+			height:5px;
+			position: absolute;
+			width:5px;
+		}
+	}
+	&.open::before {
+		[dir=ltr] & { transform: translateX(-200%) translateY(100%) rotate(45deg); }
+		[dir=rtl] & { transform: translateX(200%) translateY(100%) rotate(45deg); }
+	}
+	&.closed::before {
+		[dir=ltr] & { transform: translateX(-200%) translateY(100%) rotate(-45deg); }
+		[dir=rtl] & { transform: translateX(200%) translateY(100%) rotate(135deg); }
+	}
+}
+pre {
+	&.pre,
+	&.code {
+		background-color: __lighter__;
+		border: 1px dashed __dark__;
+		color: Black;
+		font-size: 10pt;
+		overflow: auto;
+		padding: .5em;
+	}
+	&.file {
+		background-color: __medium__;
+		border: 1px dashed __dark__;
+		color: Black;
+		font-size: 10pt;
+		overflow: auto;
+		padding: .5em;
+	}
+}
+code {
+	background-color: inherit;
+	box-shadow: inset 0 0 .3em #999;
+	color: #333;
+	font-family: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace;
+	padding: 0 2px;
+}
+button {
+	&.toolbutton {
+		background-color: inherit;
 		border: 0;
-		&.media {
-			margin: 3px;
-		}
-		&.medialeft {
-			margin: 0 1.5em 0 0;
-		}
-		&.mediaright {
-			margin: 0 0 0 1.5em;
+		cursor: pointer;
+		margin: 0 1px 0 0;
+		padding: 3px;
+	}
+	&.pickerbutton {
+		background-color: transparent;
+		border: 0;
+		cursor: pointer;
+		font-size: 80%;
+		margin: 0 1px 1px 0;
+		padding: 0;
+	}
+}
+hr {
+	border: 0;
+	border-top: 1px solid __dark__;
+	height: 0;
+	text-align: center;
+}
+blockquote {
+	border-left: 2px solid __dark__;
+	margin-left: 0;
+	padding-left: 3px;
+}
+p {
+	margin: .5em 0;
+	padding: 0;
+}
+span {
+	&.spell_noerr {
+		color: #093;
+	}
+	&.spell_wait {
+		color: #06c;
+	}
+}
+a {
+	color: __extern__;
+	text-decoration: none;
+	&:hover {
+		color: __black__;
+	}
+	&.urlextern {
+		color: __extern__;
+		&:visited {
+			color: Purple;
 		}
 	}
-	audio {
-		padding: 5px 0;
-		vertical-align: middle;
+	&.interwiki {
+		color: __extern__;
+		&:visited {
+			color: Purple;
+		}
 	}
+	&.media {
+		color: __extern__;
+	}
+	&.mail {
+		background: transparent url(data:image/gif;base64,R0lGODlhEAAQAPcAAE5OTmSh5e43IPBEL/JhT6Ojo4Kz6o298LHQ8rbT87nV873X9L7Y9MLa9cXc9cne9srf9tDj99Hj99bm+Nrp+dzq+d3q+d/s+uHt+uTu+ujx++ny++vz/O30/PD2/PL3/fX5/fn7/vz9/v7+/+0XF////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAACQALAAAAAAQABAAAAhzAEkIHEiwoMGDCBMSLMCwocOGAAQWKEGRoggQHTJUiHAgIomJFUeE8KDhAoEBHSWWCGAggEsOGCYMEJDyY8WLGSlEcLCg5kSWLg1YkPCAQQKfJUR+2HBhAoQGChD4PEC1qlWqHgsA2Mq1K1eFYMOKHVswIAA7) 0 1px no-repeat;
+		color: __extern__;
+		padding: 1px 0 1px 16px;
+	}
+	&.wikilink1 {
+		color: __existing__;
+		text-shadow: 0 -15px 2.5px transparent,0 15px 2.5px transparent;
+		&:hover {
+			text-shadow: 0 0 2.5px #0f0,0 0 2.5px #0f0;
+			transition: all .4s linear 0s;
+		}
+	}
+	&.wikilink2 {
+		color: __missing__;
+		text-shadow: 0 -5px 2.5px transparent,0 5px 2.5px transparent;
+		&:hover {
+			text-shadow: 0 0 1px #f00,0 0 1px #f00;
+			transition: all .4s linear 0s;
+		}
+	}
+	&.spell_error {
+		color: #f00;
+		text-decoration: underline;
+	}
+}
+acronym {
+	border-bottom: 1px dotted __black__;
+	cursor: help;
+}
+img {
+	border: 0;
+	&.media {
+		margin: 3px;
+	}
+	&.medialeft {
+		margin: 0 1.5em 0 0;
+	}
+	&.mediaright {
+		margin: 0 0 0 1.5em;
+	}
+}
+audio {
+	padding: 5px 0;
+	vertical-align: middle;
 }
