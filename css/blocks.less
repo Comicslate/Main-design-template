@@ -1,34 +1,18 @@
 @keyframes rot {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
 @keyframes op10 {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0.1;
-	}
+	0% { opacity: 1; }
+	100% { opacity: 0.1; }
 }
 @keyframes op2 {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0.5;
-	}
+	0% { opacity: 1; }
+	100% { opacity: 0.5; }
 }
 @keyframes op01 {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+	0% { opacity: 0; }
+	100% { opacity: 1; }
 }
 
 .dokuwiki {
@@ -235,10 +219,7 @@
 	&.lang-uk { nav div:hover::after { content: "🡐 Мови"; } }
 	&.lang-zh { nav div:hover::after { content: "🡐 语言"; } }
 	article#dokuwiki__detail {
-		padding-left: 1em;
-		[dir=rtl] & {
-			padding-right: 1em;
-		}
+		padding: 0 1em;
 		div.apps {
 			display: none;
 		}
@@ -262,20 +243,16 @@
 			padding: 1em 0;
 		}
 		div.img_big {
-			float: left;
-			[dir=rtl] & {
-				float: right;
-			}
+			[dir=ltr] & { float: left; }
+			[dir=rtl] & { float: right; }
 			p.img_caption {
 				text-align: center;
 			}
 		}
 		div.img_detail {
-			float: left;
+			[dir=ltr] & { float: left; }
+			[dir=rtl] & { float: right; }
 			margin: 0 1em;
-			[dir=rtl] & {
-				float: right;
-			}
 			#back {
 				font-size: 1.3em;
 				margin-top: 0;
@@ -307,7 +284,8 @@
 		border-bottom: 1px dashed #EEE;
 		font-family: "Trebuchet MS", "Bitstream Vera Sans", "Nimbus Sans L", sans-serif;
 		line-height: 1.5em;
-		margin: 0 37px 0 7px;
+		[dir=ltr] & { margin: 0 37px 0 7px; }
+		[dir=rtl] & { margin: 0 7px 0 37px; }
 		position: relative;
 		text-align: justify;
 		&::after {
@@ -440,9 +418,6 @@
 				}
 			}
 		}
-		[dir=rtl] & {
-			margin: 0 7px 0 37px;
-		}
 		div.index__tree {
 			li {
 /*				&:nth-of-type(odd) {
@@ -479,7 +454,7 @@
 		article.page::after {
 			background-image: url( images/logo/logo_back.svg );
 		}
-	}
+		}
 /**
  * @author Anika Henke <anika@selfthinker.org>
  * @author Andreas Gohr <andi@splitbrain.org>
@@ -489,10 +464,16 @@
 		@ico-margin: 4px;
 		@item-height: (@ico-width + @ico-margin);
 		position: fixed;
-		right: 0;
 		top: 75px;
+		[dir=ltr] & {
+			right: 0;
+			ul { text-align: right; }
+		}
+		[dir=rtl] & {
+			left: 0;
+			ul { text-align: left; }
+		}
 		ul {
-			text-align: right;
 			border: 1px solid transparent; // add transparent border to prevent jumping when proper border is added on hover
 			margin: 0;
 			li {
@@ -505,9 +486,9 @@
 						margin: 0 @ico-margin;
 					}
 					svg {
+						fill: @ini_border;
 						margin: 0 @ico-margin/2;
 						vertical-align: middle;
-						fill: @ini_border;
 					}
 				}
 				a:active,
@@ -532,15 +513,6 @@
 			}
 			li.edit svg {
 				animation: 1s linear 3s infinite alternate running op10;
-			}
-		}
-		[dir=rtl] & {
-			right: auto;
-			left: 0;
-			ul {
-				right: auto;
-				left: 0;
-				text-align: left;
 			}
 		}
 		&:hover {
@@ -720,10 +692,6 @@
 		* {
 			display: inline !important;
 		}
-	}
-	[dir=rtl] .note {
-		background-position: right 20px top 12px;
-		padding: 15px 80px 15px 20px;
 	}
 	.ratestar {
 		vertical-align: sub;
