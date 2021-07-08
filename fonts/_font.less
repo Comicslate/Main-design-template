@@ -61,39 +61,39 @@
 /*.export .ct-note {
 	padding: 0 1px !important;
 }*/
-.lang-he .fest {
-	font-family: 'Frank Ruhl Libre';
-	letter-spacing: -0.05px; /* достаточно -0,01, перестраховка */
-}
-.export.lang-hi .fest {
-	line-height: 100% !important;
-}
-.lang-hi .fest {
-	font-family: 'Inknut Antiqua';
-	letter-spacing: -1.22px;
-	line-height: 136%;
-}
-.lang-ko .fest {
-	font-family: Jua;
-	letter-spacing: 1.5px;
-	line-height: 136%;
-}
-.lang-ja .fest {
-	font-family: 'Kosugi Maru';
-	line-height: 128%;
-}
-.lang-sjn .fest {
-	font-family: TengwarAnnatar, cursive;
-}
-.lang-zh .fest {
-	font-family: 'ZCOOL KuaiLe';
-	letter-spacing: 1.1px;
-	line-height: 132%;
-}
 .fest {
 	font-family: DatFestComic, cursive;
-}
+	.lang-he & {
+		font-family: 'Frank Ruhl Libre';
+		letter-spacing: -0.05px; /* достаточно -0,01, перестраховка */
+	}
+	.export.lang-hi & {
+		line-height: 100% !important;
+	}
+	.lang-hi & {
+		font-family: 'Inknut Antiqua';
+		letter-spacing: -1.22px;
+		line-height: 136%;
+	}
+	.lang-ko & {
+		font-family: Jua;
+		letter-spacing: 1.5px;
+		line-height: 136%;
+	}
+	.lang-ja & {
+		font-family: 'Kosugi Maru';
+		line-height: 128%;
+	}
+	.lang-sjn & {
+		font-family: TengwarAnnatar, cursive;
+	}
+	.lang-zh & {
+		font-family: 'ZCOOL KuaiLe';
+		letter-spacing: 1.1px;
+		line-height: 132%;
+	}
 
+}
 .dspf {
 	font-family: DSPFetcher, cursive;
 }
@@ -124,15 +124,16 @@
 .unic {
 	font-family: UnicephalonCyr, cursive;
 }
-.vag {
+.vrc {
 	font-family: VagRoundCyr, cursive;
 }
 .ops {
 	font-family: "Open Sans";
 }
 
-.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic,.vag,.ops {
+.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic,.vrc,.ops {
 	-webkit-appearance: none;
+	display: inline;
 	font-feature-settings: "kern" 1;
 	font-kerning: normal;
 	word-wrap: break-word;
@@ -144,7 +145,7 @@
 .saw { color: #FE2E06; }
 .qwe { color: #5E3432; }
 .dvo { color: #696A00; }
-.edge { color: #3F5537; }
+.com, .edge { color: #3F5537; }
 .blunt { color: #554E37; }
 .max { color: #242424; }
 .rai { color: #106A10; }
@@ -152,13 +153,55 @@
 .mad { color: #333333; }
 .mayor { color: #491D31; }
 .mhlp { color: #493025; }
-.niomi { color: #49211D; }
+.nio { color: #49211D; }
 .pol { color: #10106A; }
 .mst, .mst1 { color: #CE5200; }
 .bow { color: #C7AE1A; }
 .ish { color: #4A3110; }
 .gre { color: #215f7a; }
 .oth { color: black; }
+.vag {
+	color: #00a90c;
+	display: inline;
+	font-family: VagRoundCyr, cursive;
+	font-size: 1.3em;
+}
+
+.flo,.sam,.hlx,.saw,.qwe,.dvo,.edge,.blunt,.max,.rai,.kor,.mad,.mayor,.mhlp,.nio,.pol,.mst,.mst1,.bow,.com,.ish,.gre,.oth {
+	display: inline;
+	font-family: DatFestComic, cursive;
+	font-size: 1.3em;
+	.lang-he & {
+		font-family: 'Frank Ruhl Libre';
+		letter-spacing: -0.05px; /* достаточно -0,01, перестраховка */
+	}
+	.export.lang-hi & {
+		line-height: 100% !important;
+	}
+	.lang-hi & {
+		font-family: 'Inknut Antiqua';
+		letter-spacing: -1.22px;
+		line-height: 136%;
+	}
+	.lang-ko & {
+		font-family: Jua;
+		letter-spacing: 1.5px;
+		line-height: 136%;
+	}
+	.lang-ja & {
+		font-family: 'Kosugi Maru';
+		line-height: 128%;
+	}
+	.lang-sjn & {
+		font-family: TengwarAnnatar, cursive;
+	}
+	.lang-zh & {
+		font-family: 'ZCOOL KuaiLe';
+		letter-spacing: 1.1px;
+		line-height: 132%;
+	}
+}
+
 .znt { color: #1E90FF; }
 .ozy { color: #404040; }
 .mil { color: #EE7000; }
@@ -171,10 +214,7 @@
 .ajp { color: #CA9954; }
 .sdr { color: #258B01; }
 .bmp { color: #DE6E56; }
-.vag { color: #00a90c; }
 
-.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic,.vag,.ops,
-.flo,.sam,.hlx,.saw,.qwe,.dvo,.edge,.blunt,.max,.rai,.kor,.mad,.mayor,.mhlp,.niomi,.pol,.mst1,.mst,.bow,.ish,.gre,.oth,
 .znt,
 .ozy,.mil,
 .mol,.tsp,.rrp,.rdp,.fsp,.ppp,.ajp,.sdr,.bmp {
