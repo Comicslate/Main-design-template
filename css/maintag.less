@@ -106,11 +106,48 @@ div {
 	&.info,
 	&.success,
 	&.notify {
+		background-repeat: no-repeat;
+		border: 1px solid;
+		border-radius: 5px;
+		color: #000;
 		font-size: 110%;
+		overflow: hidden;
+		padding: .4em;
 		position: relative;
 		z-index: 2;
-		[dir=ltr] & { margin: 0 35px 0 5px; }
-		[dir=rtl] & { margin: 0 5px 0 35px; }
+		[dir=ltr] & {
+			background-position: 8px 50%;
+			margin: 0 35px 0 5px;
+			padding-left: 32px;
+		}
+		[dir=rtl] & {
+			background-position: right 8px top 50%;
+			margin: 0 5px 0 35px;
+			padding-right: 32px;
+		}
+	}
+	&.error {
+		background-color: #fcc;
+		background-image: url(../../images/error.png);
+		border-color: #ebb;
+	}
+
+	&.info {
+		background-color: #ccf;
+		background-image: url(../../images/info.png);
+		border-color: #bbe;
+	}
+
+	&.success {
+		background-color: #cfc;
+		background-image: url(../../images/success.png);
+		border-color: #beb;
+	}
+
+	&.notify {
+		background-color: #ffc;
+		background-image: url(../../images/notify.png);
+		border-color: #eeb;
 	}
 	&.nothing {
 		margin: 2em;
