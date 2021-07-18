@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2021.06.29 04:52 GMT+10' );
+console . log ( 'DokuScripts ver. 2021.07.18 23:39 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -59,10 +59,14 @@ if ( notedit ) {
 
 // ПОЧТИ ВЕЗДЕ
 
-/* [[ссылка]]ми */
-document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2' ) . forEach (
+document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2, .page a.urlextern' ) . forEach (
 	e => {
-		if ( e . parentElement != null ) e . parentElement . innerHTML = e . parentElement . innerHTML . replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" )
+		if ( e != null ) {
+			e . innerHTML = e . innerHTML . replace ( /\\\\/gi, "<br>" ); /* \\ = br */
+		}
+		if ( e . parentElement != null ) {
+			e . parentElement . innerHTML = e . parentElement . innerHTML . replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" ) /* [[ссылка]]ми */
+		}
 	}
 );
 
