@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2021.07.18 23:39 GMT+10' );
+console . log ( 'DokuScripts ver. 2021.08.09 21:31 GMT+9' );
 
 //ВЕЗДЕ
 
@@ -9,16 +9,14 @@ var i, j,
 if ( lang . length > 3 ) lang = '';
 
 /* реклама Яндекса */
-( function ( n ) {
-	this [ n ] = this [ n ] || [ ];
-	this [ n ] . push ( function ( ) {
+if ( window . yaContextCb != undefined ) {
+	window . yaContextCb . push ( ( ) => {
 		Ya . Context . AdvManager . render ( {
-			blockId: "R-A-492328-1",
-			renderTo: "yandex_rtb_R-A-492328-1",
-			async: true
-		} );
+			renderTo: 'yandex_rtb_R-A-492328-1',
+			blockId: 'R-A-492328-1'
+		} )
 	} );
-} ) ( "yandexContextAsyncCallbacks" );
+};
 
 /* истребитель двоеточий в адресах */
 if ( lpath . match ( /:/i ) != null ) window . location . pathname = lpath . replace ( /:/g, '/' );
@@ -59,16 +57,19 @@ if ( notedit ) {
 
 // ПОЧТИ ВЕЗДЕ
 
-document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2, .page a.urlextern' ) . forEach (
-	e => {
-		if ( e != null ) {
-			e . innerHTML = e . innerHTML . replace ( /\\\\/gi, "<br>" ); /* \\ = br */
-		}
-		if ( e . parentElement != null ) {
-			e . parentElement . innerHTML = e . parentElement . innerHTML . replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" ) /* [[ссылка]]ми */
-		}
+/* [[ссылка]]ми */
+document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2, .page a.urlextern, .page a.interwiki' ) . forEach ( e => {
+	if ( e . parentElement != null ) e . parentElement . innerHTML = e . parentElement . innerHTML . replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" );
+} );
+
+/* \\ br, -. &shy; */
+document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2, .page a.urlextern, .page a.interwiki' ) . forEach ( e => {
+	if ( e != null ) {
+		e . innerHTML = e . innerHTML . replace ( /\\\\/gi, "<br>" ) . replace ( /\-\./gi, "&shy;" );
+		e . href = e . href . replace ( /\\\\/gi, "" ) . replace ( /\-\./gi, "" );
+		e . title = e . title . replace ( /\\\\/gi, "" ) . replace ( /\-\./gi, "" );
 	}
-);
+} );
 
 /* язык в титулах (кроме тегов) */
 if (
@@ -144,7 +145,7 @@ if ( lhref . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//
 		&&
 		document . querySelector ( 'img.media' )
 	) {
-		var cot_vid = ' <a href="https://www.youtube.com/embed/YQc7LXXYCTk?hl=' + lang + '" target=_blank>CoTAN</a> ',
+		var cot_vid = ' <a href="https://www.youtube.com/embed/w_Pnlt-9o7s?hl=' + lang + '" target=_blank>CoTAN</a> ',
 			clangs = {
 				'be': 'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай' + cot_vid,
 				'bg': 'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с' + cot_vid,
