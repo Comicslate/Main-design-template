@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.07.08 17:44 GMT+10
+  * ver. 2021.08.10 23:03 GMT+9
   */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -18,9 +18,10 @@ echo $t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) . // favicon
 "\t\t" . '<link rel="icon" href="/lib/tpl/comicslate/images/logo/logo_back.svg" type="image/svg+xml">' .
 $t2 . '<link rel = "manifest" href = "/lib/tpl/comicslate/images/site.webmanifest">';
 
-if ( $conf [ "lang" ] == 'ru' || $conf [ "lang" ] == 'be' || $conf [ "lang" ] == 'uk' ) echo $t2 . '<script src = "//an.yandex.ru/system/context.js" async></script>'; // реклама РСИ
+echo $t2 . '<script>window.yaContextCb=window.yaContextCb||[]</script>' . // реклама РСИ
+$t2 . '<script src = "//yandex.ru/ads/system/context.js" async></script>';
 if ( $ACT == 'show' ) echo $t2 . '<script src = "//mc.yandex.ru/metrika/tag.js" async></script>' . $t2 . '<script src = "/lib/tpl/comicslate/yscript.js" async></script>'; // Метрика
-if ( ( $ACT == 'edit' || $ACT == 'preview' ) && ( explode ( "&", $_SERVER [ "QUERY_STRING" ] ) [ 2 ] != 'nocotan' ) ) echo $t2 . '<script src = "/lib/plugins/cotan/editor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/editor.js' ) ) . '" defer></script>'; // CoTAN
+if ( ( $ACT == 'edit' || $ACT == 'preview' ) && ( explode ( "&", $_SERVER [ "QUERY_STRING" ] ) [ 2 ] != 'nocotan' ) ) echo $t2 . '<script src = "/lib/plugins/cotan/neweditor.js?ver=' . date ( "y-m-d_H:i:s", filemtime ( '/var/www/comicslate.org/lib/plugins/cotan/neweditor.js' ) ) . '" defer></script>'; // CoTAN
 
 echo $t2 . '<link rel = "preconnect" href = "https://fonts.gstatic.com" />'; // шрифты
 $grlng = '';
