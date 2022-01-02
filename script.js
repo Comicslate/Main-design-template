@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2021.08.09 21:31 GMT+9' );
+console . log ( 'DokuScripts ver. 2022.01.02 13:15 GMT+10' );
 
 //ВЕЗДЕ
 
@@ -149,6 +149,7 @@ if ( lhref . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//
 			clangs = {
 				'be': 'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай' + cot_vid,
 				'bg': 'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с' + cot_vid,
+				'br': 'Não há adesivos nesta faixa!<br>Você pode corrigir isso <a href="?do=edit">editando esta página</a> com o' + cot_vid,
 				'da': 'Der er ingen klistermærker i denne stribe!<br>Du kan rette dette ved at <a href="?do=edit">redigere siden</a> med' + cot_vid,
 				'de': 'In diesem Streifen befinden sich keine Aufkleber!<br>Sie können dies beheben, indem Sie die Seite mit' + cot_vid + '<a href="?do=edit">bearbeiten</a>',
 				'el': 'Δεν υπάρχουν αυτοκόλλητα στην ταινία!<br>Μπορείτε να διορθώσετε αυτό με την <a href="?do=edit">επεξεργασία της σελίδας</a> με το' + cot_vid,
