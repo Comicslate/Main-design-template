@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
 /*
-  * ver. 2021.08.10 23:03 GMT+9
-  */
+ver. 2022.01.03 18:06 GMT+10
+*/
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
 $t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
@@ -107,7 +107,7 @@ if ( $conf [ 'breadcrumbs' ] ) { // Breadcrumbs
 };
 
 $socbut = array ( // Social
-	array ( '/feed.php', tpl_getLang ( 'RSS' ), 'rss' ),
+	array ( '/feed.php',                tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSall' ) . ')', 'rss' ),
 	array ( '/feed.php?onlynewpages=1', tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' ),
 	array ( '//patreon.com/comicslate', 'Patreon', 'patreon' ),
 	array ( '//discord.gg/T8p6M4Q', 'Discord', 'discord' ),
@@ -117,8 +117,8 @@ $socbut = array ( // Social
 	array ( '//facebook.com/groups/comicslate', 'Facebook', 'facebook' ),
 	array ( '//twitter.com/Rainbow_Spike', 'Twitter', 'twitter' ),
 	array ( '//vk.com/comicslate', 'VKontakte', 'vkontakte' ),
-	array ( '/feed.php?mode=recent&amp;ns=' . $INFO [ 'namespace' ], tpl_getLang ( 'RSSpart' ), 'rss' ),
-	array ( '/feed.php?mode=recent&amp;ns=' . $INFO [ 'namespace' ] . '&amp;onlynewpages=1', tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' )
+	array ( '/feed.php?ns='                    . urlencode ( $INFO [ 'namespace' ] ), tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSall' ) . ')', 'rss' ),
+	array ( '/feed.php?onlynewpages=1&amp;ns=' . urlencode ( $INFO [ 'namespace' ] ), tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' )
 );
 echo $t5 . '<div class = "social">';
 for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
