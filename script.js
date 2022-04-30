@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2022.01.02 13:15 GMT+10' );
+console . log ( 'DokuScripts ver. 2022.05.01 00:00 GMT+9' );
 
 //ВЕЗДЕ
 
@@ -79,6 +79,39 @@ if (
 ) {
 	var ltitle = document . querySelector ( '.page > h1, .page > h2, .page > h3, .page > h4, .page > h5' );
 	if ( ltitle != null ) ltitle . innerHTML = lang . toUpperCase ( ) + ' / ' + ltitle . innerHTML;
+};
+
+/* исправление времени на текущий пояс */
+
+var timePlace = document . querySelectorAll ( ".pageinfo, .date, .diffnav option, th a, .approval_date, .approval_previous, .apr_upd, .apr_prev, .sum, #draft__status" );
+
+function timeFix ( ) {
+	for ( i = 0; i < timePlace . length; i++ ) {
+		if ( timePlace [ i ] . innerHTML != undefined ) {
+			var timeDigits = timePlace [ i ] . innerHTML . match ( /(\d\d\d\d)\/(\d\d)\/(\d\d) (\d\d):(\d\d)/ );
+			if ( timeDigits != null ) {
+				var newTime = new Date ( Date . parse ( timeDigits [ 1 ] + '-' + timeDigits [ 2 ] + '-' + timeDigits [ 3 ] + 'T' + timeDigits [ 4 ] + ':' + timeDigits [ 5 ] + 'Z' ) ),
+					nParts = {
+						year:		newTime . getFullYear ( ),
+						month:	( newTime . getMonth ( ) + 1 ),
+						day:			newTime . getDate ( ),
+						hour:		newTime . getHours ( ),
+						minute:	newTime . getMinutes ( ),
+					},
+					newParts = { };
+				for ( j in nParts ) {
+					newParts [ j ] = ( parseInt ( nParts [ j ], 10 ) < 10 ) ? ( '0' + nParts [ j ] ) : ( nParts [ j ] );
+				};
+				newTime = newParts . year + '/' + newParts . month + '/' + newParts . day + '&nbsp;' + newParts . hour + ':' + newParts . minute;
+				timePlace [ i ] . innerHTML = timePlace [ i ] . innerHTML . replace ( /\d\d\d\d\/\d\d\/\d\d \d\d:\d\d/, newTime );
+				timePlace [ i ] . style . textShadow = '#000 0 .5px .5px';
+			}
+		}
+	}
+};
+
+if ( timePlace . length > 0 ) {
+	setTimeout ( timeFix, 300 );
 };
 
 // ЦЕНТРАЛИЗАЦИЯ КАРТИНОК
