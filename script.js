@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2022.05.01 00:00 GMT+9' );
+console . log ( 'DokuScripts ver. 2022.06.15 19:27 GMT+9' );
 
 //ВЕЗДЕ
 
@@ -19,7 +19,7 @@ if ( window . yaContextCb != undefined ) {
 };
 
 /* истребитель двоеточий в адресах */
-if ( lpath . match ( /:/i ) != null ) window . location . pathname = lpath . replace ( /:/g, '/' );
+if ( /:/ . test ( lpath ) ) window . location . pathname = lpath . replace ( /:/g, '/' );
 
 /* замена энтити */
 function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
@@ -62,6 +62,11 @@ document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2, .page a.url
 	if ( e . parentElement != null ) e . parentElement . innerHTML = e . parentElement . innerHTML . replace ( /(<\/a>)([a-zа-ё\']+)/gi, "$2$1" );
 } );
 
+/* озеленение do-ссылок*/
+document . querySelectorAll ( '.page a.wikilink2' ) . forEach ( e => {
+	if ( /do=/ . test ( e . href ) ) e . className = e . className . replace ( 'wikilink2', 'wikilink1' );
+} );
+
 /* \\ br, -. &shy; */
 document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2, .page a.urlextern, .page a.interwiki' ) . forEach ( e => {
 	if ( e != null ) {
@@ -70,16 +75,6 @@ document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2, .page a.url
 		e . title = e . title . replace ( /\\\\/gi, "" ) . replace ( /\-\./gi, "" );
 	}
 } );
-
-/* язык в титулах (кроме тегов) */
-if (
-	lang != ''
-	&&
-	!lhref . match ( /\/tag\//i )
-) {
-	var ltitle = document . querySelector ( '.page > h1, .page > h2, .page > h3, .page > h4, .page > h5' );
-	if ( ltitle != null ) ltitle . innerHTML = lang . toUpperCase ( ) + ' / ' + ltitle . innerHTML;
-};
 
 /* исправление времени на текущий пояс */
 
@@ -121,34 +116,10 @@ document . querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ) . forEach (
 	e => e . src = e . src . replace ( /[wh]=\d+\&?/g, '' ) . replace ( /tok=......\&?/g, '' ) . replace ( /[\?\&]$/g, '' )
 );
 
-/* медиаменеджер - перенаправить в папку без языка */
-if ( lhref . match ( /mediamanager.php\?ns=\w\w\w?%3A(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang|playground|user)/ ) != null ) {
-	var ns = document . querySelector ( '#media__ns' );
-	ns . innerHTML = ns . innerHTML . replace ( /^:\w\w\w?:/, 'Redirect... :' );
-	window . location = window . location . toString ( ) . replace ( /ns=\w\w\w?%3A/, 'ns=' )
-};
-
-/* сайдбар - удалить язык в медиаменеджере */
-var sidemedia = document . querySelector ( '#pagetools .media a' );
-if ( sidemedia != null ) sidemedia . href = sidemedia . href . replace ( /ns=\w\w\w?%3A/, 'ns=' );
-
 // ГЛАВНАЯ, МЕНЮ, ИНДЕКСЫ И Т.П.
 
-/* последние правки - дорисовать "ЯЗЫК / " */
-if ( lhref . match ( /(start|do=search)/ ) ) {
-	document . querySelectorAll ( 'td.page a, .pagelist a, .taglist a, .search_quickhits a, .search_results a.wikilink1' ) . forEach (
-		e => e . innerHTML = lang . toUpperCase ( ) + ' / ' + e . innerHTML
-	)
-};
-/* теги - дорисовать "ЯЗЫК / " */
-if ( lhref . match ( /(showtag)/ ) ) {
-	document . querySelectorAll ( 'td.page a' ) . forEach (
-		e => e . innerHTML = e . title . split ( ':' ) [ 0 ] . toUpperCase ( ) + ' / ' + e . innerHTML
-	)
-};
-
 /* меню и админка - пакование в колонки */
-if ( lhref . match ( /(\/menu[\?|#]?|do=admin)/i ) !== null ) {
+if ( /(\/menu[\?|#]?|do=admin)/ . test ( lhref ) ) {
 	var col_ul = document . querySelectorAll ( '.page ul, .admin_plugins ul' ),
 		col_li,
 		col_sz = [ ];
@@ -169,10 +140,10 @@ if ( lhref . match ( /(\/menu[\?|#]?|do=admin)/i ) !== null ) {
 
 // В КОМИКСОВЫХ РАЗДЕЛАХ
 
-if ( lhref . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//i ) ) {
+if ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\// . test ( lhref ) ) {
 	/* плашка статуса перевода */
 	if (
-		!lhref . match ( /(\/(d|h)\d+|[\?&](do=pre|rev=))/i )
+		!( /(\/(d|h)\d+|[\?&](do=pre|rev=))/ . test ( lhref ) )
 		&&
 		document . querySelectorAll ( '.ct-container, .fn-container' ) . length == 0
 		&&
@@ -183,6 +154,7 @@ if ( lhref . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//
 				'be': 'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай' + cot_vid,
 				'bg': 'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с' + cot_vid,
 				'br': 'Não há adesivos nesta faixa!<br>Você pode corrigir isso <a href="?do=edit">editando esta página</a> com o' + cot_vid,
+				'cs': 'Na tomto proužku nejsou žádné nálepky!<br>Můžete to napravit <a href="?do=edit">úpravou této stránky</a> pomocí' + cot_vid,
 				'da': 'Der er ingen klistermærker i denne stribe!<br>Du kan rette dette ved at <a href="?do=edit">redigere siden</a> med' + cot_vid,
 				'de': 'In diesem Streifen befinden sich keine Aufkleber!<br>Sie können dies beheben, indem Sie die Seite mit' + cot_vid + '<a href="?do=edit">bearbeiten</a>',
 				'el': 'Δεν υπάρχουν αυτοκόλλητα στην ταινία!<br>Μπορείτε να διορθώσετε αυτό με την <a href="?do=edit">επεξεργασία της σελίδας</a> με το' + cot_vid,
@@ -218,7 +190,7 @@ if ( lhref . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//
 		if ( cnavn ) cnavn . parentNode . insertBefore ( note, cnavn . nextSibling );
 	};
 	/* в лентах - сокращение лишних титулов выпусков и озеленение заголовков */
-	if ( lhref . match ( /\/(d|h)\d+/i ) != null ) {
+	if ( /\/(d|h)\d+/ . test ( lhref ) ) {
 		var band_title = Array . from ( document . querySelectorAll ( '.page .plugin_include_content > .level5 > p > strong' ) ) . reverse ( );
 		for ( i = 0; i < band_title . length - 1; i++ ) {
 			if ( band_title [ i ] . innerHTML == band_title [ i + 1 ] . innerHTML ) band_title [ i ] . innerHTML = '';
@@ -238,11 +210,11 @@ if ( lhref . match ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\//
 			}
 		}
 	};
-	if ( lhref . match ( /do=export/i ) != null ) {
+	if ( /do=export/ . test ( lhref ) ) {
 		/* автопереход по редиректу в экспорте */
 		if ( document . querySelector ( '.noteredirect a' ) ) window . location . href = document . querySelector ( '.noteredirect a' ) . href + '?do=export_xhtml';
 		/* скрытие наклеек по атрибуту hide=1 */
-		if ( lhref . match ( /hide=1/i ) != null ) {
+		if ( /hide=1/ . test ( lhref ) ) {
 			document . querySelectorAll ( '.ct-area, .fn-area' ) . forEach (
 				e => e . style . display = 'none'
 			)
