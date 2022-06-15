@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-ver. 2022.01.03 18:06 GMT+10
+ver. 2022.06.13 08:08 GMT+9
 */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -11,7 +11,7 @@ echo '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] .
 
 "\n\t" . '<head>' . // HEAD
 $t2 . '<meta charset = "utf-8" />' .
-$t2 . '<title>CL / ' . strtoupper ( $conf [ "lang" ] ) . ' / '; tpl_pagetitle ( ); echo '</title>' .
+$t2 . '<title>' . strtoupper ( $conf [ "lang" ] ) . ' / '; tpl_pagetitle ( ); echo '</title>' .
 $t2 . '<link rel = "alternate" type = "application/json+oembed" href = "https://app.comicslate.org/embed.json?id=' . $ID . ( $REV == false ? '' : '&amp;rev='. $REV ) . '" />' .
 $t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />';
 echo $t2 . tpl_favicon ( array ( 'favicon', 'mobile' ) ) . // favicon
@@ -42,7 +42,7 @@ $t2; tpl_metaheaders ( );
 echo "\t" . '</head>' .
 
 "\n\t" . '<body>' . // BODY
-$t2 . '<div class = "dokuwiki lang-' . $conf [ "lang" ] . $grlng .'">' .
+$t2 . '<div class = "dokuwiki lang-' . str_replace ( ":", " ", $INFO [ 'namespace' ] ) . $grlng . '">' .
 
 $t3 . '<div id = "head">' . // MENU
 $t4 . '<div id = "logo">' . // Logo
@@ -58,7 +58,6 @@ $ilinks = array (
 	array ( '/'. $conf [ "lang" ] . '/news/index',	tpl_getLang ( 'news' ),		'_self' ),
 	array ( '/'. $conf [ "lang" ] . '/wiki/index',	tpl_getLang ( 'helproom' ),	'_blank' ),
 	array ( '//discord.gg/T8p6M4Q',					tpl_getLang ( 'chat' ),		'_blank' ),
-	array ( '//app.comicslate.org/',				'Mobile App',				'_blank' ),
 );
 for ( $i = 0; $i <= count ( $ilinks ) - 1; $i++ ) { echo $t6 . "\t" . '<a href = "' . $ilinks [ $i ] [ 0 ] . '" target = ' . $ilinks [ $i ] [ 2 ] . '>' . $ilinks [ $i ] [ 1 ] . '</a>'; };
 echo $t6 . '</span>' .
@@ -77,16 +76,8 @@ $t3 . '<div id = "translabel"></div>'; // CHECKBOX
 if ( !empty ( html_msgarea ( ) ) ) { echo $t3 . '<div class = "meta">' . $t4; html_msgarea ( ); echo $t3 . '</div>'; }; // MESSAGE
 
 tpl_flush ( );
-$apps = "\t\t\t\t" . '<div class = "apps">' .
-$t5 . '<a href = "//play.google.com/store/apps/details?id=org.dasfoo.comicslate&amp;utm_source=comicslate-org" target = "_blank">' .
-$t6 . '<img src = "' . DOKU_TPL . 'images/googleapp.svg" alt = "Get it on Google Play">' .
-$t5 . '</a>' .
-$t5 . '<a href = "//apps.apple.com/ru/app/comicslate/id1485894069" target = "_blank">' .
-$t6 . '<img src = "' . DOKU_TPL . 'images/appstore.svg" alt = "Download on the App Store">' .
-$t5 . '</a>' .
-$t4 . '</div>' . $t4;
 echo $t3 . '<article class = "page">' . // PAGE
-"\n" . $apps; // App buttons top
+"\n";
 tpl_content ( );
 echo $t3 . '</article>';
 tpl_flush ( );
@@ -124,9 +115,7 @@ echo $t5 . '<div class = "social">';
 for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
 	echo $t6 . '<a href = "' . $socbut [ $i ] [ 0 ] . '" class = "media ' . $socbut [ $i ] [ 2 ] . '" title = "' . $socbut [ $i ] [ 1 ] . '" target = "_blank"></a>';
 };
-echo $t5 . '</div>' .
-
-"\n" . $apps . "\t"; // App buttons bottom
+echo $t5 . '</div>';
 
 if ( $ACT == 'show' ) {
 	echo '<div class = "count">' . // Yandex Counter
