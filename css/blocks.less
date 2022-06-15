@@ -195,25 +195,6 @@
 	}
 	article#dokuwiki__detail {
 		padding: 0 1em;
-		div.apps {
-			display: none;
-		}
-		@media (max-width: 800px) {
-			div.apps {
-				display: block;
-				a {
-					&:first-child img {
-						float: left;
-					}
-					&:last-child img {
-						float: right;
-					}
-					img {
-						width: 50%;
-					}
-				}
-			}
-		}
 		h1 {
 			padding: 1em 0;
 		}
@@ -272,26 +253,6 @@
 			top: 0;
 			width: 100%;
 			z-index: -1;
-		}
-		.apps {
-			display: none;
-		}
-		@media (max-width: 800px) {
-			.apps {
-				display: block;
-				a {
-					&:first-child img {
-						float: left;
-					}
-					&:last-child img {
-						float: right;
-					}
-					img {
-						max-width: 400px;
-						width: 50%;
-					}
-				}
-			}
 		}
 		h1 {
 			&:nth-child(1) {
@@ -440,6 +401,7 @@
 		@item-height: (@ico-width + @ico-margin);
 		position: fixed;
 		top: 75px;
+		z-index: 999999;
 		[dir=ltr] & {
 			right: 0;
 			ul { text-align: right; }
@@ -599,14 +561,6 @@
 				&.vkontakte {
 					border-radius: 5px;
 				}
-			}
-		}
-		.apps {
-			float: left;
-			left: 30px;
-			position: relative;
-			img {
-				height: 31px;
 			}
 		}
 		.count {
