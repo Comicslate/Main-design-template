@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2022.06.15 19:27 GMT+9' );
+console . log ( 'DokuScripts ver. 2022.07.03 17:05 GMT+9' );
 
 //ВЕЗДЕ
 
@@ -27,18 +27,18 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 	if ( fontValue > 0 ) {
 		switch ( marker ) {
 			case '!':
-				return '<span style = "font-size: ' + fontValue + 'em; display: inline-block;">';
+				return '<span style = "font-size: ' + fontValue + 'em;">';
 				break;
 			case '=':
-				return '<span style = "line-height: ' + fontValue * 100 + '%; display: inline-block;">';
+				return '<span style = "line-height: ' + fontValue * 100 + '%;">';
 				break;
 			case '_':
 				if ( fontValue > 1500 ) fontValue = 1500;
-				return '<span style = "width: ' + fontValue + 'px; display: inline-block;"></span>';
+				return '<span style = "width: ' + fontValue + 'px;"></span>';
 				break;
 			case 'y':
 			case 'x':
-				return '<span style = "transform: scale' + marker + '(' + fontValue + '); display: inline-block;">';
+				return '<span style = "transform: scale' + marker + '(' + fontValue + ');">';
 				break;
 			default:
 				return '<abbr title="Incorrect marker" >' + openSB + marker + value + closeSB + '</abbr>';
@@ -64,7 +64,7 @@ document . querySelectorAll ( '.page a.wikilink1, .page a.wikilink2, .page a.url
 
 /* озеленение do-ссылок*/
 document . querySelectorAll ( '.page a.wikilink2' ) . forEach ( e => {
-	if ( /do=/ . test ( e . href ) ) e . className = e . className . replace ( 'wikilink2', 'wikilink1' );
+	if ( /do=[^e]/ . test ( e . href ) ) e . className = e . className . replace ( 'wikilink2', 'wikilink1' );
 } );
 
 /* \\ br, -. &shy; */
@@ -143,13 +143,13 @@ if ( /(\/menu[\?|#]?|do=admin)/ . test ( lhref ) ) {
 if ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\// . test ( lhref ) ) {
 	/* плашка статуса перевода */
 	if (
-		!( /(\/(d|h)\d+|[\?&](do=pre|rev=))/ . test ( lhref ) )
+		!( /(\/[adh]\d+|[\?&](do=pre|rev=))/ . test ( lhref ) )
 		&&
 		document . querySelectorAll ( '.ct-container, .fn-container' ) . length == 0
 		&&
 		document . querySelector ( 'img.media' )
 	) {
-		var cot_vid = ' <a href="https://www.youtube.com/embed/w_Pnlt-9o7s?hl=' + lang + '" target=_blank>CoTAN</a> ',
+		let cot_vid = ' <a href="https://www.youtube.com/embed/w_Pnlt-9o7s?hl=' + lang + '" target=_blank>CoTAN</a> ',
 			clangs = {
 				'be': 'У гэтай паласе няма налепак!<br>Вы можаце выправіць гэта, <a href="?do=edit">адрэдагаваўшы старонку</a> з дапамогай' + cot_vid,
 				'bg': 'В тази лента няма етикети!<br>Можете да поправите това, като <a href="?do=edit">редактирате страницата</a> с' + cot_vid,
@@ -186,7 +186,7 @@ if ( /\/(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang)\// . test ( lhref 
 		clang = clangs [ lang ] || clangs [ 'en' ],
 		note . style . margin = '1em auto';
 		note . className = 'vycenter note noteimportant';
-		note . innerHTML = '<span style = "font-size: 1.3em" class = "fest">' + clang + '</span>';
+		note . innerHTML = '<span class = "oth">' + clang + '</span>';
 		if ( cnavn ) cnavn . parentNode . insertBefore ( note, cnavn . nextSibling );
 	};
 	/* в лентах - сокращение лишних титулов выпусков и озеленение заголовков */
