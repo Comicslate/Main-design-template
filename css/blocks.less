@@ -36,7 +36,7 @@
 			&:hover::after {
 				transform: translate(-1px, 0);
 			}
-			@media (max-width: 1024px) {
+			@media (max-width: 1040px) {
 				background: url( images/logo/logor_mob.svg ) no-repeat;
 			}
 		}
@@ -49,7 +49,7 @@
 			&:hover::after {
 				transform: translate(0, -7px);
 			}
-			@media (max-width: 1024px) {
+			@media (max-width: 1040px) {
 				background: url( images/logo/logo_mob.svg ) no-repeat;
 				height: 53px;
 			}
@@ -71,7 +71,7 @@
 					display: inline-block;
 					float: left; /* для иврита */
 					width: 100px;
-					@media (max-width: 1024px) {
+					@media (max-width: 1040px) {
 						background: none !important;
 					}
 				}
@@ -110,7 +110,7 @@
 					height: 34px;
 					margin: 9px 0 0 28px;
 				}
-				@media (max-width: 1024px) {
+				@media (max-width: 1040px) {
 					width: 40px;
 				}
 			}
@@ -145,11 +145,17 @@
 				&[rnd="6"] {
 					background: #AD464A;
 				}
+				> * {
+					position: relative;
+					top: 4px;
+				}
 				#upmenu {
 					color: white;
 					font: bold 15px DatFestComic,cursive;
-					position: relative;
-					top: 4px;
+					@media (max-width: 456px) {
+						width: ~"calc(100% - 120px)";
+						display: inline-block;
+					}
 					a {
 						color: white;
 					}
@@ -157,29 +163,29 @@
 						color: #FF0;
 					}
 					a + a {
-						margin-left: 8px;
-						@media (max-width: 750px) {
-							margin-left: 3px;
-						}
+						margin-left: ~"clamp(3px, 100vw - 555px, 8px)";
 					}
 				}
 				#search {
-					display: inline-block;
 					float: right;
-					margin: 0 8px;
+					margin: 0 3px;
 					form#dw__search {
-						display: block;
 						div.no {
-							position: relative;
 							* {
 								border-radius: 10px;
 								font-size: 120%;
 							}
-							button {
-								padding: 1px 6px 2px 3px;
+							#qsearch__in {
+								margin-right: 1px;
 								position: relative;
-								top: 3px;
-								left: 2px;
+								top: -3px;
+								width: ~"clamp(50px, 100vw - 400px, 150px)";
+							}
+							button {
+								padding: 1px 4px 2px 3px;
+								@media (max-width: 456px) {
+									display: none;
+								}
 							}
 							div#qsearch__out { /* всплывающие результаты; вырубить нахрен, неуправляемые background и частично position */
 								display: none !important;
@@ -190,6 +196,13 @@
 			}
 			nav {
 				min-height: 30px;
+				@media (max-width: 750px) {
+					overflow-x: scroll;
+				}
+				scrollbar-width: 6px !important;
+				&::-webkit-scrollbar {
+					max-width: 6px !important;
+				}
 			}
 		}
 	}
@@ -356,12 +369,6 @@
 		}
 		div.index__tree {
 			li {
-/*				&:nth-of-type(odd) {
-					background-color: #f8f8f8;
-				}
-				&:nth-of-type(even) {
-					background-color: #ffffff;
-				}*/
 				&.closed {
 					opacity: 0.5;
 				}
@@ -423,6 +430,12 @@
 						margin: 0 @ico-margin;
 					}
 					svg {
+						@media (max-width: 375px) {
+							opacity: 0.5;
+						}
+						:hover {
+							opacity: 1;
+						}
 						fill: @ini_border;
 						margin: 0 @ico-margin/2;
 						vertical-align: middle;
@@ -474,10 +487,8 @@
 			max-width: ~"calc(100% - 72px)";
 			overflow: hidden;
 			padding: 5px;
-			/* width: max-content; */
 			yatag {
 				align-content: center;
-	/*			display: flex !important;*/
 			}
 		}
 	}
