@@ -1,22 +1,22 @@
 .font-face ( @font ) {
 	font-display: swap;
-	src:	url('fonts/@{font}.eot');										/* IE9 Compat Modes */
+	src:	url('fonts/@{font}.eot');																		/* IE9 Compat Modes */
 	src:	url('fonts/@{font}.eot?#iefix')	format ( 'embedded-opentype' ),	/* IE6-IE8 */
-/*			url('fonts/@{font}.otf')		format ( 'opentype' ),*/			/* Open Type Font */
-			url('fonts/@{font}.ttf')		format ( 'truetype' ),			/* Safari, Android, iOS */
-			url('fonts/@{font}.svg#main')	format ( 'svg' ),				/* Legacy iOS */
-			url('fonts/@{font}.woff')		format ( 'woff' ),				/* Modern Browsers */
-			url('fonts/@{font}.woff2')		format ( 'woff2' );				/* Modern Browsers */
+/*			url('fonts/@{font}.otf')				format ( 'opentype' ),*/					/* Open Type Font */
+			url('fonts/@{font}.ttf')					format ( 'truetype' ),						/* Safari, Android, iOS */
+			url('fonts/@{font}.svg#main')		format ( 'svg' ),								/* Legacy iOS */
+			url('fonts/@{font}.woff')				format ( 'woff' ),								/* Modern Browsers */
+			url('fonts/@{font}.woff2')			format ( 'woff2' );							/* Modern Browsers */
 }
 
 @font-face {
 	font-family: AnimeAce; 				.font-face ( anime_ace )
 }
 @font-face {
-	font-family: Axolotl;					.font-face ( axolotl_comic )
+	font-family: Axolotl;						.font-face ( axolotl_comic )
 }
 @font-face {
-	font-family: DatFestComic;			.font-face ( dat_fest_comic1 )
+	font-family: DatFestComic;			.font-face ( dat_fest_comic )
 }
 @font-face {
 	font-family: DSPFetcher;				.font-face ( dsp_fetcher )
@@ -43,6 +43,9 @@
 	font-family: FontAwesome;			.font-face ( font_awesome )
 }
 @font-face {
+	font-family: FontAwesome47;		.font-face ( font_awesome-4.7.0.2016 )
+}
+@font-face {
 	font-family: SpaceCyr;					.font-face ( space_cyr )
 }
 @font-face {
@@ -58,10 +61,7 @@
 .axol {
 	font-family: Axolotl, cursive;
 }
-/*.export .ct-note {
-	padding: 0 1px !important;
-}*/
-.fest {
+.fest,.flo,.sam,.hlx,.saw,.qwe,.dvo,.edge,.blunt,.max,.rai,.kor,.mad,.mayor,.mhlp,.nio,.pol,.mst,.mst1,.bow,.com,.ish,.gre,.oth {
 	font-family: DatFestComic, cursive;
 	.lang-he & {
 		font-family: 'Frank Ruhl Libre';
@@ -92,7 +92,6 @@
 		letter-spacing: 1.1px;
 		line-height: 132%;
 	}
-
 }
 .dspf {
 	font-family: DSPFetcher, cursive;
@@ -116,7 +115,10 @@
 	font-family: TengwarAnnatar, cursive;
 }
 .fawe {
-	font-family: FontAwesome, cursive;
+	font-family: FontAwesome, DatFestComic, cursive;
+}
+.fawe47 {
+	font-family: FontAwesome47, DatFestComic, cursive;
 }
 .spac {
 	font-family: SpaceCyr, cursive;
@@ -124,19 +126,24 @@
 .unic {
 	font-family: UnicephalonCyr, cursive;
 }
-.vrc {
+.vrc,.varc,.vag {
 	font-family: VagRoundCyr, cursive;
 }
 .ops {
 	font-family: "Open Sans";
 }
 
-.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.spac,.unic,.vrc,.ops {
+.aace,.axol,.fest,.dspf,.stri,.lisi,.claw,.impt,.lucl,.tean,.fawe,.fawe47,.spac,.unic,.vrc,.varc,.ops {
 	-webkit-appearance: none;
 	display: inline;
 	font-feature-settings: "kern" 1;
 	font-kerning: normal;
 	word-wrap: break-word;
+}
+
+.flo,.sam,.hlx,.saw,.qwe,.dvo,.edge,.blunt,.max,.rai,.kor,.mad,.mayor,.mhlp,.nio,.pol,.mst,.mst1,.bow,.com,.ish,.gre,.oth,.vag {
+	display: inline;
+	font-size: 1.3em;
 }
 
 .flo { color: #866444; }
@@ -160,48 +167,7 @@
 .ish { color: #4A3110; }
 .gre { color: #215f7a; }
 .oth { color: black; }
-.vag {
-	color: #00a90c;
-	display: inline;
-	font-family: VagRoundCyr, cursive;
-	font-size: 1.3em;
-}
-
-.flo,.sam,.hlx,.saw,.qwe,.dvo,.edge,.blunt,.max,.rai,.kor,.mad,.mayor,.mhlp,.nio,.pol,.mst,.mst1,.bow,.com,.ish,.gre,.oth {
-	display: inline;
-	font-family: DatFestComic, cursive;
-	font-size: 1.3em;
-	.lang-he & {
-		font-family: 'Frank Ruhl Libre';
-		letter-spacing: -0.05px; /* достаточно -0,01, перестраховка */
-	}
-	.export.lang-hi & {
-		line-height: 100% !important;
-	}
-	.lang-hi & {
-		font-family: 'Inknut Antiqua';
-		letter-spacing: -1.22px;
-		line-height: 136%;
-	}
-	.lang-ko & {
-		font-family: Jua;
-		letter-spacing: 1.5px;
-		line-height: 136%;
-	}
-	.lang-ja & {
-		font-family: 'Kosugi Maru';
-		line-height: 128%;
-	}
-	.lang-sjn & {
-		font-family: TengwarAnnatar, cursive;
-	}
-	.lang-zh & {
-		font-family: 'ZCOOL KuaiLe';
-		letter-spacing: 1.1px;
-		line-height: 132%;
-	}
-}
-
+.vag { color: #00a90c;}
 .znt { color: #1E90FF; }
 .ozy { color: #404040; }
 .mil { color: #EE7000; }
@@ -247,9 +213,11 @@
 	text-align: right !important;
 }
 .vycenter {
+	display: inline-block;
 	margin: 0 auto;
 	text-align: center !important;
-	.notetip& {
+	.note& {
+		display: inherit;
 		padding: 15px 20px 15px 40px;
 	}
 }
