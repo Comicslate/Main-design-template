@@ -253,8 +253,12 @@
 		border-bottom: 1px dashed #EEE;
 		font-family: "Trebuchet MS", "Bitstream Vera Sans", "Nimbus Sans L", sans-serif;
 		line-height: 1.5em;
-		[dir=ltr] & { margin: 0 37px 0 7px; }
-		[dir=rtl] & { margin: 0 7px 0 37px; }
+		[dir=ltr] & {
+			margin: 0 37px 0 7px;
+		}
+		[dir=rtl] & {
+			margin: 0 7px 0 37px;
+		}
 		position: relative;
 		text-align: justify;
 		&::after {
@@ -388,6 +392,11 @@
 			}
 		}
 	}
+	@media (max-width: 750px) {
+		article.page {
+			margin: 0 7px !important;
+		}
+	}
 	&.slav {
 		article.page::after {
 			background-image: url( images/logo/logor_back.svg );
@@ -417,21 +426,18 @@
 			left: 0;
 			ul { text-align: left; }
 		}
-		@media (max-width: 750px) {
-			#nomobile {
-				display: none;
+		&:hover {
+			ul#nomobile {
+				background-color: @ini_background;
+				border-color: @ini_border;
+				border-radius: 2px;
+				box-shadow: 2px 2px 2px @ini_text_alt;
+				li a span {
+					display: inline-block;
+				}
 			}
 		}
-		@media (min-width: 750px) {
-			#mobile {
-				display: none;
-			}
-		}
-		#mobile select {
-			width: 30px;
-			color: #fff;
-		}
-		ul {
+		ul#nomobile {
 			border: 1px solid transparent; // add transparent border to prevent jumping when proper border is added on hover
 			margin: 0;
 			li {
@@ -479,15 +485,27 @@
 				animation: 1s linear 3s infinite alternate running op10;
 			}
 		}
-		&:hover {
-			ul {
-				background-color: @ini_background;
-				border-color: @ini_border;
-				border-radius: 2px;
-				box-shadow: 2px 2px 2px @ini_text_alt;
-				li a span {
-					display: inline-block;
+		@media (max-width: 750px) {
+			ul#nomobile {
+				display: none;
+			}
+		}
+		ul#mobile {
+			select {
+					-moz-appearance: none;
+				-webkit-appearance: none;
+							   appearance: none;
+				background: url(images/burger.svg) no-repeat center center;
+				height: 33px;
+				width: 33px;
+				option:first-child {
+					display: none;
 				}
+			}
+		}
+		@media (min-width: 750px) {
+			ul#mobile {
+				display: none;
 			}
 		}
 	}
