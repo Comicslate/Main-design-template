@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2022.07.03 17:05 GMT+9' );
+console . log ( 'DokuScripts ver. 2022.07.28 05:29 GMT+9' );
 
 //ВЕЗДЕ
 
@@ -27,18 +27,18 @@ function fontChanger ( str, openSB, marker, value, closeSB, offset, s ) {
 	if ( fontValue > 0 ) {
 		switch ( marker ) {
 			case '!':
-				return '<span style = "font-size: ' + fontValue + 'em;">';
+				return '<span style = "font-size: ' + fontValue + 'em; display: inline-block;">';
 				break;
 			case '=':
-				return '<span style = "line-height: ' + fontValue * 100 + '%;">';
+				return '<span style = "line-height: ' + fontValue * 100 + '%; display: inline-block;">';
 				break;
 			case '_':
 				if ( fontValue > 1500 ) fontValue = 1500;
-				return '<span style = "width: ' + fontValue + 'px;"></span>';
+				return '<span style = "width: ' + fontValue + 'px; display: inline-block;"></span>';
 				break;
 			case 'y':
 			case 'x':
-				return '<span style = "transform: scale' + marker + '(' + fontValue + ');">';
+				return '<span style = "transform: scale' + marker + '(' + fontValue + '); display: inline-block;">';
 				break;
 			default:
 				return '<abbr title="Incorrect marker" >' + openSB + marker + value + closeSB + '</abbr>';
