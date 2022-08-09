@@ -253,12 +253,7 @@
 		border-bottom: 1px dashed #EEE;
 		font-family: "Trebuchet MS", "Bitstream Vera Sans", "Nimbus Sans L", sans-serif;
 		line-height: 1.5em;
-		[dir=ltr] & {
-			margin: 0 37px 0 7px;
-		}
-		[dir=rtl] & {
-			margin: 0 7px 0 37px;
-		}
+		margin: 0 37px;
 		position: relative;
 		text-align: justify;
 		&::after {
@@ -411,6 +406,9 @@
  * @author Anika Henke <anika@selfthinker.org>
  * @author Andreas Gohr <andi@splitbrain.org>
  */
+	#viewoptions {
+		display: none;
+	}
 	#pagetools {
 		@ico-width: 28px;
 		@ico-margin: 4px;
