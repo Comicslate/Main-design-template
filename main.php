@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-ver. 2022.06.13 08:08 GMT+9
+ver. 2022.08.09 21:03 GMT+9
 */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -83,9 +83,19 @@ echo $t3 . '</article>';
 tpl_flush ( );
 
 echo $t3 . '<noindex>' .
-$t4 . '<aside id = "pagetools">' . // SIDEBAR
+
+$t4 . '<aside id = "viewoptions">' . // SIDEBAR1
 $t5 . '<ul>' .
+$t6 . ( new \dokuwiki\Menu\ViewOptions ( ) ) -> getListItems ( ) .
+$t5 . '</ul>' .
+$t4 . '</aside>' .
+
+$t4 . '<aside id = "pagetools">' . // SIDEBAR2
+$t5 . '<ul id = "nomobile">' .
 $t6 . ( new \dokuwiki\Menu\PageMenu ( ) ) -> getListItems ( ) .
+$t5 . '</ul>' .
+$t5 . '<ul id = "mobile">' .
+$t6 . ( new \dokuwiki\Menu\MobileMenu ( ) ) -> getDropdown ( ) .
 $t5 . '</ul>' .
 $t4 . '</aside>' .
 
