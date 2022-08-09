@@ -406,34 +406,86 @@
  * @author Anika Henke <anika@selfthinker.org>
  * @author Andreas Gohr <andi@splitbrain.org>
  */
+	@ico-width: 28px;
+	@ico-margin: 4px;
+	@item-height: (@ico-width + @ico-margin);
 	#viewoptions {
 		display: none;
-	}
-	#pagetools {
-		@ico-width: 28px;
-		@ico-margin: 4px;
-		@item-height: (@ico-width + @ico-margin);
+		left: 0;
 		position: fixed;
 		top: 75px;
 		z-index: 999999;
-		[dir=ltr] & {
-			right: 0;
-			ul { text-align: right; }
+		&:hover {
+			ul {
+				background-color: @ini_background;
+				border-color: @ini_border;
+				border-radius: 2px;
+				box-shadow: 2px 2px 2px @ini_text_alt;
+				span {
+					display: inline-block;
+				}
+			}
 		}
-		[dir=rtl] & {
-			left: 0;
-			ul { text-align: left; }
+		ul {
+			border: 1px solid transparent; // add transparent border to prevent jumping when proper border is added on hover
+			margin: 0;
+			text-align: left;
+			li {
+				list-style: none;
+				a {
+					display: block;
+					line-height: @item-height;
+					span {
+						display: none; // hide label until hover
+						margin: 0 @ico-margin;
+					}
+					svg {
+						fill: @ini_border;
+						margin: 0 @ico-margin/2;
+						vertical-align: middle;
+						@media (max-width: 375px) {
+							opacity: 0.5;
+						}
+						&:hover {
+							opacity: 1;
+						}
+					}
+				}
+				a:active,
+				a:focus,
+				a:hover { // on interaction show the full item
+					background-color: @ini_background_alt;
+					span {
+						display: inline-block;
+					}
+					svg {
+						fill: @ini_link;
+					}
+				}
+			}
+			li.edit svg {
+				animation: 1s linear 3s infinite alternate running op10;
+			}
 		}
+	}
+	#pagetools {
+		position: fixed;
+		right: 0;
+		top: 75px;
+		z-index: 999999;
 		&:hover {
 			ul#nomobile {
 				background-color: @ini_background;
 				border-color: @ini_border;
 				border-radius: 2px;
 				box-shadow: 2px 2px 2px @ini_text_alt;
-				li a span {
+				span {
 					display: inline-block;
 				}
 			}
+		}
+		ul {
+			text-align: right;
 		}
 		ul#nomobile {
 			border: 1px solid transparent; // add transparent border to prevent jumping when proper border is added on hover
@@ -448,15 +500,15 @@
 						margin: 0 @ico-margin;
 					}
 					svg {
-						@media (max-width: 375px) {
-							opacity: 0.5;
-						}
-						:hover {
-							opacity: 1;
-						}
 						fill: @ini_border;
 						margin: 0 @ico-margin/2;
 						vertical-align: middle;
+						@media (max-width: 375px) {
+							opacity: 0.5;
+						}
+						&:hover {
+							opacity: 1;
+						}
 					}
 				}
 				a:active,
