@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-ver. 2022.08.09 21:03 GMT+9
+ver. 2022.08.12 22:10 GMT+9
 */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -69,9 +69,7 @@ $translation = plugin_load ( 'helper', 'translation' );
 echo $t5 . '<nav>' . ( $translation ? $translation -> showTranslations ( ) : '' ) . $t5 . '</nav>' .
 
 $t4 . '</div>' .
-$t3 . '</div>' .
-
-$t3 . '<div id = "translabel"></div>'; // CHECKBOX
+$t3 . '</div>' ;
 
 if ( !empty ( html_msgarea ( ) ) ) { echo $t3 . '<div class = "meta">' . $t4; html_msgarea ( ); echo $t3 . '</div>'; }; // MESSAGE
 
