@@ -14,6 +14,7 @@
 	0% { opacity: 0; }
 	100% { opacity: 1; }
 }
+@mobile-width: 860px;
 
 .dokuwiki {
 	margin: 0;
@@ -36,7 +37,7 @@
 			&:hover::after {
 				transform: translate(-1px, 0);
 			}
-			@media (max-width: 1040px) {
+			@media (max-width: @mobile-width) {
 				background: url( images/logo/logor_mob.svg ) no-repeat;
 			}
 		}
@@ -49,7 +50,7 @@
 			&:hover::after {
 				transform: translate(0, -7px);
 			}
-			@media (max-width: 1040px) {
+			@media (max-width: @mobile-width) {
 				background: url( images/logo/logo_mob.svg ) no-repeat;
 				height: 53px;
 			}
@@ -71,7 +72,7 @@
 					display: inline-block;
 					float: left; /* для иврита */
 					width: 100px;
-					@media (max-width: 1040px) {
+					@media (max-width: @mobile-width) {
 						background: none !important;
 					}
 				}
@@ -110,7 +111,7 @@
 					height: 34px;
 					margin: 9px 0 0 28px;
 				}
-				@media (max-width: 1040px) {
+				@media (max-width: @mobile-width) {
 					width: 40px;
 				}
 			}
@@ -196,7 +197,7 @@
 			}
 			nav {
 				min-height: 30px;
-				@media (max-width: 750px) {
+				@media (max-width: 1040px) {
 					overflow-x: scroll;
 				}
 				scrollbar-width: 6px !important;
@@ -389,7 +390,7 @@
 	}
 	@media (max-width: 750px) {
 		article.page {
-			margin: 0 7px !important;
+			margin: 0 7px 0 37px !important;
 		}
 	}
 	&.slav {
