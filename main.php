@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php
 /*
-ver. 2022.08.12 22:10 GMT+9
+ver. 2022.08.15 22:32 GMT+9
 */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
-$t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
+$NS = $INFO [ 'namespace' ]; $t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
 
 echo '<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">' .
 
@@ -42,7 +42,7 @@ $t2; tpl_metaheaders ( );
 echo "\t" . '</head>' .
 
 "\n\t" . '<body>' . // BODY
-$t2 . '<div class = "dokuwiki lang-' . str_replace ( ":", " ", $INFO [ 'namespace' ] ) . $grlng . '">' .
+$t2 . '<div class = "dokuwiki lang-' . str_replace ( ":", " ", $NS ) . $grlng . '">' .
 
 $t3 . '<div id = "head">' . // MENU
 $t4 . '<div id = "logo">' . // Logo
@@ -80,15 +80,25 @@ tpl_content ( );
 echo $t3 . '</article>';
 tpl_flush ( );
 
-echo $t3 . '<noindex>' .
+echo $t3 . '<noindex>';
 
-$t4 . '<aside id = "viewoptions">' . // SIDEBAR1
-$t5 . '<ul>' .
-$t6 . ( new \dokuwiki\Menu\ViewOptions ( ) ) -> getListItems ( ) .
-$t5 . '</ul>' .
-$t4 . '</aside>' .
+if (
+	( $ACT == 'edit' || $ACT == 'preview' || $ACT == 'show' )
+	&&
+	preg_match ( '/:(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang):/', $NS )
+	&&
+	preg_match ( '/((\d|vol|ch)\d+|(cover|pro(log)?)\d*)/', noNS ( $ID ) )
+) {
+echo '<aside id = "viewoptions"><ul>
+<li class="reveal_check"><label accesskey="t"><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt1' ) . '</span></label></li>
+<li class="zoom_check"><label><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt2' ) . '</span></label></li>
+<li class="fognavi_check"><label><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt3' ) . '</span></label></li>
+<li class="shot_check"><label><input type="checkbox"><span class="l_ch"></span><span idata="' . tpl_getLang ( 'opt4' ) . '" class="l_tx"></span></label></li>
+<li class="color_check"><label><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt5' ) . '</span></label></li>
+</ul></aside>';
+};
 
-$t4 . '<aside id = "pagetools">' . // SIDEBAR2
+echo $t4 . '<aside id = "pagetools">' . // SIDEBAR2
 $t5 . '<ul id = "nomobile">' .
 $t6 . ( new \dokuwiki\Menu\PageMenu ( ) ) -> getListItems ( ) .
 $t5 . '</ul>' .
@@ -106,7 +116,7 @@ if ( $conf [ 'breadcrumbs' ] ) { // Breadcrumbs
 };
 
 $socbut = array ( // Social
-	array ( '/feed.php',                tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSall' ) . ')', 'rss' ),
+	array ( '/feed.php', tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSall' ) . ')', 'rss' ),
 	array ( '/feed.php?onlynewpages=1', tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' ),
 	array ( '//patreon.com/comicslate', 'Patreon', 'patreon' ),
 	array ( '//discord.gg/T8p6M4Q', 'Discord', 'discord' ),
@@ -116,8 +126,8 @@ $socbut = array ( // Social
 	array ( '//facebook.com/groups/comicslate', 'Facebook', 'facebook' ),
 	array ( '//twitter.com/Rainbow_Spike', 'Twitter', 'twitter' ),
 	array ( '//vk.com/comicslate', 'VKontakte', 'vkontakte' ),
-	array ( '/feed.php?ns='                    . urlencode ( $INFO [ 'namespace' ] ), tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSall' ) . ')', 'rss' ),
-	array ( '/feed.php?onlynewpages=1&amp;ns=' . urlencode ( $INFO [ 'namespace' ] ), tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' )
+	array ( '/feed.php?ns=' . urlencode ( $NS ), tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSall' ) . ')', 'rss' ),
+	array ( '/feed.php?onlynewpages=1&amp;ns=' . urlencode ( $NS ), tpl_getLang ( 'RSSpart' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' )
 );
 echo $t5 . '<div class = "social">';
 for ( $i = 0; $i <= count ( $socbut ) - 1; $i++ ) {
