@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 /*
-ver. 2022.08.16 22:03 GMT+9
+ver. 2022.08.21 12:14 GMT+9
 */
 header ( 'X-UA-Compatible: IE = edge, chrome = 1' );
 
@@ -90,10 +90,10 @@ if (
 	preg_match ( '/((\d|vol|ch)\d+|(cover|pro(log)?)\d*)/', noNS ( $ID ) )
 ) {
 echo '<aside id = "viewoptions">
-<label id="opt_fognavi"><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt3' ) . '</span></label>
+<label id="opt_fognavi"><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt1' ) . '</span></label>
 <label id="opt_piczoom"><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt2' ) . '</span></label>
-<label id="opt_picshot"><input type="checkbox"><span class="l_ch"></span><span idata="' . tpl_getLang ( 'opt4' ) . '" class="l_tx"></span></label>
-<label id="opt_translate" accesskey="t"><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt1' ) . '</span></label>
+<label id="opt_picshot"><input type="checkbox"><span class="l_ch"></span><span idata="' . tpl_getLang ( 'opt3' ) . '" class="l_tx"></span></label>
+<label id="opt_translate" accesskey="t"><input type="checkbox"><span class="l_ch"></span><span idata="' . tpl_getLang ( 'opt4' ) . '" class="l_tx"></span></label>
 <label id="opt_decolor"><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt5' ) . '</span></label>
 </aside>';
 };
