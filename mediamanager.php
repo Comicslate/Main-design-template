@@ -1,36 +1,35 @@
-<!DOCTYPE html>
-<?php
-/**
- * DokuWiki Default Template
- *
- * This is the template for the media manager popup
- *
+<!DOCTYPE html><?php if ( !defined ( 'DOKU_INC' ) ) die ( ); // must be run from within DokuWiki
+/* This is the template for the media manager popup
  * @link   http://dokuwiki.org/templates
  * @author Andreas Gohr <andi@splitbrain.org>
  */
+$NS = $INFO [ 'namespace' ]; $t2 = "\n\t\t";
+$comic = preg_match ( '/:(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang):/', $NS );
 
-// must be run from within DokuWiki
-if (!defined('DOKU_INC')) die();
-header('X-UA-Compatible: IE = edge, chrome = 1');
-echo "\n" . '<html xml:lang="'.$conf["lang"].'" lang="'.$conf["lang"].'" dir="ltr"><head>'.PHP_EOL.
-'<title>'.hsc($lang['mediaselect']).' ['.strip_tags($conf['title']).']</title>'.PHP_EOL.
-'<meta charset="utf-8"/>'.PHP_EOL;
-tpl_metaheaders();
-echo tpl_favicon(array('favicon', 'mobile')).
-'<meta name="viewport" content="width = device-width, initial-scale = 1"/>
-</head><body>
-<div id="media__manager" class="dokuwiki">
+header ( 'X-UA-Compatible: IE = edge' ); echo '
+<html xml:lang = "' . $conf [ "lang" ] . '" lang = "' . $conf [ "lang" ] . '" dir = "' . $lang [ "direction" ] . '">' .
+// 1. HEAD
+"\n\t" . '<head>' .
+$t2 . '<meta charset = "utf-8" />' .
+$t2 . '<title>' . hsc ( $lang [ 'mediaselect' ] ) . ' [' . strip_tags ( $conf [ 'title' ] ) . ']</title>' .
+$t2 . '<meta name = "viewport" content = "width = device-width, initial-scale = 1" />' .
+$t2; tpl_metaheaders ( );
+echo "\t" . '</head>' .
+// 2. BODY
+"\n\t" . '<body>' .
+$t2 . '<div id="media__manager" class="dokuwiki lang-' . str_replace ( ":", " ", $NS ) . ( $comic ? ' comic' : '') . '">' .
+// Message
+$t3 . '<div id="media__left">'; html_msgarea ( );
+// PAGE
+$t4 . '<h1>' . hsc ( $lang [ 'mediaselect' ] ) . '</h1>' .
+$t4 . '<div id="media__opts"></div>' . $t4;
+tpl_mediaTree ( );
+echo $t3 . '</div>' .
 
-<div id="media__left">';html_msgarea();
-echo '<h1>'.hsc($lang['mediaselect']).'</h1>
-<div id="media__opts"></div>'.PHP_EOL;
-tpl_mediaTree();
-echo '</div>
-
-<div id="media__right">';
-tpl_mediaContent();
-echo '</div>
-
-</div>
-</body></html>';
-// <script type="text/javascript" src="'.tpl_basedir().'js/intermanager.js?ver='.date ("y-m-d_H:i:s", filemtime('/var/www/comicslate.org/lib/tpl/tempe/js/intermanager.js')).' defer"></script>
+$t3 . '<div id="media__right">' . $t4;
+tpl_mediaContent ( );
+echo '
+';?>			</div>
+		</div>
+	</body>
+</html>
