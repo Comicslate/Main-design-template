@@ -1,4 +1,4 @@
-<!DOCTYPE html> <?php // ver. 2022.11.04 22:42 GMT+9
+<!DOCTYPE html> <?php // ver. 2023.01.15 23:34 GMT+9
 $NS = $INFO [ 'namespace' ]; $t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
 $comic = preg_match ( '/:(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang):/', $NS );
 $bands  = preg_match ( '/:[dh]\d+$/', $ID );
@@ -102,7 +102,7 @@ if ( // Design
 	&&
 	$comic
 	&&
-	preg_match ( '/((\d|vol|ch)\d+|(cover|pro(log)?)\d*)/', noNS ( $ID ) )
+	preg_match ( '/((\d|vol|ch|part)\d+|(cover|pro(log)?)\d*)/', noNS ( $ID ) )
 ) {
 echo '<aside id = "viewoptions">
 <label id="opt_fognavi"><input type="checkbox"><span class="l_ch"></span><span class="l_tx">' . tpl_getLang ( 'opt1' ) . '</span></label>
