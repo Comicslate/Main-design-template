@@ -1,6 +1,8 @@
-<!DOCTYPE html> <?php // ver. 2022.09.03 15:31 GMT+9
+<!DOCTYPE html> <?php // ver. 2022.11.04 22:42 GMT+9
 $NS = $INFO [ 'namespace' ]; $t2 = "\n\t\t"; $t3 = "\n\t\t\t"; $t4 = "\n\t\t\t\t"; $t5 = "\n\t\t\t\t\t"; $t6 = "\n\t\t\t\t\t\t";
 $comic = preg_match ( '/:(sci-fi|tlk|wolves|mlp|furry|gamer|other|interrobang):/', $NS );
+$bands  = preg_match ( '/:[dh]\d+$/', $ID );
+$index = preg_match ( '/:index$/', $ID );
 $dw_add = '';
 switch ( $conf [ "lang" ] ) {
 	case 'he' : $dfont = 'Frank+Ruhl+Libre:wght@700'; break;
@@ -52,7 +54,14 @@ $t2; tpl_metaheaders ( );
 echo "\t" . '</head>' .
 // 2. BODY
 "\n\t" . '<body>' .
-$t2 . '<div class = "dokuwiki lang-' . str_replace ( ":", " ", $NS ) . ( $comic ? ' comic' : '') . $dw_add . '">' .
+$t2 .
+	'<div class = "dokuwiki lang-' .
+	str_replace ( ":", " ", $NS ) .
+	( $comic ? ' comic' : '') .
+	( $bands ? ' band' : '') .
+	( $index ? ' index' : '') .
+	$dw_add .
+	'">' .
 // 2.1. MENU
 $t3 . '<div id = "head">' .
 $t4 . '<div id = "logo">' . // Logo
@@ -123,7 +132,6 @@ $socbut = array ( // Social
 	array ( '/feed.php?onlynewpages=1', tpl_getLang ( 'RSS' ) . ' (' . tpl_getLang ( 'RSSnew' ) . ')', 'rss' ),
 	array ( '//patreon.com/comicslate', 'Patreon', 'patreon' ),
 	array ( '//discord.gg/T8p6M4Q', 'Discord', 'discord' ),
-	array ( '//t.me/comicslate', 'Telegram', 'telegram' ),
 	array ( '//www.reddit.com/r/Comicslate', 'Reddit', 'reddit' ),
 	array ( '//rainbow-spike.tumblr.com', 'Tumblr', 'tumblr' ),
 	array ( '//facebook.com/groups/comicslate', 'Facebook', 'facebook' ),
