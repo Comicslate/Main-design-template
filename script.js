@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2022.07.28 05:29 GMT+9' );
+console . log ( 'DokuScripts ver. 2023.03.12 00:56 GMT+9' );
 
 //ВЕЗДЕ
 
@@ -119,12 +119,15 @@ document . querySelectorAll ( ".dokuwiki img:not([src*='fetch'])" ) . forEach (
 // ГЛАВНАЯ, МЕНЮ, ИНДЕКСЫ И Т.П.
 
 /* меню и админка - пакование в колонки */
+function col_test ( i ) {
+	return /interrobang/ . test ( col_ul [ i ] . querySelector ( 'a' ) . title )
+};
 if ( /(\/menu[\?|#]?|do=admin)/ . test ( lhref ) ) {
 	var col_ul = document . querySelectorAll ( '.page ul, .admin_plugins ul' ),
 		col_li,
 		col_sz = [ ];
 	for ( i = 0; i < col_ul . length; i++ ) {
-		if ( i != 3 ) { // исключая Интерробанг Студию
+		if ( !col_test ( i ) ) { // исключая Интерробанг Студию
 			col_li = col_ul [ i ] . querySelectorAll ( 'div.li' );
 			for ( j = 0; j < col_li . length; j++ ) {
 				col_li [ j ] . style . display = "inline"; // приведение дивов к строчному виду
@@ -133,8 +136,8 @@ if ( /(\/menu[\?|#]?|do=admin)/ . test ( lhref ) ) {
 		}
 	};
 	var col_sm = Math . max . apply ( null, col_sz ); // определение наибольшего дива
-	for ( i in col_ul ) {
-		if ( i != 3 && col_ul [ i ] . style ) col_ul [ i ] . style . cssText += " columns: " + col_sm + "px auto; column-gap: 20px;" // адаптивные колонки
+	for ( i = 0; i < col_ul . length; i++ ) {
+		if ( !col_test ( i ) && col_ul [ i ] . style ) col_ul [ i ] . style . cssText += " columns: " + col_sm + "px auto; column-gap: 20px;" // адаптивные колонки
 	}
 };
 
