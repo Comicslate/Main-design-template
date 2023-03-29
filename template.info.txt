@@ -1,0 +1,7 @@
+base     comicslate
+author   Dr-Yukon
+email    Rainbow_Spike@derpy.ru
+date     2022-01-05
+name     Comicslate Template
+desc     Template for media portal with topbar support and plugin Translation integrated
+url      https://www.dokuwiki.org/template:comicslate
