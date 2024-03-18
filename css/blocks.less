@@ -1,5 +1,7 @@
+/* ver. 2024.03.18 19:01 GMT+9 */
+
 @keyframes ani_rot {
-	0%		{ transform: rotate(0deg);		}
+	0%		{ transform: rotate(0deg); }
 	100%	{ transform: rotate(360deg); }
 }
 @keyframes ani_op_low {
@@ -20,9 +22,9 @@
 	100%	{ opacity: 1; }
 }
 @keyframes ani_scale {
-	0%		{	transform: scale(0);	}
-	90%		{	transform: scale(1.4);	}
-	100%	{	transform: scale(1);	}
+	0%		{	transform: scale(0); }
+	90%		{	transform: scale(1.4); }
+	100%	{	transform: scale(1); }
 }
 @mobile-width: 860px;
 
@@ -217,14 +219,14 @@
 			}
 			nav {
 				min-height: 30px;
-				@media (max-width: 1040px) {
-					overflow-x: scroll;
-				}
 				scrollbar-width: 6px !important;
 				&::-webkit-scrollbar {
 					max-width: 6px !important;
 				}
 			}
+		}
+		&:not(.editpage) nav @media (max-width: 1040px) {
+			overflow-x: scroll;
 		}
 	}
 	article#dokuwiki__detail {
