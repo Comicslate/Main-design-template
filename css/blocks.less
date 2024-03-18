@@ -1,4 +1,4 @@
-/* ver. 2024.03.18 19:01 GMT+9 */
+/* ver. 2024.03.18 19:17 GMT+9 */
 
 @keyframes ani_rot {
 	0%		{ transform: rotate(0deg); }
@@ -225,7 +225,9 @@
 				}
 			}
 		}
-		&:not(.editpage) nav @media (max-width: 1040px) {
+	}
+	&:not(.editpage) nav {
+		@media (max-width: 600px) {
 			overflow-x: scroll;
 		}
 	}
