@@ -42,7 +42,6 @@
 	}
 	&.slav {
 		#inlogo {
-			background: url( images/logo/logo-ru.svg ) no-repeat;
 			height: 53px;
 			transform: translate(1px, 0);
 			&:hover::after {
@@ -52,7 +51,14 @@
 				background: url( images/logo/logo-ru_mob.svg ) no-repeat;
 			}
 		}
-		&.lang-uk #inlogo {
+	}
+	&.lang-ru, &.lang-bg {
+		#inlogo {
+			background: url( images/logo/logo-ru.svg ) no-repeat;
+		}
+	}
+	&.lang-uk, &.lang-be {
+		#inlogo {
 			background: url( images/logo/logo-uk.svg ) no-repeat;
 		}
 	}
@@ -514,7 +520,7 @@
 		}
 	}
 	&.slav {
-		#yandex_rtb {
+		#yandex_rtb_R-A-492328-1 {
 			border: 1px solid #ddd;
 			border-radius: 5px;
 			clear: both;
