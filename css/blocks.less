@@ -41,20 +41,20 @@
 		}
 	}
 	&.slav {
-		#head #logo #inlogo {
-			background: url( images/logo/logor.svg ) no-repeat;
+		#inlogo {
+			background: url( images/logo/logo-ru.svg ) no-repeat;
 			height: 53px;
 			transform: translate(1px, 0);
 			&:hover::after {
 				transform: translate(-1px, 0);
 			}
 			@media (max-width: @mobile-width) {
-				background: url( images/logo/logor_mob.svg ) no-repeat;
+				background: url( images/logo/logo-ru_mob.svg ) no-repeat;
 			}
 		}
 	}
 	&:not(.slav) {
-		#head #logo #inlogo {
+		#inlogo {
 			background: url( images/logo/logo.svg ) no-repeat;
 			height: 46.5px;
 			transform: translate(0, 7px);
@@ -406,7 +406,7 @@
 	}
 	&.slav {
 		article.page::after {
-			background-image: url( images/logo/logor_back.svg );
+			background-image: url( images/logo/logo-ru_back.svg );
 		}
 	}
 	&:not(.slav) {
