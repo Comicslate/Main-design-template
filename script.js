@@ -1,4 +1,4 @@
-console . log ( 'DokuScripts ver. 2023.03.12 00:56 GMT+9' );
+console . log ( 'DokuScripts ver. 2024.03.18 18:47 GMT+9' );
 
 //ВЕЗДЕ
 
@@ -54,6 +54,9 @@ if ( notedit ) {
 		notedit [ i ] . innerHTML = notedit [ i ] . innerHTML . replace ( /(\[)(.)(\d+[\.,]?\d*)(\])/g, fontChanger ) . replace ( /\[\/\]/g, '</span>' );
 	}
 };
+
+var editclass = document . querySelector ( '.page > .editBox' );
+if ( editclass ) document . querySelector ( '.dokuwiki' ) . classList . add ( 'editpage' );
 
 // ПОЧТИ ВЕЗДЕ
 
